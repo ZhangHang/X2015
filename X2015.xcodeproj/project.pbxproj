@@ -8,22 +8,58 @@
 
 /* Begin PBXBuildFile section */
 		7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204C91C34F79B00507125 /* AppDelegate.swift */; };
-		7F5204CC1C34F79B00507125 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204CB1C34F79B00507125 /* ViewController.swift */; };
+		7F5204CC1C34F79B00507125 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204CB1C34F79B00507125 /* MainViewController.swift */; };
 		7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204CD1C34F79B00507125 /* Main.storyboard */; };
 		7F5204D21C34F79B00507125 /* X2015.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204D01C34F79B00507125 /* X2015.xcdatamodeld */; };
 		7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D31C34F79B00507125 /* Assets.xcassets */; };
 		7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */; };
+		7F5204E01C34FB4800507125 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204DF1C34FB4800507125 /* Post.swift */; };
+		7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204E71C3504C900507125 /* Collection+CoreDataExtensions.swift */; };
+		7F5204F91C3504C900507125 /* CoreDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204E81C3504C900507125 /* CoreDataErrors.swift */; };
+		7F5204FA1C3504C900507125 /* KeyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204E91C3504C900507125 /* KeyCodable.swift */; };
+		7F5204FB1C3504C900507125 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204EA1C3504C900507125 /* LICENSE.md */; };
+		7F5204FC1C3504C900507125 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204EB1C3504C900507125 /* ManagedObject.swift */; };
+		7F5204FD1C3504C900507125 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204EC1C3504C900507125 /* ManagedObjectObserver.swift */; };
+		7F5204FE1C3504C900507125 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204ED1C3504C900507125 /* Migration.swift */; };
+		7F5204FF1C3504C900507125 /* ModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204EE1C3504C900507125 /* ModelBuilder.swift */; };
+		7F5205001C3504C900507125 /* ModelVersionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204EF1C3504C900507125 /* ModelVersionType.swift */; };
+		7F5205011C3504C900507125 /* NSFetchRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F01C3504C900507125 /* NSFetchRequest+Extensions.swift */; };
+		7F5205021C3504C900507125 /* NSManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F11C3504C900507125 /* NSManagedObject+Extensions.swift */; };
+		7F5205031C3504C900507125 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F21C3504C900507125 /* NSManagedObjectContext+Extensions.swift */; };
+		7F5205041C3504C900507125 /* NSManagedObjectContext+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F31C3504C900507125 /* NSManagedObjectContext+Observers.swift */; };
+		7F5205051C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F41C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift */; };
+		7F5205061C3504C900507125 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F51C3504C900507125 /* README.md */; };
+		7F5205071C3504C900507125 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F61C3504C900507125 /* Utilities.swift */; };
+		7F5205081C3504C900507125 /* ValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F71C3504C900507125 /* ValueTransformer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7F5204C61C34F79B00507125 /* X2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = X2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5204C91C34F79B00507125 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7F5204CB1C34F79B00507125 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7F5204CB1C34F79B00507125 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7F5204CE1C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F5204D11C34F79B00507125 /* X2015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = X2015.xcdatamodel; sourceTree = "<group>"; };
 		7F5204D31C34F79B00507125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F5204D61C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F5204D81C34F79B00507125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F5204DF1C34FB4800507125 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		7F5204E71C3504C900507125 /* Collection+CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+CoreDataExtensions.swift"; path = "CoreDataSharedCode/Collection+CoreDataExtensions.swift"; sourceTree = "<group>"; };
+		7F5204E81C3504C900507125 /* CoreDataErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataErrors.swift; path = CoreDataSharedCode/CoreDataErrors.swift; sourceTree = "<group>"; };
+		7F5204E91C3504C900507125 /* KeyCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyCodable.swift; path = CoreDataSharedCode/KeyCodable.swift; sourceTree = "<group>"; };
+		7F5204EA1C3504C900507125 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = CoreDataSharedCode/LICENSE.md; sourceTree = "<group>"; };
+		7F5204EB1C3504C900507125 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObject.swift; path = CoreDataSharedCode/ManagedObject.swift; sourceTree = "<group>"; };
+		7F5204EC1C3504C900507125 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectObserver.swift; path = CoreDataSharedCode/ManagedObjectObserver.swift; sourceTree = "<group>"; };
+		7F5204ED1C3504C900507125 /* Migration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Migration.swift; path = CoreDataSharedCode/Migration.swift; sourceTree = "<group>"; };
+		7F5204EE1C3504C900507125 /* ModelBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelBuilder.swift; path = CoreDataSharedCode/ModelBuilder.swift; sourceTree = "<group>"; };
+		7F5204EF1C3504C900507125 /* ModelVersionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelVersionType.swift; path = CoreDataSharedCode/ModelVersionType.swift; sourceTree = "<group>"; };
+		7F5204F01C3504C900507125 /* NSFetchRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSFetchRequest+Extensions.swift"; path = "CoreDataSharedCode/NSFetchRequest+Extensions.swift"; sourceTree = "<group>"; };
+		7F5204F11C3504C900507125 /* NSManagedObject+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Extensions.swift"; path = "CoreDataSharedCode/NSManagedObject+Extensions.swift"; sourceTree = "<group>"; };
+		7F5204F21C3504C900507125 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+Extensions.swift"; path = "CoreDataSharedCode/NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
+		7F5204F31C3504C900507125 /* NSManagedObjectContext+Observers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+Observers.swift"; path = "CoreDataSharedCode/NSManagedObjectContext+Observers.swift"; sourceTree = "<group>"; };
+		7F5204F41C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSPersistentStoreCoordinator+Extensions.swift"; path = "CoreDataSharedCode/NSPersistentStoreCoordinator+Extensions.swift"; sourceTree = "<group>"; };
+		7F5204F51C3504C900507125 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = CoreDataSharedCode/README.md; sourceTree = "<group>"; };
+		7F5204F61C3504C900507125 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = CoreDataSharedCode/Utilities.swift; sourceTree = "<group>"; };
+		7F5204F71C3504C900507125 /* ValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueTransformer.swift; path = CoreDataSharedCode/ValueTransformer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +92,65 @@
 		7F5204C81C34F79B00507125 /* X2015 */ = {
 			isa = PBXGroup;
 			children = (
+				7F5205091C350BBD00507125 /* ViewController */,
+				7F5204E31C35041000507125 /* Vendor */,
+				7F5204DE1C34FB3500507125 /* Model */,
 				7F5204C91C34F79B00507125 /* AppDelegate.swift */,
-				7F5204CB1C34F79B00507125 /* ViewController.swift */,
 				7F5204CD1C34F79B00507125 /* Main.storyboard */,
 				7F5204D31C34F79B00507125 /* Assets.xcassets */,
 				7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */,
 				7F5204D81C34F79B00507125 /* Info.plist */,
-				7F5204D01C34F79B00507125 /* X2015.xcdatamodeld */,
 			);
 			path = X2015;
+			sourceTree = "<group>";
+		};
+		7F5204DE1C34FB3500507125 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7F5204D01C34F79B00507125 /* X2015.xcdatamodeld */,
+				7F5204DF1C34FB4800507125 /* Post.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7F5204E31C35041000507125 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				7F5204E61C3504B300507125 /* CoreDataSharedCode */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		7F5204E61C3504B300507125 /* CoreDataSharedCode */ = {
+			isa = PBXGroup;
+			children = (
+				7F5204E71C3504C900507125 /* Collection+CoreDataExtensions.swift */,
+				7F5204E81C3504C900507125 /* CoreDataErrors.swift */,
+				7F5204E91C3504C900507125 /* KeyCodable.swift */,
+				7F5204EA1C3504C900507125 /* LICENSE.md */,
+				7F5204EB1C3504C900507125 /* ManagedObject.swift */,
+				7F5204EC1C3504C900507125 /* ManagedObjectObserver.swift */,
+				7F5204ED1C3504C900507125 /* Migration.swift */,
+				7F5204EE1C3504C900507125 /* ModelBuilder.swift */,
+				7F5204EF1C3504C900507125 /* ModelVersionType.swift */,
+				7F5204F01C3504C900507125 /* NSFetchRequest+Extensions.swift */,
+				7F5204F11C3504C900507125 /* NSManagedObject+Extensions.swift */,
+				7F5204F21C3504C900507125 /* NSManagedObjectContext+Extensions.swift */,
+				7F5204F31C3504C900507125 /* NSManagedObjectContext+Observers.swift */,
+				7F5204F41C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift */,
+				7F5204F51C3504C900507125 /* README.md */,
+				7F5204F61C3504C900507125 /* Utilities.swift */,
+				7F5204F71C3504C900507125 /* ValueTransformer.swift */,
+			);
+			name = CoreDataSharedCode;
+			sourceTree = "<group>";
+		};
+		7F5205091C350BBD00507125 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F5204CB1C34F79B00507125 /* MainViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +224,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F5204CC1C34F79B00507125 /* ViewController.swift in Sources */,
+				7F5205051C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */,
+				7F5204CC1C34F79B00507125 /* MainViewController.swift in Sources */,
+				7F5204FA1C3504C900507125 /* KeyCodable.swift in Sources */,
+				7F5204F91C3504C900507125 /* CoreDataErrors.swift in Sources */,
+				7F5205081C3504C900507125 /* ValueTransformer.swift in Sources */,
 				7F5204D21C34F79B00507125 /* X2015.xcdatamodeld in Sources */,
+				7F5204FD1C3504C900507125 /* ManagedObjectObserver.swift in Sources */,
+				7F5204FB1C3504C900507125 /* LICENSE.md in Sources */,
+				7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */,
+				7F5205031C3504C900507125 /* NSManagedObjectContext+Extensions.swift in Sources */,
+				7F5205021C3504C900507125 /* NSManagedObject+Extensions.swift in Sources */,
 				7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */,
+				7F5204E01C34FB4800507125 /* Post.swift in Sources */,
+				7F5205001C3504C900507125 /* ModelVersionType.swift in Sources */,
+				7F5205061C3504C900507125 /* README.md in Sources */,
+				7F5204FF1C3504C900507125 /* ModelBuilder.swift in Sources */,
+				7F5205041C3504C900507125 /* NSManagedObjectContext+Observers.swift in Sources */,
+				7F5205011C3504C900507125 /* NSFetchRequest+Extensions.swift in Sources */,
+				7F5204FE1C3504C900507125 /* Migration.swift in Sources */,
+				7F5205071C3504C900507125 /* Utilities.swift in Sources */,
+				7F5204FC1C3504C900507125 /* ManagedObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
