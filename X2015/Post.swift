@@ -8,17 +8,29 @@
 
 import CoreData
 
-public final class Post: NSManagedObject {
+@objc(Post)
+public final class Post: ManagedObject {
     
-    @NSManaged public private(set) var title: String?
-    @NSManaged public private(set) var content: String?
-    @NSManaged public private(set) var createdAt: NSDate?
-    @NSManaged public private(set) var updatedAt: NSDate?
+    @NSManaged public var title: String?
+    @NSManaged public var content: String?
+    @NSManaged public var createdAt: NSDate?
+    @NSManaged public var updatedAt: NSDate?
     
 }
 
-extension Post {
+extension Post: ManagedObjectType {
+    
+    public static var entityName: String {
+        return "Post"
+    }
+    
+    public static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: "createdAt", ascending: false)]
+    }
     
     
+    public static var defaultPredicate: NSPredicate {
+        return NSPredicate(format: "%K == NULL", "")
+    }
     
 }

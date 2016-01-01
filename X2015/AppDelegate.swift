@@ -15,15 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let managedObjectContext: NSManagedObjectContext = AppDelegate.createMainContext()
     
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        guard let vc = window?.rootViewController as? ManagedObjectContextSettable else {
-            fatalError("Wrong view controller type")
+        self.fillFakeData()
+        guard let nc = window?.rootViewController as? UINavigationController,
+            vc = nc.childViewControllers.first as? ManagedObjectContextSettable else {
+                fatalError("Wrong view controller type")
         }
-        vc.managedContext = managedObjectContext
+        vc.managedObjectContext = self.managedObjectContext
         return true
     }
-
+    
     
     // MARK: - Core Data stack
     
@@ -40,11 +41,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         context.persistentStoreCoordinator = psc
         return context
     }
+    
+    func fillFakeData() {
+        if Post.fetchInContext(self.managedObjectContext).count > 0 {
+            return
+        }
+
+        let titlePrefix = "Let There be "
+        for i in 1...10 {
+            let newPost = NSEntityDescription.insertNewObjectForEntityForName(Post.entityName, inManagedObjectContext: self.managedObjectContext) as! Post
+            newPost.title = "\(titlePrefix)\(i)"
+            newPost.content = "\(NSDate())"
+            newPost.createdAt = NSDate().dateByAddingTimeInterval(Double(i))
+            newPost.updatedAt = NSDate().dateByAddingTimeInterval(Double(i))
+        }
+        
+        if !self.managedObjectContext.saveOrRollback() {
+            fatalError("can't fill fake data")
+        }
+    }
+    
 }
 
 
 protocol ManagedObjectContextSettable: class {
     
-    var managedContext: NSManagedObjectContext? { get set }
+    var managedObjectContext: NSManagedObjectContext! { get set }
     
 }
