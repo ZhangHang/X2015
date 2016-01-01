@@ -34,6 +34,7 @@
 		7F5205101C3587F400507125 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52050F1C3587F400507125 /* PostEditViewController.swift */; };
 		7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205111C3639C100507125 /* KeyboardNotification.swift */; };
 		7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */; };
+		7F5205191C364C9100507125 /* ConfigureableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205181C364C9100507125 /* ConfigureableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		7F52050F1C3587F400507125 /* PostEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostEditViewController.swift; path = ViewController/PostEditViewController.swift; sourceTree = "<group>"; };
 		7F5205111C3639C100507125 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationObserver.swift; sourceTree = "<group>"; };
+		7F5205181C364C9100507125 /* ConfigureableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 		7F5205091C350BBD00507125 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7F5205171C364C7C00507125 /* Protocols */,
 				7F52050D1C3528D900507125 /* PostListTableViewController.swift */,
 				7F52050F1C3587F400507125 /* PostEditViewController.swift */,
 			);
@@ -168,6 +171,14 @@
 				7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */,
 			);
 			name = KeyboardNotificationHelper;
+			sourceTree = "<group>";
+		};
+		7F5205171C364C7C00507125 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7F5205181C364C9100507125 /* ConfigureableCell.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 				7F5204E01C34FB4800507125 /* Post.swift in Sources */,
 				7F5205001C3504C900507125 /* ModelVersionType.swift in Sources */,
 				7F5205061C3504C900507125 /* README.md in Sources */,
+				7F5205191C364C9100507125 /* ConfigureableCell.swift in Sources */,
 				7F5204FF1C3504C900507125 /* ModelBuilder.swift in Sources */,
 				7F5205041C3504C900507125 /* NSManagedObjectContext+Observers.swift in Sources */,
 				7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */,

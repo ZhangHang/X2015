@@ -36,6 +36,8 @@ class PostEditViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.keyboardNotificationObserver.stopMonitor()
+        post.content = textView.text
+        try! post.managedObjectContext?.save()
     }
     
 }

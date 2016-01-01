@@ -12,7 +12,7 @@ import CoreData
 class PostListTableViewController: UITableViewController, ManagedObjectContextSettable {
     
     var managedObjectContext: NSManagedObjectContext!
-    var fetchedResultController: NSFetchedResultsController?
+    var fetchedResultController: NSFetchedResultsController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +25,21 @@ class PostListTableViewController: UITableViewController, ManagedObjectContextSe
             managedObjectContext: self.managedObjectContext,
             sectionNameKeyPath: nil,
             cacheName: nil)
-        try! fetchedResultController?.performFetch()
+        fetchedResultController.delegate = self
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    // MARK: - Table view data source
+    override func viewWillAppear(animated: Bool) {
+        try! self.fetchedResultController.performFetch()
+        super.viewWillDisappear(animated)
+    }
+}
+
+extension PostListTableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultController?.sections![section].objects?.count ?? 0
+        return fetchedResultController.sections![section].objects?.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -49,36 +55,6 @@ class PostListTableViewController: UITableViewController, ManagedObjectContextSe
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    
     
 }
 
@@ -114,7 +90,7 @@ extension PostListTableViewController: NSFetchedResultsControllerDelegate {
 extension PostListTableViewController {
     
     func postAt(indexPath: NSIndexPath) -> Post {
-        guard let post = fetchedResultController?.objectAtIndexPath(indexPath) as? Post else {
+        guard let post = fetchedResultController.objectAtIndexPath(indexPath) as? Post else {
             fatalError("Can't find post object at indexPath \(indexPath)")
         }
         return post
@@ -151,8 +127,3 @@ final class PostListTableViewCell: UITableViewCell, ConfigureableCell {
     
 }
 
-protocol ConfigureableCell: class {
-    
-    static var reuseIdentifier: String! { get }
-    
-}

@@ -26,7 +26,6 @@ public final class KeyboardNotificationObserver {
         deregisterForKeyboardNotifications()
     }
     
-    
     // MARK: - Notifications
     
     private func registerForKeyboardNotifications() {
