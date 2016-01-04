@@ -50,10 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let titlePrefix = "Let There be "
         for i in 1...10 {
             let newPost = NSEntityDescription.insertNewObjectForEntityForName(Post.entityName, inManagedObjectContext: self.managedObjectContext) as! Post
-            newPost.title = "\(titlePrefix)\(i)"
-            newPost.content = "\(NSDate())"
-            newPost.createdAt = NSDate().dateByAddingTimeInterval(Double(i))
-            newPost.updatedAt = NSDate().dateByAddingTimeInterval(Double(i))
+            newPost.update("\(titlePrefix)\(i)", content: "\(NSDate())")
         }
         
         if !self.managedObjectContext.saveOrRollback() {

@@ -18,11 +18,13 @@ class PostEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.keyboardNotificationObserver = KeyboardNotificationObserver(viewControllerView: self.view, keyboardOffsetChangeHandler: { [unowned self] (newKeyboardOffset) -> Void in
-            var newContentInsect = self.textView.contentInset
-            newContentInsect.bottom = newKeyboardOffset
-            self.textView.contentInset = newContentInsect
-        })
+        self.keyboardNotificationObserver = KeyboardNotificationObserver(
+            viewControllerView: self.view,
+            keyboardOffsetChangeHandler: { [unowned self] (newKeyboardOffset) -> Void in
+                var newContentInsect = self.textView.contentInset
+                newContentInsect.bottom = newKeyboardOffset
+                self.textView.contentInset = newContentInsect
+            })
         
         self.title = post.title
         self.textView.text = post.content
@@ -36,8 +38,13 @@ class PostEditViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.keyboardNotificationObserver.stopMonitor()
-        post.content = textView.text
-        try! post.managedObjectContext?.save()
+        post.updateContent(textView.text)
+        
+        do {
+            try post.managedObjectContext?.save()
+        } catch let e {
+            print("saving error \(e)")
+        }
     }
     
 }

@@ -11,10 +11,10 @@ import CoreData
 @objc(Post)
 public final class Post: ManagedObject {
     
-    @NSManaged public var title: String?
-    @NSManaged public var content: String?
-    @NSManaged public var createdAt: NSDate?
-    @NSManaged public var updatedAt: NSDate?
+    @NSManaged public private(set) var title: String?
+    @NSManaged public private(set) var content: String?
+    @NSManaged public private(set) var createdAt: NSDate?
+    @NSManaged public private(set) var updatedAt: NSDate?
     
 }
 
@@ -31,6 +31,22 @@ extension Post: ManagedObjectType {
     
     public static var defaultPredicate: NSPredicate {
         return NSPredicate(format: "%K == NULL", "")
+    }
+    
+}
+
+extension Post {
+    
+    public func update(title: String, content: String) {
+        self.title = title
+        self.content = content
+        self.updatedAt = NSDate()
+        self.createdAt = NSDate()
+    }
+    
+    public func updateContent(newContent: String) {
+        self.content = newContent
+        self.updatedAt = NSDate()
     }
     
 }
