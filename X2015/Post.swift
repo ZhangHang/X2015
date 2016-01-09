@@ -11,14 +11,28 @@ import CoreData
 @objc(Post)
 public final class Post: ManagedObject {
     
-    @NSManaged public private(set) var title: String?
+    var _title: String?
+    var title: String? {
+        if let content = content {
+            content.enumerateLines({ [unowned self](line, stop) -> () in
+                self._title = line
+                stop = true
+                })
+        }
+        return _title
+    }
+    
     @NSManaged public private(set) var content: String?
     @NSManaged public private(set) var createdAt: NSDate?
-    @NSManaged public private(set) var updatedAt: NSDate?
     
 }
 
 extension Post: ManagedObjectType {
+    
+    public override func awakeFromInsert() {
+        self.createdAt = NSDate()
+        super.awakeFromInsert()
+    }
     
     public static var entityName: String {
         return "Post"
@@ -37,16 +51,8 @@ extension Post: ManagedObjectType {
 
 extension Post {
     
-    public func update(title: String, content: String) {
-        self.title = title
+    public func update(content: String) {
         self.content = content
-        self.updatedAt = NSDate()
-        self.createdAt = NSDate()
-    }
-    
-    public func updateContent(newContent: String) {
-        self.content = newContent
-        self.updatedAt = NSDate()
     }
     
 }

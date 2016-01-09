@@ -7,13 +7,40 @@
 //
 
 import UIKit
+import CoreData
 
-class PostEditViewController: UIViewController {
+final class PostEditViewController: UIViewController, ManagedObjectContextSettable {
     
-    @IBOutlet weak var textView: UITextView!
+    enum SegueIdentifier {
+        case Create, Edit
+        
+        func identifier() -> String {
+            switch self {
+            case .Create:
+                return "CreatePostSegueIdentifier"
+            case .Edit:
+                return "EditPostSegueIdentifier"
+            }
+        }
+        
+    }
     
-    var post: Post!
-    var keyboardNotificationObserver: KeyboardNotificationObserver!
+    var managedObjectContext: NSManagedObjectContext!
+    
+    @IBOutlet private weak var textView: UITextView!
+    
+    private weak var post: Post?
+    private var keyboardNotificationObserver: KeyboardNotificationObserver!
+    
+    func setup(exsitingPost: Post!, managedObjectContext: NSManagedObjectContext!){
+        self.post = exsitingPost
+        self.managedObjectContext = managedObjectContext
+    }
+    
+    func setup(managedObjectContext: NSManagedObjectContext!){
+        self.managedObjectContext = managedObjectContext
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +53,8 @@ class PostEditViewController: UIViewController {
                 self.textView.contentInset = newContentInsect
             })
         
-        self.title = post.title
-        self.textView.text = post.content
+        self.title = post?.title
+        self.textView.text = post?.content
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,13 +65,30 @@ class PostEditViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.keyboardNotificationObserver.stopMonitor()
-        post.updateContent(textView.text)
         
-        do {
-            try post.managedObjectContext?.save()
-        } catch let e {
-            print("saving error \(e)")
+        if !self.hasContent {
+            return
+        }
+        
+        self.managedObjectContext.performChanges { [unowned self] () -> () in
+            let post = self.post ?? self.managedObjectContext.insertObject()
+            post.update(self.textView.text)
         }
     }
     
+}
+
+extension PostEditViewController {
+    
+    var postTitle: String {
+        return self.title ?? ""
+    }
+    
+    var postContent: String {
+        return self.textView.text
+    }
+    
+    var hasContent: Bool {
+        return self.postTitle.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 || self.postContent.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
+    }
 }

@@ -26,14 +26,13 @@ class PostListTableViewController: UITableViewController, ManagedObjectContextSe
             sectionNameKeyPath: nil,
             cacheName: nil)
         fetchedResultController.delegate = self
-        
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
         try! self.fetchedResultController.performFetch()
         super.viewWillDisappear(animated)
     }
+    
 }
 
 extension PostListTableViewController {
@@ -66,7 +65,7 @@ extension PostListTableViewController: NSFetchedResultsControllerDelegate {
             self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
             break
         case .Insert:
-            self.tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
             break
         case .Move:
             self.tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
@@ -100,17 +99,43 @@ extension PostListTableViewController {
 
 extension PostListTableViewController {
     
+    @IBAction func createNewPost(sender: AnyObject) {
+        
+    }
+    
+}
+
+extension PostListTableViewController {
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let vc = segue.destinationViewController as? PostEditViewController else {
-            fatalError("Wrong edit-viewcontroller")
-        }
-        guard let selectedIndexPath = self.tableView.indexPathForSelectedRow else {
-            fatalError("No selected indexPath")
+        
+        guard let identifier = segue.identifier else {
+            fatalError("No segue identifier found")
         }
         
-        vc.post = postAt(selectedIndexPath)
+        switch identifier {
+        case PostEditViewController.SegueIdentifier.Create.identifier():
+            guard let vc = segue.destinationViewController as? PostEditViewController else {
+                fatalError("Wrong edit-viewcontroller")
+            }
+            guard let selectedIndexPath = self.tableView.indexPathForSelectedRow else {
+                fatalError("No selected indexPath")
+            }
+            
+            vc.managedObjectContext = self.managedObjectContext
+            vc.setup(self.postAt(selectedIndexPath), managedObjectContext: self.managedObjectContext)
+            break
+        case PostEditViewController.SegueIdentifier.Edit.identifier():
+            guard let vc = segue.destinationViewController as? PostEditViewController else {
+                fatalError("Wrong edit-viewcontroller")
+            }
+            vc.setup(managedObjectContext)
+            break
+        default:
+            break
+        }
     }
-
+    
 }
 
 final class PostListTableViewCell: UITableViewCell, ConfigureableCell {
@@ -119,11 +144,9 @@ final class PostListTableViewCell: UITableViewCell, ConfigureableCell {
         return "PostListTableViewCell"
     }
     
-    
     func configure(post: Post) {
         self.textLabel!.text = post.title
         self.detailTextLabel!.text = post.content
     }
     
 }
-

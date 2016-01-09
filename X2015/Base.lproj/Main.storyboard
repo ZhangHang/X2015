@@ -39,7 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="LYn-i6-btg" kind="show" id="YZl-La-RHM"/>
+                                    <segue destination="LYn-i6-btg" kind="show" identifier="CreatePostSegueIdentifier" id="YZl-La-RHM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -48,7 +48,14 @@
                             <outlet property="delegate" destination="ieF-Bw-kxn" id="zKF-u7-2gK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="X2015" id="x3J-rz-nBa"/>
+                    <navigationItem key="navigationItem" title="X2015" id="x3J-rz-nBa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="c4s-tk-087">
+                            <connections>
+                                <action selector="createNewPost:" destination="ieF-Bw-kxn" id="KuJ-kS-KBE"/>
+                                <segue destination="LYn-i6-btg" kind="show" identifier="EditPostSegueIdentifier" id="95T-sI-bBN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jS-0L-da3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,7 +76,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14B-fx-PXZ">
                                 <rect key="frame" x="20" y="0.0" width="560" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -109,4 +116,7 @@
             <point key="canvasLocation" x="159" y="392"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YZl-La-RHM"/>
+    </inferredMetricsTieBreakers>
 </document>
