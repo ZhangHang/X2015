@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.configureInterface()
-        self.fillFakeData()
         guard let nc = window?.rootViewController as? UINavigationController,
             vc = nc.childViewControllers.first as? ManagedObjectContextSettable else {
                 fatalError("Wrong view controller type")
@@ -41,19 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = psc
         return context
-    }
-    
-    func fillFakeData() {
-        if Post.fetchInContext(self.managedObjectContext).count > 0 {
-            return
-        }
-        
-        self.managedObjectContext.performChanges { () -> () in
-            for _ in 1...10 {
-                let newPost: Post = self.managedObjectContext.insertObject()
-                newPost.update("\(NSDate())")
-            }
-        }
     }
     
 }

@@ -11,17 +11,6 @@ import CoreData
 @objc(Post)
 public final class Post: ManagedObject {
     
-    var _title: String?
-    var title: String? {
-        if let content = content {
-            content.enumerateLines({ [unowned self](line, stop) -> () in
-                self._title = line
-                stop = true
-                })
-        }
-        return _title
-    }
-    
     @NSManaged public private(set) var content: String?
     @NSManaged public private(set) var createdAt: NSDate?
     
@@ -55,4 +44,39 @@ extension Post {
         self.content = content
     }
     
+}
+
+extension Post {
+    
+    var title: String? {
+        var title = ""
+        if let content = content {
+            content.enumerateLines({ (line, stop) -> () in
+                title = line
+                stop = true
+            })
+        }
+        return title
+    }
+    
+    var preview: String? {
+        if let content = content {
+            var preview: String?
+            var isFirstLine = true
+            content.enumerateLines({ (line, stop) -> () in
+                if isFirstLine {
+                    isFirstLine = false
+                    return
+                }
+                
+                if line.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
+                    preview = line
+                    stop = true
+                }
+            })
+            return preview
+        }
+        
+        return nil
+    }
 }

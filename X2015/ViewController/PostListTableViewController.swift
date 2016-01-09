@@ -146,7 +146,7 @@ final class PostListTableViewCell: UITableViewCell, ConfigureableCell {
     
     func configure(post: Post) {
         self.textLabel!.text = post.title
-        self.detailTextLabel!.text = post.content
+        self.detailTextLabel!.text = post.preview
     }
     
 }
