@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F37C7851C41658E00519B18 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */; };
+		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
+		7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7841C41658E00519B18 /* UIHelper.swift */; };
 		7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204C91C34F79B00507125 /* AppDelegate.swift */; };
 		7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204CD1C34F79B00507125 /* Main.storyboard */; };
 		7F5204D21C34F79B00507125 /* X2015.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204D01C34F79B00507125 /* X2015.xcdatamodeld */; };
@@ -35,12 +38,13 @@
 		7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205111C3639C100507125 /* KeyboardNotification.swift */; };
 		7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */; };
 		7F5205191C364C9100507125 /* ConfigureableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205181C364C9100507125 /* ConfigureableCell.swift */; };
-		7FFE12C01C3CDEB70099EA2C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE12BF1C3CDEB70099EA2C /* UIColor+Extensions.swift */; };
 		7FFE12C21C3CDF530099EA2C /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE12C11C3CDF530099EA2C /* ManagedObjectContextSettable.swift */; };
-		7FFE12C41C3CE1B70099EA2C /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE12C31C3CE1B70099EA2C /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
+		7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		7F37C7841C41658E00519B18 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		7F5204C61C34F79B00507125 /* X2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = X2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5204C91C34F79B00507125 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F5204CE1C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,9 +75,7 @@
 		7F5205111C3639C100507125 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationObserver.swift; sourceTree = "<group>"; };
 		7F5205181C364C9100507125 /* ConfigureableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureableCell.swift; sourceTree = "<group>"; };
-		7FFE12BF1C3CDEB70099EA2C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "UIExtensions/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7FFE12C11C3CDF530099EA2C /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectContextSettable.swift; path = ViewController/Protocols/ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
-		7FFE12C31C3CE1B70099EA2C /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIHelper.swift; path = UIExtensions/UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F37C7811C41658E00519B18 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */,
+				7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */,
+				7F37C7841C41658E00519B18 /* UIHelper.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7F5204BD1C34F79B00507125 = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +118,7 @@
 		7F5204C81C34F79B00507125 /* X2015 */ = {
 			isa = PBXGroup;
 			children = (
-				7FFE12BE1C3CDE8E0099EA2C /* UIExtensions */,
+				7F37C7811C41658E00519B18 /* Extensions */,
 				7F5205091C350BBD00507125 /* ViewController */,
 				7F5204E31C35041000507125 /* Vendor */,
 				7F5204DE1C34FB3500507125 /* Model */,
@@ -189,15 +201,6 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		7FFE12BE1C3CDE8E0099EA2C /* UIExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				7FFE12BF1C3CDEB70099EA2C /* UIColor+Extensions.swift */,
-				7FFE12C31C3CE1B70099EA2C /* UIHelper.swift */,
-			);
-			name = UIExtensions;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -272,7 +275,6 @@
 				7F5205051C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */,
 				7F5204FA1C3504C900507125 /* KeyCodable.swift in Sources */,
 				7F5204F91C3504C900507125 /* CoreDataErrors.swift in Sources */,
-				7FFE12C01C3CDEB70099EA2C /* UIColor+Extensions.swift in Sources */,
 				7F5205081C3504C900507125 /* ValueTransformer.swift in Sources */,
 				7F5204D21C34F79B00507125 /* X2015.xcdatamodeld in Sources */,
 				7F5204FD1C3504C900507125 /* ManagedObjectObserver.swift in Sources */,
@@ -280,7 +282,9 @@
 				7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */,
 				7F5205031C3504C900507125 /* NSManagedObjectContext+Extensions.swift in Sources */,
 				7F52050E1C3528D900507125 /* PostListTableViewController.swift in Sources */,
+				7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */,
 				7F5205021C3504C900507125 /* NSManagedObject+Extensions.swift in Sources */,
+				7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */,
 				7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */,
 				7F5204E01C34FB4800507125 /* Post.swift in Sources */,
 				7F5205001C3504C900507125 /* ModelVersionType.swift in Sources */,
@@ -296,7 +300,7 @@
 				7F5205101C3587F400507125 /* PostEditViewController.swift in Sources */,
 				7F5204FC1C3504C900507125 /* ManagedObject.swift in Sources */,
 				7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */,
-				7FFE12C41C3CE1B70099EA2C /* UIHelper.swift in Sources */,
+				7F37C7851C41658E00519B18 /* Foundation+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

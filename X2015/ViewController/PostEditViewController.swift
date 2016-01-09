@@ -80,15 +80,30 @@ final class PostEditViewController: UIViewController, ManagedObjectContextSettab
 
 extension PostEditViewController {
     
-    var postTitle: String {
-        return self.title ?? ""
-    }
-    
     var postContent: String {
         return self.textView.text
     }
     
     var hasContent: Bool {
-        return self.postTitle.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 || self.postContent.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
+        return self.postContent.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
     }
+    
+    var postTitle: String? {
+        return self.postContent.lineWithContent(0)
+    }
+    
+}
+
+extension PostEditViewController: UITextViewDelegate {
+    
+    func updateViewControllerTitleIfNesscarry() {
+        if self.postTitle != self.title {
+            self.title = self.postTitle
+        }
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        self.updateViewControllerTitleIfNesscarry()
+    }
+    
 }
