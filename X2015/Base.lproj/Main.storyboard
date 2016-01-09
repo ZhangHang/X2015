@@ -49,6 +49,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="X2015" id="x3J-rz-nBa">
+                        <barButtonItem key="backBarButtonItem" title=" " id="6Qv-CH-Fqo"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="c4s-tk-087">
                             <connections>
                                 <action selector="createNewPost:" destination="ieF-Bw-kxn" id="KuJ-kS-KBE"/>
