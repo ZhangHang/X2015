@@ -92,6 +92,18 @@ extension PostListTableViewController: NSFetchedResultsControllerDelegate {
 
 extension PostListTableViewController {
     
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        return [UITableViewRowAction(style: .Default, title: "Delete", handler: { [unowned self](action, indexPath) -> Void in
+            self.managedObjectContext.performChanges({ [unowned self] () -> () in
+                self.managedObjectContext.deleteObject(self.postAt(indexPath))
+            })
+        })]
+    }
+    
+}
+
+extension PostListTableViewController {
+    
     func postAt(indexPath: NSIndexPath) -> Post {
         guard let post = fetchedResultController.objectAtIndexPath(indexPath) as? Post else {
             fatalError("Can't find post object at indexPath \(indexPath)")
