@@ -8,9 +8,10 @@
 
 import UIKit
 
-final class UIHelper: NSObject {
+final class UIHelper: NSObject {}
 
-    // NavigationBar
+extension UIHelper {
+    
     static func setupNavigationBarStyle(foregroundColor:UIColor, backgroundColor: UIColor) {
         UINavigationBar.appearance().barTintColor = foregroundColor
         UINavigationBar.appearance().tintColor = backgroundColor
