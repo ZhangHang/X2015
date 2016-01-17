@@ -14,6 +14,11 @@ class NoteTimelineTableViewController: UITableViewController, ManagedObjectConte
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultController: NSFetchedResultsController!
     
+    /*
+    * workaround for http://stackoverflow.com/questions/34694178/using-3d-touch-with-storyboards-peek-and-pop
+    */
+    var selectedIndexPath: NSIndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -125,6 +130,28 @@ extension NoteTimelineTableViewController {
     
 }
 
+
+/*
+ * workaround for http://stackoverflow.com/questions/34694178/using-3d-touch-with-storyboards-peek-and-pop
+ */
+extension NoteTimelineTableViewController {
+ 
+    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        self.selectedIndexPath = indexPath
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedIndexPath = indexPath
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedIndexPath = nil
+    }
+
+}
+
+
 extension NoteTimelineTableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -137,7 +164,7 @@ extension NoteTimelineTableViewController {
         case NoteEditViewController.SegueIdentifier.Edit.identifier():
             guard
                 let vc = segue.destinationViewController as? NoteEditViewController,
-                let selectedIndexPath = self.tableView.indexPathForSelectedRow else {
+                let selectedIndexPath = self.selectedIndexPath else {
                     fatalError("Wrong edit-viewcontroller")
             }
             
