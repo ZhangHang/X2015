@@ -60,6 +60,10 @@ final class PostEditViewController: UIViewController, ManagedObjectContextSettab
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.keyboardNotificationObserver.startMonitor()
+        
+        if self.post == nil {
+            self.textView.becomeFirstResponder()
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
