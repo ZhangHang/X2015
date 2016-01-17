@@ -121,7 +121,7 @@
         <scene sceneID="zuw-MK-O6p">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Lk-1v-ei7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Note" id="qMt-6Q-jLj"/>
+                    <tabBarItem key="tabBarItem" title="Note" image="Tabbar_Note" selectedImage="Tabbar_Note_Filled" id="qMt-6Q-jLj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xMW-bK-bMy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -137,6 +137,10 @@
             <point key="canvasLocation" x="159" y="392"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Tabbar_Note" width="25" height="25"/>
+        <image name="Tabbar_Note_Filled" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="95T-sI-bBN"/>
     </inferredMetricsTieBreakers>
