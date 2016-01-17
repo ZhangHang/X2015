@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PostListTableViewController: UITableViewController, ManagedObjectContextSettable {
+class PostListTableViewController: UITableViewController ,ManagedObjectContextSettable {
     
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultController: NSFetchedResultsController!
@@ -26,10 +26,13 @@ class PostListTableViewController: UITableViewController, ManagedObjectContextSe
             sectionNameKeyPath: nil,
             cacheName: nil)
         fetchedResultController.delegate = self
+        self.tableView.backgroundView = EmptyPostWelcomeView.instantiateFromNib()
+        self.tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(animated: Bool) {
         try! self.fetchedResultController.performFetch()
+        self.updateWelcomeViewVisibility()
         super.viewWillDisappear(animated)
     }
     
@@ -38,7 +41,7 @@ class PostListTableViewController: UITableViewController, ManagedObjectContextSe
 extension PostListTableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultController.sections![section].objects?.count ?? 0
+        return fetchedResultController.sections?[section].objects?.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -81,6 +84,7 @@ extension PostListTableViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.updateWelcomeViewVisibility()
         self.tableView.endUpdates()
     }
     
@@ -101,6 +105,18 @@ extension PostListTableViewController {
     
     @IBAction func createNewPost(sender: AnyObject) {
         
+    }
+    
+}
+
+extension PostListTableViewController {
+    
+    func updateWelcomeViewVisibility() {
+        if self.fetchedResultController.fetchedObjects?.count == 0 {
+            self.tableView.backgroundView?.hidden = false
+        }else {
+            self.tableView.backgroundView?.hidden = true
+        }
     }
     
 }

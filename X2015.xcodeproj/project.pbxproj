@@ -38,6 +38,9 @@
 		7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205111C3639C100507125 /* KeyboardNotification.swift */; };
 		7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */; };
 		7F5205191C364C9100507125 /* ConfigureableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205181C364C9100507125 /* ConfigureableCell.swift */; };
+		7FFD814C1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib */; };
+		7FFD814E1C4B5B83004F1987 /* EmptyPostWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyPostWelcomeView.swift */; };
+		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
 		7FFE12C21C3CDF530099EA2C /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE12C11C3CDF530099EA2C /* ManagedObjectContextSettable.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +78,9 @@
 		7F5205111C3639C100507125 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationObserver.swift; sourceTree = "<group>"; };
 		7F5205181C364C9100507125 /* ConfigureableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureableCell.swift; sourceTree = "<group>"; };
+		7FFD814B1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyPostWelcomeView.xib; path = Views/EmptyPostWelcomeView.xib; sourceTree = "<group>"; };
+		7FFD814D1C4B5B83004F1987 /* EmptyPostWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyPostWelcomeView.swift; path = Views/EmptyPostWelcomeView.swift; sourceTree = "<group>"; };
+		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
 		7FFE12C11C3CDF530099EA2C /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectContextSettable.swift; path = ViewController/Protocols/ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +124,7 @@
 		7F5204C81C34F79B00507125 /* X2015 */ = {
 			isa = PBXGroup;
 			children = (
+				7FFD814A1C4B5B4B004F1987 /* Views */,
 				7F37C7811C41658E00519B18 /* Extensions */,
 				7F5205091C350BBD00507125 /* ViewController */,
 				7F5204E31C35041000507125 /* Vendor */,
@@ -201,6 +208,24 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		7FFD814A1C4B5B4B004F1987 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7FFD814F1C4B5F46004F1987 /* Protocols */,
+				7FFD814B1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib */,
+				7FFD814D1C4B5B83004F1987 /* EmptyPostWelcomeView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		7FFD814F1C4B5F46004F1987 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -260,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */,
+				7FFD814C1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib in Resources */,
 				7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */,
 				7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */,
 			);
@@ -281,6 +307,7 @@
 				7F5204FB1C3504C900507125 /* LICENSE.md in Sources */,
 				7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */,
 				7F5205031C3504C900507125 /* NSManagedObjectContext+Extensions.swift in Sources */,
+				7FFD814E1C4B5B83004F1987 /* EmptyPostWelcomeView.swift in Sources */,
 				7F52050E1C3528D900507125 /* PostListTableViewController.swift in Sources */,
 				7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */,
 				7F5205021C3504C900507125 /* NSManagedObject+Extensions.swift in Sources */,
@@ -296,6 +323,7 @@
 				7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */,
 				7F5205011C3504C900507125 /* NSFetchRequest+Extensions.swift in Sources */,
 				7F5204FE1C3504C900507125 /* Migration.swift in Sources */,
+				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
 				7F5205071C3504C900507125 /* Utilities.swift in Sources */,
 				7F5205101C3587F400507125 /* PostEditViewController.swift in Sources */,
 				7F5204FC1C3504C900507125 /* ManagedObject.swift in Sources */,
