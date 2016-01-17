@@ -1,5 +1,5 @@
 //
-//  PostListTableViewController.swift
+//  NoteTimelineTableViewController.swift
 //  X2015
 //
 //  Created by Hang Zhang on 12/31/15.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PostListTableViewController: UITableViewController ,ManagedObjectContextSettable {
+class NoteTimelineTableViewController: UITableViewController, ManagedObjectContextSettable {
     
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultController: NSFetchedResultsController!
@@ -17,8 +17,8 @@ class PostListTableViewController: UITableViewController ,ManagedObjectContextSe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fetchRequest = NSFetchRequest(entityName: Post.entityName)
-        fetchRequest.sortDescriptors = Post.defaultSortDescriptors
+        let fetchRequest = NSFetchRequest(entityName: Note.entityName)
+        fetchRequest.sortDescriptors = Note.defaultSortDescriptors
         
         fetchedResultController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
@@ -26,7 +26,7 @@ class PostListTableViewController: UITableViewController ,ManagedObjectContextSe
             sectionNameKeyPath: nil,
             cacheName: nil)
         fetchedResultController.delegate = self
-        self.tableView.backgroundView = EmptyPostWelcomeView.instantiateFromNib()
+        self.tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
         self.tableView.tableFooterView = UIView()
     }
     
@@ -38,18 +38,18 @@ class PostListTableViewController: UITableViewController ,ManagedObjectContextSe
     
 }
 
-extension PostListTableViewController {
+extension NoteTimelineTableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultController.sections?[section].objects?.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(PostListTableViewCell.reuseIdentifier, forIndexPath: indexPath) as? PostListTableViewCell else {
+        guard let cell = tableView.dequeueReusableCellWithIdentifier(NoteTableViewCell.reuseIdentifier, forIndexPath: indexPath) as? NoteTableViewCell else {
             fatalError("Wrong table view cell type")
         }
         
-        cell.configure(postAt(indexPath))
+        cell.configure(NoteAt(indexPath))
         
         return cell
     }
@@ -60,7 +60,7 @@ extension PostListTableViewController {
     
 }
 
-extension PostListTableViewController: NSFetchedResultsControllerDelegate {
+extension NoteTimelineTableViewController: NSFetchedResultsControllerDelegate {
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
@@ -90,38 +90,30 @@ extension PostListTableViewController: NSFetchedResultsControllerDelegate {
     
 }
 
-extension PostListTableViewController {
+extension NoteTimelineTableViewController {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         return [UITableViewRowAction(style: .Default, title: "Delete", handler: { [unowned self](action, indexPath) -> Void in
             self.managedObjectContext.performChanges({ [unowned self] () -> () in
-                self.managedObjectContext.deleteObject(self.postAt(indexPath))
+                self.managedObjectContext.deleteObject(self.NoteAt(indexPath))
             })
         })]
     }
     
 }
 
-extension PostListTableViewController {
+extension NoteTimelineTableViewController {
     
-    func postAt(indexPath: NSIndexPath) -> Post {
-        guard let post = fetchedResultController.objectAtIndexPath(indexPath) as? Post else {
-            fatalError("Can't find post object at indexPath \(indexPath)")
+    func NoteAt(indexPath: NSIndexPath) -> Note {
+        guard let Note = fetchedResultController.objectAtIndexPath(indexPath) as? Note else {
+            fatalError("Can't find Note object at indexPath \(indexPath)")
         }
-        return post
+        return Note
     }
     
 }
 
-extension PostListTableViewController {
-    
-    @IBAction func createNewPost(sender: AnyObject) {
-        
-    }
-    
-}
-
-extension PostListTableViewController {
+extension NoteTimelineTableViewController {
     
     func updateWelcomeViewVisibility() {
         if self.fetchedResultController.fetchedObjects?.count == 0 {
@@ -133,7 +125,7 @@ extension PostListTableViewController {
     
 }
 
-extension PostListTableViewController {
+extension NoteTimelineTableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -142,8 +134,8 @@ extension PostListTableViewController {
         }
         
         switch identifier {
-        case PostEditViewController.SegueIdentifier.Create.identifier():
-            guard let vc = segue.destinationViewController as? PostEditViewController else {
+        case NoteEditViewController.SegueIdentifier.Create.identifier():
+            guard let vc = segue.destinationViewController as? NoteEditViewController else {
                 fatalError("Wrong edit-viewcontroller")
             }
             guard let selectedIndexPath = self.tableView.indexPathForSelectedRow else {
@@ -151,10 +143,10 @@ extension PostListTableViewController {
             }
             
             vc.managedObjectContext = self.managedObjectContext
-            vc.setup(self.postAt(selectedIndexPath), managedObjectContext: self.managedObjectContext)
+            vc.setup(self.NoteAt(selectedIndexPath), managedObjectContext: self.managedObjectContext)
             break
-        case PostEditViewController.SegueIdentifier.Edit.identifier():
-            guard let vc = segue.destinationViewController as? PostEditViewController else {
+        case NoteEditViewController.SegueIdentifier.Edit.identifier():
+            guard let vc = segue.destinationViewController as? NoteEditViewController else {
                 fatalError("Wrong edit-viewcontroller")
             }
             vc.setup(managedObjectContext)
@@ -166,15 +158,15 @@ extension PostListTableViewController {
     
 }
 
-final class PostListTableViewCell: UITableViewCell, ConfigureableCell {
+final class NoteTableViewCell: UITableViewCell, ConfigureableCell {
     
     static var reuseIdentifier: String! {
-        return "PostListTableViewCell"
+        return "NoteTableViewCell"
     }
     
-    func configure(post: Post) {
-        self.textLabel!.text = post.title
-        self.detailTextLabel!.text = post.preview
+    func configure(note: Note) {
+        self.textLabel!.text = note.title
+        self.detailTextLabel!.text = note.preview
     }
     
 }

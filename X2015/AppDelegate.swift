@@ -17,11 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.configureInterface()
-        guard let nc = window?.rootViewController as? UINavigationController,
-            vc = nc.childViewControllers.first as? ManagedObjectContextSettable else {
+        guard let tc = window?.rootViewController as? ManagedObjectContextSettable else {
                 fatalError("Wrong view controller type")
         }
-        vc.managedObjectContext = self.managedObjectContext
+        tc.managedObjectContext = self.managedObjectContext
         return true
     }
     
@@ -31,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private static let StoreURL = NSURL.documentsURL.URLByAppendingPathComponent("X2015.moody")
     
     static func createMainContext() -> NSManagedObjectContext {
-        let bundles = [NSBundle(forClass: Post.self)]
+        let bundles = [NSBundle(forClass: Note.self)]
         guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
             fatalError("model not found")
         }

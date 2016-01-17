@@ -1,5 +1,5 @@
 //
-//  PostEditViewController.swift
+//  NoteEditViewController.swift
 //  X2015
 //
 //  Created by Hang Zhang on 12/31/15.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-final class PostEditViewController: UIViewController, ManagedObjectContextSettable {
+final class NoteEditViewController: UIViewController, ManagedObjectContextSettable {
     
     enum SegueIdentifier {
         case Create, Edit
@@ -17,9 +17,9 @@ final class PostEditViewController: UIViewController, ManagedObjectContextSettab
         func identifier() -> String {
             switch self {
             case .Create:
-                return "CreatePostSegueIdentifier"
+                return "CreateNoteSegueIdentifier"
             case .Edit:
-                return "EditPostSegueIdentifier"
+                return "EditNoteSegueIdentifier"
             }
         }
         
@@ -29,11 +29,11 @@ final class PostEditViewController: UIViewController, ManagedObjectContextSettab
     
     @IBOutlet private weak var textView: UITextView!
     
-    private weak var post: Post?
+    private weak var note: Note?
     private var keyboardNotificationObserver: KeyboardNotificationObserver!
     
-    func setup(exsitingPost: Post!, managedObjectContext: NSManagedObjectContext!){
-        self.post = exsitingPost
+    func setup(exsitingNote: Note!, managedObjectContext: NSManagedObjectContext!){
+        self.note = exsitingNote
         self.managedObjectContext = managedObjectContext
     }
     
@@ -53,15 +53,15 @@ final class PostEditViewController: UIViewController, ManagedObjectContextSettab
                 self.textView.contentInset = newContentInsect
             })
         
-        self.title = post?.title
-        self.textView.text = post?.content
+        self.title = note?.title
+        self.textView.text = note?.content
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.keyboardNotificationObserver.startMonitor()
         
-        if self.post == nil {
+        if self.note == nil {
             self.textView.becomeFirstResponder()
         }
     }
@@ -75,34 +75,34 @@ final class PostEditViewController: UIViewController, ManagedObjectContextSettab
         }
         
         self.managedObjectContext.performChanges { [unowned self] () -> () in
-            let post = self.post ?? self.managedObjectContext.insertObject()
-            post.update(self.textView.text)
+            let note = self.note ?? self.managedObjectContext.insertObject()
+            note.update(self.textView.text)
         }
     }
     
 }
 
-extension PostEditViewController {
+extension NoteEditViewController {
     
-    var postContent: String {
+    var NoteContent: String {
         return self.textView.text
     }
     
     var hasContent: Bool {
-        return self.postContent.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
+        return self.NoteContent.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
     }
     
-    var postTitle: String? {
-        return self.postContent.lineWithContent(0)
+    var NoteTitle: String? {
+        return self.NoteContent.lineWithContent(0)
     }
     
 }
 
-extension PostEditViewController: UITextViewDelegate {
+extension NoteEditViewController: UITextViewDelegate {
     
     func updateViewControllerTitleIfNesscarry() {
-        if self.postTitle != self.title {
-            self.title = self.postTitle
+        if self.NoteTitle != self.title {
+            self.title = self.NoteTitle
         }
     }
     

@@ -15,7 +15,7 @@
 		7F5204D21C34F79B00507125 /* X2015.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204D01C34F79B00507125 /* X2015.xcdatamodeld */; };
 		7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D31C34F79B00507125 /* Assets.xcassets */; };
 		7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */; };
-		7F5204E01C34FB4800507125 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204DF1C34FB4800507125 /* Post.swift */; };
+		7F5204E01C34FB4800507125 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204DF1C34FB4800507125 /* Note.swift */; };
 		7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204E71C3504C900507125 /* Collection+CoreDataExtensions.swift */; };
 		7F5204F91C3504C900507125 /* CoreDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204E81C3504C900507125 /* CoreDataErrors.swift */; };
 		7F5204FA1C3504C900507125 /* KeyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204E91C3504C900507125 /* KeyCodable.swift */; };
@@ -33,14 +33,15 @@
 		7F5205061C3504C900507125 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F51C3504C900507125 /* README.md */; };
 		7F5205071C3504C900507125 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F61C3504C900507125 /* Utilities.swift */; };
 		7F5205081C3504C900507125 /* ValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F71C3504C900507125 /* ValueTransformer.swift */; };
-		7F52050E1C3528D900507125 /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52050D1C3528D900507125 /* PostListTableViewController.swift */; };
-		7F5205101C3587F400507125 /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52050F1C3587F400507125 /* PostEditViewController.swift */; };
+		7F52050E1C3528D900507125 /* NoteTimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52050D1C3528D900507125 /* NoteTimelineTableViewController.swift */; };
+		7F5205101C3587F400507125 /* NoteEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52050F1C3587F400507125 /* NoteEditViewController.swift */; };
 		7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205111C3639C100507125 /* KeyboardNotification.swift */; };
 		7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */; };
 		7F5205191C364C9100507125 /* ConfigureableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205181C364C9100507125 /* ConfigureableCell.swift */; };
-		7FFD814C1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib */; };
-		7FFD814E1C4B5B83004F1987 /* EmptyPostWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyPostWelcomeView.swift */; };
+		7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */; };
+		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
+		7FFD81571C4B7895004F1987 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81561C4B7895004F1987 /* RootTabBarController.swift */; };
 		7FFE12C21C3CDF530099EA2C /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE12C11C3CDF530099EA2C /* ManagedObjectContextSettable.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +56,7 @@
 		7F5204D31C34F79B00507125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F5204D61C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F5204D81C34F79B00507125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F5204DF1C34FB4800507125 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		7F5204DF1C34FB4800507125 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		7F5204E71C3504C900507125 /* Collection+CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+CoreDataExtensions.swift"; path = "CoreDataSharedCode/Collection+CoreDataExtensions.swift"; sourceTree = "<group>"; };
 		7F5204E81C3504C900507125 /* CoreDataErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataErrors.swift; path = CoreDataSharedCode/CoreDataErrors.swift; sourceTree = "<group>"; };
 		7F5204E91C3504C900507125 /* KeyCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyCodable.swift; path = CoreDataSharedCode/KeyCodable.swift; sourceTree = "<group>"; };
@@ -73,14 +74,15 @@
 		7F5204F51C3504C900507125 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = CoreDataSharedCode/README.md; sourceTree = "<group>"; };
 		7F5204F61C3504C900507125 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = CoreDataSharedCode/Utilities.swift; sourceTree = "<group>"; };
 		7F5204F71C3504C900507125 /* ValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueTransformer.swift; path = CoreDataSharedCode/ValueTransformer.swift; sourceTree = "<group>"; };
-		7F52050D1C3528D900507125 /* PostListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostListTableViewController.swift; path = ViewController/PostListTableViewController.swift; sourceTree = "<group>"; };
-		7F52050F1C3587F400507125 /* PostEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostEditViewController.swift; path = ViewController/PostEditViewController.swift; sourceTree = "<group>"; };
+		7F52050D1C3528D900507125 /* NoteTimelineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteTimelineTableViewController.swift; path = ViewController/NoteTimelineTableViewController.swift; sourceTree = "<group>"; };
+		7F52050F1C3587F400507125 /* NoteEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteEditViewController.swift; path = ViewController/NoteEditViewController.swift; sourceTree = "<group>"; };
 		7F5205111C3639C100507125 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationObserver.swift; sourceTree = "<group>"; };
 		7F5205181C364C9100507125 /* ConfigureableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureableCell.swift; sourceTree = "<group>"; };
-		7FFD814B1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyPostWelcomeView.xib; path = Views/EmptyPostWelcomeView.xib; sourceTree = "<group>"; };
-		7FFD814D1C4B5B83004F1987 /* EmptyPostWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyPostWelcomeView.swift; path = Views/EmptyPostWelcomeView.swift; sourceTree = "<group>"; };
+		7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyNoteWelcomeView.xib; path = Views/EmptyNoteWelcomeView.xib; sourceTree = "<group>"; };
+		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
+		7FFD81561C4B7895004F1987 /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootTabBarController.swift; path = ViewController/RootTabBarController.swift; sourceTree = "<group>"; };
 		7FFE12C11C3CDF530099EA2C /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectContextSettable.swift; path = ViewController/Protocols/ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,7 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				7F5204D01C34F79B00507125 /* X2015.xcdatamodeld */,
-				7F5204DF1C34FB4800507125 /* Post.swift */,
+				7F5204DF1C34FB4800507125 /* Note.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -184,8 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				7F5205171C364C7C00507125 /* Protocols */,
-				7F52050D1C3528D900507125 /* PostListTableViewController.swift */,
-				7F52050F1C3587F400507125 /* PostEditViewController.swift */,
+				7F52050D1C3528D900507125 /* NoteTimelineTableViewController.swift */,
+				7F52050F1C3587F400507125 /* NoteEditViewController.swift */,
+				7FFD81561C4B7895004F1987 /* RootTabBarController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -212,8 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				7FFD814F1C4B5F46004F1987 /* Protocols */,
-				7FFD814B1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib */,
-				7FFD814D1C4B5B83004F1987 /* EmptyPostWelcomeView.swift */,
+				7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */,
+				7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -285,7 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */,
-				7FFD814C1C4B5B6D004F1987 /* EmptyPostWelcomeView.xib in Resources */,
+				7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */,
 				7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */,
 				7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */,
 			);
@@ -306,14 +309,15 @@
 				7F5204FD1C3504C900507125 /* ManagedObjectObserver.swift in Sources */,
 				7F5204FB1C3504C900507125 /* LICENSE.md in Sources */,
 				7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */,
+				7FFD81571C4B7895004F1987 /* RootTabBarController.swift in Sources */,
 				7F5205031C3504C900507125 /* NSManagedObjectContext+Extensions.swift in Sources */,
-				7FFD814E1C4B5B83004F1987 /* EmptyPostWelcomeView.swift in Sources */,
-				7F52050E1C3528D900507125 /* PostListTableViewController.swift in Sources */,
+				7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */,
+				7F52050E1C3528D900507125 /* NoteTimelineTableViewController.swift in Sources */,
 				7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */,
 				7F5205021C3504C900507125 /* NSManagedObject+Extensions.swift in Sources */,
 				7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */,
 				7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */,
-				7F5204E01C34FB4800507125 /* Post.swift in Sources */,
+				7F5204E01C34FB4800507125 /* Note.swift in Sources */,
 				7F5205001C3504C900507125 /* ModelVersionType.swift in Sources */,
 				7F5205061C3504C900507125 /* README.md in Sources */,
 				7FFE12C21C3CDF530099EA2C /* ManagedObjectContextSettable.swift in Sources */,
@@ -325,7 +329,7 @@
 				7F5204FE1C3504C900507125 /* Migration.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
 				7F5205071C3504C900507125 /* Utilities.swift in Sources */,
-				7F5205101C3587F400507125 /* PostEditViewController.swift in Sources */,
+				7F5205101C3587F400507125 /* NoteEditViewController.swift in Sources */,
 				7F5204FC1C3504C900507125 /* ManagedObject.swift in Sources */,
 				7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */,
 				7F37C7851C41658E00519B18 /* Foundation+Extensions.swift in Sources */,

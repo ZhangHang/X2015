@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5Lk-1v-ei7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oh0-nI-bMZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Root Tab Bar Controller-->
+        <scene sceneID="PYM-sx-zex">
+            <objects>
+                <tabBarController id="Oh0-nI-bMZ" customClass="RootTabBarController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="LDh-FY-WDq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="5Lk-1v-ei7" kind="relationship" relationship="viewControllers" id="Obb-vy-vcx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bsI-xV-u4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-704" y="392"/>
+        </scene>
         <!--X2015-->
         <scene sceneID="3v6-8Z-qt3">
             <objects>
-                <tableViewController title="X2015" id="ieF-Bw-kxn" customClass="PostListTableViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="X2015" id="ieF-Bw-kxn" customClass="NoteTimelineTableViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="KJa-iX-2dY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostListTableViewCell" textLabel="ExM-bL-MCn" detailTextLabel="VA3-Ww-ybn" rowHeight="80" style="IBUITableViewCellStyleSubtitle" id="kJI-Wr-ScE" customClass="PostListTableViewCell" customModule="X2015" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteTableViewCell" textLabel="ExM-bL-MCn" detailTextLabel="VA3-Ww-ybn" rowHeight="80" style="IBUITableViewCellStyleSubtitle" id="kJI-Wr-ScE" customClass="NoteTableViewCell" customModule="X2015" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kJI-Wr-ScE" id="O7G-0Q-gNE">
@@ -39,7 +56,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="LYn-i6-btg" kind="show" identifier="CreatePostSegueIdentifier" id="YZl-La-RHM"/>
+                                    <segue destination="LYn-i6-btg" kind="show" identifier="CreateNoteSegueIdentifier" id="YZl-La-RHM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -48,12 +65,11 @@
                             <outlet property="delegate" destination="ieF-Bw-kxn" id="zKF-u7-2gK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="X2015" id="x3J-rz-nBa">
+                    <navigationItem key="navigationItem" title="Note" id="x3J-rz-nBa">
                         <barButtonItem key="backBarButtonItem" title=" " id="6Qv-CH-Fqo"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="c4s-tk-087">
                             <connections>
-                                <action selector="createNewPost:" destination="ieF-Bw-kxn" id="KuJ-kS-KBE"/>
-                                <segue destination="LYn-i6-btg" kind="show" identifier="EditPostSegueIdentifier" id="95T-sI-bBN"/>
+                                <segue destination="LYn-i6-btg" kind="show" identifier="EditNoteSegueIdentifier" id="95T-sI-bBN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -62,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="971" y="392"/>
         </scene>
-        <!--Post Edit View Controller-->
+        <!--Note Edit View Controller-->
         <scene sceneID="hv7-xz-sm8">
             <objects>
-                <viewController id="LYn-i6-btg" customClass="PostEditViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LYn-i6-btg" customClass="NoteEditViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cFU-tO-TqJ"/>
                         <viewControllerLayoutGuide type="bottom" id="f1A-fE-wxp"/>
@@ -75,7 +91,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14B-fx-PXZ">
-                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                                <rect key="frame" x="20" y="0.0" width="560" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -101,10 +117,11 @@
             </objects>
             <point key="canvasLocation" x="971" y="1139"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Note-->
         <scene sceneID="zuw-MK-O6p">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Lk-1v-ei7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Note" id="qMt-6Q-jLj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xMW-bK-bMy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -121,6 +138,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YZl-La-RHM"/>
+        <segue reference="95T-sI-bBN"/>
     </inferredMetricsTieBreakers>
 </document>

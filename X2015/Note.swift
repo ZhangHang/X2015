@@ -1,5 +1,5 @@
 //
-//  Post.swift
+//  Note.swift
 //  X2015
 //
 //  Created by Hang Zhang on 12/31/15.
@@ -8,15 +8,15 @@
 
 import CoreData
 
-@objc(Post)
-public final class Post: ManagedObject {
+@objc(Note)
+public final class Note: ManagedObject {
     
     @NSManaged public private(set) var content: String?
     @NSManaged public private(set) var createdAt: NSDate?
     
 }
 
-extension Post: ManagedObjectType {
+extension Note: ManagedObjectType {
     
     public override func awakeFromInsert() {
         self.createdAt = NSDate()
@@ -24,7 +24,7 @@ extension Post: ManagedObjectType {
     }
     
     public static var entityName: String {
-        return "Post"
+        return "Note"
     }
     
     public static var defaultSortDescriptors: [NSSortDescriptor] {
@@ -38,7 +38,7 @@ extension Post: ManagedObjectType {
     
 }
 
-extension Post {
+extension Note {
     
     public func update(content: String) {
         self.content = content
@@ -46,7 +46,7 @@ extension Post {
     
 }
 
-extension Post {
+extension Note {
     
     var title: String? {
         return content?.lineWithContent(0)

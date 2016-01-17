@@ -1,5 +1,5 @@
 //
-//  EmptyPostWelcomeView.swift
+//  EmptyNoteWelcomeView.swift
 //  X2015
 //
 //  Created by Hang Zhang on 1/17/16.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class EmptyPostWelcomeView: UIView {}
+class EmptyNoteWelcomeView: UIView {}
 
-extension EmptyPostWelcomeView: NibLoadable {}
+extension EmptyNoteWelcomeView: NibLoadable {}
