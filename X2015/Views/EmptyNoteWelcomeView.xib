@@ -13,18 +13,45 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="X2015" translatesAutoresizingMaskIntoConstraints="NO" id="ieS-MG-jGw">
-                    <rect key="frame" x="210" y="210" width="180" height="180"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ywO-hw-bYl">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh4-3Z-uF8">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="X2015" translatesAutoresizingMaskIntoConstraints="NO" id="ieS-MG-jGw">
+                                    <rect key="frame" x="210" y="210" width="180" height="180"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="ieS-MG-jGw" secondAttribute="height" id="aHt-Ot-b0l"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="ieS-MG-jGw" firstAttribute="centerY" secondItem="Gh4-3Z-uF8" secondAttribute="centerY" id="bNH-e0-0hG"/>
+                                <constraint firstItem="ieS-MG-jGw" firstAttribute="centerX" secondItem="Gh4-3Z-uF8" secondAttribute="centerX" id="cdm-rw-Dac"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="ieS-MG-jGw" secondAttribute="height" id="aHt-Ot-b0l"/>
+                        <constraint firstItem="Gh4-3Z-uF8" firstAttribute="leading" secondItem="ywO-hw-bYl" secondAttribute="leading" id="7jI-yG-Z4L"/>
+                        <constraint firstAttribute="trailing" secondItem="Gh4-3Z-uF8" secondAttribute="trailing" id="Ywe-MH-HBg"/>
+                        <constraint firstAttribute="bottom" secondItem="Gh4-3Z-uF8" secondAttribute="bottom" id="pe2-nu-AMW"/>
+                        <constraint firstItem="Gh4-3Z-uF8" firstAttribute="top" secondItem="ywO-hw-bYl" secondAttribute="top" id="qk0-0j-aMa"/>
                     </constraints>
-                </imageView>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ieS-MG-jGw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="5IT-IN-FM1"/>
-                <constraint firstItem="ieS-MG-jGw" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.3" id="hek-h4-6MW"/>
-                <constraint firstItem="ieS-MG-jGw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pQo-uT-fgZ"/>
+                <constraint firstAttribute="bottom" secondItem="ywO-hw-bYl" secondAttribute="bottom" id="9vc-o1-15a"/>
+                <constraint firstItem="ywO-hw-bYl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LlM-MX-f4E"/>
+                <constraint firstItem="ieS-MG-jGw" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.3" id="Lzl-pu-yo7"/>
+                <constraint firstItem="Gh4-3Z-uF8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QRi-3A-fSJ"/>
+                <constraint firstAttribute="bottom" secondItem="Gh4-3Z-uF8" secondAttribute="bottom" id="UHZ-QE-kdA"/>
+                <constraint firstAttribute="trailing" secondItem="ywO-hw-bYl" secondAttribute="trailing" id="bLP-r2-8e1"/>
+                <constraint firstAttribute="trailing" secondItem="Gh4-3Z-uF8" secondAttribute="trailing" id="fwY-6g-yFS"/>
+                <constraint firstItem="ywO-hw-bYl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g6H-05-rmi"/>
+                <constraint firstItem="Gh4-3Z-uF8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yvS-tM-c2C"/>
             </constraints>
         </view>
     </objects>

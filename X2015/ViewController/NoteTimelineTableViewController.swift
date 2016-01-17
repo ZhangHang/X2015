@@ -96,8 +96,8 @@ extension NoteTimelineTableViewController {
         return [UITableViewRowAction(style: .Default, title: "Delete", handler: { [unowned self](action, indexPath) -> Void in
             self.managedObjectContext.performChanges({ [unowned self] () -> () in
                 self.managedObjectContext.deleteObject(self.NoteAt(indexPath))
-            })
-        })]
+                })
+            })]
     }
     
 }
@@ -134,18 +134,17 @@ extension NoteTimelineTableViewController {
         }
         
         switch identifier {
-        case NoteEditViewController.SegueIdentifier.Create.identifier():
-            guard let vc = segue.destinationViewController as? NoteEditViewController else {
-                fatalError("Wrong edit-viewcontroller")
-            }
-            guard let selectedIndexPath = self.tableView.indexPathForSelectedRow else {
-                fatalError("No selected indexPath")
+        case NoteEditViewController.SegueIdentifier.Edit.identifier():
+            guard
+                let vc = segue.destinationViewController as? NoteEditViewController,
+                let selectedIndexPath = self.tableView.indexPathForSelectedRow else {
+                    fatalError("Wrong edit-viewcontroller")
             }
             
             vc.managedObjectContext = self.managedObjectContext
             vc.setup(self.NoteAt(selectedIndexPath), managedObjectContext: self.managedObjectContext)
             break
-        case NoteEditViewController.SegueIdentifier.Edit.identifier():
+        case NoteEditViewController.SegueIdentifier.Create.identifier():
             guard let vc = segue.destinationViewController as? NoteEditViewController else {
                 fatalError("Wrong edit-viewcontroller")
             }

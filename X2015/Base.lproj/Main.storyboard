@@ -4,29 +4,31 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Root Tab Bar Controller-->
         <scene sceneID="PYM-sx-zex">
             <objects>
                 <tabBarController id="Oh0-nI-bMZ" customClass="RootTabBarController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lIh-nY-784"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="LDh-FY-WDq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="5Lk-1v-ei7" kind="relationship" relationship="viewControllers" id="Obb-vy-vcx"/>
+                        <segue destination="PcM-jm-7jX" kind="relationship" relationship="viewControllers" id="yod-KL-7pm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsI-xV-u4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-704" y="392"/>
+            <point key="canvasLocation" x="208" y="392"/>
         </scene>
-        <!--X2015-->
+        <!--Note-->
         <scene sceneID="3v6-8Z-qt3">
             <objects>
-                <tableViewController title="X2015" id="ieF-Bw-kxn" customClass="NoteTimelineTableViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ieF-Bw-kxn" customClass="NoteTimelineTableViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="KJa-iX-2dY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +58,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="LYn-i6-btg" kind="show" identifier="CreateNoteSegueIdentifier" id="YZl-La-RHM"/>
+                                    <segue destination="LYn-i6-btg" kind="show" identifier="EditNoteSegueIdentifier" id="YZl-La-RHM">
+                                        <segue key="commit" inheritsFrom="parent" id="Nqb-LO-gb9"/>
+                                        <segue key="preview" inheritsFrom="commit" id="ZEP-TB-CTv"/>
+                                    </segue>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -65,23 +70,22 @@
                             <outlet property="delegate" destination="ieF-Bw-kxn" id="zKF-u7-2gK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Note" id="x3J-rz-nBa">
-                        <barButtonItem key="backBarButtonItem" title=" " id="6Qv-CH-Fqo"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="c4s-tk-087">
+                    <navigationItem key="navigationItem" title="Note" id="ZYM-mc-Flt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4xT-31-7ps">
                             <connections>
-                                <segue destination="LYn-i6-btg" kind="show" identifier="EditNoteSegueIdentifier" id="95T-sI-bBN"/>
+                                <segue destination="LYn-i6-btg" kind="show" identifier="CreateNoteSegueIdentifier" id="zFH-HY-uns"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jS-0L-da3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971" y="392"/>
+            <point key="canvasLocation" x="1783" y="392"/>
         </scene>
         <!--Note Edit View Controller-->
         <scene sceneID="hv7-xz-sm8">
             <objects>
-                <viewController id="LYn-i6-btg" customClass="NoteEditViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="LYn-i6-btg" customClass="NoteEditViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cFU-tO-TqJ"/>
                         <viewControllerLayoutGuide type="bottom" id="f1A-fE-wxp"/>
@@ -115,26 +119,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyl-qR-pQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971" y="1139"/>
+            <point key="canvasLocation" x="1783" y="1107"/>
         </scene>
         <!--Note-->
-        <scene sceneID="zuw-MK-O6p">
+        <scene sceneID="cgv-KX-YD0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Lk-1v-ei7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Note" image="Tabbar_Note" selectedImage="Tabbar_Note_Filled" id="qMt-6Q-jLj"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PcM-jm-7jX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Note" image="Tabbar_Note" selectedImage="Tabbar_Note_Filled" id="hW0-Mq-2iX"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xMW-bK-bMy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="u4F-3R-gwe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ieF-Bw-kxn" kind="relationship" relationship="rootViewController" id="uRb-W8-Bpr"/>
+                        <segue destination="ieF-Bw-kxn" kind="relationship" relationship="rootViewController" id="oLX-P2-z6p"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gHp-v3-JjV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KJg-rD-T8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="392"/>
+            <point key="canvasLocation" x="971" y="392"/>
         </scene>
     </scenes>
     <resources>
@@ -142,6 +146,6 @@
         <image name="Tabbar_Note_Filled" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="95T-sI-bBN"/>
+        <segue reference="YZl-La-RHM"/>
     </inferredMetricsTieBreakers>
 </document>
