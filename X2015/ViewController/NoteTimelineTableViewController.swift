@@ -54,9 +54,16 @@ extension NoteTimelineTableViewController {
             fatalError("Wrong table view cell type")
         }
         
-        cell.configure(NoteAt(indexPath))
-        
         return cell
+    }
+    
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        guard let cell = cell as? NoteTableViewCell else {
+            fatalError("Wrong table view cell type")
+        }
+        
+        cell.configure(NoteAt(indexPath))
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
