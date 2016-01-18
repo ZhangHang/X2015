@@ -16,7 +16,7 @@ extension String {
 
         var line: String?
 
-        self.enumerateLines({ (_line, stop) -> () in
+        enumerateLines({ (_line, stop) -> () in
             if _line.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
                 if index == lineWithContentCount {
                     line = _line

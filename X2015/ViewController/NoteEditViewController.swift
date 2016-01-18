@@ -33,7 +33,7 @@ final class NoteEditViewController: UIViewController, ManagedObjectContextSettab
     private var keyboardNotificationObserver: KeyboardNotificationObserver!
 
     func setup(managedObjectContext: NSManagedObjectContext!, exsitingNote: Note? = nil) {
-		self.note = exsitingNote
+		note = exsitingNote
         self.managedObjectContext = managedObjectContext
     }
 
@@ -41,36 +41,36 @@ final class NoteEditViewController: UIViewController, ManagedObjectContextSettab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.keyboardNotificationObserver = KeyboardNotificationObserver(
-            viewControllerView: self.view,
+        keyboardNotificationObserver = KeyboardNotificationObserver(
+            viewControllerView: view,
             keyboardOffsetChangeHandler: { [unowned self] (newKeyboardOffset) -> Void in
                 var newContentInsect = self.textView.contentInset
                 newContentInsect.bottom = newKeyboardOffset
                 self.textView.contentInset = newContentInsect
             })
 
-        self.title = note?.title
-        self.textView.text = note?.content
+        title = note?.title
+        textView.text = note?.content
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.keyboardNotificationObserver.startMonitor()
+        keyboardNotificationObserver.startMonitor()
 
-        if self.note == nil {
-            self.textView.becomeFirstResponder()
+        if note == nil {
+            textView.becomeFirstResponder()
         }
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.keyboardNotificationObserver.stopMonitor()
+        keyboardNotificationObserver.stopMonitor()
 
-        if !self.hasContent {
+        if !hasContent {
             return
         }
 
-        self.managedObjectContext.performChanges { [unowned self] () -> () in
+        managedObjectContext.performChanges { [unowned self] () -> () in
             let note = self.note ?? self.managedObjectContext.insertObject()
             note.update(self.textView.text)
         }
@@ -81,15 +81,15 @@ final class NoteEditViewController: UIViewController, ManagedObjectContextSettab
 extension NoteEditViewController {
 
     var noteContent: String {
-        return self.textView.text
+        return textView.text
     }
 
     var hasContent: Bool {
-        return self.noteContent.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
+        return noteContent.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
     }
 
     var noteTitle: String? {
-        return self.noteContent.lineWithContent(0)
+        return noteContent.lineWithContent(0)
     }
 
 }
@@ -97,13 +97,13 @@ extension NoteEditViewController {
 extension NoteEditViewController: UITextViewDelegate {
 
     func updateViewControllerTitleIfNesscarry() {
-        if self.noteTitle != self.title {
-            self.title = self.noteTitle
+        if noteTitle != title {
+            title = noteTitle
         }
     }
 
     func textViewDidChange(textView: UITextView) {
-        self.updateViewControllerTitleIfNesscarry()
+        updateViewControllerTitleIfNesscarry()
     }
 
 }

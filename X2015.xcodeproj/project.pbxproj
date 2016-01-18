@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */; };
 		7F37C7851C41658E00519B18 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
 		7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7841C41658E00519B18 /* UIHelper.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AnimationHandler.swift"; sourceTree = "<group>"; };
 		7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7841C41658E00519B18 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */,
 				7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */,
 				7F37C7841C41658E00519B18 /* UIHelper.swift */,
+				7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				7F5204FE1C3504C900507125 /* Migration.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
 				7F5205071C3504C900507125 /* Utilities.swift in Sources */,
+				7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */,
 				7F5205101C3587F400507125 /* NoteEditViewController.swift in Sources */,
 				7F5204FC1C3504C900507125 /* ManagedObject.swift in Sources */,
 				7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */,

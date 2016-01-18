@@ -18,11 +18,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(
 		application: UIApplication, didFinishLaunchingWithOptions
 		launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.configureInterface()
-        guard let vc = self.window?.rootViewController as? ManagedObjectContextSettable else {
+        configureInterface()
+        guard let vc = window?.rootViewController as? ManagedObjectContextSettable else {
                 fatalError("Wrong view controller type")
         }
-        vc.managedObjectContext = self.managedObjectContext
+        vc.managedObjectContext = managedObjectContext
         return true
 	}
 
@@ -54,7 +54,7 @@ extension AppDelegate {
 
     private func configureInterface() {
         window!.tintColor = UIColor.x2015_BlueColor()
-        self.window!.backgroundColor = UIColor.whiteColor()
+        window!.backgroundColor = UIColor.whiteColor()
 
         UIHelper.setupNavigationBarStyle(
 			window!.tintColor,

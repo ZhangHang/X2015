@@ -19,7 +19,7 @@ public final class Note: ManagedObject {
 extension Note: ManagedObjectType {
 
     public override func awakeFromInsert() {
-        self.createdAt = NSDate()
+        createdAt = NSDate()
         super.awakeFromInsert()
     }
 

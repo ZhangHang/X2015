@@ -11,7 +11,7 @@ import UIKit
 extension UIColor {
 
     static func x2015_BlueColor() -> UIColor {
-            return UIColor(red: 60/255.0, green: 123/255.0, blue: 218/255.0, alpha: 1)
+		return UIColor(red: 60/255.0, green: 123/255.0, blue: 218/255.0, alpha: 1)
     }
 
 }

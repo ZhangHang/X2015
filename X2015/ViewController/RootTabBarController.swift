@@ -15,7 +15,7 @@ final class RootTabBarController: UITabBarController, ManagedObjectContextSettab
 
     var noteTimelineViewController: NoteTimelineTableViewController {
         guard
-            let nc = self.childViewControllers.first as? UINavigationController,
+            let nc = childViewControllers.first as? UINavigationController,
             let vc = nc.childViewControllers.first as? NoteTimelineTableViewController else {
                 fatalError("Wrong view controller type found")
         }
@@ -27,7 +27,7 @@ final class RootTabBarController: UITabBarController, ManagedObjectContextSettab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.noteTimelineViewController.managedObjectContext = self.managedObjectContext
+        self.noteTimelineViewController.managedObjectContext = managedObjectContext
         // Do any additional setup after loading the view.
     }
 

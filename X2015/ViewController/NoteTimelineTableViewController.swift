@@ -27,21 +27,21 @@ final class NoteTimelineTableViewController: UITableViewController, ManagedObjec
 
 		fetchedResultController = NSFetchedResultsController(
 			fetchRequest: fetchRequest,
-			managedObjectContext: self.managedObjectContext,
+			managedObjectContext: managedObjectContext,
 			sectionNameKeyPath: nil,
 			cacheName: nil)
 		fetchedResultController.delegate = self
-		self.tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
-		self.tableView.tableFooterView = UIView()
+		tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
+		tableView.tableFooterView = UIView()
 	}
 
 	override func viewWillAppear(animated: Bool) {
 		do {
-			try self.fetchedResultController.performFetch()
+			try fetchedResultController.performFetch()
 		} catch {
 			fatalError()
 		}
-		self.updateWelcomeViewVisibility()
+		updateWelcomeViewVisibility()
 		super.viewWillDisappear(animated)
 	}
 
@@ -74,7 +74,7 @@ extension NoteTimelineTableViewController {
 			fatalError("Wrong table view cell type")
 		}
 
-		cell.configure(NoteAt(indexPath))
+		cell.configure(noteAt(indexPath))
 	}
 
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -93,27 +93,27 @@ extension NoteTimelineTableViewController: NSFetchedResultsControllerDelegate {
 		newIndexPath: NSIndexPath?) {
 		switch type {
 		case .Delete:
-			self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+			tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
 			break
 		case .Insert:
-			self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+			tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
 			break
 		case .Move:
-			self.tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+			tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
 			break
 		case .Update:
-			self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+			tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
 			break
 		}
 	}
 
 	func controllerWillChangeContent(controller: NSFetchedResultsController) {
-		self.tableView.beginUpdates()
+		tableView.beginUpdates()
 	}
 
 	func controllerDidChangeContent(controller: NSFetchedResultsController) {
-		self.updateWelcomeViewVisibility()
-		self.tableView.endUpdates()
+		updateWelcomeViewVisibility()
+		tableView.endUpdates()
 	}
 
 }
@@ -129,7 +129,7 @@ extension NoteTimelineTableViewController {
 					title: "Delete",
 					handler: { [unowned self](action, indexPath) -> Void in
 						self.managedObjectContext.performChanges({ [unowned self] () -> () in
-							self.managedObjectContext.deleteObject(self.NoteAt(indexPath))
+							self.managedObjectContext.deleteObject(self.noteAt(indexPath))
 							})
 					})]
 	}
@@ -138,7 +138,7 @@ extension NoteTimelineTableViewController {
 
 extension NoteTimelineTableViewController {
 
-	func NoteAt(indexPath: NSIndexPath) -> Note {
+	func noteAt(indexPath: NSIndexPath) -> Note {
 		guard let Note = fetchedResultController.objectAtIndexPath(indexPath) as? Note else {
 			fatalError("Can't find Note object at indexPath \(indexPath)")
 		}
@@ -150,10 +150,10 @@ extension NoteTimelineTableViewController {
 extension NoteTimelineTableViewController {
 
 	func updateWelcomeViewVisibility() {
-		if self.fetchedResultController.fetchedObjects?.count == 0 {
-			self.tableView.backgroundView?.hidden = false
+		if fetchedResultController.fetchedObjects?.count == 0 {
+			tableView.backgroundView?.hidden = false
 		} else {
-			self.tableView.backgroundView?.hidden = true
+			tableView.backgroundView?.hidden = true
 		}
 	}
 
@@ -169,16 +169,16 @@ extension NoteTimelineTableViewController {
 		tableView: UITableView,
 		shouldHighlightRowAtIndexPath
 		indexPath: NSIndexPath) -> Bool {
-			self.selectedIndexPath = indexPath
+			selectedIndexPath = indexPath
 			return true
 	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.selectedIndexPath = indexPath
+		selectedIndexPath = indexPath
 	}
 
 	override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-		self.selectedIndexPath = nil
+		selectedIndexPath = nil
 	}
 
 }
@@ -196,12 +196,12 @@ extension NoteTimelineTableViewController {
 		case NoteEditViewController.SegueIdentifier.Edit.identifier():
 			guard
 				let vc = segue.destinationViewController as? NoteEditViewController,
-				let selectedIndexPath = self.selectedIndexPath else {
+				let selectedIndexPath = selectedIndexPath else {
 					fatalError("Wrong edit-viewcontroller")
 			}
 
-			vc.managedObjectContext = self.managedObjectContext
-			vc.setup(self.managedObjectContext, exsitingNote: self.NoteAt(selectedIndexPath))
+			vc.managedObjectContext = managedObjectContext
+			vc.setup(managedObjectContext, exsitingNote: noteAt(selectedIndexPath))
 			break
 		case NoteEditViewController.SegueIdentifier.Create.identifier():
 			guard let vc = segue.destinationViewController as? NoteEditViewController else {
@@ -223,8 +223,8 @@ final class NoteTableViewCell: UITableViewCell, ConfigureableCell {
 	}
 
 	func configure(note: Note) {
-		self.textLabel!.text = note.title
-		self.detailTextLabel!.text = note.preview
+		textLabel!.text = note.title
+		detailTextLabel!.text = note.preview
 	}
 
 }

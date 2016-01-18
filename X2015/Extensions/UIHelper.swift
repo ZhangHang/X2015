@@ -22,7 +22,7 @@ extension UIHelper {
 		foregroundColor: UIColor,
 		backgroundColor: UIColor,
 		barStyle: UIBarStyle) {
-        self.setupNavigationBarStyle(foregroundColor, backgroundColor: backgroundColor)
+        setupNavigationBarStyle(foregroundColor, backgroundColor: backgroundColor)
         UINavigationBar.appearance().barStyle = barStyle
     }
 
