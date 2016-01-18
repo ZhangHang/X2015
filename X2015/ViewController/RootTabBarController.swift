@@ -28,7 +28,6 @@ final class RootTabBarController: UITabBarController, ManagedObjectContextSettab
         super.viewDidLoad()
 
         self.noteTimelineViewController.managedObjectContext = managedObjectContext
-        // Do any additional setup after loading the view.
     }
 
 }

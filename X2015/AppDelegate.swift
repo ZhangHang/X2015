@@ -19,8 +19,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		application: UIApplication, didFinishLaunchingWithOptions
 		launchOptions: [NSObject: AnyObject]?) -> Bool {
         configureInterface()
-        guard let vc = window?.rootViewController as? ManagedObjectContextSettable else {
-                fatalError("Wrong view controller type")
+        guard let vc = window!.rootViewController as? ManagedObjectContextSettable else {
+			fatalError("Wrong view controller type")
         }
         vc.managedObjectContext = managedObjectContext
         return true
@@ -37,7 +37,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
         do {
-            try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil,
+            try psc.addPersistentStoreWithType(
+				NSSQLiteStoreType, configuration: nil,
 				URL: StoreURL,
 				options: nil)
             let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)

@@ -12,6 +12,7 @@ import CoreData
 final class NoteEditViewController: UIViewController, ManagedObjectContextSettable {
 
     enum SegueIdentifier {
+
         case Create, Edit
 
         func identifier() -> String {

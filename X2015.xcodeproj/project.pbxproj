@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */; };
+		7F0D86EC1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86EB1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift */; };
 		7F37C7851C41658E00519B18 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
 		7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7841C41658E00519B18 /* UIHelper.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AnimationHandler.swift"; sourceTree = "<group>"; };
+		7F0D86EB1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NoteTimelineTableViewController+Workaround.swift"; path = "ViewController/NoteTimelineTableViewController+Workaround.swift"; sourceTree = "<group>"; };
 		7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7841C41658E00519B18 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -111,7 +113,7 @@
 		7F5204BD1C34F79B00507125 = {
 			isa = PBXGroup;
 			children = (
-				7F5204C81C34F79B00507125 /* X2015 */,
+				7F5204C81C34F79B00507125 /* X2015 iOS */,
 				7F5204C71C34F79B00507125 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -124,7 +126,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7F5204C81C34F79B00507125 /* X2015 */ = {
+		7F5204C81C34F79B00507125 /* X2015 iOS */ = {
 			isa = PBXGroup;
 			children = (
 				7FFD814A1C4B5B4B004F1987 /* Views */,
@@ -138,6 +140,7 @@
 				7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */,
 				7F5204D81C34F79B00507125 /* Info.plist */,
 			);
+			name = "X2015 iOS";
 			path = X2015;
 			sourceTree = "<group>";
 		};
@@ -188,6 +191,7 @@
 			children = (
 				7F5205171C364C7C00507125 /* Protocols */,
 				7F52050D1C3528D900507125 /* NoteTimelineTableViewController.swift */,
+				7F0D86EB1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift */,
 				7F52050F1C3587F400507125 /* NoteEditViewController.swift */,
 				7FFD81561C4B7895004F1987 /* RootTabBarController.swift */,
 			);
@@ -341,6 +345,7 @@
 				7F5204FF1C3504C900507125 /* ModelBuilder.swift in Sources */,
 				7F5205041C3504C900507125 /* NSManagedObjectContext+Observers.swift in Sources */,
 				7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */,
+				7F0D86EC1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift in Sources */,
 				7F5205011C3504C900507125 /* NSFetchRequest+Extensions.swift in Sources */,
 				7F5204FE1C3504C900507125 /* Migration.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
