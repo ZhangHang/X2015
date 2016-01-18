@@ -11,9 +11,7 @@ import Foundation
 extension String {
 
     func lineWithContent(index: UInt) -> String? {
-
         var lineWithContentCount: UInt = 0
-
         var line: String?
 
         enumerateLines({ (_line, stop) -> () in

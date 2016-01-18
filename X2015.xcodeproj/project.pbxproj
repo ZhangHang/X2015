@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0D360A1C4D2CA7009F18A6 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36091C4D2CA7009F18A6 /* MeTableViewController.swift */; };
 		7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */; };
 		7F0D86EC1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86EB1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift */; };
 		7F0D86F91C4CE078000DA469 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D86FB1C4CE078000DA469 /* InfoPlist.strings */; };
@@ -47,11 +48,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F0D36091C4D2CA7009F18A6 /* MeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeTableViewController.swift; path = ViewController/MeTableViewController.swift; sourceTree = "<group>"; };
+		7F0D36111C4D2F9B009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		7F0D36131C4D2F9D009F18A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AnimationHandler.swift"; sourceTree = "<group>"; };
 		7F0D86EB1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NoteTimelineTableViewController+Workaround.swift"; path = "ViewController/NoteTimelineTableViewController+Workaround.swift"; sourceTree = "<group>"; };
-		7F0D86F41C4CDFA9000DA469 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7F0D86FC1C4CE0BE000DA469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7F0D86FE1C4CE0D4000DA469 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7F0D86FF1C4CE0D4000DA469 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7F0D87001C4CE0D4000DA469 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
@@ -137,9 +139,9 @@
 			children = (
 				7FFD814A1C4B5B4B004F1987 /* Views */,
 				7F37C7811C41658E00519B18 /* Extensions */,
-				7F5205091C350BBD00507125 /* ViewController */,
-				7F5204E31C35041000507125 /* Vendor */,
-				7F5204DE1C34FB3500507125 /* Model */,
+				7F5205091C350BBD00507125 /* ViewControllers */,
+				7F5204E31C35041000507125 /* Vendors */,
+				7F5204DE1C34FB3500507125 /* Models */,
 				7F5204C91C34F79B00507125 /* AppDelegate.swift */,
 				7F5204CD1C34F79B00507125 /* Main.storyboard */,
 				7F5204D31C34F79B00507125 /* Assets.xcassets */,
@@ -151,22 +153,22 @@
 			path = X2015;
 			sourceTree = "<group>";
 		};
-		7F5204DE1C34FB3500507125 /* Model */ = {
+		7F5204DE1C34FB3500507125 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				7F5204D01C34F79B00507125 /* X2015.xcdatamodeld */,
 				7F5204DF1C34FB4800507125 /* Note.swift */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
-		7F5204E31C35041000507125 /* Vendor */ = {
+		7F5204E31C35041000507125 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
 				7F5205161C3646A700507125 /* KeyboardNotificationHelper */,
 				7F5204E61C3504B300507125 /* CoreDataSharedCode */,
 			);
-			name = Vendor;
+			name = Vendors;
 			sourceTree = "<group>";
 		};
 		7F5204E61C3504B300507125 /* CoreDataSharedCode */ = {
@@ -193,7 +195,7 @@
 			name = CoreDataSharedCode;
 			sourceTree = "<group>";
 		};
-		7F5205091C350BBD00507125 /* ViewController */ = {
+		7F5205091C350BBD00507125 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				7F5205171C364C7C00507125 /* Protocols */,
@@ -201,8 +203,9 @@
 				7F0D86EB1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift */,
 				7F52050F1C3587F400507125 /* NoteEditViewController.swift */,
 				7FFD81561C4B7895004F1987 /* RootTabBarController.swift */,
+				7F0D36091C4D2CA7009F18A6 /* MeTableViewController.swift */,
 			);
-			name = ViewController;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		7F5205161C3646A700507125 /* KeyboardNotificationHelper */ = {
@@ -358,6 +361,7 @@
 				7F5205011C3504C900507125 /* NSFetchRequest+Extensions.swift in Sources */,
 				7F5204FE1C3504C900507125 /* Migration.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
+				7F0D360A1C4D2CA7009F18A6 /* MeTableViewController.swift in Sources */,
 				7F5205071C3504C900507125 /* Utilities.swift in Sources */,
 				7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */,
 				7F5205101C3587F400507125 /* NoteEditViewController.swift in Sources */,
@@ -383,8 +387,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				7F5204CE1C34F79B00507125 /* Base */,
-				7F0D86F41C4CDFA9000DA469 /* en */,
-				7F0D86FE1C4CE0D4000DA469 /* zh-Hans */,
+				7F0D36111C4D2F9B009F18A6 /* en */,
+				7F0D36131C4D2F9D009F18A6 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

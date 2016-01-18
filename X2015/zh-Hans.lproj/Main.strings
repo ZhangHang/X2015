@@ -3,13 +3,22 @@
 "14B-fx-PXZ.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "ExM-bL-MCn"; */
-"ExM-bL-MCn.text" = "Title";
+"ExM-bL-MCn.text" = "标题";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VA3-Ww-ybn"; */
-"VA3-Ww-ybn.text" = "Detail";
+"VA3-Ww-ybn.text" = "详情";
+
+/* Class = "UINavigationItem"; title = "Me"; ObjectID = "WKx-j3-VXi"; */
+"WKx-j3-VXi.title" = "我";
 
 /* Class = "UINavigationItem"; title = "Note"; ObjectID = "ZYM-mc-Flt"; */
 "ZYM-mc-Flt.title" = "笔记";
 
 /* Class = "UITabBarItem"; title = "Note"; ObjectID = "hW0-Mq-2iX"; */
 "hW0-Mq-2iX.title" = "笔记";
+
+/* Class = "UITabBarItem"; title = "Me"; ObjectID = "oVM-X4-9UH"; */
+"oVM-X4-9UH.title" = "我";
+
+/* Class = "UILabel"; text = "Export Notes"; ObjectID = "pI3-VU-WGt"; */
+"pI3-VU-WGt.text" = "导出笔记";
