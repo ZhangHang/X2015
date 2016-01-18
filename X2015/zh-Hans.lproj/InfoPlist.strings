@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  X2015
+
+  Created by Hang Zhang on 1/18/16.
+  Copyright © 2016 Zhang Hang. All rights reserved.
+*/
+
+ADD_NOTE_SHORTCUT_TITLE = "新建笔记";
