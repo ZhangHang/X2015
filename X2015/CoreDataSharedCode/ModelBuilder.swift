@@ -30,12 +30,7 @@ extension NSManagedObjectContext {
 extension NSPersistentStoreCoordinator {
 
     func destroySQLiteStoreAtURL(storeURL: NSURL) {
-        if #available(OSX 10.11, iOS 9.0, *) {
-            try! destroyPersistentStoreAtURL(storeURL, withType: NSSQLiteStoreType, options: [:])
-        } else {
-            // Fallback on earlier versions
-            fatalError()
-        }
+        try! destroyPersistentStoreAtURL(storeURL, withType: NSSQLiteStoreType, options: [:])
     }
 
 }

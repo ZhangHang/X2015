@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ConfigureableCell: class {
-    
+
     static var reuseIdentifier: String! { get }
-    
+
 }

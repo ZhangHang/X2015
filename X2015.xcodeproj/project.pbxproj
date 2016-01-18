@@ -19,7 +19,6 @@
 		7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204E71C3504C900507125 /* Collection+CoreDataExtensions.swift */; };
 		7F5204F91C3504C900507125 /* CoreDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204E81C3504C900507125 /* CoreDataErrors.swift */; };
 		7F5204FA1C3504C900507125 /* KeyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204E91C3504C900507125 /* KeyCodable.swift */; };
-		7F5204FB1C3504C900507125 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204EA1C3504C900507125 /* LICENSE.md */; };
 		7F5204FC1C3504C900507125 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204EB1C3504C900507125 /* ManagedObject.swift */; };
 		7F5204FD1C3504C900507125 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204EC1C3504C900507125 /* ManagedObjectObserver.swift */; };
 		7F5204FE1C3504C900507125 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204ED1C3504C900507125 /* Migration.swift */; };
@@ -30,7 +29,6 @@
 		7F5205031C3504C900507125 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F21C3504C900507125 /* NSManagedObjectContext+Extensions.swift */; };
 		7F5205041C3504C900507125 /* NSManagedObjectContext+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F31C3504C900507125 /* NSManagedObjectContext+Observers.swift */; };
 		7F5205051C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F41C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift */; };
-		7F5205061C3504C900507125 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F51C3504C900507125 /* README.md */; };
 		7F5205071C3504C900507125 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F61C3504C900507125 /* Utilities.swift */; };
 		7F5205081C3504C900507125 /* ValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204F71C3504C900507125 /* ValueTransformer.swift */; };
 		7F52050E1C3528D900507125 /* NoteTimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52050D1C3528D900507125 /* NoteTimelineTableViewController.swift */; };
@@ -239,6 +237,7 @@
 				7F5204C21C34F79B00507125 /* Sources */,
 				7F5204C31C34F79B00507125 /* Frameworks */,
 				7F5204C41C34F79B00507125 /* Resources */,
+				7FFD81581C4C907B004F1987 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -296,6 +295,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7FFD81581C4C907B004F1987 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7F5204C21C34F79B00507125 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -307,7 +322,6 @@
 				7F5205081C3504C900507125 /* ValueTransformer.swift in Sources */,
 				7F5204D21C34F79B00507125 /* X2015.xcdatamodeld in Sources */,
 				7F5204FD1C3504C900507125 /* ManagedObjectObserver.swift in Sources */,
-				7F5204FB1C3504C900507125 /* LICENSE.md in Sources */,
 				7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */,
 				7FFD81571C4B7895004F1987 /* RootTabBarController.swift in Sources */,
 				7F5205031C3504C900507125 /* NSManagedObjectContext+Extensions.swift in Sources */,
@@ -319,7 +333,6 @@
 				7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */,
 				7F5204E01C34FB4800507125 /* Note.swift in Sources */,
 				7F5205001C3504C900507125 /* ModelVersionType.swift in Sources */,
-				7F5205061C3504C900507125 /* README.md in Sources */,
 				7FFE12C21C3CDF530099EA2C /* ManagedObjectContextSettable.swift in Sources */,
 				7F5205191C364C9100507125 /* ConfigureableCell.swift in Sources */,
 				7F5204FF1C3504C900507125 /* ModelBuilder.swift in Sources */,

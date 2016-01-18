@@ -21,10 +21,10 @@ import UIKit
 /// - UIKeyboardAnimationCurveUserInfoKey
 
 public struct KeyboardNotification {
-    
+
     let notification: NSNotification
     let userInfo: NSDictionary
-    
+
     /// Initializer
     ///
     /// :param: notification Keyboard-related notification
@@ -32,42 +32,38 @@ public struct KeyboardNotification {
         self.notification = notification
         if let userInfo = notification.userInfo {
             self.userInfo = userInfo
-        }
-        else {
+        } else {
             self.userInfo = NSDictionary()
         }
     }
-    
+
     /// Start frame of the keyboard in screen coordinates
     public var screenFrameBegin: CGRect {
         if let value = userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue {
             return value.CGRectValue()
-        }
-        else {
+        } else {
             return CGRectZero
         }
     }
-    
+
     /// End frame of the keyboard in screen coordinates
     public var screenFrameEnd: CGRect {
         if let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             return value.CGRectValue()
-        }
-        else {
+        } else {
             return CGRectZero
         }
     }
-    
+
     /// Keyboard animation duration
     public var animationDuration: Double {
         if let number = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
             return number.doubleValue
-        }
-        else {
+        } else {
             return 0.25
         }
     }
-    
+
     /// Keyboard animation curve
     ///
     /// Note that the value returned by this method may not correspond to a
@@ -79,7 +75,7 @@ public struct KeyboardNotification {
         }
         return UIViewAnimationCurve.EaseInOut.rawValue
     }
-    
+
     /// Start frame of the keyboard in coordinates of specified view
     ///
     /// :param: view UIView to whose coordinate system the frame will be converted
@@ -87,7 +83,7 @@ public struct KeyboardNotification {
     public func frameBeginForView(view: UIView) -> CGRect {
         return view.convertRect(screenFrameBegin, fromView: view.window)
     }
-    
+
     /// End frame of the keyboard in coordinates of specified view
     ///
     /// :param: view UIView to whose coordinate system the frame will be converted

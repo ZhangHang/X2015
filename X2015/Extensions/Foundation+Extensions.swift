@@ -9,24 +9,24 @@
 import Foundation
 
 extension String {
-    
+
     func lineWithContent(index: UInt) -> String? {
-   
+
         var lineWithContentCount: UInt = 0
-        
+
         var line: String?
-        
+
         self.enumerateLines({ (_line, stop) -> () in
             if _line.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
-                if(index == lineWithContentCount){
+                if index == lineWithContentCount {
                     line = _line
                     stop = true
                 }
                 lineWithContentCount += 1
             }
         })
-        
+
         return line
     }
-    
+
 }

@@ -8,6 +8,6 @@
 
 import UIKit
 
-class EmptyNoteWelcomeView: UIView {}
+final class EmptyNoteWelcomeView: UIView {}
 
 extension EmptyNoteWelcomeView: NibLoadable {}

@@ -1,0 +1,15 @@
+#disabled_rules: # rule identifiers to exclude from running
+  # - colon
+  # - comma
+  # - control_statement
+  # - force_cast
+  # Find all the available rules by running:
+  # swiftlint rules
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - X2015/CoreDataSharedCode
+# parameterized rules can be customized from this configuration file
+line_length: 110
+# parameterized rules are first parameterized as a warning level, then error level.
+type_body_length::
+  - 300 # warning
+  - 400 # error

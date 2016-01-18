@@ -8,19 +8,22 @@
 
 import UIKit
 
-final class UIHelper: NSObject {}
+public struct UIHelper {}
 
 extension UIHelper {
-    
-    static func setupNavigationBarStyle(foregroundColor:UIColor, backgroundColor: UIColor) {
+
+    static func setupNavigationBarStyle(foregroundColor: UIColor, backgroundColor: UIColor) {
         UINavigationBar.appearance().barTintColor = foregroundColor
         UINavigationBar.appearance().tintColor = backgroundColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: backgroundColor]
     }
-    
-    static func setupNavigationBarStyle(foregroundColor:UIColor, backgroundColor: UIColor, barStyle: UIBarStyle) {
+
+    static func setupNavigationBarStyle(
+		foregroundColor: UIColor,
+		backgroundColor: UIColor,
+		barStyle: UIBarStyle) {
         self.setupNavigationBarStyle(foregroundColor, backgroundColor: backgroundColor)
         UINavigationBar.appearance().barStyle = barStyle
     }
-    
+
 }
