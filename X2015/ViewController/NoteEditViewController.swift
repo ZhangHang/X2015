@@ -11,6 +11,8 @@ import CoreData
 
 final class NoteEditViewController: UIViewController, ManagedObjectContextSettable {
 
+	static let storyboardID = "NoteEditViewController"
+
     enum SegueIdentifier {
 
         case Create, Edit

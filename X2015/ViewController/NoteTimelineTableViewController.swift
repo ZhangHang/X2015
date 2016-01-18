@@ -42,7 +42,7 @@ final class NoteTimelineTableViewController: UITableViewController, ManagedObjec
 			fatalError()
 		}
 		updateWelcomeViewVisibility()
-		super.viewWillDisappear(animated)
+		super.viewWillAppear(animated)
 	}
 
 }
@@ -161,8 +161,11 @@ extension NoteTimelineTableViewController {
 
 extension NoteTimelineTableViewController {
 
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	func handleNewNoteShortcut() {
+		performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.Create.identifier(), sender: self)
+	}
 
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		guard let identifier = segue.identifier else {
 			fatalError("No segue identifier found")
 		}

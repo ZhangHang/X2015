@@ -31,3 +31,9 @@ final class RootTabBarController: UITabBarController, ManagedObjectContextSettab
     }
 
 }
+
+extension RootTabBarController {
+	func handleNewNoteShortcut() {
+		noteTimelineViewController.handleNewNoteShortcut()
+	}
+}
