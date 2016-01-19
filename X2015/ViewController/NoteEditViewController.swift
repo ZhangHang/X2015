@@ -69,7 +69,8 @@ final class NoteEditViewController: UIViewController, ManagedObjectContextSettab
         super.viewWillDisappear(animated)
         keyboardNotificationObserver.stopMonitor()
 
-        if !hasContent {
+        if !hasContent && self.note == nil {
+			// TODO: Display an alert
             return
         }
 
