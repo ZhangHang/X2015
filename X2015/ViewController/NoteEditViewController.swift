@@ -70,7 +70,7 @@ final class NoteEditViewController: UIViewController, ManagedObjectContextSettab
         keyboardNotificationObserver.stopMonitor()
 
         if !hasContent && self.note == nil {
-			// TODO: Display an alert
+			// todo: Display an alert
             return
         }
 

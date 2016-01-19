@@ -22,3 +22,6 @@
 
 /* Class = "UILabel"; text = "Export Notes"; ObjectID = "pI3-VU-WGt"; */
 "pI3-VU-WGt.text" = "Export Notes";
+
+/* Class = "UILabel"; text = "Touch ID"; ObjectID = "vai-bW-dU5"; */
+"vai-bW-dU5.text" = "Touch ID";

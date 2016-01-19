@@ -6,4 +6,9 @@
   Copyright © 2016 Zhang Hang. All rights reserved.
 */
 
-"CELL_DELETE"="删除";
+"Delete"="删除";
+"Use Touch ID to Unlock"="使用指纹解锁";
+"There was a problem verifying your identity"="无法识别您的指纹";
+"Touch ID may not be configured"="请设置指纹";
+"Error"="错误";
+"OK"="确认";

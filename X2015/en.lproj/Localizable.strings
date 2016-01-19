@@ -6,4 +6,9 @@
   Copyright © 2016 Zhang Hang. All rights reserved.
 */
 
-"CELL_DELETE"="Delete";
+"Delete"="Delete";
+"Use Touch ID to Unlock"="Use Touch ID to Unlock";
+"There was a problem verifying your identity"="There was a problem verifying your identity";
+"Touch ID may not be configured"="Touch ID may not be configured";
+"Error"="Error";
+"OK"="OK";

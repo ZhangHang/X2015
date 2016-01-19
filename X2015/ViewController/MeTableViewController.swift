@@ -10,20 +10,86 @@ import UIKit
 
 class MeTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	enum Cell {
 
-    }
+		case ExportNote
+		case UnlockByTouchID
 
+		var section: Int {
+			switch self {
+			case .ExportNote:
+				return 0
+			case .UnlockByTouchID:
+				return 1
+			}
+		}
 
-    /*
-    // MARK: - Navigation
+		var row: Int {
+			switch self {
+			case .ExportNote:
+				return 0
+			case .UnlockByTouchID:
+				return 0
+			}
+		}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+		var indexPath: NSIndexPath {
+			return NSIndexPath(forRow: row, inSection: section)
+		}
+
+	}
+
+	private let settings = Settings()
+
+	@IBOutlet weak var unlockByTouchIDSwitch: UISwitch!
+	@IBOutlet weak var unlockByTouchCellTitleLabel: UILabel!
+
+	override func viewWillAppear(animated: Bool) {
+		updateUnlockByTouchIDCell()
+		super.viewWillAppear(animated)
+	}
+
+}
+
+extension MeTableViewController {
+
+	override func tableView(
+		tableView: UITableView,
+		willDisplayCell cell: UITableViewCell,
+		forRowAtIndexPath indexPath: NSIndexPath) {
+			if indexPath == Cell.UnlockByTouchID.indexPath {
+				updateUnlockByTouchIDCell()
+			}
+	}
+
+	private func updateUnlockByTouchIDCell() {
+		let hasTouchID = TouchIDHelper.hasTouchID
+		unlockByTouchCellTitleLabel.enabled = hasTouchID
+		unlockByTouchIDSwitch.enabled = hasTouchID
+		unlockByTouchIDSwitch.on = settings.unlockByTouchID
+	}
+
+	@IBAction func handleUnlockByTouchIDSwitchValueChanged(sender: UISwitch) {
+		TouchIDHelper.auth(
+			NSLocalizedString("Use Touch ID to Unlock", comment: ""),
+				successHandler: { () -> Void in
+					self.settings.unlockByTouchID = sender.on
+			},
+				errorHandler: { (errorMessage) -> Void in
+					sender.setOn(!sender.on, animated: true)
+					if errorMessage?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
+						let alertView = UIAlertController(
+							title: NSLocalizedString("Error", comment: ""),
+							message: errorMessage,
+							preferredStyle:.Alert)
+						let okAction = UIAlertAction(
+							title: NSLocalizedString("OK", comment: ""),
+							style: .Default,
+							handler: nil)
+						alertView.addAction(okAction)
+						self.presentViewController(alertView, animated: true, completion: nil)
+					}
+		})
+	}
 
 }

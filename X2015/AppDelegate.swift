@@ -30,32 +30,36 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 
-    var window: UIWindow?
+	var window: UIWindow?
 	var launchedShortcutItem: UIApplicationShortcutItem?
-    let managedObjectContext: NSManagedObjectContext = AppDelegate.createMainContext()
+	let managedObjectContext: NSManagedObjectContext = AppDelegate.createMainContext()
 
-    func application(
+	func application(
 		application: UIApplication, didFinishLaunchingWithOptions
 		launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-		// configure interface
-        configureInterface()
+			// configure interface
+			configureInterface()
 
-		// pass managedObjectContext
-        guard let vc = window!.rootViewController as? ManagedObjectContextSettable else {
-			fatalError("Wrong view controller type")
-        }
-        vc.managedObjectContext = managedObjectContext
+			// pass managedObjectContext
+			guard let vc = window!.rootViewController as? ManagedObjectContextSettable else {
+				fatalError("Wrong view controller type")
+			}
+			vc.managedObjectContext = managedObjectContext
 
-		// handle application shortcut
-		var shouldPerformAdditionalDelegateHandling = true
-		if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey]
-			as? UIApplicationShortcutItem {
-				launchedShortcutItem = shortcutItem
-				shouldPerformAdditionalDelegateHandling = false
+			// handle application shortcut
+			var shouldPerformAdditionalDelegateHandling = true
+			if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey]
+				as? UIApplicationShortcutItem {
+					launchedShortcutItem = shortcutItem
+					shouldPerformAdditionalDelegateHandling = false
 			}
 
-		return shouldPerformAdditionalDelegateHandling
+			// Touch ID
+			hideWindowIfTouchIDUnlockEnabled()
+			presentTouchIDUnlockRequestIfEnabled()
+
+			return shouldPerformAdditionalDelegateHandling
 	}
 
 	func applicationDidBecomeActive(application: UIApplication) {
@@ -68,45 +72,53 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		application: UIApplication,
 		performActionForShortcutItem shortcutItem: UIApplicationShortcutItem,
 		completionHandler: (Bool) -> Void) {
-		completionHandler(handleShortcut(shortcutItem))
+			completionHandler(handleShortcut(shortcutItem))
 	}
 
-    // MARK: - Core Data stack
+	func applicationWillEnterForeground(application: UIApplication) {
+		presentTouchIDUnlockRequestIfEnabled()
+	}
 
-    private static let StoreURL = NSURL.documentsURL.URLByAppendingPathComponent("X2015.moody")
+	func applicationDidEnterBackground(application: UIApplication) {
+		hideWindowIfTouchIDUnlockEnabled()
+	}
 
-    static func createMainContext() -> NSManagedObjectContext {
-        let bundles = [NSBundle(forClass: Note.self)]
-        guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
-            fatalError("model not found")
-        }
-        let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
-        do {
-            try psc.addPersistentStoreWithType(
+	// MARK: - Core Data stack
+
+	private static let StoreURL = NSURL.documentsURL.URLByAppendingPathComponent("X2015.moody")
+
+	static func createMainContext() -> NSManagedObjectContext {
+		let bundles = [NSBundle(forClass: Note.self)]
+		guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
+			fatalError("model not found")
+		}
+		let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
+		do {
+			try psc.addPersistentStoreWithType(
 				NSSQLiteStoreType, configuration: nil,
 				URL: StoreURL,
 				options: nil)
-            let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-            context.persistentStoreCoordinator = psc
-            return context
-        } catch {
-            fatalError()
-        }
-    }
+			let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+			context.persistentStoreCoordinator = psc
+			return context
+		} catch {
+			fatalError()
+		}
+	}
 
 }
 
 extension AppDelegate {
 
-    private func configureInterface() {
-        window!.tintColor = UIColor.x2015_BlueColor()
-        window!.backgroundColor = UIColor.whiteColor()
+	private func configureInterface() {
+		window!.tintColor = UIColor.x2015_BlueColor()
+		window!.backgroundColor = UIColor.whiteColor()
 
-        UIHelper.setupNavigationBarStyle(
+		UIHelper.setupNavigationBarStyle(
 			window!.tintColor,
 			backgroundColor: UIColor.whiteColor(),
 			barStyle: .Black)
-    }
+	}
 
 	private func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
 		guard let shortcutIdentifier = ShortcutIdentifier(fullType: shortcutItem.type) else { return false }
@@ -121,4 +133,25 @@ extension AppDelegate {
 			return true
 		}
 	}
+}
+
+extension AppDelegate {
+
+	private func hideWindowIfTouchIDUnlockEnabled() {
+		if Settings().unlockByTouchID && TouchIDHelper.hasTouchID {
+			window!.alpha = 0
+		}
+	}
+
+	private func presentTouchIDUnlockRequestIfEnabled() {
+		if Settings().unlockByTouchID && TouchIDHelper.hasTouchID {
+			TouchIDHelper.auth(
+				NSLocalizedString("Use Touch ID to Unlock", comment: ""),
+				successHandler: { [unowned self] () -> Void in
+					self.window!.alpha = 1
+				}) { (errorMessage) -> Void in
+			}
+		}
+	}
+
 }
