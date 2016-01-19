@@ -126,7 +126,7 @@ extension NoteTimelineTableViewController {
 			return [
 				UITableViewRowAction(
 					style: .Default,
-					title: "Delete",
+					title: NSLocalizedString("CELL_DELETE", comment: ""),
 					handler: { [unowned self](action, indexPath) -> Void in
 						self.managedObjectContext.performChanges({ [unowned self] () -> () in
 							self.managedObjectContext.deleteObject(self.noteAt(indexPath))

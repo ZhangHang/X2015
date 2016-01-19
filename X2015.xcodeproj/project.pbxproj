@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F0D360A1C4D2CA7009F18A6 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36091C4D2CA7009F18A6 /* MeTableViewController.swift */; };
+		7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D36191C4D346B009F18A6 /* Localizable.strings */; };
 		7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */; };
 		7F0D86EC1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86EB1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift */; };
 		7F0D86F91C4CE078000DA469 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D86FB1C4CE078000DA469 /* InfoPlist.strings */; };
@@ -51,6 +52,10 @@
 		7F0D36091C4D2CA7009F18A6 /* MeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeTableViewController.swift; path = ViewController/MeTableViewController.swift; sourceTree = "<group>"; };
 		7F0D36111C4D2F9B009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7F0D36131C4D2F9D009F18A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		7F0D36161C4D3467009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7F0D36181C4D346B009F18A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7F0D361A1C4D346E009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7F0D361B1C4D346F009F18A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AnimationHandler.swift"; sourceTree = "<group>"; };
 		7F0D86EB1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NoteTimelineTableViewController+Workaround.swift"; path = "ViewController/NoteTimelineTableViewController+Workaround.swift"; sourceTree = "<group>"; };
 		7F0D86FC1C4CE0BE000DA469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -148,6 +153,7 @@
 				7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */,
 				7F5204D81C34F79B00507125 /* Info.plist */,
 				7F0D86FB1C4CE078000DA469 /* InfoPlist.strings */,
+				7F0D36191C4D346B009F18A6 /* Localizable.strings */,
 			);
 			name = "X2015 iOS";
 			path = X2015;
@@ -305,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */,
+				7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */,
 				7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */,
 				7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */,
 				7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */,
@@ -374,11 +381,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		7F0D36191C4D346B009F18A6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F0D36181C4D346B009F18A6 /* Base */,
+				7F0D361A1C4D346E009F18A6 /* en */,
+				7F0D361B1C4D346F009F18A6 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		7F0D86FB1C4CE078000DA469 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7F0D86FC1C4CE0BE000DA469 /* Base */,
 				7F0D87001C4CE0D4000DA469 /* zh-Hans */,
+				7F0D36161C4D3467009F18A6 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
