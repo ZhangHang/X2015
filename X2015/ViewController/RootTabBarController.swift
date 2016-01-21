@@ -11,24 +11,23 @@ import CoreData
 
 final class RootTabBarController: UITabBarController, ManagedObjectContextSettable {
 
-    var managedObjectContext: NSManagedObjectContext!
+	var managedObjectContext: NSManagedObjectContext!
 
-    var noteTimelineViewController: NoteTimelineTableViewController {
-        guard
-            let nc = childViewControllers.first as? UINavigationController,
-            let vc = nc.childViewControllers.first as? NoteTimelineTableViewController else {
-                fatalError("Wrong view controller type found")
-        }
+	var noteTimelineViewController: NoteTimelineTableViewController {
+		guard
+			let nc = childViewControllers.first as? UINavigationController,
+			let vc = nc.childViewControllers.first as? NoteTimelineTableViewController else {
+				fatalError("Wrong view controller type found")
+		}
 
-        return vc
+		return vc
+	}
 
-    }
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.noteTimelineViewController.managedObjectContext = managedObjectContext
-    }
+		noteTimelineViewController.managedObjectContext = managedObjectContext
+	}
 
 }
 

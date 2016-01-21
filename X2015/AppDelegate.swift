@@ -34,6 +34,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	var launchedShortcutItem: UIApplicationShortcutItem?
 	let managedObjectContext: NSManagedObjectContext = AppDelegate.createMainContext()
 
+	private var rootViewControllerCache: UIViewController?
+	private var lockViewController = LockViewController.instanceFromStoryboard()
+
 	func application(
 		application: UIApplication, didFinishLaunchingWithOptions
 		launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -139,7 +142,8 @@ extension AppDelegate {
 
 	private func hideWindowIfTouchIDUnlockEnabled() {
 		if Settings().unlockByTouchID && TouchIDHelper.hasTouchID {
-			window!.alpha = 0
+			rootViewControllerCache = window!.rootViewController
+			window!.rootViewController = lockViewController
 		}
 	}
 
@@ -148,7 +152,8 @@ extension AppDelegate {
 			TouchIDHelper.auth(
 				NSLocalizedString("Use Touch ID to Unlock", comment: ""),
 				successHandler: { [unowned self] () -> Void in
-					self.window!.alpha = 1
+					self.window!.rootViewController = self.rootViewControllerCache
+					self.rootViewControllerCache = nil
 				}) { (errorMessage) -> Void in
 			}
 		}

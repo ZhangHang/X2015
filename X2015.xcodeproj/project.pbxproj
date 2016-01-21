@@ -14,6 +14,8 @@
 		7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */; };
 		7F0D86EC1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86EB1C4CC1C8000DA469 /* NoteTimelineTableViewController+Workaround.swift */; };
 		7F0D86F91C4CE078000DA469 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D86FB1C4CE078000DA469 /* InfoPlist.strings */; };
+		7F14F3AF1C50949000468F29 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3AE1C50949000468F29 /* LockViewController.swift */; };
+		7F14F3B11C50951700468F29 /* SotyboardCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3B01C50951700468F29 /* SotyboardCreatable.swift */; };
 		7F37C7851C41658E00519B18 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
 		7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7841C41658E00519B18 /* UIHelper.swift */; };
@@ -65,6 +67,8 @@
 		7F0D86FC1C4CE0BE000DA469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7F0D86FF1C4CE0D4000DA469 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7F0D87001C4CE0D4000DA469 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		7F14F3AE1C50949000468F29 /* LockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LockViewController.swift; path = ViewController/LockViewController.swift; sourceTree = "<group>"; };
+		7F14F3B01C50951700468F29 /* SotyboardCreatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SotyboardCreatable.swift; path = ViewController/Protocols/SotyboardCreatable.swift; sourceTree = "<group>"; };
 		7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7841C41658E00519B18 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				7FFD81561C4B7895004F1987 /* RootTabBarController.swift */,
 				7F0D36091C4D2CA7009F18A6 /* MeTableViewController.swift */,
 				7F0D36311C4E010D009F18A6 /* Settings.swift */,
+				7F14F3AE1C50949000468F29 /* LockViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 			children = (
 				7F5205181C364C9100507125 /* ConfigureableCell.swift */,
 				7FFE12C11C3CDF530099EA2C /* ManagedObjectContextSettable.swift */,
+				7F14F3B01C50951700468F29 /* SotyboardCreatable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F5205051C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */,
+				7F14F3B11C50951700468F29 /* SotyboardCreatable.swift in Sources */,
 				7F5204FA1C3504C900507125 /* KeyCodable.swift in Sources */,
 				7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */,
 				7F5204F91C3504C900507125 /* CoreDataErrors.swift in Sources */,
@@ -363,6 +370,7 @@
 				7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */,
 				7F5205021C3504C900507125 /* NSManagedObject+Extensions.swift in Sources */,
 				7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */,
+				7F14F3AF1C50949000468F29 /* LockViewController.swift in Sources */,
 				7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */,
 				7F5204E01C34FB4800507125 /* Note.swift in Sources */,
 				7F5205001C3504C900507125 /* ModelVersionType.swift in Sources */,

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oh0-nI-bMZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oh0-nI-bMZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
@@ -14,7 +16,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="2ti-Xg-RBM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="DW7-cm-R0B">
                                 <cells>
@@ -29,7 +31,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -49,7 +51,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Touch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vai-bW-dU5">
                                                     <rect key="frame" x="15" y="12.5" width="64.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="V36-fs-3YT">
@@ -200,6 +202,37 @@
             </objects>
             <point key="canvasLocation" x="1783" y="1107"/>
         </scene>
+        <!--Lock View Controller-->
+        <scene sceneID="hIw-Kf-qD9">
+            <objects>
+                <viewController restorationIdentifier="LockViewController" storyboardIdentifier="LockViewController" id="olf-GW-cgV" customClass="LockViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eMS-SO-28E"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ur3-Ko-YlQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FEb-n4-hC6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="X2015" translatesAutoresizingMaskIntoConstraints="NO" id="G3e-L2-bry">
+                                <rect key="frame" x="120" y="120" width="360" height="360"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="G3e-L2-bry" secondAttribute="height" id="5HO-bO-8xO"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.23529411759999999" green="0.4823529412" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="G3e-L2-bry" firstAttribute="centerX" secondItem="FEb-n4-hC6" secondAttribute="centerX" id="JEw-Vm-2k9"/>
+                            <constraint firstItem="G3e-L2-bry" firstAttribute="width" secondItem="FEb-n4-hC6" secondAttribute="width" multiplier="0.6" id="TJ0-Mc-bM9"/>
+                            <constraint firstItem="G3e-L2-bry" firstAttribute="centerY" secondItem="FEb-n4-hC6" secondAttribute="centerY" id="tlf-5r-mfN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MZ4-JH-Wxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1766" y="1937"/>
+        </scene>
         <!--Note-->
         <scene sceneID="cgv-KX-YD0">
             <objects>
@@ -244,6 +277,7 @@
         <image name="Tabbar_Me_Filled" width="25" height="25"/>
         <image name="Tabbar_Note" width="25" height="25"/>
         <image name="Tabbar_Note_Filled" width="25" height="25"/>
+        <image name="X2015" width="792" height="792"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YZl-La-RHM"/>
