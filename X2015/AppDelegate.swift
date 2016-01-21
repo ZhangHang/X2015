@@ -34,33 +34,34 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	var launchedShortcutItem: UIApplicationShortcutItem?
 	let managedObjectContext: NSManagedObjectContext = AppDelegate.createMainContext()
 
-	private var rootViewControllerCache: UIViewController?
-	private var lockViewController = LockViewController.instanceFromStoryboard()
+	private var rootViewControllerCache: RootTabBarController?
+	private var lockViewController: LockViewController?
 
 	func application(
 		application: UIApplication, didFinishLaunchingWithOptions
 		launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-			// configure interface
+			// Configure interface
 			configureInterface()
 
-			// pass managedObjectContext
-			guard let vc = window!.rootViewController as? ManagedObjectContextSettable else {
+			// Pass managedObjectContext
+			guard let vc = window!.rootViewController as? RootTabBarController else {
 				fatalError("Wrong view controller type")
 			}
 			vc.managedObjectContext = managedObjectContext
 
-			// handle application shortcut
+			// Touch ID lock screen
+			rootViewControllerCache = vc
+			setupLockViewController()
+			bringUpLockViewControllerIfNecessary()
+
+			// Handle application shortcut
 			var shouldPerformAdditionalDelegateHandling = true
 			if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey]
 				as? UIApplicationShortcutItem {
 					launchedShortcutItem = shortcutItem
 					shouldPerformAdditionalDelegateHandling = false
 			}
-
-			// Touch ID
-			hideWindowIfTouchIDUnlockEnabled()
-			presentTouchIDUnlockRequestIfEnabled()
 
 			return shouldPerformAdditionalDelegateHandling
 	}
@@ -79,11 +80,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationWillEnterForeground(application: UIApplication) {
-		presentTouchIDUnlockRequestIfEnabled()
+		bringUpLockViewControllerIfNecessary()
 	}
 
 	func applicationDidEnterBackground(application: UIApplication) {
-		hideWindowIfTouchIDUnlockEnabled()
+		self.window!.rootViewController = lockViewController
 	}
 
 	// MARK: - Core Data stack
@@ -128,35 +129,38 @@ extension AppDelegate {
 
 		switch shortcutIdentifier {
 		case .NewNote:
-			guard let vc = window!.rootViewController as? RootTabBarController else {
-				fatalError("Wrong view controller type")
-			}
-			vc.handleNewNoteShortcut()
-
+			rootViewControllerCache!.handleNewNoteShortcut()
 			return true
 		}
 	}
+
 }
 
 extension AppDelegate {
 
-	private func hideWindowIfTouchIDUnlockEnabled() {
-		if Settings().unlockByTouchID && TouchIDHelper.hasTouchID {
-			rootViewControllerCache = window!.rootViewController
-			window!.rootViewController = lockViewController
-		}
+	private func setupLockViewController() {
+		self.lockViewController = LockViewController.instanceFromStoryboard()
 	}
 
-	private func presentTouchIDUnlockRequestIfEnabled() {
-		if Settings().unlockByTouchID && TouchIDHelper.hasTouchID {
-			TouchIDHelper.auth(
-				NSLocalizedString("Use Touch ID to Unlock", comment: ""),
-				successHandler: { [unowned self] () -> Void in
-					self.window!.rootViewController = self.rootViewControllerCache
-					self.rootViewControllerCache = nil
-				}) { (errorMessage) -> Void in
-			}
+	private func bringUpLockViewControllerIfNecessary(completionHandler: ( () -> Void )? = nil ) {
+		if !LockViewController.needTouchIDAuth {
+			self.bringDownLockViewController()
+			completionHandler?()
+			return
 		}
+
+		lockViewController!.authSuccessHandler = { [unowned self] in
+			self.bringDownLockViewController()
+			completionHandler?()
+		}
+		lockViewController!.authFailedHandler = {
+			fatalError()
+		}
+		window!.rootViewController = lockViewController
+		lockViewController!.performTouchIDAuth()
 	}
 
+	private func bringDownLockViewController() {
+		window!.rootViewController = rootViewControllerCache
+	}
 }

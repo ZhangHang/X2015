@@ -8,7 +8,22 @@
 
 import UIKit
 
-final class LockViewController: UIViewController {}
+final class LockViewController: UIViewController {
+
+	var authSuccessHandler: ( () -> Void )?
+	var authFailedHandler: ( () -> Void )?
+
+	func performTouchIDAuth() {
+		assert(LockViewController.needTouchIDAuth && TouchIDHelper.hasTouchID)
+		TouchIDHelper.auth(
+			NSLocalizedString("Use Touch ID to Unlock", comment: ""),
+			successHandler: { [unowned self] () -> Void in
+				self.authSuccessHandler?()
+			}) { [unowned self] (errorMessage) -> Void in
+				self.authFailedHandler?()
+		}
+	}
+}
 
 extension LockViewController: SotyboardCreatable {
 
@@ -18,6 +33,14 @@ extension LockViewController: SotyboardCreatable {
 
 	static var viewControllerIdentifier: String {
 		return "LockViewController"
+	}
+
+}
+
+extension LockViewController {
+
+	static var needTouchIDAuth: Bool {
+		return Settings().unlockByTouchID
 	}
 
 }
