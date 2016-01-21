@@ -40,7 +40,6 @@ extension NoteTimelineTableViewController: NoteSearchTableViewControllerDelegate
 				self.performSegueWithIdentifier(
 					NoteEditViewController.SegueIdentifier.Edit.identifier(),
 					sender: self)
-				self.searchController.searchBar.text = nil
 			}
 	}
 
@@ -52,6 +51,9 @@ extension NoteTimelineTableViewController: UISearchResultsUpdating {
 		noteSearchTableViewController.search(searchController.searchBar.text)
 	}
 
+	func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+		self.searchController.searchBar.text = nil
+	}
 }
 
 extension NoteTimelineTableViewController: UISearchBarDelegate {
