@@ -44,6 +44,9 @@ extension Note {
         self.content = content
     }
 
+	public func hasChange(newContent: String) -> Bool {
+		return self.content != newContent
+	}
 }
 
 extension Note {

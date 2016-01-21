@@ -38,6 +38,7 @@ public final class KeyboardNotificationObserver {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+	@objc
     private func keyboardWillChangeFrameNotification(notification: NSNotification) {
         let n = KeyboardNotification(notification)
         let keyboardFrame = n.frameEndForView(viewControllerView!)

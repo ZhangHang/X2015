@@ -22,6 +22,7 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 		super.viewDidLoad()
 		setupFetchedResultController()
 		setupSearchController()
+		registerForPreviewing()
 	}
 
 	override func viewWillAppear(animated: Bool) {

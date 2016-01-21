@@ -136,7 +136,7 @@
         <!--Note Edit View Controller-->
         <scene sceneID="hv7-xz-sm8">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="LYn-i6-btg" customClass="NoteEditViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteEditViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LYn-i6-btg" customClass="NoteEditViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cFU-tO-TqJ"/>
                         <viewControllerLayoutGuide type="bottom" id="f1A-fE-wxp"/>
