@@ -35,8 +35,13 @@ final class NoteEditViewController: UIViewController, ManagedObjectContextSettab
     private weak var note: Note?
     private var keyboardNotificationObserver: KeyboardNotificationObserver!
 
-    func setup(managedObjectContext: NSManagedObjectContext!, exsitingNote: Note? = nil) {
-		note = exsitingNote
+    func setup(managedObjectContext: NSManagedObjectContext!, exsitingNoteID: NSManagedObjectID? = nil) {
+		if let exsitingNoteID = exsitingNoteID {
+			guard let exsitingNote = managedObjectContext.objectWithID(exsitingNoteID) as? Note else {
+				fatalError("Can't fetch note with objectID \(exsitingNoteID)")
+			}
+			note = exsitingNote
+		}
         self.managedObjectContext = managedObjectContext
     }
 

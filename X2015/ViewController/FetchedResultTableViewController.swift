@@ -39,7 +39,7 @@ extension FetchedResultTableViewController {
 
 	// Override point
 	func setupFetchedResultController() {
-
+		fatalError("Override this method to configure fetchedResultController")
 	}
 
 	func fetchData() {

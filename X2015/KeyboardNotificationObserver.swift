@@ -14,17 +14,16 @@ public final class KeyboardNotificationObserver {
 
     private let keyboardOffsetChangeHandler: keyboardOffsetChangeHandlerType
     private weak var viewControllerView: UIView?
-    private var pause: Bool = true
+    private var registered: Bool = false
 
     init(viewControllerView: UIView!, keyboardOffsetChangeHandler: keyboardOffsetChangeHandlerType!) {
         self.viewControllerView = viewControllerView
         self.keyboardOffsetChangeHandler = keyboardOffsetChangeHandler
-        registerForKeyboardNotifications()
     }
 
-    deinit {
-        deregisterForKeyboardNotifications()
-    }
+	deinit {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
 
     // MARK: - Notifications
 
@@ -36,17 +35,10 @@ public final class KeyboardNotificationObserver {
     }
 
     private func deregisterForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(
-			self,
-			name: UIKeyboardWillChangeFrameNotification,
-			object: nil)
+		NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     private func keyboardWillChangeFrameNotification(notification: NSNotification) {
-        if pause {
-            return
-        }
-
         let n = KeyboardNotification(notification)
         let keyboardFrame = n.frameEndForView(viewControllerView!)
         let animationDuration = n.animationDuration
@@ -69,11 +61,14 @@ public final class KeyboardNotificationObserver {
     // MARK: - Public methods
 
     public func startMonitor() {
-        pause = false
+		if registered { return }
+		registerForKeyboardNotifications()
+		registered = true
     }
 
     public func stopMonitor() {
-        pause = true
-    }
-
+		if !registered { return }
+		deregisterForKeyboardNotifications()
+		registered = false
+	}
 }

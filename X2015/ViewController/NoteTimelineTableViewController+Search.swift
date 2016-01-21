@@ -14,6 +14,7 @@ extension NoteTimelineTableViewController {
 	func setupSearchController() {
 		noteSearchTableViewController = NoteSearchTableViewController()
 		noteSearchTableViewController.managedObjectContext = managedObjectContext
+		noteSearchTableViewController.delegate = self
 		searchController = UISearchController(searchResultsController: noteSearchTableViewController)
 		searchController.searchResultsUpdater = self
 		searchController.dimsBackgroundDuringPresentation = true
@@ -25,6 +26,22 @@ extension NoteTimelineTableViewController {
 		let searchBarHeight: CGFloat = CGRectGetHeight(searchController.searchBar.bounds)
 		noteSearchTableViewController.tableView.contentInset.top = searchBarHeight + statusBarHeight
 		noteSearchTableViewController.automaticallyAdjustsScrollViewInsets = false
+	}
+
+}
+
+extension NoteTimelineTableViewController: NoteSearchTableViewControllerDelegate {
+
+	func noteSearchTableViewController(
+		controller: NoteSearchTableViewController,
+		didSelectNoteID noteObjectID: NSManagedObjectID) {
+			self.selectedNoteObjectID = noteObjectID
+			searchController.dismissViewControllerAnimated(true) { [unowned self] () -> Void in
+				self.performSegueWithIdentifier(
+					NoteEditViewController.SegueIdentifier.Edit.identifier(),
+					sender: self)
+				self.searchController.searchBar.text = nil
+			}
 	}
 
 }

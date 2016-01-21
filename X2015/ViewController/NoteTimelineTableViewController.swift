@@ -15,6 +15,9 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 	var searchController: UISearchController!
 	@IBOutlet weak var searchBar: UISearchBar!
 
+	// From timeline or search result
+	var selectedNoteObjectID: NSManagedObjectID?
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupFetchedResultController()
@@ -113,6 +116,7 @@ extension NoteTimelineTableViewController {
 	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		selectedNoteObjectID = noteAt(indexPath).objectID
 		performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.Edit.identifier(), sender: self)
 	}
 
@@ -125,12 +129,12 @@ extension NoteTimelineTableViewController {
 		case NoteEditViewController.SegueIdentifier.Edit.identifier():
 			guard
 				let vc = segue.destinationViewController as? NoteEditViewController,
-				let selectedIndexPath = self.tableView.indexPathForSelectedRow else {
+				let _ = self.selectedNoteObjectID else {
 					fatalError("Wrong edit-viewcontroller")
 			}
 
 			vc.managedObjectContext = managedObjectContext
-			vc.setup(managedObjectContext, exsitingNote: noteAt(selectedIndexPath))
+			vc.setup(managedObjectContext, exsitingNoteID: selectedNoteObjectID)
 			break
 		case NoteEditViewController.SegueIdentifier.Create.identifier():
 			guard let vc = segue.destinationViewController as? NoteEditViewController else {

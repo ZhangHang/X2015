@@ -9,10 +9,20 @@
 import UIKit
 import CoreData
 
+protocol NoteSearchTableViewControllerDelegate: class {
+
+	func noteSearchTableViewController(
+		controller: NoteSearchTableViewController,
+		didSelectNoteID noteObjectID: NSManagedObjectID)
+
+}
+
 class NoteSearchTableViewController: FetchedResultTableViewController {
 
 	private var keywordCache: String?
 	private var searchPredicate: NSPredicate?
+
+	weak var delegate: NoteSearchTableViewControllerDelegate?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -54,6 +64,10 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 			return cell
 	}
 
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		delegate?.noteSearchTableViewController(self,
+			didSelectNoteID: (objectAt(indexPath) as Note).objectID)
+	}
 }
 
 extension NoteSearchTableViewController {
