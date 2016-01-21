@@ -11,6 +11,13 @@ import CoreData
 
 final class RootTabBarController: UITabBarController, ManagedObjectContextSettable {
 
+	private enum SelectionIndex: Int {
+
+		case NoteTimeline = 0
+		case Setting
+
+	}
+
 	var managedObjectContext: NSManagedObjectContext!
 
 	var noteTimelineViewController: NoteTimelineTableViewController {
@@ -33,6 +40,7 @@ final class RootTabBarController: UITabBarController, ManagedObjectContextSettab
 
 extension RootTabBarController {
 	func handleNewNoteShortcut() {
+		selectedIndex = SelectionIndex.NoteTimeline.rawValue
 		noteTimelineViewController.handleNewNoteShortcut()
 	}
 }
