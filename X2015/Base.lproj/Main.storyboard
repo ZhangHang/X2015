@@ -6,7 +6,6 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Me-->
@@ -114,38 +113,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteTableViewCell" textLabel="ExM-bL-MCn" detailTextLabel="VA3-Ww-ybn" rowHeight="80" style="IBUITableViewCellStyleSubtitle" id="kJI-Wr-ScE" customClass="NoteTableViewCell" customModule="X2015" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kJI-Wr-ScE" id="O7G-0Q-gNE">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ExM-bL-MCn">
-                                            <rect key="frame" x="15" y="24" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VA3-Ww-ybn">
-                                            <rect key="frame" x="15" y="43.5" width="30.5" height="13.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="LYn-i6-btg" kind="show" identifier="EditNoteSegueIdentifier" id="YZl-La-RHM">
-                                        <segue key="commit" inheritsFrom="parent" id="Nqb-LO-gb9"/>
-                                        <segue key="preview" inheritsFrom="commit" id="ZEP-TB-CTv"/>
-                                    </segue>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="ieF-Bw-kxn" id="8wO-75-sfe"/>
                             <outlet property="delegate" destination="ieF-Bw-kxn" id="zKF-u7-2gK"/>
@@ -158,6 +125,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="LYn-i6-btg" kind="show" identifier="EditNoteSegueIdentifier" id="Evu-a2-LzC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jS-0L-da3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -280,6 +250,6 @@
         <image name="X2015" width="792" height="792"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YZl-La-RHM"/>
+        <segue reference="Evu-a2-LzC"/>
     </inferredMetricsTieBreakers>
 </document>

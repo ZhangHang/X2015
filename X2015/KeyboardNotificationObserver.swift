@@ -42,7 +42,6 @@ public final class KeyboardNotificationObserver {
 			object: nil)
     }
 
-    @objc
     private func keyboardWillChangeFrameNotification(notification: NSNotification) {
         if pause {
             return

@@ -9,19 +9,28 @@
 import UIKit
 import CoreData
 
-final class NoteTimelineTableViewController: UITableViewController, ManagedObjectContextSettable {
+final class NoteTimelineTableViewController: FetchedResultTableViewController {
 
-	var managedObjectContext: NSManagedObjectContext!
-	var fetchedResultController: NSFetchedResultsController!
-
-	/*
-	* workaround for http://stackoverflow.com/questions/34694178/using-3d-touch-with-storyboards-peek-and-pop
-	*/
-	var selectedIndexPath: NSIndexPath?
+	var noteSearchTableViewController: NoteSearchTableViewController!
+	var searchController: UISearchController!
+	@IBOutlet weak var searchBar: UISearchBar!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		setupFetchedResultController()
+		setupSearchController()
+	}
 
+	override func viewWillAppear(animated: Bool) {
+		updateWelcomeViewVisibility()
+		super.viewWillAppear(animated)
+	}
+
+}
+
+extension NoteTimelineTableViewController {
+
+	override func setupFetchedResultController() {
 		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
 		fetchRequest.sortDescriptors = Note.defaultSortDescriptors
 
@@ -33,92 +42,33 @@ final class NoteTimelineTableViewController: UITableViewController, ManagedObjec
 		fetchedResultController.delegate = self
 		tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
 		tableView.tableFooterView = UIView()
-	}
-
-	override func viewWillAppear(animated: Bool) {
-		do {
-			try fetchedResultController.performFetch()
-		} catch {
-			fatalError()
-		}
-		updateWelcomeViewVisibility()
-		super.viewWillAppear(animated)
+		tableView.registerNib(
+			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
+			forCellReuseIdentifier: NoteTableViewCell.reuseIdentifier)
 	}
 
 }
 
 extension NoteTimelineTableViewController {
 
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return fetchedResultController.sections?[section].objects?.count ?? 0
-	}
-
 	override func tableView(
 		tableView: UITableView,
 		cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+			if tableView != self.tableView {
+				return UITableViewCell()
+			}
 		guard let cell = tableView.dequeueReusableCellWithIdentifier(
 			NoteTableViewCell.reuseIdentifier,
 			forIndexPath: indexPath) as? NoteTableViewCell else {
 			fatalError("Wrong table view cell type")
 		}
-
-		return cell
-	}
-
-
-	override func tableView(
-		tableView: UITableView,
-		willDisplayCell cell: UITableViewCell,
-		forRowAtIndexPath indexPath: NSIndexPath) {
-		guard let cell = cell as? NoteTableViewCell else {
-			fatalError("Wrong table view cell type")
-		}
-
 		cell.configure(noteAt(indexPath))
+		return cell
 	}
 
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		return true
 	}
-
-}
-
-extension NoteTimelineTableViewController: NSFetchedResultsControllerDelegate {
-
-	func controller(
-		controller: NSFetchedResultsController,
-		didChangeObject anObject: AnyObject,
-		atIndexPath indexPath: NSIndexPath?,
-		forChangeType type: NSFetchedResultsChangeType,
-		newIndexPath: NSIndexPath?) {
-		switch type {
-		case .Delete:
-			tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-			break
-		case .Insert:
-			tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-			break
-		case .Move:
-			tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
-			break
-		case .Update:
-			tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-			break
-		}
-	}
-
-	func controllerWillChangeContent(controller: NSFetchedResultsController) {
-		tableView.beginUpdates()
-	}
-
-	func controllerDidChangeContent(controller: NSFetchedResultsController) {
-		updateWelcomeViewVisibility()
-		tableView.endUpdates()
-	}
-
-}
-
-extension NoteTimelineTableViewController {
 
 	override func tableView(
 		tableView: UITableView,
@@ -139,10 +89,7 @@ extension NoteTimelineTableViewController {
 extension NoteTimelineTableViewController {
 
 	func noteAt(indexPath: NSIndexPath) -> Note {
-		guard let Note = fetchedResultController.objectAtIndexPath(indexPath) as? Note else {
-			fatalError("Can't find Note object at indexPath \(indexPath)")
-		}
-		return Note
+		return objectAt(indexPath)
 	}
 
 }
@@ -165,6 +112,10 @@ extension NoteTimelineTableViewController {
 		performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.Create.identifier(), sender: self)
 	}
 
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.Edit.identifier(), sender: self)
+	}
+
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		guard let identifier = segue.identifier else {
 			fatalError("No segue identifier found")
@@ -174,7 +125,7 @@ extension NoteTimelineTableViewController {
 		case NoteEditViewController.SegueIdentifier.Edit.identifier():
 			guard
 				let vc = segue.destinationViewController as? NoteEditViewController,
-				let selectedIndexPath = selectedIndexPath else {
+				let selectedIndexPath = self.tableView.indexPathForSelectedRow else {
 					fatalError("Wrong edit-viewcontroller")
 			}
 
@@ -190,19 +141,6 @@ extension NoteTimelineTableViewController {
 		default:
 			break
 		}
-	}
-
-}
-
-final class NoteTableViewCell: UITableViewCell, ConfigureableCell {
-
-	static var reuseIdentifier: String! {
-		return "NoteTableViewCell"
-	}
-
-	func configure(note: Note) {
-		textLabel!.text = note.title
-		detailTextLabel!.text = note.preview
 	}
 
 }
