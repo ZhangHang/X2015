@@ -30,6 +30,9 @@ class FetchedResultTableViewController: UITableViewController, ManagedObjectCont
 
 	override func viewWillAppear(animated: Bool) {
 		fetchData()
+		if let selectedIndexPath = tableView.indexPathForSelectedRow {
+			tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+		}
 		super.viewWillAppear(animated)
 	}
 
