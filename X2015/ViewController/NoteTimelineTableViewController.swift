@@ -26,8 +26,8 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 	}
 
 	override func viewWillAppear(animated: Bool) {
-		updateWelcomeViewVisibility()
 		super.viewWillAppear(animated)
+		updateWelcomeViewVisibility()
 	}
 
 }
@@ -51,6 +51,10 @@ extension NoteTimelineTableViewController {
 			forCellReuseIdentifier: NoteTableViewCell.reuseIdentifier)
 	}
 
+	override func controllerDidChangeContent(controller: NSFetchedResultsController) {
+		super.controllerDidChangeContent(controller)
+		updateWelcomeViewVisibility()
+	}
 }
 
 extension NoteTimelineTableViewController {
