@@ -19,7 +19,7 @@ extension NoteTimelineTableViewController {
 		searchController.searchResultsUpdater = self
 		searchController.dimsBackgroundDuringPresentation = true
 		searchController.hidesNavigationBarDuringPresentation = true
-		searchController.searchBar.delegate = self
+		searchController.delegate = self
 		tableView.tableHeaderView = searchController.searchBar
 
 		let statusBarHeight: CGFloat = 20.0
@@ -51,11 +51,25 @@ extension NoteTimelineTableViewController: UISearchResultsUpdating {
 		noteSearchTableViewController.search(searchController.searchBar.text)
 	}
 
-	func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-		self.searchController.searchBar.text = nil
-	}
 }
 
-extension NoteTimelineTableViewController: UISearchBarDelegate {
+extension NoteTimelineTableViewController: UISearchControllerDelegate {
+
+	func willPresentSearchController(searchController: UISearchController) {
+		tabBarController!.tabBar.hidden = true
+	}
+
+	func didPresentSearchController(searchController: UISearchController) {
+
+	}
+
+	func willDismissSearchController(searchController: UISearchController) {
+
+	}
+
+	func didDismissSearchController(searchController: UISearchController) {
+		tabBarController!.tabBar.hidden = false
+		searchController.searchBar.text = nil
+	}
 
 }
