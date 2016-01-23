@@ -25,4 +25,8 @@ final class Settings {
 		}
 	}
 
+	func synchronize() -> Bool {
+		return userDefualt.synchronize()
+	}
+
 }

@@ -74,6 +74,9 @@ extension MeTableViewController {
 			NSLocalizedString("Use Touch ID to Unlock", comment: ""),
 				successHandler: { () -> Void in
 					self.settings.unlockByTouchID = sender.on
+					guard self.settings.synchronize() else {
+						fatalError("Setting save failed")
+					}
 			},
 				errorHandler: { (errorMessage) -> Void in
 					sender.setOn(!sender.on, animated: true)
