@@ -38,12 +38,12 @@ extension NoteTimelineTableViewController {
 		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
 		fetchRequest.sortDescriptors = Note.defaultSortDescriptors
 
-		fetchedResultController = NSFetchedResultsController(
+		fetchedResultsController = NSFetchedResultsController(
 			fetchRequest: fetchRequest,
 			managedObjectContext: managedObjectContext,
 			sectionNameKeyPath: nil,
 			cacheName: nil)
-		fetchedResultController.delegate = self
+		fetchedResultsController.delegate = self
 		tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
 		tableView.tableFooterView = UIView()
 		tableView.registerNib(
@@ -105,7 +105,7 @@ extension NoteTimelineTableViewController {
 extension NoteTimelineTableViewController {
 
 	func updateWelcomeViewVisibility() {
-		if fetchedResultController.fetchedObjects?.count == 0 {
+		if fetchedResultsController.fetchedObjects?.count == 0 {
 			tableView.backgroundView?.hidden = false
 		} else {
 			tableView.backgroundView?.hidden = true

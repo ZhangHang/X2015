@@ -36,12 +36,12 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
 		fetchRequest.sortDescriptors = Note.defaultSortDescriptors
 
-		fetchedResultController = NSFetchedResultsController(
+		fetchedResultsController = NSFetchedResultsController(
 			fetchRequest: fetchRequest,
 			managedObjectContext: managedObjectContext,
 			sectionNameKeyPath: nil,
 			cacheName: nil)
-		fetchedResultController.delegate = self
+		fetchedResultsController.delegate = self
 		tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
 		tableView.tableFooterView = UIView()
 		tableView.registerNib(
@@ -80,7 +80,7 @@ extension NoteSearchTableViewController {
 		if let keyword = keyword {
 			let newPredicate =  NSPredicate(format: "content CONTAINS[cd] %@", keyword)
 			debugPrint("Filter notes with predicate \(newPredicate)")
-			fetchedResultController.fetchRequest.predicate = newPredicate
+			fetchedResultsController.fetchRequest.predicate = newPredicate
 			fetchData()
 			tableView.reloadData()
 		}

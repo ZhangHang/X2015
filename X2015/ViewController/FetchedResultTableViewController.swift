@@ -12,7 +12,7 @@ import CoreData
 class FetchedResultTableViewController: UITableViewController, ManagedObjectContextSettable {
 
 	var managedObjectContext: NSManagedObjectContext!
-	var fetchedResultController: NSFetchedResultsController!
+	var fetchedResultsController: NSFetchedResultsController!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -20,19 +20,20 @@ class FetchedResultTableViewController: UITableViewController, ManagedObjectCont
 		setupFetchedResultController()
 	}
 
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return fetchedResultController.sections?[section].objects?.count ?? 0
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return self.fetchedResultsController.sections?.count ?? 0
 	}
 
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return fetchedResultController.sections?.count ?? 0
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		let sectionInfo = self.fetchedResultsController.sections![section]
+		return sectionInfo.numberOfObjects
 	}
 
 	override func viewWillAppear(animated: Bool) {
-		fetchData()
 		if let selectedIndexPath = tableView.indexPathForSelectedRow {
 			tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
 		}
+		fetchData()
 		super.viewWillAppear(animated)
 	}
 
@@ -47,14 +48,14 @@ extension FetchedResultTableViewController {
 
 	func fetchData() {
 		do {
-			try fetchedResultController.performFetch()
+			try fetchedResultsController.performFetch()
 		} catch {
 			fatalError()
 		}
 	}
 
 	func objectAt<T>(indexPath: NSIndexPath) -> T {
-		guard let object = fetchedResultController.objectAtIndexPath(indexPath) as? T else {
+		guard let object = fetchedResultsController.objectAtIndexPath(indexPath) as? T else {
 			fatalError("Can't find object at indexPath \(indexPath)")
 		}
 		return object
@@ -84,6 +85,22 @@ extension FetchedResultTableViewController: NSFetchedResultsControllerDelegate {
 			case .Update:
 				tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
 				break
+			}
+	}
+
+	func controller(controller: NSFetchedResultsController,
+		didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
+		atIndex sectionIndex: Int,
+		forChangeType type: NSFetchedResultsChangeType) {
+			switch type {
+			case .Insert:
+				tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+				break
+			case .Delete:
+				tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+				break
+			default:
+				return
 			}
 	}
 
