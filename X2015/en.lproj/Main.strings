@@ -8,20 +8,11 @@
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VA3-Ww-ybn"; */
 "VA3-Ww-ybn.text" = "Detail";
 
-/* Class = "UINavigationItem"; title = "Me"; ObjectID = "WKx-j3-VXi"; */
-"WKx-j3-VXi.title" = "Me";
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "WKx-j3-VXi"; */
+"WKx-j3-VXi.title" = "Settings";
 
 /* Class = "UINavigationItem"; title = "Note"; ObjectID = "ZYM-mc-Flt"; */
 "ZYM-mc-Flt.title" = "Note";
-
-/* Class = "UITabBarItem"; title = "Note"; ObjectID = "hW0-Mq-2iX"; */
-"hW0-Mq-2iX.title" = "Note";
-
-/* Class = "UITabBarItem"; title = "Me"; ObjectID = "oVM-X4-9UH"; */
-"oVM-X4-9UH.title" = "Me";
-
-/* Class = "UILabel"; text = "Export Notes"; ObjectID = "pI3-VU-WGt"; */
-"pI3-VU-WGt.text" = "Export Notes";
 
 /* Class = "UILabel"; text = "Touch ID"; ObjectID = "vai-bW-dU5"; */
 "vai-bW-dU5.text" = "Touch ID";

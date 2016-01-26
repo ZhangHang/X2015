@@ -18,6 +18,7 @@ class FetchedResultTableViewController: UITableViewController, ManagedObjectCont
 		super.viewDidLoad()
 
 		setupFetchedResultController()
+		fetchData()
 	}
 
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -27,14 +28,6 @@ class FetchedResultTableViewController: UITableViewController, ManagedObjectCont
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		let sectionInfo = self.fetchedResultsController.sections![section]
 		return sectionInfo.numberOfObjects
-	}
-
-	override func viewWillAppear(animated: Bool) {
-		if let selectedIndexPath = tableView.indexPathForSelectedRow {
-			tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
-		}
-		fetchData()
-		super.viewWillAppear(animated)
 	}
 
 }
@@ -54,7 +47,7 @@ extension FetchedResultTableViewController {
 		}
 	}
 
-	func objectAt<T>(indexPath: NSIndexPath) -> T {
+	func objectAt<T where T:NSManagedObject>(indexPath: NSIndexPath) -> T {
 		guard let object = fetchedResultsController.objectAtIndexPath(indexPath) as? T else {
 			fatalError("Can't find object at indexPath \(indexPath)")
 		}
@@ -66,26 +59,13 @@ extension FetchedResultTableViewController {
 
 extension FetchedResultTableViewController: NSFetchedResultsControllerDelegate {
 
-	func controller(
-		controller: NSFetchedResultsController,
-		didChangeObject anObject: AnyObject,
-		atIndexPath indexPath: NSIndexPath?,
-		forChangeType type: NSFetchedResultsChangeType,
-		newIndexPath: NSIndexPath?) {
-			switch type {
-			case .Delete:
-				tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-				break
-			case .Insert:
-				tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-				break
-			case .Move:
-				tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
-				break
-			case .Update:
-				tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-				break
-			}
+	func controllerWillChangeContent(controller: NSFetchedResultsController) {
+		if tableView.numberOfSections == 1
+			&& tableView.numberOfRowsInSection(0) == 0 {
+				debugPrint("Workaround")
+				tableView.reloadData()
+		}
+		tableView.beginUpdates()
 	}
 
 	func controller(controller: NSFetchedResultsController,
@@ -94,18 +74,30 @@ extension FetchedResultTableViewController: NSFetchedResultsControllerDelegate {
 		forChangeType type: NSFetchedResultsChangeType) {
 			switch type {
 			case .Insert:
-				tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-				break
+				tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
 			case .Delete:
-				tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-				break
+				tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
 			default:
 				return
 			}
 	}
 
-	func controllerWillChangeContent(controller: NSFetchedResultsController) {
-		tableView.beginUpdates()
+	func controller(controller: NSFetchedResultsController,
+		didChangeObject anObject: AnyObject,
+		atIndexPath indexPath: NSIndexPath?,
+		forChangeType type: NSFetchedResultsChangeType,
+		newIndexPath: NSIndexPath?) {
+			switch type {
+			case .Insert:
+				tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+			case .Delete:
+				tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+			case .Update:
+				tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .None)
+			case .Move:
+				tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+				tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+			}
 	}
 
 	func controllerDidChangeContent(controller: NSFetchedResultsController) {

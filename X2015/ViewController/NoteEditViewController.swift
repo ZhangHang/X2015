@@ -15,78 +15,63 @@ protocol NoteEditViewControllerDelegate: class {
 		controller: NoteEditViewController,
 		didTapDeleteNoteShortCutWithNoteObjectID noteObjectID: NSManagedObjectID)
 
+	func noteEditViewController(
+		controller: NoteEditViewController,
+		didChangeNoteObjectWithID noteObjectID: NSManagedObjectID,
+		noteContent content: String)
+
 }
 
-final class NoteEditViewController: UIViewController, ManagedObjectContextSettable {
+final class NoteEditViewController: UIViewController {
 
-	static let storyboardID = "NoteEditViewController"
 
-	enum SegueIdentifier {
+	struct Storyboard {
+		static let identifier = "NoteEditViewController"
 
-		case Create, Edit
+		static let SegueIdentifierCreate = "CreateNoteSegueIdentifier"
+		static let SegueIdentifierEdit = "EditNoteSegueIdentifier"
+		static let SegueIdentifierEmpty = "EmptyNoteSegueIdentifier"
+	}
 
-		func identifier() -> String {
-			switch self {
-			case .Create:
-				return "CreateNoteSegueIdentifier"
-			case .Edit:
-				return "EditNoteSegueIdentifier"
+	enum Mode {
+
+		case Create(NSManagedObjectID, NSManagedObjectContext)
+		case Edit(NSManagedObjectID, NSManagedObjectContext)
+		case Empty
+
+	}
+
+	var noteActionMode: Mode = .Empty {
+
+		didSet {
+			switch noteActionMode {
+			case let .Create(managedObjectID, managedObjectContext):
+				noteUpdater = NoteUpdater(noteObjectID: managedObjectID,
+					managedObjectContext: managedObjectContext)
+				break
+			case let .Edit(managedObjectID, managedObjectContext):
+				noteUpdater = NoteUpdater(noteObjectID: managedObjectID,
+					managedObjectContext: managedObjectContext)
+				break
+			case .Empty:
+				break
+			}
+			if isViewLoaded() {
+				configureInterface(noteActionMode)
 			}
 		}
 
 	}
 
-	enum NoteAction: String {
-
-		case Create
-		case Update
-		case Delete
-		case Unmodified
-
-		init?(newContent: String, exsitingNote: Note?) {
-			let hasContent = newContent.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
-
-			var rawValue = "Unmodified"
-
-			if !hasContent && exsitingNote != nil {
-				rawValue = "Delete"
-			}
-
-			if hasContent && exsitingNote == nil {
-				rawValue = "Create"
-			}
-
-			if hasContent && exsitingNote != nil {
-				if exsitingNote!.hasChange(newContent) {
-					rawValue = "Update"
-				}
-			}
-
-			self.init(rawValue: rawValue)
-		}
-
-	}
+	private var noteUpdater: NoteUpdater?
 
 	weak var delegate: NoteEditViewControllerDelegate?
 
-	private var noteObjectID: NSManagedObjectID?
-
-	var managedObjectContext: NSManagedObjectContext!
-
 	@IBOutlet private weak var textView: UITextView!
 
+	private var emptyWelcomeView: EmptyNoteWelcomeView?
+
 	private var keyboardNotificationObserver: KeyboardNotificationObserver!
-
-	func setup(managedObjectContext: NSManagedObjectContext!, exsitingNoteID: NSManagedObjectID? = nil) {
-		if let exsitingNoteID = exsitingNoteID {
-			guard let _ = managedObjectContext.objectWithID(exsitingNoteID) as? Note else {
-				fatalError("Can't fetch note with objectID \(exsitingNoteID)")
-			}
-			noteObjectID = exsitingNoteID
-		}
-		self.managedObjectContext = managedObjectContext
-	}
-
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -99,33 +84,25 @@ final class NoteEditViewController: UIViewController, ManagedObjectContextSettab
 				self.textView.contentInset = newContentInsect
 			})
 
-		let note = self.fetchNoteFromContext()
-		title = note?.title
-		textView.text = note?.content
+		configureInterface(noteActionMode)
 	}
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		keyboardNotificationObserver.startMonitor()
 
-		if noteObjectID == nil {
+		switch noteActionMode {
+		case .Create:
 			textView.becomeFirstResponder()
+		default:
+			break
 		}
 	}
 
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
 		keyboardNotificationObserver.stopMonitor()
-
-		guard let action = NoteAction(
-			newContent: textView.text,
-			exsitingNote: self.fetchNoteFromContext()) else {
-				fatalError()
-		}
-
-		processNote(action)
 	}
-
 
 	// Preview action items.
 	lazy var previewActions: [UIPreviewActionItem] = {
@@ -133,9 +110,8 @@ final class NoteEditViewController: UIViewController, ManagedObjectContextSettab
 			title: NSLocalizedString("Delete", comment: ""),
 			style: .Destructive,
 			handler: { [unowned self] (_, _) -> Void in
-				// todo: delete a note after action handler called
-				//				self.processNote(.Delete)
-				self.delegate?.noteEditViewController(self, didTapDeleteNoteShortCutWithNoteObjectID: self.noteObjectID!)
+				self.delegate?.noteEditViewController(self,
+					didTapDeleteNoteShortCutWithNoteObjectID: self.noteUpdater!.noteObjectID)
 			})
 		return [deleteAction]
 	}()
@@ -144,6 +120,7 @@ final class NoteEditViewController: UIViewController, ManagedObjectContextSettab
 	override func previewActionItems() -> [UIPreviewActionItem] {
 		return previewActions
 	}
+
 }
 
 extension NoteEditViewController {
@@ -156,15 +133,6 @@ extension NoteEditViewController {
 		return noteContent.lineWithContent(0)
 	}
 
-	func fetchNoteFromContext() -> Note? {
-		if let exsitingNoteID = noteObjectID {
-			guard let note = managedObjectContext.objectWithID(exsitingNoteID) as? Note else {
-				fatalError("Can't fetch note with objectID \(exsitingNoteID)")
-			}
-			return note
-		}
-		return nil
-	}
 }
 
 extension NoteEditViewController: UITextViewDelegate {
@@ -177,29 +145,45 @@ extension NoteEditViewController: UITextViewDelegate {
 
 	func textViewDidChange(textView: UITextView) {
 		updateViewControllerTitleIfNesscarry()
+		self.noteUpdater!.updateNote(textView.text)
 	}
 
 }
 
 extension NoteEditViewController {
 
-	private func processNote(action: NoteAction) {
-		switch action {
-		case .Delete:
-			managedObjectContext.performChanges({ [unowned self] () -> () in
-				guard let note = self.fetchNoteFromContext() else { fatalError() }
-				self.managedObjectContext.deleteObject(note)
-				})
+	private func configureInterface(mode: Mode) {
+		switch noteActionMode {
+		case .Empty:
+			textView.hidden = true
+			emptyWelcomeView = EmptyNoteWelcomeView.instantiateFromNib()
+			guard let emptyView = emptyWelcomeView else {
+				fatalError()
+			}
+			emptyView.translatesAutoresizingMaskIntoConstraints = false
+			view.addSubview(emptyView)
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[welcomeView]-0-|",
+				options: .DirectionLeadingToTrailing,
+				metrics: nil,
+				views: ["welcomeView": emptyView]))
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[welcomeView]-0-|",
+				options: .DirectionLeadingToTrailing,
+				metrics: nil,
+				views: ["welcomeView": emptyView]))
+			view.bringSubviewToFront(emptyView)
 			break
-		case .Create, .Update:
-			managedObjectContext.performChanges({ [unowned self] () -> () in
-				let note = self.fetchNoteFromContext() ?? self.managedObjectContext.insertObject()
-				note.update(self.textView.text)
-				})
+		case .Edit(_, _):
+			emptyWelcomeView?.removeFromSuperview()
+			textView.hidden = false
+			textView.text = noteUpdater!.noteContent
 			break
-		default:
+		case .Create(_):
+			emptyWelcomeView?.removeFromSuperview()
+			textView.hidden = false
+			textView.text = ""
 			break
 		}
+		updateViewControllerTitleIfNesscarry()
 	}
 
 }

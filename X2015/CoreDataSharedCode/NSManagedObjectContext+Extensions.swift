@@ -58,8 +58,9 @@ extension NSManagedObjectContext {
         do {
             try save()
             return true
-        } catch {
+        } catch let e {
             rollback()
+			debugPrint(e)
             return false
         }
     }

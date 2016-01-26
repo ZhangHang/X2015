@@ -34,7 +34,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	var launchedShortcutItem: UIApplicationShortcutItem?
 	let managedObjectContext: NSManagedObjectContext = AppDelegate.createMainContext()
 
-	private var rootViewControllerCache: RootTabBarController?
+	private var rootViewControllerCache: UISplitViewController?
 	private var lockViewController: LockViewController?
 
 	func application(
@@ -45,13 +45,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 			configureInterface()
 
 			// Pass managedObjectContext
-			guard let vc = window!.rootViewController as? RootTabBarController else {
-				fatalError("Wrong view controller type")
-			}
-			vc.managedObjectContext = managedObjectContext
-
+			setupControllers()
 			// Touch ID lock screen
-			rootViewControllerCache = vc
+			rootViewControllerCache = window!.rootViewController as? UISplitViewController
 			setupLockViewController()
 			bringUpLockViewControllerIfNecessary()
 
@@ -64,6 +60,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 
 			return shouldPerformAdditionalDelegateHandling
+	}
+
+	func applicationWillTerminate(application: UIApplication) {
+		managedObjectContext.saveOrRollback()
 	}
 
 	func applicationDidBecomeActive(application: UIApplication) {
@@ -80,6 +80,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationWillEnterForeground(application: UIApplication) {
+		managedObjectContext.saveOrRollback()
 		bringUpLockViewControllerIfNecessary()
 	}
 
@@ -112,6 +113,51 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UISplitViewControllerDelegate {
+
+	private func setupControllers() {
+		guard let splitViewController = window!.rootViewController
+			as? UISplitViewController else {
+				fatalError()
+		}
+		splitViewController.delegate = self
+		guard let masterNavigationController = splitViewController.childViewControllers.first
+			as? UINavigationController else {
+				fatalError()
+		}
+		guard let detailNavigationContoller = splitViewController.childViewControllers.last
+			as? UINavigationController else {
+				fatalError()
+		}
+		guard let noteTimelineViewController = masterNavigationController.childViewControllers.first
+			as? NoteTimelineTableViewController else {
+				fatalError()
+		}
+		guard let _ = detailNavigationContoller.childViewControllers.first
+			as? NoteEditViewController else {
+				fatalError()
+		}
+
+		noteTimelineViewController.managedObjectContext = managedObjectContext
+	}
+
+	func splitViewController(splitViewController: UISplitViewController,
+		collapseSecondaryViewController secondaryViewController: UIViewController,
+		ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+			guard let secondaryAsNavController = secondaryViewController
+				as? UINavigationController else { return false }
+			guard let topAsDetailController = secondaryAsNavController.topViewController
+				as? NoteEditViewController else { return false }
+			switch topAsDetailController.noteActionMode {
+			case .Empty:
+				return true
+			default:
+				return false
+			}
+	}
+
+}
+
 extension AppDelegate {
 
 	private func configureInterface() {
@@ -129,7 +175,11 @@ extension AppDelegate {
 
 		switch shortcutIdentifier {
 		case .NewNote:
-			rootViewControllerCache!.handleNewNoteShortcut()
+			guard let nc = rootViewControllerCache!.childViewControllers.first
+				as? UINavigationController else { return false }
+			guard let vc = nc.childViewControllers.first
+				as? NoteTimelineTableViewController else { return false }
+			vc.handleNewNoteShortcut()
 			return true
 		}
 	}
