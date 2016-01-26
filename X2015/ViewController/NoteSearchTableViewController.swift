@@ -79,7 +79,6 @@ extension NoteSearchTableViewController {
 		keywordCache = keyword
 		if let keyword = keyword {
 			let newPredicate =  NSPredicate(format: "content CONTAINS[cd] %@", keyword)
-			debugPrint("Filter notes with predicate \(newPredicate)")
 			fetchedResultsController.fetchRequest.predicate = newPredicate
 			fetchData()
 			tableView.reloadData()

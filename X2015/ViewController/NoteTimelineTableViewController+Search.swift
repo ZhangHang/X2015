@@ -38,7 +38,7 @@ extension NoteTimelineTableViewController: NoteSearchTableViewControllerDelegate
 			self.selectedNoteObjectID = noteObjectID
 			searchController.dismissViewControllerAnimated(true) { [unowned self] () -> Void in
 				self.performSegueWithIdentifier(
-					NoteEditViewController.SegueIdentifier.Edit.identifier(),
+					NoteEditViewController.Storyboard.SegueIdentifierEdit,
 					sender: self)
 			}
 	}
@@ -56,7 +56,7 @@ extension NoteTimelineTableViewController: UISearchResultsUpdating {
 extension NoteTimelineTableViewController: UISearchControllerDelegate {
 
 	func willPresentSearchController(searchController: UISearchController) {
-		tabBarController!.tabBar.hidden = true
+
 	}
 
 	func didPresentSearchController(searchController: UISearchController) {
@@ -68,7 +68,6 @@ extension NoteTimelineTableViewController: UISearchControllerDelegate {
 	}
 
 	func didDismissSearchController(searchController: UISearchController) {
-		tabBarController!.tabBar.hidden = false
 		searchController.searchBar.text = nil
 	}
 

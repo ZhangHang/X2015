@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F0D360A1C4D2CA7009F18A6 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36091C4D2CA7009F18A6 /* MeTableViewController.swift */; };
+		7F0126DB1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0126DA1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift */; };
+		7F0D360A1C4D2CA7009F18A6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36091C4D2CA7009F18A6 /* SettingsTableViewController.swift */; };
 		7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D36191C4D346B009F18A6 /* Localizable.strings */; };
 		7F0D36321C4E010D009F18A6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36311C4E010D009F18A6 /* Settings.swift */; };
 		7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36331C4E0AB4009F18A6 /* TouchIDHelper.swift */; };
@@ -49,16 +50,17 @@
 		7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205111C3639C100507125 /* KeyboardNotification.swift */; };
 		7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */; };
 		7F5205191C364C9100507125 /* ConfigureableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205181C364C9100507125 /* ConfigureableCell.swift */; };
+		7F882E691C5705430090AF40 /* NoteUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F882E681C5705430090AF40 /* NoteUpdater.swift */; };
 		7FD4DEF21C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD4DEF11C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */; };
 		7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */; };
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
-		7FFD81571C4B7895004F1987 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81561C4B7895004F1987 /* RootTabBarController.swift */; };
 		7FFE12C21C3CDF530099EA2C /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE12C11C3CDF530099EA2C /* ManagedObjectContextSettable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7F0D36091C4D2CA7009F18A6 /* MeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeTableViewController.swift; path = ViewController/MeTableViewController.swift; sourceTree = "<group>"; };
+		7F0126DA1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NoteTimelineTableViewController+Navigation.swift"; path = "ViewController/NoteTimelineTableViewController+Navigation.swift"; sourceTree = "<group>"; };
+		7F0D36091C4D2CA7009F18A6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ViewController/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		7F0D36131C4D2F9D009F18A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7F0D36161C4D3467009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7F0D36181C4D346B009F18A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -111,11 +113,11 @@
 		7F5205111C3639C100507125 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationObserver.swift; sourceTree = "<group>"; };
 		7F5205181C364C9100507125 /* ConfigureableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureableCell.swift; sourceTree = "<group>"; };
+		7F882E681C5705430090AF40 /* NoteUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteUpdater.swift; path = ViewController/NoteUpdater.swift; sourceTree = "<group>"; };
 		7FD4DEF11C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift"; path = "ViewController/NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift"; sourceTree = "<group>"; };
 		7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyNoteWelcomeView.xib; path = Views/EmptyNoteWelcomeView.xib; sourceTree = "<group>"; };
 		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
-		7FFD81561C4B7895004F1987 /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootTabBarController.swift; path = ViewController/RootTabBarController.swift; sourceTree = "<group>"; };
 		7FFE12C11C3CDF530099EA2C /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectContextSettable.swift; path = ViewController/Protocols/ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,14 +228,15 @@
 				7F5205171C364C7C00507125 /* Protocols */,
 				7F52050D1C3528D900507125 /* NoteTimelineTableViewController.swift */,
 				7F52050F1C3587F400507125 /* NoteEditViewController.swift */,
-				7FFD81561C4B7895004F1987 /* RootTabBarController.swift */,
-				7F0D36091C4D2CA7009F18A6 /* MeTableViewController.swift */,
+				7F0D36091C4D2CA7009F18A6 /* SettingsTableViewController.swift */,
 				7F0D36311C4E010D009F18A6 /* Settings.swift */,
 				7F14F3AE1C50949000468F29 /* LockViewController.swift */,
 				7F14F3BC1C50F37A00468F29 /* NoteTimelineTableViewController+Search.swift */,
 				7F14F3C01C50F7F100468F29 /* NoteSearchTableViewController.swift */,
 				7F14F3C21C50FDBC00468F29 /* FetchedResultTableViewController.swift */,
 				7FD4DEF11C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */,
+				7F882E681C5705430090AF40 /* NoteUpdater.swift */,
+				7F0126DA1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -376,11 +379,11 @@
 				7F5204FA1C3504C900507125 /* KeyCodable.swift in Sources */,
 				7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */,
 				7F5204F91C3504C900507125 /* CoreDataErrors.swift in Sources */,
+				7F0126DB1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift in Sources */,
 				7F5205081C3504C900507125 /* ValueTransformer.swift in Sources */,
 				7F5204D21C34F79B00507125 /* X2015.xcdatamodeld in Sources */,
 				7F5204FD1C3504C900507125 /* ManagedObjectObserver.swift in Sources */,
 				7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */,
-				7FFD81571C4B7895004F1987 /* RootTabBarController.swift in Sources */,
 				7F5205031C3504C900507125 /* NSManagedObjectContext+Extensions.swift in Sources */,
 				7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */,
 				7F14F3BD1C50F37A00468F29 /* NoteTimelineTableViewController+Search.swift in Sources */,
@@ -401,9 +404,10 @@
 				7F5205041C3504C900507125 /* NSManagedObjectContext+Observers.swift in Sources */,
 				7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */,
 				7F5205011C3504C900507125 /* NSFetchRequest+Extensions.swift in Sources */,
+				7F882E691C5705430090AF40 /* NoteUpdater.swift in Sources */,
 				7F5204FE1C3504C900507125 /* Migration.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
-				7F0D360A1C4D2CA7009F18A6 /* MeTableViewController.swift in Sources */,
+				7F0D360A1C4D2CA7009F18A6 /* SettingsTableViewController.swift in Sources */,
 				7F5205071C3504C900507125 /* Utilities.swift in Sources */,
 				7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */,
 				7F5205101C3587F400507125 /* NoteEditViewController.swift in Sources */,

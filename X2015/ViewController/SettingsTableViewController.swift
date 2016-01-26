@@ -1,5 +1,5 @@
 //
-//  MeTableViewController.swift
+//  SettingsTableViewController.swift
 //  X2015
 //
 //  Created by Hang Zhang on 1/18/16.
@@ -8,26 +8,21 @@
 
 import UIKit
 
-class MeTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController {
 
 	enum Cell {
 
-		case ExportNote
 		case UnlockByTouchID
 
 		var section: Int {
 			switch self {
-			case .ExportNote:
-				return 0
 			case .UnlockByTouchID:
-				return 1
+				return 0
 			}
 		}
 
 		var row: Int {
 			switch self {
-			case .ExportNote:
-				return 0
 			case .UnlockByTouchID:
 				return 0
 			}
@@ -51,7 +46,7 @@ class MeTableViewController: UITableViewController {
 
 }
 
-extension MeTableViewController {
+extension SettingsTableViewController {
 
 	override func tableView(
 		tableView: UITableView,

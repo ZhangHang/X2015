@@ -20,41 +20,16 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupFetchedResultController()
 		setupSearchController()
 		registerForPreviewing()
 	}
 
 	override func viewWillAppear(animated: Bool) {
+		clearsSelectionOnViewWillAppear = splitViewController!.collapsed
 		super.viewWillAppear(animated)
 		updateWelcomeViewVisibility()
 	}
 
-}
-
-extension NoteTimelineTableViewController {
-
-	override func setupFetchedResultController() {
-		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
-		fetchRequest.sortDescriptors = Note.defaultSortDescriptors
-
-		fetchedResultsController = NSFetchedResultsController(
-			fetchRequest: fetchRequest,
-			managedObjectContext: managedObjectContext,
-			sectionNameKeyPath: nil,
-			cacheName: nil)
-		fetchedResultsController.delegate = self
-		tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
-		tableView.tableFooterView = UIView()
-		tableView.registerNib(
-			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
-			forCellReuseIdentifier: NoteTableViewCell.reuseIdentifier)
-	}
-
-	override func controllerDidChangeContent(controller: NSFetchedResultsController) {
-		super.controllerDidChangeContent(controller)
-		updateWelcomeViewVisibility()
-	}
 }
 
 extension NoteTimelineTableViewController {
@@ -65,13 +40,18 @@ extension NoteTimelineTableViewController {
 			if tableView != self.tableView {
 				return UITableViewCell()
 			}
-		guard let cell = tableView.dequeueReusableCellWithIdentifier(
-			NoteTableViewCell.reuseIdentifier,
-			forIndexPath: indexPath) as? NoteTableViewCell else {
-			fatalError("Wrong table view cell type")
-		}
-		cell.configure(noteAt(indexPath))
-		return cell
+			guard let cell = tableView.dequeueReusableCellWithIdentifier(
+				NoteTableViewCell.reuseIdentifier,
+				forIndexPath: indexPath) as? NoteTableViewCell else {
+					fatalError("Wrong table view cell type")
+			}
+			cell.configure(objectAt(indexPath))
+			return cell
+	}
+
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		selectedNoteObjectID = objectAt(indexPath).objectID
+		performSegueWithIdentifier(NoteEditViewController.Storyboard.SegueIdentifierEdit, sender: self)
 	}
 
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -87,7 +67,7 @@ extension NoteTimelineTableViewController {
 					title: NSLocalizedString("Delete", comment: ""),
 					handler: { [unowned self](action, indexPath) -> Void in
 						self.managedObjectContext.performChanges({ [unowned self] () -> () in
-							self.managedObjectContext.deleteObject(self.noteAt(indexPath))
+							self.managedObjectContext.deleteObject(self.objectAt(indexPath))
 							})
 					})]
 	}
@@ -96,60 +76,40 @@ extension NoteTimelineTableViewController {
 
 extension NoteTimelineTableViewController {
 
-	func noteAt(indexPath: NSIndexPath) -> Note {
-		return objectAt(indexPath)
+	override func setupFetchedResultController() {
+		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
+		fetchRequest.sortDescriptors = Note.defaultSortDescriptors
+
+		fetchedResultsController = NSFetchedResultsController(
+			fetchRequest: fetchRequest,
+			managedObjectContext: managedObjectContext,
+			sectionNameKeyPath: nil,
+			cacheName: "NoteMaster")
+		fetchedResultsController.delegate = self
+		tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
+		tableView.tableFooterView = UIView()
+		tableView.registerNib(
+			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
+			forCellReuseIdentifier: NoteTableViewCell.reuseIdentifier)
 	}
-
-}
-
-extension NoteTimelineTableViewController {
 
 	func updateWelcomeViewVisibility() {
+		let hideBackground = fetchedResultsController.fetchedObjects?.count > 0
+		tableView.backgroundView?.hidden = hideBackground
+	}
+
+
+	override func controllerDidChangeContent(controller: NSFetchedResultsController) {
+		updateWelcomeViewVisibility()
+		super.controllerDidChangeContent(controller)
 		if fetchedResultsController.fetchedObjects?.count == 0 {
-			tableView.backgroundView?.hidden = false
-		} else {
-			tableView.backgroundView?.hidden = true
+			performSegueWithIdentifier(
+				NoteEditViewController.Storyboard.SegueIdentifierEmpty,
+				sender: self)
+		} else if let noteObjectID = selectedNoteObjectID {
+			let selectedNote = managedObjectContext.objectWithID(noteObjectID)
+			let indexPath = fetchedResultsController.indexPathForObject(selectedNote)
+			tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
 		}
 	}
-
-}
-
-extension NoteTimelineTableViewController {
-
-	func handleNewNoteShortcut() {
-		performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.Create.identifier(), sender: self)
-	}
-
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		selectedNoteObjectID = noteAt(indexPath).objectID
-		performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.Edit.identifier(), sender: self)
-	}
-
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		guard let identifier = segue.identifier else {
-			fatalError("No segue identifier found")
-		}
-
-		switch identifier {
-		case NoteEditViewController.SegueIdentifier.Edit.identifier():
-			guard
-				let vc = segue.destinationViewController as? NoteEditViewController,
-				let _ = self.selectedNoteObjectID else {
-					fatalError("Wrong edit-viewcontroller")
-			}
-
-			vc.managedObjectContext = managedObjectContext
-			vc.setup(managedObjectContext, exsitingNoteID: selectedNoteObjectID)
-			break
-		case NoteEditViewController.SegueIdentifier.Create.identifier():
-			guard let vc = segue.destinationViewController as? NoteEditViewController else {
-				fatalError("Wrong edit-viewcontroller")
-			}
-			vc.setup(managedObjectContext)
-			break
-		default:
-			break
-		}
-	}
-
 }

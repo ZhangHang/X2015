@@ -25,8 +25,8 @@ extension NoteTimelineTableViewController: UIViewControllerPreviewingDelegate {
 				storyboard?.instantiateViewControllerWithIdentifier("NoteEditViewController")
 					as? NoteEditViewController else { return nil }
 
-			let previewNote = noteAt(indexPath)
-			detailViewController.setup(self.managedObjectContext, exsitingNoteID: previewNote.objectID)
+			let previewNote: Note = objectAt(indexPath)
+			detailViewController.noteActionMode = .Edit(previewNote.objectID, managedObjectContext)
 			detailViewController.delegate = self
 
 			previewingContext.sourceRect = cell.frame
@@ -54,6 +54,12 @@ extension NoteTimelineTableViewController: NoteEditViewControllerDelegate {
 		managedObjectContext.performChanges { () -> () in
 			self.managedObjectContext.deleteObject(note)
 		}
+	}
+
+	func noteEditViewController(controller: NoteEditViewController,
+		didChangeNoteObjectWithID noteObjectID: NSManagedObjectID,
+		noteContent content: String) {
+
 	}
 
 }
