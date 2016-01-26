@@ -26,6 +26,11 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 
 	override func viewWillAppear(animated: Bool) {
 		clearsSelectionOnViewWillAppear = splitViewController!.collapsed
+		if clearsSelectionOnViewWillAppear {
+			if let indexPath = tableView.indexPathForSelectedRow {
+				tableView.deselectRowAtIndexPath(indexPath, animated: true)
+			}
+		}
 		super.viewWillAppear(animated)
 		updateWelcomeViewVisibility()
 	}
