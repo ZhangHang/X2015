@@ -88,6 +88,7 @@ final class NoteEditViewController: UIViewController {
 	}
 
 	override func viewWillAppear(animated: Bool) {
+		updateThemeInterface()
 		super.viewWillAppear(animated)
 		keyboardNotificationObserver.startMonitor()
 
@@ -184,6 +185,23 @@ extension NoteEditViewController {
 			break
 		}
 		updateViewControllerTitleIfNesscarry()
+	}
+
+}
+
+extension NoteEditViewController: ThemeAdaptable {
+
+	func configureTheme(theme: Theme) -> Void {
+		switch theme {
+		case .Bright:
+			textView.keyboardAppearance = .Light
+			textView.textColor = UIColor.bright_MainTextColor()
+			view.backgroundColor = UIColor.bright_ViewControllerBackgroundColor()
+		case .Dark:
+			textView.keyboardAppearance = .Dark
+			textView.textColor = UIColor.dark_MainTextColor()
+			view.backgroundColor = UIColor.dark_ViewControllerBackgroundColor()
+		}
 	}
 
 }

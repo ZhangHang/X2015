@@ -25,6 +25,20 @@ final class Settings {
 		}
 	}
 
+	private let themeKey = "theme"
+	var theme: Theme {
+		get {
+			guard let value = userDefualt.valueForKey(themeKey) as? String else {
+				userDefualt.setValue(Theme.Bright.rawValue, forKey: themeKey)
+				return .Bright
+			}
+			return Theme(rawValue: value)!
+		}
+		set {
+			userDefualt.setValue(newValue.rawValue, forKey: themeKey)
+		}
+	}
+
 	func synchronize() -> Bool {
 		return userDefualt.synchronize()
 	}

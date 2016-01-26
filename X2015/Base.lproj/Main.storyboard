@@ -47,6 +47,34 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="m23-Sn-vQP">
+                                        <rect key="frame" x="0.0" y="123" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m23-Sn-vQP" id="3Rr-2U-dyi">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7m-bG-vHM">
+                                                    <rect key="frame" x="15" y="12.5" width="79.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ubf-oq-XnL">
+                                                    <rect key="frame" x="536" y="7" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="handleDarkModeSwitchValueChanged:" destination="A1j-eA-Nps" eventType="valueChanged" id="jYH-74-y3G"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="W7m-bG-vHM" firstAttribute="centerY" secondItem="3Rr-2U-dyi" secondAttribute="centerY" id="30j-lh-LcY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ubf-oq-XnL" secondAttribute="trailing" constant="7" id="VIF-NK-bSY"/>
+                                                <constraint firstItem="W7m-bG-vHM" firstAttribute="leading" secondItem="3Rr-2U-dyi" secondAttribute="leadingMargin" constant="7" id="VkI-fl-z1O"/>
+                                                <constraint firstItem="ubf-oq-XnL" firstAttribute="centerY" secondItem="3Rr-2U-dyi" secondAttribute="centerY" id="oXy-gg-Ddc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -63,6 +91,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="darkModeSwitch" destination="ubf-oq-XnL" id="zWL-2k-uYM"/>
                         <outlet property="unlockByTouchCellTitleLabel" destination="vai-bW-dU5" id="xDi-37-FZc"/>
                         <outlet property="unlockByTouchIDSwitch" destination="V36-fs-3YT" id="4nU-M9-61e"/>
                     </connections>
@@ -250,6 +279,6 @@
         <image name="X2015" width="792" height="792"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OsR-zh-tZJ"/>
+        <segue reference="1qL-P0-h2q"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,9 +18,40 @@ final class NoteTableViewCell: UITableViewCell, ConfigureableCell {
 		return "NoteTableViewCell"
 	}
 
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		NSNotificationCenter
+			.defaultCenter()
+			.addObserverForName(
+				themeChangeNotification,
+				object: nil,
+				queue: NSOperationQueue.mainQueue()) { [unowned self] (_) -> Void in
+					self.updateThemeInterface()
+		}
+	}
+
+	deinit {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+
 	func configure(note: Note) {
 		textLabel!.text = note.title
 		detailTextLabel!.text = note.preview
+
+		updateThemeInterface()
 	}
 
 }
+
+extension NoteTableViewCell: AppearanceAdaptable {
+	static func configureThemeAppearance(theme: Theme) {
+		switch theme {
+		case .Bright:
+			NoteTableViewCell.appearance().backgroundColor = UIColor.bright_tableViewCellBackgroundColor()
+		case .Dark:
+			NoteTableViewCell.appearance().backgroundColor = UIColor.dark_tableViewCellBackgroundColor()
+		}
+	}
+}
+
+extension NoteTableViewCell: ThemeAdaptable {}

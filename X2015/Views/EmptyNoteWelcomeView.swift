@@ -8,6 +8,31 @@
 
 import UIKit
 
-final class EmptyNoteWelcomeView: UIView {}
+final class EmptyNoteWelcomeView: UIView {
+
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		updateThemeInterface()
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		updateThemeInterface()
+	}
+
+}
 
 extension EmptyNoteWelcomeView: NibLoadable {}
+
+extension EmptyNoteWelcomeView: ThemeAdaptable {
+
+	func configureTheme(theme: Theme) {
+		switch theme {
+		case .Bright:
+			backgroundColor = UIColor.whiteColor()
+		case .Dark:
+			backgroundColor = UIColor.blackColor()
+		}
+	}
+
+}

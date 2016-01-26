@@ -25,6 +25,8 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 	}
 
 	override func viewWillAppear(animated: Bool) {
+		updateThemeInterface()
+		updateWelcomeViewVisibility()
 		clearsSelectionOnViewWillAppear = splitViewController!.collapsed
 		if clearsSelectionOnViewWillAppear {
 			if let indexPath = tableView.indexPathForSelectedRow {
@@ -32,7 +34,6 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 			}
 		}
 		super.viewWillAppear(animated)
-		updateWelcomeViewVisibility()
 	}
 
 }
@@ -118,3 +119,5 @@ extension NoteTimelineTableViewController {
 		}
 	}
 }
+
+extension NoteTimelineTableViewController: ThemeAdaptable {}

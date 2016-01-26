@@ -23,6 +23,11 @@ final class LockViewController: UIViewController {
 				self.authFailedHandler?()
 		}
 	}
+
+	override func viewWillAppear(animated: Bool) {
+		updateThemeInterface()
+		super.viewWillAppear(animated)
+	}
 }
 
 extension LockViewController: SotyboardCreatable {
@@ -44,3 +49,5 @@ extension LockViewController {
 	}
 
 }
+
+extension LockViewController: ThemeAdaptable {}

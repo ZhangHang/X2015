@@ -10,13 +10,16 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
-	enum Cell {
+	private enum CellType {
 
 		case UnlockByTouchID
+		case DarkMode
 
 		var section: Int {
 			switch self {
 			case .UnlockByTouchID:
+				return 0
+			case .DarkMode:
 				return 0
 			}
 		}
@@ -25,6 +28,8 @@ class SettingsTableViewController: UITableViewController {
 			switch self {
 			case .UnlockByTouchID:
 				return 0
+			case .DarkMode:
+				return 1
 			}
 		}
 
@@ -39,23 +44,27 @@ class SettingsTableViewController: UITableViewController {
 	@IBOutlet weak var unlockByTouchIDSwitch: UISwitch!
 	@IBOutlet weak var unlockByTouchCellTitleLabel: UILabel!
 
+	@IBOutlet weak var darkModeSwitch: UISwitch!
+
 	override func viewWillAppear(animated: Bool) {
 		updateUnlockByTouchIDCell()
 		super.viewWillAppear(animated)
 	}
 
-}
-
-extension SettingsTableViewController {
-
 	override func tableView(
 		tableView: UITableView,
 		willDisplayCell cell: UITableViewCell,
 		forRowAtIndexPath indexPath: NSIndexPath) {
-			if indexPath == Cell.UnlockByTouchID.indexPath {
+			switch indexPath {
+			case CellType.UnlockByTouchID.indexPath:
 				updateUnlockByTouchIDCell()
+			case CellType.DarkMode.indexPath:
+				updateDarkModeCell()
+			default:
+				break
 			}
 	}
+
 
 	private func updateUnlockByTouchIDCell() {
 		let hasTouchID = TouchIDHelper.hasTouchID
@@ -67,27 +76,37 @@ extension SettingsTableViewController {
 	@IBAction func handleUnlockByTouchIDSwitchValueChanged(sender: UISwitch) {
 		TouchIDHelper.auth(
 			NSLocalizedString("Use Touch ID to Unlock", comment: ""),
-				successHandler: { () -> Void in
-					self.settings.unlockByTouchID = sender.on
-					guard self.settings.synchronize() else {
-						fatalError("Setting save failed")
-					}
+			successHandler: { () -> Void in
+				self.settings.unlockByTouchID = sender.on
+				guard self.settings.synchronize() else {
+					fatalError("Setting save failed")
+				}
 			},
-				errorHandler: { (errorMessage) -> Void in
-					sender.setOn(!sender.on, animated: true)
-					if errorMessage?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
-						let alertView = UIAlertController(
-							title: NSLocalizedString("Error", comment: ""),
-							message: errorMessage,
-							preferredStyle:.Alert)
-						let okAction = UIAlertAction(
-							title: NSLocalizedString("OK", comment: ""),
-							style: .Default,
-							handler: nil)
-						alertView.addAction(okAction)
-						self.presentViewController(alertView, animated: true, completion: nil)
-					}
+			errorHandler: { (errorMessage) -> Void in
+				sender.setOn(!sender.on, animated: true)
+				if errorMessage?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
+					let alertView = UIAlertController(
+						title: NSLocalizedString("Error", comment: ""),
+						message: errorMessage,
+						preferredStyle:.Alert)
+					let okAction = UIAlertAction(
+						title: NSLocalizedString("OK", comment: ""),
+						style: .Default,
+						handler: nil)
+					alertView.addAction(okAction)
+					self.presentViewController(alertView, animated: true, completion: nil)
+				}
 		})
 	}
 
+	private func updateDarkModeCell() {
+		darkModeSwitch.on = ThemeManager.sharedInstance.currentTheme == .Dark
+	}
+
+	@IBAction func handleDarkModeSwitchValueChanged(sender: UISwitch) {
+		let theme: Theme = sender.on ? .Dark : .Bright
+		ThemeManager.sharedInstance.currentTheme = theme
+		settings.theme = theme
+		settings.synchronize()
+	}
 }
