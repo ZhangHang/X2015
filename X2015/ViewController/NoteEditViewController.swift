@@ -15,11 +15,6 @@ protocol NoteEditViewControllerDelegate: class {
 		controller: NoteEditViewController,
 		didTapDeleteNoteShortCutWithNoteObjectID noteObjectID: NSManagedObjectID)
 
-	func noteEditViewController(
-		controller: NoteEditViewController,
-		didChangeNoteObjectWithID noteObjectID: NSManagedObjectID,
-		noteContent content: String)
-
 }
 
 final class NoteEditViewController: UIViewController {

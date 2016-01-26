@@ -51,15 +51,7 @@ extension NoteTimelineTableViewController: NoteEditViewControllerDelegate {
 			as? Note else {
 				fatalError()
 		}
-		managedObjectContext.performChanges { () -> () in
-			self.managedObjectContext.deleteObject(note)
-		}
-	}
-
-	func noteEditViewController(controller: NoteEditViewController,
-		didChangeNoteObjectWithID noteObjectID: NSManagedObjectID,
-		noteContent content: String) {
-
+		managedObjectContext.deleteObject(note)
 	}
 
 }

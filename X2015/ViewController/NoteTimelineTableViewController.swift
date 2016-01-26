@@ -108,7 +108,7 @@ extension NoteTimelineTableViewController {
 	override func controllerDidChangeContent(controller: NSFetchedResultsController) {
 		updateWelcomeViewVisibility()
 		super.controllerDidChangeContent(controller)
-		if fetchedResultsController.fetchedObjects?.count == 0 {
+		if fetchedResultsController.fetchedObjects?.count == 0 && !splitViewController!.collapsed {
 			performSegueWithIdentifier(
 				NoteEditViewController.Storyboard.SegueIdentifierEmpty,
 				sender: self)

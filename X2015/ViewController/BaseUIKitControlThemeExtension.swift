@@ -12,9 +12,11 @@ extension UILabel: AppearanceAdaptable {
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
 		case .Bright:
-			UILabel.appearance().textColor = UIColor.blackColor()
+			UILabel.appearance().backgroundColor = UIColor.clearColor()
+			UILabel.appearance().textColor = UIColor.bright_MainTextColor()
 		case .Dark:
-			UILabel.appearance().textColor = UIColor.whiteColor()
+			UILabel.appearance().backgroundColor = UIColor.clearColor()
+			UILabel.appearance().textColor = UIColor.dark_MainTextColor()
 		}
 	}
 }

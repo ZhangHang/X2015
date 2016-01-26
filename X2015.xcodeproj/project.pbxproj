@@ -138,6 +138,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F1580FC1C57A54600EFFF82 /* NoteTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				7F14F3C01C50F7F100468F29 /* NoteSearchTableViewController.swift */,
+				7F52050D1C3528D900507125 /* NoteTimelineTableViewController.swift */,
+				7F14F3BC1C50F37A00468F29 /* NoteTimelineTableViewController+Search.swift */,
+				7FD4DEF11C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */,
+				7F0126DA1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift */,
+			);
+			name = NoteTimeline;
+			sourceTree = "<group>";
+		};
+		7F1580FD1C57A55400EFFF82 /* NoteEdit */ = {
+			isa = PBXGroup;
+			children = (
+				7F52050F1C3587F400507125 /* NoteEditViewController.swift */,
+				7F882E681C5705430090AF40 /* NoteUpdater.swift */,
+			);
+			name = NoteEdit;
+			sourceTree = "<group>";
+		};
+		7F1580FE1C57A57100EFFF82 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7F0126DC1C576F5C00F46DF4 /* ThemeManager.swift */,
+				7F0126E01C57926E00F46DF4 /* BaseUIKitControlThemeExtension.swift */,
+				7F0D36091C4D2CA7009F18A6 /* SettingsTableViewController.swift */,
+				7F0D36311C4E010D009F18A6 /* Settings.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		7F37C7811C41658E00519B18 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,20 +263,12 @@
 		7F5205091C350BBD00507125 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7F1580FE1C57A57100EFFF82 /* Settings */,
+				7F1580FD1C57A55400EFFF82 /* NoteEdit */,
+				7F1580FC1C57A54600EFFF82 /* NoteTimeline */,
 				7F5205171C364C7C00507125 /* Protocols */,
-				7F52050D1C3528D900507125 /* NoteTimelineTableViewController.swift */,
-				7F52050F1C3587F400507125 /* NoteEditViewController.swift */,
-				7F0D36091C4D2CA7009F18A6 /* SettingsTableViewController.swift */,
-				7F0D36311C4E010D009F18A6 /* Settings.swift */,
 				7F14F3AE1C50949000468F29 /* LockViewController.swift */,
-				7F14F3BC1C50F37A00468F29 /* NoteTimelineTableViewController+Search.swift */,
-				7F14F3C01C50F7F100468F29 /* NoteSearchTableViewController.swift */,
 				7F14F3C21C50FDBC00468F29 /* FetchedResultTableViewController.swift */,
-				7FD4DEF11C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */,
-				7F882E681C5705430090AF40 /* NoteUpdater.swift */,
-				7F0126DA1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift */,
-				7F0126DC1C576F5C00F46DF4 /* ThemeManager.swift */,
-				7F0126E01C57926E00F46DF4 /* BaseUIKitControlThemeExtension.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
