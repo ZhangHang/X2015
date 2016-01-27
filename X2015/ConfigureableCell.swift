@@ -6,10 +6,18 @@
 //  Copyright © 2016 Zhang Hang. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ConfigureableCell: class {
 
     static var reuseIdentifier: String! { get }
+
+}
+
+extension ConfigureableCell where Self: UITableViewCell {
+
+	static var reuseIdentifier: String! {
+		return NSStringFromClass(Self).componentsSeparatedByString(".").last
+	}
 
 }

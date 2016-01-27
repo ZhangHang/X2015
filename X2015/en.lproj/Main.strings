@@ -1,12 +1,5 @@
-
-/* Class = "UILabel"; text = "Dark Mode"; ObjectID = "W7m-bG-vHM"; */
-"W7m-bG-vHM.text" = "Dark Mode";
-
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "WKx-j3-VXi"; */
 "WKx-j3-VXi.title" = "Settings";
 
 /* Class = "UINavigationItem"; title = "Note"; ObjectID = "ZYM-mc-Flt"; */
 "ZYM-mc-Flt.title" = "Note";
-
-/* Class = "UILabel"; text = "Touch ID"; ObjectID = "vai-bW-dU5"; */
-"vai-bW-dU5.text" = "Touch ID";
