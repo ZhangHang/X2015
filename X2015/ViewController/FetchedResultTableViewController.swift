@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FetchedResultTableViewController: UITableViewController, ManagedObjectContextSettable {
+class FetchedResultTableViewController: ThemeAdaptableTableViewController, ManagedObjectContextSettable {
 
 	var managedObjectContext: NSManagedObjectContext!
 	var fetchedResultsController: NSFetchedResultsController!
@@ -19,24 +19,6 @@ class FetchedResultTableViewController: UITableViewController, ManagedObjectCont
 
 		setupFetchedResultController()
 		fetchData()
-	}
-
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		NSNotificationCenter
-			.defaultCenter()
-			.addObserverForName(themeChangeNotification,
-				object: nil,
-				queue: NSOperationQueue.mainQueue()) {
-					[unowned self] (_) -> Void in
-			self.updateThemeInterface()
-		}
-		updateThemeInterface()
-	}
-
-	override func viewDidDisappear(animated: Bool) {
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: themeChangeNotification, object: nil)
-		super.viewDidDisappear(animated)
 	}
 
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -120,19 +102,6 @@ extension FetchedResultTableViewController: NSFetchedResultsControllerDelegate {
 
 	func controllerDidChangeContent(controller: NSFetchedResultsController) {
 		tableView.endUpdates()
-	}
-
-}
-
-extension FetchedResultTableViewController: ThemeAdaptable {
-
-	func configureTheme(theme: Theme) {
-		switch theme {
-		case .Bright:
-			tableView.separatorColor = UIColor.lightGrayColor()
-		case .Dark:
-			tableView.separatorColor = UIColor.darkGrayColor()
-		}
 	}
 
 }

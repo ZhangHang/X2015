@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: ThemeAdaptableTableViewController {
 
 	private enum CellType {
 
@@ -40,36 +40,6 @@ class SettingsTableViewController: UITableViewController {
 	}
 
 	private let settings = Settings()
-
-	override func viewWillAppear(animated: Bool) {
-		updateThemeInterface()
-		super.viewWillAppear(animated)
-		NSNotificationCenter.defaultCenter().addObserverForName(
-			themeChangeNotification,
-			object: nil,
-			queue: NSOperationQueue.mainQueue()) { [unowned self] (_) -> Void in
-				self.updateThemeInterface()
-		}
-		updateThemeInterface()
-	}
-
-	override func viewWillDisappear(animated: Bool) {
-		NSNotificationCenter.defaultCenter().removeObserver(
-			self,
-			name: themeChangeNotification,
-			object: nil)
-		super.viewWillDisappear(animated)
-	}
-
-	private func updateThemeInterface() {
-		configureTheme(ThemeManager.sharedInstance.currentTheme)
-		for cell in tableView.visibleCells {
-			guard let cell = cell as? ThemeAdaptable else {
-				fatalError()
-			}
-			cell.updateThemeInterface()
-		}
-	}
 
 }
 
@@ -108,6 +78,7 @@ extension SettingsTableViewController {
 		cell.settingSwitch.addTarget(self,
 			action: "handleUnlockByTouchIDSwitchValueChanged:",
 			forControlEvents: .ValueChanged)
+		cell.updateThemeInterface()
 	}
 
 	private func configureForDarkModeCell(cell: SettingSwitchTableViewCell) {
@@ -117,6 +88,7 @@ extension SettingsTableViewController {
 		cell.settingSwitch.addTarget(self,
 			action: "handleDarkModeSwitchValueChanged:",
 			forControlEvents: .ValueChanged)
+		cell.updateThemeInterface()
 	}
 
 
@@ -152,10 +124,7 @@ extension SettingsTableViewController {
 		ThemeManager.sharedInstance.currentTheme = theme
 		settings.theme = theme
 		settings.synchronize()
-		navigationController!.updateThemeInterface()
 		updateThemeInterface()
 	}
 
 }
-
-extension SettingsTableViewController: ThemeAdaptable {}

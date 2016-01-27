@@ -47,7 +47,7 @@ extension UIColor {
 	}
 
 	static func dark_tableViewBackgroundColor() -> UIColor {
-		return bright_ViewControllerBackgroundColor()
+		return dark_ViewControllerBackgroundColor()
 	}
 
 	static func bright_tableViewCellBackgroundColor() -> UIColor {

@@ -22,3 +22,18 @@ extension UITextView: AppearanceAdaptable {
 	}
 
 }
+
+extension UITextView: ThemeAdaptable {
+
+	func configureTheme(theme: Theme) -> Void {
+		switch theme {
+		case .Bright:
+			keyboardAppearance = .Light
+			textColor = UIColor.bright_MainTextColor()
+		case .Dark:
+			keyboardAppearance = .Dark
+			textColor = UIColor.dark_MainTextColor()
+		}
+	}
+
+}

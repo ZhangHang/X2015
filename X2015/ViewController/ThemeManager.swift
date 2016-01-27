@@ -8,7 +8,10 @@
 
 import UIKit
 
-public let themeChangeNotification: String = "ThemeChangeNotification"
+// swiftlint:disable variable_name
+public let ThemeChangeNotification: String = "ThemeChangeNotification"
+public let ThemeChangeNotificationThemeKey: String = "ThemeChangeNotificationThemeKey"
+// swiftlint:enable variable_name
 
 class ThemeManager {
 
@@ -37,8 +40,11 @@ class ThemeManager {
 			}
 
 			NSNotificationCenter
-				.defaultCenter()
-				.postNotificationName(themeChangeNotification, object: nil)
+			.defaultCenter()
+			.postNotificationName(
+				ThemeChangeNotification,
+				object: nil,
+				userInfo: [ThemeChangeNotificationThemeKey: currentTheme.rawValue])
 		}
 	}
 

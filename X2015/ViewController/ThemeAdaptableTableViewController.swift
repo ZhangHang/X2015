@@ -1,14 +1,14 @@
 //
-//  ThemeAdaptableViewController.swift
+//  ThemeAdaptableTableViewController.swift
 //  X2015
 //
-//  Created by Hang Zhang on 1/26/16.
+//  Created by Hang Zhang on 1/27/16.
 //  Copyright © 2016 Zhang Hang. All rights reserved.
 //
 
 import UIKit
 
-class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
+class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 
 	override func viewWillAppear(animated: Bool) {
 		updateThemeInterface()
@@ -33,20 +33,24 @@ class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 
 	@objc
 	private func handleThemeChanged(note: NSNotification) {
-		updateThemeInterface()
-		guard let themeValueString = note.userInfo?[ThemeChangeNotificationThemeKey]
+	guard let themeValueString = note.userInfo?[ThemeChangeNotificationThemeKey]
 			as? String else {
-			fatalError()
+				fatalError()
 		}
 		guard let targetTheme = Theme(rawValue: themeValueString) else {
 			fatalError()
 		}
 
+		updateThemeInterface()
 		themeChanged(targetTheme)
+
+		for cell in tableView.visibleCells {
+			if let cell = cell as? ThemeAdaptable {
+				cell.updateThemeInterface()
+			}
+		}
 	}
 
-	func themeChanged(toTheme: Theme) {
-
-	}
+	func themeChanged(toTheme: Theme) {}
 
 }

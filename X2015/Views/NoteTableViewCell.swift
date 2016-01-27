@@ -23,7 +23,7 @@ final class NoteTableViewCell: UITableViewCell, ConfigureableCell {
 		NSNotificationCenter
 			.defaultCenter()
 			.addObserverForName(
-				themeChangeNotification,
+				ThemeChangeNotification,
 				object: nil,
 				queue: NSOperationQueue.mainQueue()) { [unowned self] (_) -> Void in
 					self.updateThemeInterface()

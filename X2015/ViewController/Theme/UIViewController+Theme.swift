@@ -45,6 +45,7 @@ extension UINavigationController: ThemeAdaptable {
 extension ThemeAdaptable where Self: UIViewController {
 
 	func configureTheme(theme: Theme) -> Void {
+		navigationController?.updateThemeInterface()
 		switch theme {
 		case .Bright:
 			view.backgroundColor = UIColor.bright_ViewControllerBackgroundColor()
@@ -58,6 +59,7 @@ extension ThemeAdaptable where Self: UIViewController {
 extension ThemeAdaptable where Self: UITableViewController {
 
 	func configureTheme(theme: Theme) {
+		navigationController?.updateThemeInterface()
 		let grouped = tableView.style == .Grouped
 		switch theme {
 		case .Bright:
@@ -68,8 +70,9 @@ extension ThemeAdaptable where Self: UITableViewController {
 			}
 			tableView.separatorColor = UIColor.lightGrayColor()
 		case .Dark:
-			tableView.backgroundColor = UIColor.dark_ViewControllerBackgroundColor()
+			tableView.backgroundColor = UIColor.dark_tableViewBackgroundColor()
 			tableView.separatorColor = UIColor.darkGrayColor()
 		}
 	}
+
 }

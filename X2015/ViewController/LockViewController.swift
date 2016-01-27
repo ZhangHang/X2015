@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LockViewController: UIViewController {
+final class LockViewController: ThemeAdaptableViewController {
 
 	var authSuccessHandler: ( () -> Void )?
 	var authFailedHandler: ( () -> Void )?
@@ -24,10 +24,6 @@ final class LockViewController: UIViewController {
 		}
 	}
 
-	override func viewWillAppear(animated: Bool) {
-		updateThemeInterface()
-		super.viewWillAppear(animated)
-	}
 }
 
 extension LockViewController: SotyboardCreatable {
@@ -49,5 +45,3 @@ extension LockViewController {
 	}
 
 }
-
-extension LockViewController: ThemeAdaptable {}

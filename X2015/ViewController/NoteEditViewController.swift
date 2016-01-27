@@ -17,7 +17,7 @@ protocol NoteEditViewControllerDelegate: class {
 
 }
 
-final class NoteEditViewController: UIViewController {
+final class NoteEditViewController: ThemeAdaptableViewController {
 
 
 	struct Storyboard {
@@ -117,6 +117,11 @@ final class NoteEditViewController: UIViewController {
 		return previewActions
 	}
 
+	// MARK : Theme
+	override func themeChanged(toTheme: Theme) {
+		textView.updateThemeInterface()
+		emptyWelcomeView?.updateThemeInterface()
+	}
 }
 
 extension NoteEditViewController {
@@ -153,6 +158,7 @@ extension NoteEditViewController {
 		case .Empty:
 			textView.hidden = true
 			emptyWelcomeView = EmptyNoteWelcomeView.instantiateFromNib()
+			emptyWelcomeView?.updateThemeInterface()
 			guard let emptyView = emptyWelcomeView else {
 				fatalError()
 			}
@@ -179,24 +185,8 @@ extension NoteEditViewController {
 			textView.text = ""
 			break
 		}
+		textView.updateThemeInterface()
 		updateViewControllerTitleIfNesscarry()
-	}
-
-}
-
-extension NoteEditViewController: ThemeAdaptable {
-
-	func configureTheme(theme: Theme) -> Void {
-		switch theme {
-		case .Bright:
-			textView.keyboardAppearance = .Light
-			textView.textColor = UIColor.bright_MainTextColor()
-			view.backgroundColor = UIColor.bright_ViewControllerBackgroundColor()
-		case .Dark:
-			textView.keyboardAppearance = .Dark
-			textView.textColor = UIColor.dark_MainTextColor()
-			view.backgroundColor = UIColor.dark_ViewControllerBackgroundColor()
-		}
 	}
 
 }

@@ -35,6 +35,14 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 		super.viewWillAppear(animated)
 	}
 
+	lazy var emptyNoteWelcomeView: EmptyNoteWelcomeView = {
+		return EmptyNoteWelcomeView.instantiateFromNib()!
+	}()
+
+	override func themeChanged(toTheme: Theme) {
+		emptyNoteWelcomeView.updateThemeInterface()
+	}
+
 }
 
 extension NoteTimelineTableViewController {
@@ -91,7 +99,7 @@ extension NoteTimelineTableViewController {
 			sectionNameKeyPath: nil,
 			cacheName: "NoteMaster")
 		fetchedResultsController.delegate = self
-		tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
+		tableView.backgroundView = emptyNoteWelcomeView
 		tableView.tableFooterView = UIView()
 		tableView.registerNib(
 			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
