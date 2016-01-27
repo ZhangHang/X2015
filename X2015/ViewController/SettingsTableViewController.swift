@@ -52,9 +52,8 @@ extension SettingsTableViewController {
 	override func tableView(
 		tableView: UITableView,
 		cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-			guard let cell = tableView.dequeueReusableCellWithIdentifier(SettingSwitchTableViewCell.reuseIdentifier)
-				as? SettingSwitchTableViewCell else {
-					fatalError()
+			guard let cell: SettingSwitchTableViewCell = tableView.dequeueReusableCell(indexPath) else {
+				fatalError()
 			}
 			switch indexPath {
 			case CellType.DarkMode.indexPath:

@@ -50,15 +50,11 @@ extension NoteTimelineTableViewController {
 	override func tableView(
 		tableView: UITableView,
 		cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-			if tableView != self.tableView {
-				return UITableViewCell()
-			}
-			guard let cell = tableView.dequeueReusableCellWithIdentifier(
-				NoteTableViewCell.reuseIdentifier,
-				forIndexPath: indexPath) as? NoteTableViewCell else {
-					fatalError("Wrong table view cell type")
+			guard let cell: NoteTableViewCell = tableView.dequeueReusableCell(indexPath) else {
+				fatalError()
 			}
 			cell.configure(objectAt(indexPath))
+			cell.updateThemeInterface()
 			return cell
 	}
 
@@ -103,7 +99,7 @@ extension NoteTimelineTableViewController {
 		tableView.tableFooterView = UIView()
 		tableView.registerNib(
 			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
-			forCellReuseIdentifier: NoteTableViewCell.reuseIdentifier)
+			forCellReuseIdentifier: NoteTableViewCell.reusableIdentifier)
 	}
 
 	func updateWelcomeViewVisibility() {

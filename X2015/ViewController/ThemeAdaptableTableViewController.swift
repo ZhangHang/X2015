@@ -48,9 +48,12 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 			if let cell = cell as? ThemeAdaptable {
 				cell.updateThemeInterface()
 			}
+			cellThemeChanged(targetTheme, cell: cell)
 		}
 	}
 
 	func themeChanged(toTheme: Theme) {}
+
+	func cellThemeChanged(toTheme: Theme, cell: UITableViewCell) {}
 
 }

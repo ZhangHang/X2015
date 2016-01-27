@@ -167,7 +167,6 @@ extension AppDelegate {
 		ThemeManager.sharedInstance.register(UISearchBar)
 		ThemeManager.sharedInstance.register(UITextField)
 		ThemeManager.sharedInstance.register(UINavigationController)
-		ThemeManager.sharedInstance.register(NoteTableViewCell)
 		ThemeManager.sharedInstance.synchronizeWithSettings()
 	}
 

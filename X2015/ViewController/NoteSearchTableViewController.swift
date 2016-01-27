@@ -29,7 +29,7 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 
 		tableView.registerNib(
 			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
-			forCellReuseIdentifier: NoteTableViewCell.reuseIdentifier)
+			forCellReuseIdentifier: NoteTableViewCell.reusableIdentifier)
 	}
 
 	override func setupFetchedResultController() {
@@ -46,7 +46,7 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 		tableView.tableFooterView = UIView()
 		tableView.registerNib(
 			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
-			forCellReuseIdentifier: NoteTableViewCell.reuseIdentifier)
+			forCellReuseIdentifier: NoteTableViewCell.reusableIdentifier)
 	}
 
 	override func tableView(
@@ -56,7 +56,7 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 				return UITableViewCell()
 			}
 			guard let cell = tableView.dequeueReusableCellWithIdentifier(
-				NoteTableViewCell.reuseIdentifier,
+				NoteTableViewCell.reusableIdentifier,
 				forIndexPath: indexPath) as? NoteTableViewCell else {
 					fatalError("Wrong table view cell type")
 			}

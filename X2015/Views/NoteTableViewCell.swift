@@ -8,52 +8,38 @@
 
 import UIKit
 
-final class NoteTableViewCell: UITableViewCell, ConfigureableCell {
-
-	static var reuseIdentifier: String! {
-		return "NoteTableViewCell"
-	}
+final class NoteTableViewCell: UITableViewCell {
 
 	static var nibName: String {
 		return "NoteTableViewCell"
 	}
 
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		NSNotificationCenter
-			.defaultCenter()
-			.addObserverForName(
-				ThemeChangeNotification,
-				object: nil,
-				queue: NSOperationQueue.mainQueue()) { [unowned self] (_) -> Void in
-					self.updateThemeInterface()
-		}
-	}
-
-	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
-	}
-
 	func configure(note: Note) {
 		textLabel!.text = note.title
 		detailTextLabel!.text = note.preview
-
-		updateThemeInterface()
 	}
 
 }
 
-extension NoteTableViewCell: AppearanceAdaptable {
+extension NoteTableViewCell: ReusableCell {}
 
-	static func configureThemeAppearance(theme: Theme) {
+extension NoteTableViewCell: ThemeAdaptable {
+
+	func configureTheme(theme: Theme) {
+		backgroundColor = UIColor.clearColor()
 		switch theme {
 		case .Bright:
-			NoteTableViewCell.appearance().backgroundColor = UIColor.clearColor()
+			textLabel?.textColor = UIColor.bright_MainTextColor()
+			detailTextLabel?.textColor = UIColor.bright_SubTextColor()
+			selectionStyle = .Gray
+			selectedBackgroundView = nil
 		case .Dark:
-			NoteTableViewCell.appearance().backgroundColor = UIColor.clearColor()
+			selectionStyle = .Default
+			textLabel?.textColor = UIColor.dark_MainTextColor()
+			detailTextLabel?.textColor = UIColor.dark_SubTextColor()
+			selectedBackgroundView = UIView()
+			selectedBackgroundView!.backgroundColor = UIColor.dark_tableViewCellBackgroundColor()
 		}
 	}
 
 }
-
-extension NoteTableViewCell: ThemeAdaptable {}

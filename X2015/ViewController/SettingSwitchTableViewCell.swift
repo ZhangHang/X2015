@@ -13,15 +13,9 @@ final class SettingSwitchTableViewCell: UITableViewCell {
 	@IBOutlet weak var settingTitleLabel: UILabel!
 	@IBOutlet weak var settingSwitch: UISwitch!
 
-	override func setSelected(selected: Bool, animated: Bool) {
-		super.setSelected(selected, animated: animated)
-
-		// Configure the view for the selected state
-	}
-
 }
 
-extension SettingSwitchTableViewCell: ConfigureableCell {}
+extension SettingSwitchTableViewCell: ReusableCell {}
 
 extension SettingSwitchTableViewCell: ThemeAdaptable {
 
@@ -31,7 +25,7 @@ extension SettingSwitchTableViewCell: ThemeAdaptable {
 			backgroundColor = UIColor.whiteColor()
 			settingTitleLabel.textColor = UIColor.bright_MainTextColor()
 		case .Dark:
-			backgroundColor = UIColor.dark_lightBlackColor()
+			backgroundColor = UIColor.dark_tableViewCellBackgroundColor()
 			settingTitleLabel.textColor = UIColor.dark_MainTextColor()
 		}
 	}
