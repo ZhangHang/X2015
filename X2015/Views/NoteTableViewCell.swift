@@ -44,14 +44,16 @@ final class NoteTableViewCell: UITableViewCell, ConfigureableCell {
 }
 
 extension NoteTableViewCell: AppearanceAdaptable {
+
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
 		case .Bright:
-			NoteTableViewCell.appearance().backgroundColor = UIColor.bright_tableViewCellBackgroundColor()
+			NoteTableViewCell.appearance().backgroundColor = UIColor.clearColor()
 		case .Dark:
-			NoteTableViewCell.appearance().backgroundColor = UIColor.dark_tableViewCellBackgroundColor()
+			NoteTableViewCell.appearance().backgroundColor = UIColor.clearColor()
 		}
 	}
+
 }
 
 extension NoteTableViewCell: ThemeAdaptable {}

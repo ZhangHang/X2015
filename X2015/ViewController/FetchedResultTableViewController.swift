@@ -21,6 +21,24 @@ class FetchedResultTableViewController: UITableViewController, ManagedObjectCont
 		fetchData()
 	}
 
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		NSNotificationCenter
+			.defaultCenter()
+			.addObserverForName(themeChangeNotification,
+				object: nil,
+				queue: NSOperationQueue.mainQueue()) {
+					[unowned self] (_) -> Void in
+			self.updateThemeInterface()
+		}
+		updateThemeInterface()
+	}
+
+	override func viewDidDisappear(animated: Bool) {
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: themeChangeNotification, object: nil)
+		super.viewDidDisappear(animated)
+	}
+
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return self.fetchedResultsController.sections?.count ?? 0
 	}
@@ -102,6 +120,19 @@ extension FetchedResultTableViewController: NSFetchedResultsControllerDelegate {
 
 	func controllerDidChangeContent(controller: NSFetchedResultsController) {
 		tableView.endUpdates()
+	}
+
+}
+
+extension FetchedResultTableViewController: ThemeAdaptable {
+
+	func configureTheme(theme: Theme) {
+		switch theme {
+		case .Bright:
+			tableView.separatorColor = UIColor.lightGrayColor()
+		case .Dark:
+			tableView.separatorColor = UIColor.darkGrayColor()
+		}
 	}
 
 }

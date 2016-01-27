@@ -41,6 +41,7 @@ class ThemeManager {
 				.postNotificationName(themeChangeNotification, object: nil)
 		}
 	}
+
 }
 
 extension ThemeAdaptable {

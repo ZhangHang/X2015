@@ -10,7 +10,7 @@
 		7F0126DB1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0126DA1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift */; };
 		7F0126DD1C576F5C00F46DF4 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0126DC1C576F5C00F46DF4 /* ThemeManager.swift */; };
 		7F0126DF1C57717C00F46DF4 /* ThemeAdaptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0126DE1C57717C00F46DF4 /* ThemeAdaptable.swift */; };
-		7F0126E11C57926E00F46DF4 /* BaseUIKitControlThemeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0126E01C57926E00F46DF4 /* BaseUIKitControlThemeExtension.swift */; };
+		7F0AA70A1C5847DA0019E595 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0AA7091C5847DA0019E595 /* SettingSwitchTableViewCell.swift */; };
 		7F0D360A1C4D2CA7009F18A6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36091C4D2CA7009F18A6 /* SettingsTableViewController.swift */; };
 		7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D36191C4D346B009F18A6 /* Localizable.strings */; };
 		7F0D36321C4E010D009F18A6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36311C4E010D009F18A6 /* Settings.swift */; };
@@ -24,6 +24,16 @@
 		7F14F3BD1C50F37A00468F29 /* NoteTimelineTableViewController+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3BC1C50F37A00468F29 /* NoteTimelineTableViewController+Search.swift */; };
 		7F14F3C11C50F7F100468F29 /* NoteSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3C01C50F7F100468F29 /* NoteSearchTableViewController.swift */; };
 		7F14F3C31C50FDBC00468F29 /* FetchedResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3C21C50FDBC00468F29 /* FetchedResultTableViewController.swift */; };
+		7F1581011C57ABE900EFFF82 /* UITableView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1581001C57ABE900EFFF82 /* UITableView+Theme.swift */; };
+		7F1581031C57AC2E00EFFF82 /* UITableViewCell+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1581021C57AC2E00EFFF82 /* UITableViewCell+Theme.swift */; };
+		7F1581051C57AC5C00EFFF82 /* UIWindow+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1581041C57AC5C00EFFF82 /* UIWindow+Theme.swift */; };
+		7F1581071C57AC8B00EFFF82 /* UIViewController+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1581061C57AC8B00EFFF82 /* UIViewController+Theme.swift */; };
+		7F1581091C57ACBE00EFFF82 /* UILabel+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1581081C57ACBE00EFFF82 /* UILabel+Theme.swift */; };
+		7F15810B1C57ACDA00EFFF82 /* UITextView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F15810A1C57ACDA00EFFF82 /* UITextView+Theme.swift */; };
+		7F15810D1C57AD0500EFFF82 /* UITextField+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F15810C1C57AD0500EFFF82 /* UITextField+Theme.swift */; };
+		7F15810F1C57AD4600EFFF82 /* UISearchBar+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F15810E1C57AD4600EFFF82 /* UISearchBar+Theme.swift */; };
+		7F1581111C57AD7D00EFFF82 /* UIView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1581101C57AD7D00EFFF82 /* UIView+Theme.swift */; };
+		7F1581151C57B1A300EFFF82 /* ThemeAdaptableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1581141C57B1A300EFFF82 /* ThemeAdaptableViewController.swift */; };
 		7F37C7851C41658E00519B18 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
 		7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7841C41658E00519B18 /* UIHelper.swift */; };
@@ -65,7 +75,7 @@
 		7F0126DA1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NoteTimelineTableViewController+Navigation.swift"; path = "ViewController/NoteTimelineTableViewController+Navigation.swift"; sourceTree = "<group>"; };
 		7F0126DC1C576F5C00F46DF4 /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeManager.swift; path = ViewController/ThemeManager.swift; sourceTree = "<group>"; };
 		7F0126DE1C57717C00F46DF4 /* ThemeAdaptable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeAdaptable.swift; path = ViewController/Protocols/ThemeAdaptable.swift; sourceTree = "<group>"; };
-		7F0126E01C57926E00F46DF4 /* BaseUIKitControlThemeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseUIKitControlThemeExtension.swift; path = ViewController/BaseUIKitControlThemeExtension.swift; sourceTree = "<group>"; };
+		7F0AA7091C5847DA0019E595 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingSwitchTableViewCell.swift; path = ViewController/SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		7F0D36091C4D2CA7009F18A6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ViewController/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		7F0D36131C4D2F9D009F18A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7F0D36161C4D3467009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -86,6 +96,16 @@
 		7F14F3C01C50F7F100468F29 /* NoteSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteSearchTableViewController.swift; path = ViewController/NoteSearchTableViewController.swift; sourceTree = "<group>"; };
 		7F14F3C21C50FDBC00468F29 /* FetchedResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchedResultTableViewController.swift; path = ViewController/FetchedResultTableViewController.swift; sourceTree = "<group>"; };
 		7F1580FB1C579ABE00EFFF82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		7F1581001C57ABE900EFFF82 /* UITableView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Theme.swift"; path = "ViewController/Theme/UITableView+Theme.swift"; sourceTree = "<group>"; };
+		7F1581021C57AC2E00EFFF82 /* UITableViewCell+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableViewCell+Theme.swift"; path = "ViewController/Theme/UITableViewCell+Theme.swift"; sourceTree = "<group>"; };
+		7F1581041C57AC5C00EFFF82 /* UIWindow+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIWindow+Theme.swift"; path = "ViewController/Theme/UIWindow+Theme.swift"; sourceTree = "<group>"; };
+		7F1581061C57AC8B00EFFF82 /* UIViewController+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Theme.swift"; path = "ViewController/Theme/UIViewController+Theme.swift"; sourceTree = "<group>"; };
+		7F1581081C57ACBE00EFFF82 /* UILabel+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+Theme.swift"; path = "ViewController/Theme/UILabel+Theme.swift"; sourceTree = "<group>"; };
+		7F15810A1C57ACDA00EFFF82 /* UITextView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+Theme.swift"; path = "ViewController/Theme/UITextView+Theme.swift"; sourceTree = "<group>"; };
+		7F15810C1C57AD0500EFFF82 /* UITextField+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextField+Theme.swift"; path = "ViewController/Theme/UITextField+Theme.swift"; sourceTree = "<group>"; };
+		7F15810E1C57AD4600EFFF82 /* UISearchBar+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UISearchBar+Theme.swift"; path = "ViewController/Theme/UISearchBar+Theme.swift"; sourceTree = "<group>"; };
+		7F1581101C57AD7D00EFFF82 /* UIView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Theme.swift"; path = "ViewController/Theme/UIView+Theme.swift"; sourceTree = "<group>"; };
+		7F1581141C57B1A300EFFF82 /* ThemeAdaptableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeAdaptableViewController.swift; path = ViewController/ThemeAdaptableViewController.swift; sourceTree = "<group>"; };
 		7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7841C41658E00519B18 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -163,11 +183,27 @@
 			isa = PBXGroup;
 			children = (
 				7F0126DC1C576F5C00F46DF4 /* ThemeManager.swift */,
-				7F0126E01C57926E00F46DF4 /* BaseUIKitControlThemeExtension.swift */,
 				7F0D36091C4D2CA7009F18A6 /* SettingsTableViewController.swift */,
 				7F0D36311C4E010D009F18A6 /* Settings.swift */,
+				7F0AA7091C5847DA0019E595 /* SettingSwitchTableViewCell.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		7F1580FF1C57ABD000EFFF82 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				7F1581001C57ABE900EFFF82 /* UITableView+Theme.swift */,
+				7F1581021C57AC2E00EFFF82 /* UITableViewCell+Theme.swift */,
+				7F1581041C57AC5C00EFFF82 /* UIWindow+Theme.swift */,
+				7F1581061C57AC8B00EFFF82 /* UIViewController+Theme.swift */,
+				7F1581081C57ACBE00EFFF82 /* UILabel+Theme.swift */,
+				7F15810A1C57ACDA00EFFF82 /* UITextView+Theme.swift */,
+				7F15810C1C57AD0500EFFF82 /* UITextField+Theme.swift */,
+				7F15810E1C57AD4600EFFF82 /* UISearchBar+Theme.swift */,
+				7F1581101C57AD7D00EFFF82 /* UIView+Theme.swift */,
+			);
+			name = Theme;
 			sourceTree = "<group>";
 		};
 		7F37C7811C41658E00519B18 /* Extensions */ = {
@@ -269,6 +305,7 @@
 				7F5205171C364C7C00507125 /* Protocols */,
 				7F14F3AE1C50949000468F29 /* LockViewController.swift */,
 				7F14F3C21C50FDBC00468F29 /* FetchedResultTableViewController.swift */,
+				7F1581141C57B1A300EFFF82 /* ThemeAdaptableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -296,6 +333,7 @@
 		7FFD814A1C4B5B4B004F1987 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7F1580FF1C57ABD000EFFF82 /* Theme */,
 				7FFD814F1C4B5F46004F1987 /* Protocols */,
 				7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */,
 				7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */,
@@ -407,16 +445,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F5205051C3504C900507125 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */,
+				7F0AA70A1C5847DA0019E595 /* SettingSwitchTableViewCell.swift in Sources */,
 				7F14F3B11C50951700468F29 /* SotyboardCreatable.swift in Sources */,
 				7F0126DD1C576F5C00F46DF4 /* ThemeManager.swift in Sources */,
+				7F1581031C57AC2E00EFFF82 /* UITableViewCell+Theme.swift in Sources */,
+				7F15810B1C57ACDA00EFFF82 /* UITextView+Theme.swift in Sources */,
 				7F14F3C31C50FDBC00468F29 /* FetchedResultTableViewController.swift in Sources */,
 				7F5204FA1C3504C900507125 /* KeyCodable.swift in Sources */,
-				7F0126E11C57926E00F46DF4 /* BaseUIKitControlThemeExtension.swift in Sources */,
 				7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */,
 				7F5204F91C3504C900507125 /* CoreDataErrors.swift in Sources */,
 				7F0126DB1C57383500F46DF4 /* NoteTimelineTableViewController+Navigation.swift in Sources */,
 				7F5205081C3504C900507125 /* ValueTransformer.swift in Sources */,
 				7F5204D21C34F79B00507125 /* X2015.xcdatamodeld in Sources */,
+				7F1581071C57AC8B00EFFF82 /* UIViewController+Theme.swift in Sources */,
 				7F5204FD1C3504C900507125 /* ManagedObjectObserver.swift in Sources */,
 				7F5204F81C3504C900507125 /* Collection+CoreDataExtensions.swift in Sources */,
 				7F5205031C3504C900507125 /* NSManagedObjectContext+Extensions.swift in Sources */,
@@ -424,6 +465,7 @@
 				7F14F3BD1C50F37A00468F29 /* NoteTimelineTableViewController+Search.swift in Sources */,
 				7F52050E1C3528D900507125 /* NoteTimelineTableViewController.swift in Sources */,
 				7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */,
+				7F1581051C57AC5C00EFFF82 /* UIWindow+Theme.swift in Sources */,
 				7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */,
 				7F5205021C3504C900507125 /* NSManagedObject+Extensions.swift in Sources */,
 				7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */,
@@ -433,14 +475,19 @@
 				7FD4DEF21C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift in Sources */,
 				7F5205001C3504C900507125 /* ModelVersionType.swift in Sources */,
 				7FFE12C21C3CDF530099EA2C /* ManagedObjectContextSettable.swift in Sources */,
+				7F15810D1C57AD0500EFFF82 /* UITextField+Theme.swift in Sources */,
 				7F5205191C364C9100507125 /* ConfigureableCell.swift in Sources */,
 				7F5204FF1C3504C900507125 /* ModelBuilder.swift in Sources */,
+				7F1581151C57B1A300EFFF82 /* ThemeAdaptableViewController.swift in Sources */,
 				7F0D36321C4E010D009F18A6 /* Settings.swift in Sources */,
 				7F5205041C3504C900507125 /* NSManagedObjectContext+Observers.swift in Sources */,
 				7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */,
 				7F5205011C3504C900507125 /* NSFetchRequest+Extensions.swift in Sources */,
+				7F1581091C57ACBE00EFFF82 /* UILabel+Theme.swift in Sources */,
+				7F1581011C57ABE900EFFF82 /* UITableView+Theme.swift in Sources */,
 				7F882E691C5705430090AF40 /* NoteUpdater.swift in Sources */,
 				7F5204FE1C3504C900507125 /* Migration.swift in Sources */,
+				7F15810F1C57AD4600EFFF82 /* UISearchBar+Theme.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
 				7F0D360A1C4D2CA7009F18A6 /* SettingsTableViewController.swift in Sources */,
 				7F5205071C3504C900507125 /* Utilities.swift in Sources */,
@@ -448,6 +495,7 @@
 				7F5205101C3587F400507125 /* NoteEditViewController.swift in Sources */,
 				7F5204FC1C3504C900507125 /* ManagedObject.swift in Sources */,
 				7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */,
+				7F1581111C57AD7D00EFFF82 /* UIView+Theme.swift in Sources */,
 				7F14F3C11C50F7F100468F29 /* NoteSearchTableViewController.swift in Sources */,
 				7F37C7851C41658E00519B18 /* Foundation+Extensions.swift in Sources */,
 				7F0126DF1C57717C00F46DF4 /* ThemeAdaptable.swift in Sources */,

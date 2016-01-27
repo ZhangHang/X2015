@@ -25,7 +25,6 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 	}
 
 	override func viewWillAppear(animated: Bool) {
-		updateThemeInterface()
 		updateWelcomeViewVisibility()
 		clearsSelectionOnViewWillAppear = splitViewController!.collapsed
 		if clearsSelectionOnViewWillAppear {
@@ -119,5 +118,3 @@ extension NoteTimelineTableViewController {
 		}
 	}
 }
-
-extension NoteTimelineTableViewController: ThemeAdaptable {}

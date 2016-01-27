@@ -41,39 +41,86 @@ class SettingsTableViewController: UITableViewController {
 
 	private let settings = Settings()
 
-	@IBOutlet weak var unlockByTouchIDSwitch: UISwitch!
-	@IBOutlet weak var unlockByTouchCellTitleLabel: UILabel!
-
-	@IBOutlet weak var darkModeSwitch: UISwitch!
-
 	override func viewWillAppear(animated: Bool) {
-		updateUnlockByTouchIDCell()
+		updateThemeInterface()
 		super.viewWillAppear(animated)
+		NSNotificationCenter.defaultCenter().addObserverForName(
+			themeChangeNotification,
+			object: nil,
+			queue: NSOperationQueue.mainQueue()) { [unowned self] (_) -> Void in
+				self.updateThemeInterface()
+		}
+		updateThemeInterface()
+	}
+
+	override func viewWillDisappear(animated: Bool) {
+		NSNotificationCenter.defaultCenter().removeObserver(
+			self,
+			name: themeChangeNotification,
+			object: nil)
+		super.viewWillDisappear(animated)
+	}
+
+	private func updateThemeInterface() {
+		configureTheme(ThemeManager.sharedInstance.currentTheme)
+		for cell in tableView.visibleCells {
+			guard let cell = cell as? ThemeAdaptable else {
+				fatalError()
+			}
+			cell.updateThemeInterface()
+		}
+	}
+
+}
+
+extension SettingsTableViewController {
+
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 2
 	}
 
 	override func tableView(
 		tableView: UITableView,
-		willDisplayCell cell: UITableViewCell,
-		forRowAtIndexPath indexPath: NSIndexPath) {
-			switch indexPath {
-			case CellType.UnlockByTouchID.indexPath:
-				updateUnlockByTouchIDCell()
-			case CellType.DarkMode.indexPath:
-				updateDarkModeCell()
-			default:
-				break
+		cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+			guard let cell = tableView.dequeueReusableCellWithIdentifier(SettingSwitchTableViewCell.reuseIdentifier)
+				as? SettingSwitchTableViewCell else {
+					fatalError()
 			}
+			switch indexPath {
+			case CellType.DarkMode.indexPath:
+				configureForDarkModeCell(cell)
+			case CellType.UnlockByTouchID.indexPath:
+				configureTouchIDCell(cell)
+			default:
+				fatalError()
+			}
+			return cell
 	}
 
-
-	private func updateUnlockByTouchIDCell() {
+	private func configureTouchIDCell(cell: SettingSwitchTableViewCell) {
 		let hasTouchID = TouchIDHelper.hasTouchID
-		unlockByTouchCellTitleLabel.enabled = hasTouchID
-		unlockByTouchIDSwitch.enabled = hasTouchID
-		unlockByTouchIDSwitch.on = settings.unlockByTouchID
+		cell.settingTitleLabel.enabled = hasTouchID
+		cell.settingSwitch.enabled = hasTouchID
+
+		cell.settingTitleLabel.text = NSLocalizedString("Touch ID", comment: "")
+		cell.settingSwitch.on = settings.unlockByTouchID
+		cell.settingSwitch.removeTarget(self, action: nil, forControlEvents: .ValueChanged)
+		cell.settingSwitch.addTarget(self,
+			action: "handleUnlockByTouchIDSwitchValueChanged:",
+			forControlEvents: .ValueChanged)
 	}
 
-	@IBAction func handleUnlockByTouchIDSwitchValueChanged(sender: UISwitch) {
+	private func configureForDarkModeCell(cell: SettingSwitchTableViewCell) {
+		cell.settingTitleLabel.text = NSLocalizedString("Dark Mode", comment: "")
+		cell.settingSwitch.removeTarget(self, action: nil, forControlEvents: .ValueChanged)
+		cell.settingSwitch.on = ThemeManager.sharedInstance.currentTheme == .Dark
+		cell.settingSwitch.addTarget(self,
+			action: "handleDarkModeSwitchValueChanged:",
+			forControlEvents: .ValueChanged)
+	}
+
+
+	func handleUnlockByTouchIDSwitchValueChanged(sender: UISwitch) {
 		TouchIDHelper.auth(
 			NSLocalizedString("Use Touch ID to Unlock", comment: ""),
 			successHandler: { () -> Void in
@@ -99,14 +146,16 @@ class SettingsTableViewController: UITableViewController {
 		})
 	}
 
-	private func updateDarkModeCell() {
-		darkModeSwitch.on = ThemeManager.sharedInstance.currentTheme == .Dark
-	}
 
-	@IBAction func handleDarkModeSwitchValueChanged(sender: UISwitch) {
+	func handleDarkModeSwitchValueChanged(sender: UISwitch) {
 		let theme: Theme = sender.on ? .Dark : .Bright
 		ThemeManager.sharedInstance.currentTheme = theme
 		settings.theme = theme
 		settings.synchronize()
+		navigationController!.updateThemeInterface()
+		updateThemeInterface()
 	}
+
 }
+
+extension SettingsTableViewController: ThemeAdaptable {}

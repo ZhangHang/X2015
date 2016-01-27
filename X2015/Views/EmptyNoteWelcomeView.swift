@@ -34,5 +34,5 @@ extension EmptyNoteWelcomeView: ThemeAdaptable {
 			backgroundColor = UIColor.dark_ViewControllerBackgroundColor()
 		}
 	}
-	
+
 }
