@@ -63,7 +63,6 @@ extension SettingsTableViewController {
 			default:
 				fatalError()
 			}
-			cell.configureTheme(currentTheme)
 			return cell
 	}
 
