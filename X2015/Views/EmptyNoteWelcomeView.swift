@@ -8,19 +8,7 @@
 
 import UIKit
 
-final class EmptyNoteWelcomeView: UIView {
-
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		updateThemeInterface()
-	}
-
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		updateThemeInterface()
-	}
-
-}
+final class EmptyNoteWelcomeView: UIView {}
 
 extension EmptyNoteWelcomeView: NibLoadable {}
 

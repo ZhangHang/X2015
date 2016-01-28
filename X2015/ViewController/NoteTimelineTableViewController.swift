@@ -39,8 +39,9 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 		return EmptyNoteWelcomeView.instantiateFromNib()!
 	}()
 
-	override func themeChanged(toTheme: Theme) {
-		emptyNoteWelcomeView.updateThemeInterface()
+	override func updateThemeInterface(theme: Theme) {
+		super.updateThemeInterface(theme)
+		emptyNoteWelcomeView.configureTheme(theme)
 	}
 
 }
@@ -54,7 +55,7 @@ extension NoteTimelineTableViewController {
 				fatalError()
 			}
 			cell.configure(objectAt(indexPath))
-			cell.updateThemeInterface()
+			cell.configureTheme(currentTheme)
 			return cell
 	}
 

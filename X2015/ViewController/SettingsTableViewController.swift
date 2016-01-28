@@ -63,6 +63,7 @@ extension SettingsTableViewController {
 			default:
 				fatalError()
 			}
+			cell.configureTheme(currentTheme)
 			return cell
 	}
 
@@ -77,7 +78,6 @@ extension SettingsTableViewController {
 		cell.settingSwitch.addTarget(self,
 			action: "handleUnlockByTouchIDSwitchValueChanged:",
 			forControlEvents: .ValueChanged)
-		cell.updateThemeInterface()
 	}
 
 	private func configureForDarkModeCell(cell: SettingSwitchTableViewCell) {
@@ -87,7 +87,6 @@ extension SettingsTableViewController {
 		cell.settingSwitch.addTarget(self,
 			action: "handleDarkModeSwitchValueChanged:",
 			forControlEvents: .ValueChanged)
-		cell.updateThemeInterface()
 	}
 
 
@@ -123,7 +122,6 @@ extension SettingsTableViewController {
 		ThemeManager.sharedInstance.currentTheme = theme
 		settings.theme = theme
 		settings.synchronize()
-		updateThemeInterface()
 	}
 
 }

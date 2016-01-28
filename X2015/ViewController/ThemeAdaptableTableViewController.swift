@@ -10,50 +10,54 @@ import UIKit
 
 class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 
-	override func viewWillAppear(animated: Bool) {
-		updateThemeInterface()
-		super.viewWillAppear(animated)
+	var currentTheme: Theme {
+		return ThemeManager.sharedInstance.currentTheme
 	}
 
-	override func viewDidAppear(animated: Bool) {
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		updateThemeInterfaceHelper()
+	}
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: "handleThemeChanged:",
+			selector: "updateThemeInterfaceHelper",
 			name: ThemeChangeNotification,
 			object: nil)
-		super.viewDidAppear(animated)
 	}
 
-	override func viewDidDisappear(animated: Bool) {
+	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(
 			self,
 			name: ThemeChangeNotification,
 			object: nil)
-		super.viewDidDisappear(animated)
+	}
+
+	override func tableView(tableView: UITableView,
+		willDisplayCell cell: UITableViewCell,
+		forRowAtIndexPath indexPath: NSIndexPath) {
+			if let cell = cell as? ThemeAdaptable {
+				cell.configureTheme(currentTheme)
+			}
 	}
 
 	@objc
-	private func handleThemeChanged(note: NSNotification) {
-	guard let themeValueString = note.userInfo?[ThemeChangeNotificationThemeKey]
-			as? String else {
-				fatalError()
-		}
-		guard let targetTheme = Theme(rawValue: themeValueString) else {
-			fatalError()
-		}
+	private func updateThemeInterfaceHelper() {
+		updateThemeInterface(currentTheme)
+	}
 
-		updateThemeInterface()
-		themeChanged(targetTheme)
-
+	func updateThemeInterface(theme: Theme) {
+		configureTheme(theme)
 		for cell in tableView.visibleCells {
 			if let cell = cell as? ThemeAdaptable {
-				cell.updateThemeInterface()
+				cell.configureTheme(theme)
 			}
-			cellThemeChanged(targetTheme, cell: cell)
+			updateVisiableCellThemeInterface(cell, theme: theme)
 		}
 	}
 
-	func themeChanged(toTheme: Theme) {}
+	func updateVisiableCellThemeInterface<CellType: UITableViewCell>(cell: CellType, theme: Theme) {
 
-	func cellThemeChanged(toTheme: Theme, cell: UITableViewCell) {}
-
+	}
 }

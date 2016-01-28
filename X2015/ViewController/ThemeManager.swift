@@ -49,11 +49,3 @@ class ThemeManager {
 	}
 
 }
-
-extension ThemeAdaptable {
-
-	func updateThemeInterface() {
-		configureTheme(ThemeManager.sharedInstance.currentTheme)
-	}
-
-}

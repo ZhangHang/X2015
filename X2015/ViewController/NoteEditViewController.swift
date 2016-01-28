@@ -83,7 +83,6 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 	}
 
 	override func viewWillAppear(animated: Bool) {
-		updateThemeInterface()
 		super.viewWillAppear(animated)
 		keyboardNotificationObserver.startMonitor()
 
@@ -118,9 +117,10 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 	}
 
 	// MARK : Theme
-	override func themeChanged(toTheme: Theme) {
-		textView.updateThemeInterface()
-		emptyWelcomeView?.updateThemeInterface()
+	override func updateThemeInterface(theme: Theme) {
+		super.updateThemeInterface(theme)
+		textView.configureTheme(theme)
+		emptyWelcomeView?.configureTheme(theme)
 	}
 }
 
@@ -146,7 +146,7 @@ extension NoteEditViewController: UITextViewDelegate {
 
 	func textViewDidChange(textView: UITextView) {
 		updateViewControllerTitleIfNesscarry()
-		self.noteUpdater!.updateNote(textView.text)
+		noteUpdater!.updateNote(textView.text)
 	}
 
 }
@@ -158,7 +158,6 @@ extension NoteEditViewController {
 		case .Empty:
 			textView.hidden = true
 			emptyWelcomeView = EmptyNoteWelcomeView.instantiateFromNib()
-			emptyWelcomeView?.updateThemeInterface()
 			guard let emptyView = emptyWelcomeView else {
 				fatalError()
 			}
@@ -185,7 +184,6 @@ extension NoteEditViewController {
 			textView.text = ""
 			break
 		}
-		textView.updateThemeInterface()
 		updateViewControllerTitleIfNesscarry()
 	}
 

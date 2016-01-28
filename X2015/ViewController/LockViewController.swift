@@ -24,6 +24,14 @@ final class LockViewController: ThemeAdaptableViewController {
 		}
 	}
 
+	override func updateThemeInterface(theme: Theme) {
+		switch theme {
+		case .Bright:
+			view.backgroundColor = UIColor.x2015_BlueColor()
+		case .Dark:
+			view.backgroundColor = UIColor.dark_ViewControllerBackgroundColor()
+		}
+	}
 }
 
 extension LockViewController: SotyboardCreatable {

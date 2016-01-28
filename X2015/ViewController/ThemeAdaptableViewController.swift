@@ -10,43 +10,37 @@ import UIKit
 
 class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 
+	var currentTheme: Theme {
+		return ThemeManager.sharedInstance.currentTheme
+	}
+
 	override func viewWillAppear(animated: Bool) {
-		updateThemeInterface()
+		updateThemeInterfaceHelper()
 		super.viewWillAppear(animated)
 	}
 
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: "handleThemeChanged:",
+			selector: "updateThemeInterfaceHelper",
 			name: ThemeChangeNotification,
 			object: nil)
-		super.viewDidAppear(animated)
 	}
 
-	override func viewDidDisappear(animated: Bool) {
+	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(
 			self,
 			name: ThemeChangeNotification,
 			object: nil)
-		super.viewDidDisappear(animated)
 	}
 
 	@objc
-	private func handleThemeChanged(note: NSNotification) {
-		updateThemeInterface()
-		guard let themeValueString = note.userInfo?[ThemeChangeNotificationThemeKey]
-			as? String else {
-			fatalError()
-		}
-		guard let targetTheme = Theme(rawValue: themeValueString) else {
-			fatalError()
-		}
-
-		themeChanged(targetTheme)
+	private func updateThemeInterfaceHelper() {
+		updateThemeInterface(currentTheme)
 	}
 
-	func themeChanged(toTheme: Theme) {
-
+	func updateThemeInterface(theme: Theme) {
+		configureTheme(theme)
 	}
 
 }
