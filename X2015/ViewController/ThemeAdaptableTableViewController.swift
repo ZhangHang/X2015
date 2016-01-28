@@ -37,9 +37,7 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 	override func tableView(tableView: UITableView,
 		willDisplayCell cell: UITableViewCell,
 		forRowAtIndexPath indexPath: NSIndexPath) {
-			if let cell = cell as? ThemeAdaptable {
-				cell.configureTheme(currentTheme)
-			}
+			updateCellThemeInterface(cell, theme: currentTheme)
 	}
 
 	@objc
@@ -53,11 +51,13 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 			if let cell = cell as? ThemeAdaptable {
 				cell.configureTheme(theme)
 			}
-			updateVisiableCellThemeInterface(cell, theme: theme)
+			updateCellThemeInterface(cell, theme: theme)
 		}
 	}
 
-	func updateVisiableCellThemeInterface<CellType: UITableViewCell>(cell: CellType, theme: Theme) {
-
+	func updateCellThemeInterface<CellType: UITableViewCell>(cell: CellType, theme: Theme) {
+		if let cell = cell as? ThemeAdaptable {
+			cell.configureTheme(currentTheme)
+		}
 	}
 }

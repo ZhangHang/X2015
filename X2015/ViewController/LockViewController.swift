@@ -26,10 +26,10 @@ final class LockViewController: ThemeAdaptableViewController {
 
 	override func updateThemeInterface(theme: Theme) {
 		switch theme {
-		case .Bright:
+		case .Defualt:
 			view.backgroundColor = UIColor.x2015_BlueColor()
-		case .Dark:
-			view.backgroundColor = UIColor.dark_ViewControllerBackgroundColor()
+		case .Night:
+			view.backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
 	}
 }

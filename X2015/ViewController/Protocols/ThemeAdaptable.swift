@@ -9,7 +9,7 @@
 import Foundation
 
 enum Theme: String {
-	case Bright, Dark
+	case Defualt, Night
 }
 
 protocol AppearanceAdaptable: class {

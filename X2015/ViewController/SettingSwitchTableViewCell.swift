@@ -17,17 +17,22 @@ final class SettingSwitchTableViewCell: UITableViewCell {
 
 extension SettingSwitchTableViewCell: ReusableCell {}
 
-extension SettingSwitchTableViewCell: ThemeAdaptable {
+extension SettingSwitchTableViewCell {
 
-	func configureTheme(theme: Theme) {
-		switch theme {
-		case .Bright:
-			backgroundColor = UIColor.whiteColor()
-			settingTitleLabel.textColor = UIColor.bright_MainTextColor()
-		case .Dark:
-			backgroundColor = UIColor.dark_tableViewCellBackgroundColor()
-			settingTitleLabel.textColor = UIColor.dark_MainTextColor()
-		}
+	func configure(
+		title: String,
+		switchOn: Bool,
+		switchTarget: AnyObject?,
+		switchSelector: Selector,
+		enabled: Bool = true) {
+		settingTitleLabel.text = title
+		settingSwitch.removeTarget(nil, action: nil, forControlEvents: .ValueChanged)
+		settingSwitch.on = switchOn
+		settingSwitch.addTarget(switchTarget,
+			action: switchSelector,
+			forControlEvents: .ValueChanged)
+		settingTitleLabel.enabled = enabled
+		settingSwitch.enabled = enabled
 	}
 
 }

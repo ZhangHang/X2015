@@ -16,10 +16,10 @@ extension EmptyNoteWelcomeView: ThemeAdaptable {
 
 	func configureTheme(theme: Theme) {
 		switch theme {
-		case .Bright:
-			backgroundColor = UIColor.bright_ViewControllerBackgroundColor()
-		case .Dark:
-			backgroundColor = UIColor.dark_ViewControllerBackgroundColor()
+		case .Defualt:
+			backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
+		case .Night:
+			backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
 	}
 

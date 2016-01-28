@@ -11,12 +11,12 @@ import UIKit
 extension UINavigationController: AppearanceAdaptable {
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
-		case .Bright:
+		case .Defualt:
 			UIHelper.setupNavigationBarStyle(
 				UIColor.x2015_BlueColor(),
 				backgroundColor: UIColor.whiteColor(),
 				barStyle: .Black)
-		case .Dark:
+		case .Night:
 			UIHelper.setupNavigationBarStyle(
 				UIColor.blackColor(),
 				backgroundColor: UIColor.whiteColor(),
@@ -29,11 +29,11 @@ extension UINavigationController: ThemeAdaptable {
 
 	func configureTheme(theme: Theme) -> Void {
 		switch theme {
-		case .Bright:
+		case .Defualt:
 			navigationBar.barTintColor = UIColor.x2015_BlueColor()
 			navigationBar.tintColor = UIColor.whiteColor()
 			navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-		case .Dark:
+		case .Night:
 			navigationBar.barTintColor = UIColor.blackColor()
 			navigationBar.tintColor = UIColor.whiteColor()
 			navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -47,10 +47,10 @@ extension ThemeAdaptable where Self: UIViewController {
 	func configureTheme(theme: Theme) -> Void {
 		navigationController?.configureTheme(theme)
 		switch theme {
-		case .Bright:
-			view.backgroundColor = UIColor.bright_ViewControllerBackgroundColor()
-		case .Dark:
-			view.backgroundColor = UIColor.dark_ViewControllerBackgroundColor()
+		case .Defualt:
+			view.backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
+		case .Night:
+			view.backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
 	}
 
@@ -62,16 +62,18 @@ extension ThemeAdaptable where Self: UITableViewController {
 		navigationController?.configureTheme(theme)
 		let grouped = tableView.style == .Grouped
 		switch theme {
-		case .Bright:
+		case .Defualt:
 			if grouped {
-				tableView.backgroundColor = UIColor.bright_tableViewBackgroundColor()
+				tableView.backgroundColor = UIColor.defualt_tableViewBackgroundColor()
 			} else {
-				tableView.backgroundColor = UIColor.bright_ViewControllerBackgroundColor()
+				tableView.backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
 			}
 			tableView.separatorColor = UIColor.lightGrayColor()
-		case .Dark:
-			tableView.backgroundColor = UIColor.dark_tableViewBackgroundColor()
+			view.backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
+		case .Night:
+			tableView.backgroundColor = UIColor.night_tableViewBackgroundColor()
 			tableView.separatorColor = UIColor.darkGrayColor()
+			view.backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
 	}
 

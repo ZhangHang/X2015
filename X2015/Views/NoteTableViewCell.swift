@@ -28,17 +28,17 @@ extension NoteTableViewCell: ThemeAdaptable {
 	func configureTheme(theme: Theme) {
 		backgroundColor = UIColor.clearColor()
 		switch theme {
-		case .Bright:
-			textLabel?.textColor = UIColor.bright_MainTextColor()
-			detailTextLabel?.textColor = UIColor.bright_SubTextColor()
+		case .Defualt:
+			textLabel?.textColor = UIColor.defualt_MainTextColor()
+			detailTextLabel?.textColor = UIColor.defualt_SubTextColor()
 			selectionStyle = .Gray
 			selectedBackgroundView = nil
-		case .Dark:
+		case .Night:
 			selectionStyle = .Default
-			textLabel?.textColor = UIColor.dark_MainTextColor()
-			detailTextLabel?.textColor = UIColor.dark_SubTextColor()
+			textLabel?.textColor = UIColor.night_MainTextColor()
+			detailTextLabel?.textColor = UIColor.night_SubTextColor()
 			selectedBackgroundView = UIView()
-			selectedBackgroundView!.backgroundColor = UIColor.dark_tableViewCellBackgroundColor()
+			selectedBackgroundView!.backgroundColor = UIColor.night_tableViewCellBackgroundColor()
 		}
 	}
 

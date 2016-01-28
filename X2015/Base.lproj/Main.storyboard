@@ -46,6 +46,29 @@
                                     <outlet property="settingTitleLabel" destination="vai-bW-dU5" id="Sg2-th-h8T"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="SettingCheckableTableViewCell" id="1YF-gS-U3o" customClass="SettingCheckableTableViewCell" customModule="X2015" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="137.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YF-gS-U3o" id="VDR-WS-WYM">
+                                    <rect key="frame" x="0.0" y="0.0" width="561" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="&lt;CELL_TITLE&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7k-07-esB">
+                                            <rect key="frame" x="15" y="12" width="106" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="v7k-07-esB" firstAttribute="leading" secondItem="VDR-WS-WYM" secondAttribute="leadingMargin" constant="7" id="ZcQ-uT-RQC"/>
+                                        <constraint firstItem="v7k-07-esB" firstAttribute="centerY" secondItem="VDR-WS-WYM" secondAttribute="centerY" id="b26-dj-Icx"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="settingTitleLabel" destination="v7k-07-esB" id="6co-hp-m9G"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>

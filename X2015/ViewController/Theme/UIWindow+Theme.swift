@@ -11,10 +11,10 @@ import UIKit
 extension UIWindow: AppearanceAdaptable {
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
-		case .Bright:
+		case .Defualt:
 			UIWindow.appearance().tintColor = UIColor.x2015_BlueColor()
 			UIWindow.appearance().backgroundColor = UIColor.whiteColor()
-		case .Dark:
+		case .Night:
 			UIWindow.appearance().tintColor = UIColor.whiteColor()
 			UIWindow.appearance().backgroundColor = UIColor.blackColor()
 		}

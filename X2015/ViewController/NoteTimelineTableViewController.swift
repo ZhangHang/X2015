@@ -42,6 +42,7 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 	override func updateThemeInterface(theme: Theme) {
 		super.updateThemeInterface(theme)
 		emptyNoteWelcomeView.configureTheme(theme)
+		searchController.searchBar.configureTheme(theme)
 	}
 
 }

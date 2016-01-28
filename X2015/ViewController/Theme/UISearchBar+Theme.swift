@@ -12,9 +12,26 @@ extension UISearchBar: AppearanceAdaptable {
 
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
-		case .Bright:
+		case .Defualt:
+			UISearchBar.appearance().barTintColor = nil
 			break
-		case .Dark:
+		case .Night:
+			UISearchBar.appearance().barTintColor = UIColor.night_tableViewCellBackgroundColor()
+			break
+		}
+	}
+
+}
+
+extension UISearchBar: ThemeAdaptable {
+
+	func configureTheme(theme: Theme) {
+		switch theme {
+		case .Defualt:
+			barTintColor = nil
+			break
+		case .Night:
+			barTintColor = UIColor.night_tableViewCellBackgroundColor()
 			break
 		}
 	}
