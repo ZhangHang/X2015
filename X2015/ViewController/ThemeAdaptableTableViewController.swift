@@ -14,6 +14,8 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 		return ThemeManager.sharedInstance.currentTheme
 	}
 
+	var themeTransitionDuration: NSTimeInterval = 0.25
+
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		updateThemeInterfaceHelper()
@@ -42,7 +44,9 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 
 	@objc
 	private func updateThemeInterfaceHelper() {
-		updateThemeInterface(currentTheme)
+		UIView.animateWithDuration(themeTransitionDuration) { [unowned self] () -> Void in
+			self.updateThemeInterface(self.currentTheme)
+		}
 	}
 
 	func updateThemeInterface(theme: Theme) {
