@@ -25,6 +25,7 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 	}
 
 	override func viewWillAppear(animated: Bool) {
+		updateWelcomeViewVisibility()
 		clearsSelectionOnViewWillAppear = splitViewController!.collapsed
 		if clearsSelectionOnViewWillAppear {
 			if let indexPath = tableView.indexPathForSelectedRow {
@@ -32,7 +33,16 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 			}
 		}
 		super.viewWillAppear(animated)
-		updateWelcomeViewVisibility()
+	}
+
+	lazy var emptyNoteWelcomeView: EmptyNoteWelcomeView = {
+		return EmptyNoteWelcomeView.instantiateFromNib()!
+	}()
+
+	override func updateThemeInterface(theme: Theme) {
+		super.updateThemeInterface(theme)
+		emptyNoteWelcomeView.configureTheme(theme)
+		searchController.searchBar.configureTheme(theme)
 	}
 
 }
@@ -42,15 +52,11 @@ extension NoteTimelineTableViewController {
 	override func tableView(
 		tableView: UITableView,
 		cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-			if tableView != self.tableView {
-				return UITableViewCell()
-			}
-			guard let cell = tableView.dequeueReusableCellWithIdentifier(
-				NoteTableViewCell.reuseIdentifier,
-				forIndexPath: indexPath) as? NoteTableViewCell else {
-					fatalError("Wrong table view cell type")
+			guard let cell: NoteTableViewCell = tableView.dequeueReusableCell(indexPath) else {
+				fatalError()
 			}
 			cell.configure(objectAt(indexPath))
+			cell.configureTheme(currentTheme)
 			return cell
 	}
 
@@ -91,11 +97,11 @@ extension NoteTimelineTableViewController {
 			sectionNameKeyPath: nil,
 			cacheName: "NoteMaster")
 		fetchedResultsController.delegate = self
-		tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
+		tableView.backgroundView = emptyNoteWelcomeView
 		tableView.tableFooterView = UIView()
 		tableView.registerNib(
 			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
-			forCellReuseIdentifier: NoteTableViewCell.reuseIdentifier)
+			forCellReuseIdentifier: NoteTableViewCell.reusableIdentifier)
 	}
 
 	func updateWelcomeViewVisibility() {
@@ -107,7 +113,7 @@ extension NoteTimelineTableViewController {
 	override func controllerDidChangeContent(controller: NSFetchedResultsController) {
 		updateWelcomeViewVisibility()
 		super.controllerDidChangeContent(controller)
-		if fetchedResultsController.fetchedObjects?.count == 0 {
+		if fetchedResultsController.fetchedObjects?.count == 0 && !splitViewController!.collapsed {
 			performSegueWithIdentifier(
 				NoteEditViewController.Storyboard.SegueIdentifierEmpty,
 				sender: self)

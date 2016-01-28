@@ -12,3 +12,11 @@
 "Touch ID may not be configured"="请设置指纹";
 "Error"="错误";
 "OK"="确认";
+"Dark Mode"="夜间模式";
+"Touch ID"="指纹解锁";
+"General"="通用";
+"Theme"="主题";
+"Switch Automatically"="自动切换";
+"Default"="默认";
+"Night"="暗色";
+"The theme will automatically change based on your display brightness"="主题模式将根据屏幕亮度自动调节";

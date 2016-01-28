@@ -8,11 +8,7 @@
 
 import UIKit
 
-final class NoteTableViewCell: UITableViewCell, ConfigureableCell {
-
-	static var reuseIdentifier: String! {
-		return "NoteTableViewCell"
-	}
+final class NoteTableViewCell: UITableViewCell {
 
 	static var nibName: String {
 		return "NoteTableViewCell"
@@ -21,6 +17,29 @@ final class NoteTableViewCell: UITableViewCell, ConfigureableCell {
 	func configure(note: Note) {
 		textLabel!.text = note.title
 		detailTextLabel!.text = note.preview
+	}
+
+}
+
+extension NoteTableViewCell: ReusableCell {}
+
+extension NoteTableViewCell: ThemeAdaptable {
+
+	func configureTheme(theme: Theme) {
+		backgroundColor = UIColor.clearColor()
+		switch theme {
+		case .Defualt:
+			textLabel?.textColor = UIColor.defualt_MainTextColor()
+			detailTextLabel?.textColor = UIColor.defualt_SubTextColor()
+			selectionStyle = .Gray
+			selectedBackgroundView = nil
+		case .Night:
+			selectionStyle = .Default
+			textLabel?.textColor = UIColor.night_MainTextColor()
+			detailTextLabel?.textColor = UIColor.night_SubTextColor()
+			selectedBackgroundView = UIView()
+			selectedBackgroundView!.backgroundColor = UIColor.night_tableViewCellBackgroundColor()
+		}
 	}
 
 }

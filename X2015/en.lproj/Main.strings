@@ -1,18 +1,5 @@
-
-/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "14B-fx-PXZ"; */
-"14B-fx-PXZ.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
-
-/* Class = "UILabel"; text = "Title"; ObjectID = "ExM-bL-MCn"; */
-"ExM-bL-MCn.text" = "Title";
-
-/* Class = "UILabel"; text = "Detail"; ObjectID = "VA3-Ww-ybn"; */
-"VA3-Ww-ybn.text" = "Detail";
-
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "WKx-j3-VXi"; */
 "WKx-j3-VXi.title" = "Settings";
 
 /* Class = "UINavigationItem"; title = "Note"; ObjectID = "ZYM-mc-Flt"; */
 "ZYM-mc-Flt.title" = "Note";
-
-/* Class = "UILabel"; text = "Touch ID"; ObjectID = "vai-bW-dU5"; */
-"vai-bW-dU5.text" = "Touch ID";

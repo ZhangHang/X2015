@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FetchedResultTableViewController: UITableViewController, ManagedObjectContextSettable {
+class FetchedResultTableViewController: ThemeAdaptableTableViewController, ManagedObjectContextSettable {
 
 	var managedObjectContext: NSManagedObjectContext!
 	var fetchedResultsController: NSFetchedResultsController!

@@ -25,6 +25,34 @@ final class Settings {
 		}
 	}
 
+	private let themeKey = "theme"
+	var theme: Theme {
+		get {
+			guard let value = userDefualt.valueForKey(themeKey) as? String else {
+				userDefualt.setValue(Theme.Defualt.rawValue, forKey: themeKey)
+				return .Defualt
+			}
+			return Theme(rawValue: value)!
+		}
+		set {
+			userDefualt.setValue(newValue.rawValue, forKey: themeKey)
+		}
+	}
+
+	private let automaticallyAdjustsThemeKey = "automaticallyAdjustsTheme"
+	var automaticallyAdjustsTheme: Bool {
+		get {
+			guard let value = userDefualt.valueForKey(automaticallyAdjustsThemeKey) as? Bool else {
+				userDefualt.setValue(false, forKey: automaticallyAdjustsThemeKey)
+				return false
+			}
+			return value
+		}
+		set {
+			userDefualt.setValue(newValue, forKey: automaticallyAdjustsThemeKey)
+		}
+	}
+
 	func synchronize() -> Bool {
 		return userDefualt.synchronize()
 	}

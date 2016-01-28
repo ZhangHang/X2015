@@ -75,8 +75,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(
 		application: UIApplication,
 		performActionForShortcutItem shortcutItem: UIApplicationShortcutItem,
-		completionHandler: (Bool) -> Void) {
-			completionHandler(handleShortcut(shortcutItem))
+		completion: (Bool) -> Void) {
+			completion(handleShortcut(shortcutItem))
 	}
 
 	func applicationWillEnterForeground(application: UIApplication) {
@@ -161,13 +161,13 @@ extension AppDelegate: UISplitViewControllerDelegate {
 extension AppDelegate {
 
 	private func configureInterface() {
-		window!.tintColor = UIColor.x2015_BlueColor()
-		window!.backgroundColor = UIColor.whiteColor()
-
-		UIHelper.setupNavigationBarStyle(
-			window!.tintColor,
-			backgroundColor: UIColor.whiteColor(),
-			barStyle: .Black)
+		ThemeManager.sharedInstance.register(UITableView)
+		ThemeManager.sharedInstance.register(UITextView)
+		ThemeManager.sharedInstance.register(UIWindow)
+		ThemeManager.sharedInstance.register(UISearchBar)
+		ThemeManager.sharedInstance.register(UITextField)
+		ThemeManager.sharedInstance.register(UINavigationController)
+		ThemeManager.sharedInstance.synchronizeWithSettings()
 	}
 
 	private func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
@@ -192,16 +192,16 @@ extension AppDelegate {
 		self.lockViewController = LockViewController.instanceFromStoryboard()
 	}
 
-	private func bringUpLockViewControllerIfNecessary(completionHandler: ( () -> Void )? = nil ) {
+	private func bringUpLockViewControllerIfNecessary(completion: ( () -> Void )? = nil ) {
 		if !LockViewController.needTouchIDAuth {
 			self.bringDownLockViewController()
-			completionHandler?()
+			completion?()
 			return
 		}
 
 		lockViewController!.authSuccessHandler = { [unowned self] in
 			self.bringDownLockViewController()
-			completionHandler?()
+			completion?()
 		}
 		lockViewController!.authFailedHandler = {
 			fatalError()

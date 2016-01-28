@@ -1,20 +1,16 @@
 //
-//  EmptyNoteWelcomeView.swift
+//  UIView+Theme.swift
 //  X2015
 //
-//  Created by Hang Zhang on 1/17/16.
+//  Created by Hang Zhang on 1/26/16.
 //  Copyright © 2016 Zhang Hang. All rights reserved.
 //
 
 import UIKit
 
-final class EmptyNoteWelcomeView: UIView {}
+extension ThemeAdaptable where Self: UIView {
 
-extension EmptyNoteWelcomeView: NibLoadable {}
-
-extension EmptyNoteWelcomeView: ThemeAdaptable {
-
-	func configureTheme(theme: Theme) {
+	func configureTheme(theme: Theme) -> Void {
 		switch theme {
 		case .Defualt:
 			backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()

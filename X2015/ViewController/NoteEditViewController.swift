@@ -15,14 +15,9 @@ protocol NoteEditViewControllerDelegate: class {
 		controller: NoteEditViewController,
 		didTapDeleteNoteShortCutWithNoteObjectID noteObjectID: NSManagedObjectID)
 
-	func noteEditViewController(
-		controller: NoteEditViewController,
-		didChangeNoteObjectWithID noteObjectID: NSManagedObjectID,
-		noteContent content: String)
-
 }
 
-final class NoteEditViewController: UIViewController {
+final class NoteEditViewController: ThemeAdaptableViewController {
 
 
 	struct Storyboard {
@@ -121,6 +116,12 @@ final class NoteEditViewController: UIViewController {
 		return previewActions
 	}
 
+	// MARK : Theme
+	override func updateThemeInterface(theme: Theme) {
+		super.updateThemeInterface(theme)
+		textView.configureTheme(theme)
+		emptyWelcomeView?.configureTheme(theme)
+	}
 }
 
 extension NoteEditViewController {
@@ -145,7 +146,7 @@ extension NoteEditViewController: UITextViewDelegate {
 
 	func textViewDidChange(textView: UITextView) {
 		updateViewControllerTitleIfNesscarry()
-		self.noteUpdater!.updateNote(textView.text)
+		noteUpdater!.updateNote(textView.text)
 	}
 
 }

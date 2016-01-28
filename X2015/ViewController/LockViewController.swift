@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LockViewController: UIViewController {
+final class LockViewController: ThemeAdaptableViewController {
 
 	var authSuccessHandler: ( () -> Void )?
 	var authFailedHandler: ( () -> Void )?
@@ -21,6 +21,15 @@ final class LockViewController: UIViewController {
 				self.authSuccessHandler?()
 			}) { [unowned self] (errorMessage) -> Void in
 				self.authFailedHandler?()
+		}
+	}
+
+	override func updateThemeInterface(theme: Theme) {
+		switch theme {
+		case .Defualt:
+			view.backgroundColor = UIColor.x2015_BlueColor()
+		case .Night:
+			view.backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
 	}
 }
