@@ -72,11 +72,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		launchedShortcutItem = nil
 	}
 
-	func application(
-		application: UIApplication,
+	func application(application: UIApplication,
 		performActionForShortcutItem shortcutItem: UIApplicationShortcutItem,
-		completion: (Bool) -> Void) {
-			completion(handleShortcut(shortcutItem))
+		completionHandler: (Bool) -> Void) {
+			completionHandler(handleShortcut(shortcutItem))
 	}
 
 	func applicationWillEnterForeground(application: UIApplication) {
