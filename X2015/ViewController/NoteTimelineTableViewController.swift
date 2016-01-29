@@ -47,9 +47,7 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 			searchController.searchBar.configureTheme(theme)
 		}
 		if animated {
-			UIView.animateWithDuration(themeTransitionDuration, animations: { () -> Void in
-				updateInterface()
-			})
+			UIView.animateWithDuration(themeTransitionDuration, animations: updateInterface)
 		} else {
 			updateInterface()
 		}
@@ -195,5 +193,5 @@ extension NoteTimelineTableViewController {
 				sender: self)
 		}
 	}
-	
+
 }

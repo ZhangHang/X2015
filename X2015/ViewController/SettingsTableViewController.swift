@@ -162,9 +162,7 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 		}
 
 		if animated {
-			UIView.animateWithDuration(themeTransitionDuration, animations: { () -> Void in
-		updateInterface()
-			})
+			UIView.animateWithDuration(themeTransitionDuration, animations: updateInterface)
 		} else {
 			updateInterface()
 		}

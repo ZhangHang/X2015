@@ -59,9 +59,7 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 		}
 
 		if animated {
-			UIView.animateWithDuration(themeTransitionDuration) { () -> Void in
-				updateInterface()
-			}
+			UIView.animateWithDuration(themeTransitionDuration, animations: updateInterface)
 		} else {
 			updateInterface()
 		}

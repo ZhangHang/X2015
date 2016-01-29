@@ -41,12 +41,13 @@ class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 	}
 
 	func updateThemeInterface(theme: Theme, animated: Bool = true) {
-		if animated {
-			UIView.animateWithDuration(themeTransitionDuration) { [unowned self] () -> Void in
-				self.configureTheme(theme)
-			}
-		} else {
+		func updateInterface() {
 			configureTheme(theme)
+		}
+		if animated {
+			UIView.animateWithDuration(themeTransitionDuration, animations: updateInterface)
+		} else {
+			updateInterface()
 		}
 	}
 

@@ -119,8 +119,16 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 	// MARK : Theme
 	override func updateThemeInterface(theme: Theme, animated: Bool) {
 		super.updateThemeInterface(theme, animated: animated)
-		textView.configureTheme(theme)
-		emptyWelcomeView?.configureTheme(theme)
+		func updateInterface() {
+			textView.configureTheme(theme)
+			emptyWelcomeView?.configureTheme(theme)
+		}
+
+		if animated {
+			UIView.animateWithDuration(themeTransitionDuration, animations: updateInterface)
+		} else {
+			updateInterface()
+		}
 	}
 }
 
