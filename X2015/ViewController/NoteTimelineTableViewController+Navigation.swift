@@ -23,11 +23,11 @@ extension NoteTimelineTableViewController {
 			guard
 				let nc = segue.destinationViewController as? UINavigationController,
 				let vc = nc.childViewControllers.first as? NoteEditViewController,
-				let selectedNoteObjectID = self.selectedNoteObjectID else {
+				let selectedNote = self.selectedNote else {
 					fatalError("Wrong edit-viewcontroller")
 			}
 
-			vc.noteActionMode = .Edit(selectedNoteObjectID, managedObjectContext)
+			vc.noteActionMode = .Edit(selectedNote.objectID, managedObjectContext)
 			vc.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
 			vc.navigationItem.leftItemsSupplementBackButton = true
 		}
@@ -39,8 +39,8 @@ extension NoteTimelineTableViewController {
 					fatalError("Wrong edit-viewcontroller")
 			}
 			let newNote: Note = self.managedObjectContext.insertObject()
-			selectedNoteObjectID = newNote.objectID
-			vc.noteActionMode = .Create(selectedNoteObjectID!, managedObjectContext)
+			selectedNote = newNote
+			vc.noteActionMode = .Create(newNote.objectID, managedObjectContext)
 			vc.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
 			vc.navigationItem.leftItemsSupplementBackButton = true
 		}

@@ -35,7 +35,13 @@ extension NoteTimelineTableViewController: NoteSearchTableViewControllerDelegate
 	func noteSearchTableViewController(
 		controller: NoteSearchTableViewController,
 		didSelectNoteID noteObjectID: NSManagedObjectID) {
-			self.selectedNoteObjectID = noteObjectID
+
+			guard let noteFromEditVC = managedObjectContext.objectWithID(noteObjectID)
+				as? Note else {
+				fatalError("can't find note object passed from edtor view controller")
+			}
+
+			self.selectedNote = noteFromEditVC
 			searchController.dismissViewControllerAnimated(true) { [unowned self] () -> Void in
 				self.performSegueWithIdentifier(
 					NoteEditViewController.Storyboard.SegueIdentifierEdit,

@@ -16,7 +16,7 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 	@IBOutlet weak var searchBar: UISearchBar!
 
 	// From timeline or search result
-	var selectedNoteObjectID: NSManagedObjectID?
+	weak var selectedNote: Note?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -30,6 +30,7 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 		if clearsSelectionOnViewWillAppear {
 			if let indexPath = tableView.indexPathForSelectedRow {
 				tableView.deselectRowAtIndexPath(indexPath, animated: true)
+				tableView(tableView, didDeselectRowAtIndexPath: indexPath)
 			}
 		}
 		super.viewWillAppear(animated)
@@ -54,6 +55,13 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 		}
 	}
 
+
+	override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+		guard let cell = cell as? NoteTableViewCell else {
+			fatalError()
+		}
+		cell.configure(objectAt(indexPath))
+	}
 }
 
 extension NoteTimelineTableViewController {
@@ -70,8 +78,13 @@ extension NoteTimelineTableViewController {
 	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		selectedNoteObjectID = objectAt(indexPath).objectID
+		selectedNote = objectAt(indexPath) as Note
 		performSegueWithIdentifier(NoteEditViewController.Storyboard.SegueIdentifierEdit, sender: self)
+	}
+
+
+	override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+		selectedNote = nil
 	}
 
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -81,15 +94,44 @@ extension NoteTimelineTableViewController {
 	override func tableView(
 		tableView: UITableView,
 		editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+			tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
 			return [
 				UITableViewRowAction(
 					style: .Default,
 					title: NSLocalizedString("Delete", comment: ""),
 					handler: { [unowned self](action, indexPath) -> Void in
-						self.managedObjectContext.performChanges({ [unowned self] () -> () in
-							self.managedObjectContext.deleteObject(self.objectAt(indexPath))
-							})
+						let noteToDelete: Note = self.objectAt(indexPath)
+						if noteToDelete == self.selectedNote {
+							self.selectedNote = nil
+						}
+						self.managedObjectContext.deleteObject(self.objectAt(indexPath))
 					})]
+	}
+
+	override func tableView(tableView: UITableView,
+		willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+			if !self.splitViewController!.collapsed {
+				self.performSegueWithIdentifier(
+					NoteEditViewController.Storyboard.SegueIdentifierEmpty,
+					sender: self)
+			}
+	}
+
+	override func tableView(tableView: UITableView,
+		didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+			updateNoteSelectionIfNeeded({ (indexPath) -> Void in
+				if !self.splitViewController!.collapsed {
+					self.performSegueWithIdentifier(
+						NoteEditViewController.Storyboard.SegueIdentifierEdit,
+						sender: self)
+				}
+				}) { () -> Void in
+					if !self.splitViewController!.collapsed {
+						self.performSegueWithIdentifier(
+							NoteEditViewController.Storyboard.SegueIdentifierEmpty,
+							sender: self)
+					}
+			}
 	}
 
 }
@@ -113,23 +155,45 @@ extension NoteTimelineTableViewController {
 			forCellReuseIdentifier: NoteTableViewCell.reusableIdentifier)
 	}
 
-	func updateWelcomeViewVisibility() {
-		let hideBackground = fetchedResultsController.fetchedObjects?.count > 0
-		tableView.backgroundView?.hidden = hideBackground
+	private var hasNote: Bool {
+		return fetchedResultsController.fetchedObjects?.count > 0
 	}
 
+	func updateWelcomeViewVisibility() {
+		tableView.backgroundView?.hidden = hasNote
+	}
+
+	func updateNoteSelectionIfNeeded(
+		selectionChange: ((indexPath: NSIndexPath) -> Void)?,
+		deselectAll: (() -> Void)? ) {
+			if let selectedNote = selectedNote {
+				let indexPath = fetchedResultsController.indexPathForObject(selectedNote)
+				let currentSelectIndex = tableView.indexPathForSelectedRow
+				if indexPath != currentSelectIndex && indexPath != nil {
+					tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+					selectionChange?(indexPath: indexPath!)
+				}
+			} else if let selectedIndex = tableView.indexPathForSelectedRow {
+				tableView.deselectRowAtIndexPath(selectedIndex, animated: true)
+				deselectAll?()
+			} else {
+				// todo
+			}
+	}
 
 	override func controllerDidChangeContent(controller: NSFetchedResultsController) {
-		updateWelcomeViewVisibility()
 		super.controllerDidChangeContent(controller)
-		if fetchedResultsController.fetchedObjects?.count == 0 && !splitViewController!.collapsed {
-			performSegueWithIdentifier(
+		updateWelcomeViewVisibility()
+
+		if splitViewController!.collapsed {
+			return
+		}
+
+		updateNoteSelectionIfNeeded(nil) { [unowned self] () -> Void in
+			self.performSegueWithIdentifier(
 				NoteEditViewController.Storyboard.SegueIdentifierEmpty,
 				sender: self)
-		} else if let noteObjectID = selectedNoteObjectID {
-			let selectedNote = managedObjectContext.objectWithID(noteObjectID)
-			let indexPath = fetchedResultsController.indexPathForObject(selectedNote)
-			tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
 		}
 	}
+	
 }

@@ -93,7 +93,9 @@ extension FetchedResultTableViewController: NSFetchedResultsControllerDelegate {
 			case .Delete:
 				tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
 			case .Update:
-				tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .None)
+				if let cell = tableView.cellForRowAtIndexPath(indexPath!) {
+					configureCell(cell, atIndexPath: indexPath!)
+				}
 			case .Move:
 				tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
 				tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
@@ -102,6 +104,10 @@ extension FetchedResultTableViewController: NSFetchedResultsControllerDelegate {
 
 	func controllerDidChangeContent(controller: NSFetchedResultsController) {
 		tableView.endUpdates()
+	}
+
+	func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+
 	}
 
 }
