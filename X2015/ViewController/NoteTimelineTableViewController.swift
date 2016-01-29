@@ -39,10 +39,19 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 		return EmptyNoteWelcomeView.instantiateFromNib()!
 	}()
 
-	override func updateThemeInterface(theme: Theme) {
-		super.updateThemeInterface(theme)
-		emptyNoteWelcomeView.configureTheme(theme)
-		searchController.searchBar.configureTheme(theme)
+	override func updateThemeInterface(theme: Theme, animated: Bool) {
+		super.updateThemeInterface(theme, animated: animated)
+		func updateInterface() {
+			emptyNoteWelcomeView.configureTheme(theme)
+			searchController.searchBar.configureTheme(theme)
+		}
+		if animated {
+			UIView.animateWithDuration(themeTransitionDuration, animations: { () -> Void in
+				updateInterface()
+			})
+		} else {
+			updateInterface()
+		}
 	}
 
 }

@@ -13,10 +13,10 @@ extension UIWindow: AppearanceAdaptable {
 		switch theme {
 		case .Defualt:
 			UIWindow.appearance().tintColor = UIColor.x2015_BlueColor()
-			UIWindow.appearance().backgroundColor = UIColor.whiteColor()
+			UIWindow.appearance().backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
 		case .Night:
 			UIWindow.appearance().tintColor = UIColor.whiteColor()
-			UIWindow.appearance().backgroundColor = UIColor.blackColor()
+			UIWindow.appearance().backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
 	}
 }

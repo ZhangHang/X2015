@@ -156,8 +156,18 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 
 	private let settings = Settings()
 
-	override func updateThemeInterface(theme: Theme) {
-		navigationController?.configureTheme(theme)
+	override func updateThemeInterface(theme: Theme, animated: Bool) {
+		func updateInterface() {
+			navigationController?.configureTheme(theme)
+		}
+
+		if animated {
+			UIView.animateWithDuration(themeTransitionDuration, animations: { () -> Void in
+		updateInterface()
+			})
+		} else {
+			updateInterface()
+		}
 	}
 
 	override func updateCellThemeInterface<CellType: UITableViewCell>(cell: CellType, theme: Theme) {}

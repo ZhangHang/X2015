@@ -17,14 +17,14 @@ class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 	var themeTransitionDuration: NSTimeInterval = 0.25
 
 	override func viewWillAppear(animated: Bool) {
-		updateThemeInterfaceHelper()
+		updateThemeInterface(currentTheme, animated: false)
 		super.viewWillAppear(animated)
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: "updateThemeInterfaceHelper",
+			selector: "handleThemeChangeNotification",
 			name: ThemeChangeNotification,
 			object: nil)
 	}
@@ -36,15 +36,18 @@ class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 			object: nil)
 	}
 
-	@objc
-	private func updateThemeInterfaceHelper() {
-		UIView.animateWithDuration(themeTransitionDuration) { [unowned self] () -> Void in
-			self.updateThemeInterface(self.currentTheme)
-		}
+	@objc private func handleThemeChangeNotification() {
+		updateThemeInterface(currentTheme)
 	}
 
-	func updateThemeInterface(theme: Theme) {
-		configureTheme(theme)
+	func updateThemeInterface(theme: Theme, animated: Bool = true) {
+		if animated {
+			UIView.animateWithDuration(themeTransitionDuration) { [unowned self] () -> Void in
+				self.configureTheme(theme)
+			}
+		} else {
+			configureTheme(theme)
+		}
 	}
 
 }

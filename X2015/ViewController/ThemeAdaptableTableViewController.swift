@@ -18,13 +18,13 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		updateThemeInterfaceHelper()
+		updateThemeInterface(currentTheme, animated: false)
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: "updateThemeInterfaceHelper",
+			selector: "handleThemeChangeNotification",
 			name: ThemeChangeNotification,
 			object: nil)
 	}
@@ -43,19 +43,27 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 	}
 
 	@objc
-	private func updateThemeInterfaceHelper() {
-		UIView.animateWithDuration(themeTransitionDuration) { [unowned self] () -> Void in
-			self.updateThemeInterface(self.currentTheme)
-		}
+	private func handleThemeChangeNotification() {
+		updateThemeInterface(currentTheme, animated: true)
 	}
 
-	func updateThemeInterface(theme: Theme) {
-		configureTheme(theme)
-		for cell in tableView.visibleCells {
-			if let cell = cell as? ThemeAdaptable {
-				cell.configureTheme(theme)
+	func updateThemeInterface(theme: Theme, animated: Bool = true) {
+		func updateInterface() {
+			configureTheme(theme)
+			for cell in tableView.visibleCells {
+				if let cell = cell as? ThemeAdaptable {
+					cell.configureTheme(theme)
+				}
+				updateCellThemeInterface(cell, theme: theme)
 			}
-			updateCellThemeInterface(cell, theme: theme)
+		}
+
+		if animated {
+			UIView.animateWithDuration(themeTransitionDuration) { () -> Void in
+				updateInterface()
+			}
+		} else {
+			updateInterface()
 		}
 	}
 
