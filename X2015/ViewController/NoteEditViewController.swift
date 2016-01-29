@@ -130,6 +130,7 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 			updateInterface()
 		}
 	}
+
 }
 
 extension NoteEditViewController {

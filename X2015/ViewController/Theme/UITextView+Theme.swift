@@ -35,6 +35,7 @@ extension UITextView: ThemeAdaptable {
 			keyboardAppearance = .Dark
 			textColor = UIColor.night_MainTextColor()
 		}
+		reloadInputViews()
 	}
 
 }
