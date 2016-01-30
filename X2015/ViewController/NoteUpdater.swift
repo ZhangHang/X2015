@@ -13,7 +13,7 @@ class NoteUpdater {
 	let noteObjectID: NSManagedObjectID
 	let managedObjectContext: NSManagedObjectContext
 
-	private var note: Note?
+	private(set) var note: Note?
 
 	init?(noteObjectID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext) {
 		self.noteObjectID = noteObjectID
@@ -36,6 +36,10 @@ extension NoteUpdater {
 
 	var noteContent: String? {
 		return note!.content
+	}
+
+	var noteTitle: String? {
+		return note!.title
 	}
 
 }

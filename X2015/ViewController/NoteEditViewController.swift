@@ -55,6 +55,8 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 			if isViewLoaded() {
 				configureInterface(noteActionMode)
 			}
+
+			updateTitleIfNeeded()
 		}
 
 	}
@@ -134,28 +136,20 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 
 }
 
-extension NoteEditViewController {
-
-	var noteContent: String {
-		return textView.text
-	}
-
-	var noteTitle: String? {
-		return noteContent.lineWithContent(0)
-	}
-
-}
-
 extension NoteEditViewController: UITextViewDelegate {
 
-	func updateViewControllerTitleIfNesscarry() {
-		if noteTitle != title {
-			title = noteTitle
+	func updateTitleIfNeeded() {
+		if let updater = noteUpdater {
+			let noteTitle =  updater.noteTitle
+			if noteTitle != title {
+				title = updater.noteTitle
+			}
+		} else {
+			title = nil
 		}
 	}
 
 	func textViewDidChange(textView: UITextView) {
-		updateViewControllerTitleIfNesscarry()
 		noteUpdater!.updateNote(textView.text)
 	}
 
@@ -191,7 +185,6 @@ extension NoteEditViewController {
 			textView.hidden = false
 			textView.text = ""
 		}
-		updateViewControllerTitleIfNesscarry()
 	}
 
 }
