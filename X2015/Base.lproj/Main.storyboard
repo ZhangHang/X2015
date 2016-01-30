@@ -136,8 +136,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14B-fx-PXZ">
-                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="14B-fx-PXZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -149,9 +149,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="14B-fx-PXZ" firstAttribute="top" secondItem="4NC-Na-auY" secondAttribute="topMargin" id="5PZ-Qg-KRB"/>
-                            <constraint firstItem="14B-fx-PXZ" firstAttribute="leading" secondItem="4NC-Na-auY" secondAttribute="leadingMargin" id="C6b-up-Qen"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="14B-fx-PXZ" secondAttribute="trailing" id="GD4-18-BZ5"/>
+                            <constraint firstItem="14B-fx-PXZ" firstAttribute="leading" secondItem="4NC-Na-auY" secondAttribute="leading" id="LCn-hx-JOq"/>
                             <constraint firstItem="f1A-fE-wxp" firstAttribute="top" secondItem="14B-fx-PXZ" secondAttribute="bottom" id="Q3M-TR-4xu"/>
+                            <constraint firstAttribute="trailing" secondItem="14B-fx-PXZ" secondAttribute="trailing" id="rvy-OW-yDg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OhK-Ep-Cbg"/>

@@ -19,13 +19,14 @@ protocol NoteEditViewControllerDelegate: class {
 
 final class NoteEditViewController: ThemeAdaptableViewController {
 
-
 	struct Storyboard {
+
 		static let identifier = "NoteEditViewController"
 
 		static let SegueIdentifierCreate = "CreateNoteSegueIdentifier"
 		static let SegueIdentifierEdit = "EditNoteSegueIdentifier"
 		static let SegueIdentifierEmpty = "EmptyNoteSegueIdentifier"
+
 	}
 
 	enum Mode {
@@ -181,17 +182,14 @@ extension NoteEditViewController {
 				metrics: nil,
 				views: ["welcomeView": emptyView]))
 			view.bringSubviewToFront(emptyView)
-			break
 		case .Edit(_, _):
 			emptyWelcomeView?.removeFromSuperview()
 			textView.hidden = false
 			textView.text = noteUpdater!.noteContent
-			break
 		case .Create(_):
 			emptyWelcomeView?.removeFromSuperview()
 			textView.hidden = false
 			textView.text = ""
-			break
 		}
 		updateViewControllerTitleIfNesscarry()
 	}
