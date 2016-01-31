@@ -11,14 +11,16 @@ import CoreData
 @objc(Note)
 public final class Note: ManagedObject {
 
+	@NSManaged public private(set) var identifier: String
     @NSManaged public private(set) var content: String?
-    @NSManaged public private(set) var createdAt: NSDate?
+    @NSManaged public private(set) var createdAt: NSDate
 
 }
 
 extension Note: ManagedObjectType {
 
     public override func awakeFromInsert() {
+		identifier = NSUUID().UUIDString
         createdAt = NSDate()
         super.awakeFromInsert()
     }
