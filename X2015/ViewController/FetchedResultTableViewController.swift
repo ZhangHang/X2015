@@ -60,11 +60,13 @@ extension FetchedResultTableViewController {
 extension FetchedResultTableViewController: NSFetchedResultsControllerDelegate {
 
 	func controllerWillChangeContent(controller: NSFetchedResultsController) {
+		// WORKAROUND BEGIN
 		if tableView.numberOfSections == 1
 			&& tableView.numberOfRowsInSection(0) == 0 {
 				debugPrint("Workaround")
 				tableView.reloadData()
 		}
+		// WORKAROUND END
 		tableView.beginUpdates()
 	}
 

@@ -10,16 +10,42 @@ import UIKit
 
 extension NoteTimelineTableViewController {
 
+	typealias NoteEditVCStoryboard = NoteEditViewController.Storyboard
+
 	func handleNewNoteShortcut() {
-		performSegueWithIdentifier(NoteEditViewController.Storyboard.SegueIdentifierCreate, sender: self)
+		if let presentedViewController = navigationController?.presentedViewController
+			where presentedViewController != self {
+				navigationController!.dismissViewControllerAnimated(false, completion: nil)
+		}
+
+		// WORKAROUND BEGIN
+		if navigationController!.topViewController != self {
+			debugPrint("Workaround")
+			navigationController!.popToViewController(self, animated: false)
+			guard let vc = storyboard!
+				.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier)
+				as? NoteEditViewController else {
+					fatalError()
+			}
+			selectedNote = managedObjectContext.insertObject() as Note
+			vc.noteActionMode = .Create(selectedNote!.objectID, managedObjectContext)
+
+			navigationController?.pushViewController(vc, animated: false)
+			return
+		}
+		// WORKAROUND END
+
+		performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation,
+			sender: self)
+
 	}
 
 	@IBAction func insertNewNote(sender: UIBarButtonItem) {
-		performSegueWithIdentifier(NoteEditViewController.Storyboard.SegueIdentifierCreate, sender: self)
+		performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreate, sender: self)
 	}
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == NoteEditViewController.Storyboard.SegueIdentifierEdit {
+		if segue.identifier == NoteEditVCStoryboard.SegueIdentifierEdit {
 			guard
 				let nc = segue.destinationViewController as? UINavigationController,
 				let vc = nc.childViewControllers.first as? NoteEditViewController,
@@ -28,21 +54,18 @@ extension NoteTimelineTableViewController {
 			}
 
 			vc.noteActionMode = .Edit(selectedNote.objectID, managedObjectContext)
-			vc.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-			vc.navigationItem.leftItemsSupplementBackButton = true
 		}
 
-		if segue.identifier == NoteEditViewController.Storyboard.SegueIdentifierCreate {
-			guard
-				let nc = segue.destinationViewController as? UINavigationController,
-				let vc = nc.childViewControllers.first as? NoteEditViewController else {
-					fatalError("Wrong edit-viewcontroller")
-			}
-			let newNote: Note = self.managedObjectContext.insertObject()
-			selectedNote = newNote
-			vc.noteActionMode = .Create(newNote.objectID, managedObjectContext)
-			vc.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-			vc.navigationItem.leftItemsSupplementBackButton = true
+		if segue.identifier == NoteEditVCStoryboard.SegueIdentifierCreate ||
+			segue.identifier == NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation {
+				guard
+					let nc = segue.destinationViewController as? UINavigationController,
+					let vc = nc.childViewControllers.first as? NoteEditViewController else {
+						fatalError("Wrong edit-viewcontroller")
+				}
+
+				selectedNote = managedObjectContext.insertObject() as Note
+				vc.noteActionMode = .Create(selectedNote!.objectID, managedObjectContext)
 		}
 	}
 
