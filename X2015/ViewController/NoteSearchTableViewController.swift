@@ -38,20 +38,26 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 	}
 
 	override func setupFetchedResultController() {
-		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
-		fetchRequest.sortDescriptors = Note.defaultSortDescriptors
+		fetchedResultsController = { [unowned self] in
+			let fetchRequest = NSFetchRequest(entityName: Note.entityName)
+			fetchRequest.sortDescriptors = Note.defaultSortDescriptors
 
-		fetchedResultsController = NSFetchedResultsController(
-			fetchRequest: fetchRequest,
-			managedObjectContext: managedObjectContext,
-			sectionNameKeyPath: nil,
-			cacheName: nil)
-		fetchedResultsController.delegate = self
-		tableView.backgroundView = emptyNoteWelcomeView
-		tableView.tableFooterView = UIView()
-		tableView.registerNib(
-			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
-			forCellReuseIdentifier: NoteTableViewCell.reusableIdentifier)
+			let fetchedResultsController = NSFetchedResultsController(
+				fetchRequest: fetchRequest,
+				managedObjectContext: self.managedObjectContext,
+				sectionNameKeyPath: nil,
+				cacheName: nil)
+			fetchedResultsController.delegate = self
+			return fetchedResultsController
+		}()
+
+		({[unowned self ] in
+			$0.backgroundView = self.emptyNoteWelcomeView
+			$0.tableFooterView = UIView()
+			$0.registerNib(
+				UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
+				forCellReuseIdentifier: NoteTableViewCell.reusableIdentifier)
+		})(tableView)
 	}
 
 	override func tableView(

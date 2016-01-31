@@ -298,7 +298,7 @@ extension SettingsTableViewController {
 	private func cellForThemeSectionAtRow(row: Int) -> UITableViewCell {
 		guard let cellType = ThemeSection(rawValue: row) else { fatalError() }
 
-		func AutoThemeCell() -> UITableViewCell {
+		func autoThemeCell() -> UITableViewCell {
 			let cell = dequeueSettingSwitchCell()
 			cell.configure(
 				ThemeSection.AutoTheme.title,
@@ -307,12 +307,12 @@ extension SettingsTableViewController {
 				switchSelector: "handleAutoThemeSwitchValueChanged:")
 			return cell
 		}
-		func DefualtThemeCell() -> UITableViewCell {
+		func defualtThemeCell() -> UITableViewCell {
 			let cell = dequeueSettingCheckableCell()
 			cell.configure(ThemeSection.BrightTheme.title, checked: settings.theme == .Defualt)
 			return cell
 		}
-		func NightThemeCell() -> UITableViewCell {
+		func nightThemeCell() -> UITableViewCell {
 			let cell = dequeueSettingCheckableCell()
 			cell.configure(ThemeSection.DarkTheme.title, checked: settings.theme == .Night)
 			return cell
@@ -320,11 +320,11 @@ extension SettingsTableViewController {
 
 		switch cellType {
 		case .AutoTheme:
-			return AutoThemeCell()
+			return autoThemeCell()
 		case .BrightTheme:
-			return DefualtThemeCell()
+			return defualtThemeCell()
 		case .DarkTheme:
-			return NightThemeCell()
+			return nightThemeCell()
 		default:
 			fatalError()
 		}

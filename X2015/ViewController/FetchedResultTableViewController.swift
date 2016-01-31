@@ -107,7 +107,7 @@ extension FetchedResultTableViewController: NSFetchedResultsControllerDelegate {
 	}
 
 	func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-
+		fatalError("override requried")
 	}
 
 }

@@ -11,6 +11,7 @@ import UIKit
 extension UISearchBar: AppearanceAdaptable {
 
 	static func configureThemeAppearance(theme: Theme) {
+		UISearchBar.appearance().tintColor = UIColor.whiteColor()
 		switch theme {
 		case .Defualt:
 			UISearchBar.appearance().barTintColor = nil
@@ -26,6 +27,7 @@ extension UISearchBar: AppearanceAdaptable {
 extension UISearchBar: ThemeAdaptable {
 
 	func configureTheme(theme: Theme) {
+		tintColor = UIColor.whiteColor()
 		switch theme {
 		case .Defualt:
 			barTintColor = nil

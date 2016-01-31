@@ -60,11 +60,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X2015/ViewController/NoteTimelineTableViewController.swift"
-            timestampString = "475742860.172678"
+            timestampString = "475939279.735093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "updateNoteSelectionIfNeeded(_:deselectAll:)"
             landmarkType = "5">
          </BreakpointContent>
