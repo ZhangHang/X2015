@@ -21,8 +21,13 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 
 	private var keywordCache: String?
 	private var searchPredicate: NSPredicate?
+	private var emptyNoteWelcomeView: EmptyNoteWelcomeView = {
+		return EmptyNoteWelcomeView.instantiateFromNib()
+	}()!
 
 	weak var delegate: NoteSearchTableViewControllerDelegate?
+
+	// MARK: overrides
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -42,7 +47,7 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 			sectionNameKeyPath: nil,
 			cacheName: nil)
 		fetchedResultsController.delegate = self
-		tableView.backgroundView = EmptyNoteWelcomeView.instantiateFromNib()
+		tableView.backgroundView = emptyNoteWelcomeView
 		tableView.tableFooterView = UIView()
 		tableView.registerNib(
 			UINib(nibName: NoteTableViewCell.nibName, bundle: nil),
@@ -67,6 +72,20 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		delegate?.noteSearchTableViewController(self,
 			didSelectNoteID: (objectAt(indexPath) as Note).objectID)
+	}
+
+	// MARK: Theme
+
+	override func updateThemeInterface(theme: Theme, animated: Bool) {
+		func updateInterface() {
+			emptyNoteWelcomeView.configureTheme(theme)
+		}
+
+		if animated {
+			UIView.animateWithDuration(themeTransitionDuration, animations: updateInterface)
+		} else {
+			updateInterface()
+		}
 	}
 }
 
