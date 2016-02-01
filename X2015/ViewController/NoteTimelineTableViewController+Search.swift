@@ -12,20 +12,29 @@ import CoreData
 extension NoteTimelineTableViewController {
 
 	func setupSearchController() {
-		noteSearchTableViewController = NoteSearchTableViewController()
-		noteSearchTableViewController.managedObjectContext = managedObjectContext
-		noteSearchTableViewController.delegate = self
-		searchController = UISearchController(searchResultsController: noteSearchTableViewController)
-		searchController.searchResultsUpdater = self
-		searchController.dimsBackgroundDuringPresentation = true
-		searchController.hidesNavigationBarDuringPresentation = true
-		searchController.delegate = self
-		tableView.tableHeaderView = searchController.searchBar
+		noteSearchTableViewController = { [unowned self] in
+			let viewController = NoteSearchTableViewController()
+			viewController.managedObjectContext = self.managedObjectContext
+			viewController.delegate = self
 
-		let statusBarHeight: CGFloat = 20.0
-		let searchBarHeight: CGFloat = CGRectGetHeight(searchController.searchBar.bounds)
-		noteSearchTableViewController.tableView.contentInset.top = searchBarHeight + statusBarHeight
-		noteSearchTableViewController.automaticallyAdjustsScrollViewInsets = false
+			return viewController
+		}()
+		searchController = { [unowned self] in
+			let controller = UISearchController(searchResultsController: $0)
+			controller.searchResultsUpdater = self
+			controller.dimsBackgroundDuringPresentation = true
+			controller.hidesNavigationBarDuringPresentation = true
+			controller.delegate = self
+
+			let statusBarHeight: CGFloat = 20.0
+			let searchBarHeight: CGFloat = CGRectGetHeight(controller.searchBar.bounds)
+			$0.tableView.contentInset.top = searchBarHeight + statusBarHeight
+			$0.automaticallyAdjustsScrollViewInsets = false
+
+			return controller
+		}(noteSearchTableViewController)
+
+		tableView.tableHeaderView = searchController.searchBar
 	}
 
 }
@@ -61,17 +70,11 @@ extension NoteTimelineTableViewController: UISearchResultsUpdating {
 
 extension NoteTimelineTableViewController: UISearchControllerDelegate {
 
-	func willPresentSearchController(searchController: UISearchController) {
+	func willPresentSearchController(searchController: UISearchController) {}
 
-	}
+	func didPresentSearchController(searchController: UISearchController) {}
 
-	func didPresentSearchController(searchController: UISearchController) {
-
-	}
-
-	func willDismissSearchController(searchController: UISearchController) {
-
-	}
+	func willDismissSearchController(searchController: UISearchController) {}
 
 	func didDismissSearchController(searchController: UISearchController) {
 		searchController.searchBar.text = nil

@@ -36,6 +36,7 @@
 		7F37C7851C41658E00519B18 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
 		7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7841C41658E00519B18 /* UIHelper.swift */; };
+		7F4AAD821C5EFEF40095ABB8 /* Note+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AAD811C5EFEF40095ABB8 /* Note+Search.swift */; };
 		7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204C91C34F79B00507125 /* AppDelegate.swift */; };
 		7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204CD1C34F79B00507125 /* Main.storyboard */; };
 		7F5204D21C34F79B00507125 /* X2015.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204D01C34F79B00507125 /* X2015.xcdatamodeld */; };
@@ -109,6 +110,7 @@
 		7F37C7821C41658E00519B18 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7841C41658E00519B18 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		7F4AAD811C5EFEF40095ABB8 /* Note+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Search.swift"; sourceTree = "<group>"; };
 		7F5204C61C34F79B00507125 /* X2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = X2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5204C91C34F79B00507125 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F5204CE1C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			children = (
 				7F5204D01C34F79B00507125 /* X2015.xcdatamodeld */,
 				7F5204DF1C34FB4800507125 /* Note.swift */,
+				7F4AAD811C5EFEF40095ABB8 /* Note+Search.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				7F59ACF51C5A303B00F20A31 /* SettingCheckableTableViewCell.swift in Sources */,
 				7F59ACF11C5860C300F20A31 /* ThemeAdaptableTableViewController.swift in Sources */,
 				7F5204FE1C3504C900507125 /* Migration.swift in Sources */,
+				7F4AAD821C5EFEF40095ABB8 /* Note+Search.swift in Sources */,
 				7F15810F1C57AD4600EFFF82 /* UISearchBar+Theme.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
 				7F0D360A1C4D2CA7009F18A6 /* SettingsTableViewController.swift in Sources */,

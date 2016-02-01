@@ -25,14 +25,21 @@ extension SettingSwitchTableViewCell {
 		switchTarget: AnyObject?,
 		switchSelector: Selector,
 		enabled: Bool = true) {
-		settingTitleLabel.text = title
-		settingSwitch.removeTarget(nil, action: nil, forControlEvents: .ValueChanged)
-		settingSwitch.on = switchOn
-		settingSwitch.addTarget(switchTarget,
-			action: switchSelector,
-			forControlEvents: .ValueChanged)
-		settingTitleLabel.enabled = enabled
-		settingSwitch.enabled = enabled
+			({
+				$0.text = title
+				$0.enabled = enabled
+			})(settingTitleLabel)
+
+			({
+				$0.removeTarget(nil,
+					action: nil,
+					forControlEvents: .ValueChanged)
+				$0.on = switchOn
+				$0.addTarget(switchTarget,
+					action: switchSelector,
+					forControlEvents: .ValueChanged)
+				$0.enabled = enabled
+			})(settingSwitch)
 	}
 
 }
