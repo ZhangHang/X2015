@@ -12,7 +12,10 @@ extension NoteTimelineTableViewController {
 
 	typealias NoteEditVCStoryboard = NoteEditViewController.Storyboard
 
-	func handleNewNoteShortcut() {
+
+	private func backToTimeline(
+		completion: (() -> Void)?,
+		workaround: (() -> Void)? ) {
 		if let presentedViewController = navigationController?.presentedViewController
 			where presentedViewController != self {
 				navigationController!.dismissViewControllerAnimated(false, completion: nil)
@@ -22,22 +25,29 @@ extension NoteTimelineTableViewController {
 		if navigationController!.topViewController != self {
 			debugPrint("Workaround")
 			navigationController!.popToViewController(self, animated: false)
-			guard let vc = storyboard!
-				.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier)
-				as? NoteEditViewController else {
-					fatalError()
-			}
-			selectedNote = managedObjectContext.insertObject() as Note
-			vc.noteActionMode = .Create(selectedNote!.objectID, managedObjectContext)
-
-			navigationController?.pushViewController(vc, animated: false)
+			workaround?()
 			return
 		}
 		// WORKAROUND END
 
-		performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation,
-			sender: self)
+		completion?()
+	}
 
+	func handleNewNoteShortcut() {
+		backToTimeline({ [unowned self] () -> Void in
+			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation,
+				sender: self)
+			}) { [unowned self] () -> Void in
+				guard let vc = self.storyboard!
+					.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier)
+					as? NoteEditViewController else {
+						fatalError()
+				}
+				self.selectedNote = self.managedObjectContext.insertObject() as Note
+				vc.noteActionMode = .Create(self.selectedNote!.objectID, self.managedObjectContext)
+
+				self.navigationController?.pushViewController(vc, animated: false)
+		}
 	}
 
 	func handleEditNoteUserActivity(noteIdentifier identifier: String) {
@@ -56,7 +66,20 @@ extension NoteTimelineTableViewController {
 		}
 
 		selectedNote = note
-		performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierEditWithNoAnimation, sender: self)
+
+		backToTimeline({ [unowned self] () -> Void in
+			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierEditWithNoAnimation,
+				sender: self)
+			}) { [unowned self] () -> Void in
+				guard let vc = self.storyboard!
+					.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier)
+					as? NoteEditViewController else {
+						fatalError()
+				}
+
+				vc.noteActionMode = .Edit(self.selectedNote!.objectID, self.managedObjectContext)
+				self.navigationController?.pushViewController(vc, animated: false)
+		}
 	}
 
 	@IBAction func insertNewNote(sender: UIBarButtonItem) {
@@ -99,5 +122,5 @@ extension NoteTimelineTableViewController {
 extension NoteTimelineTableViewController {
 
 	@IBAction func closeSettingsViewController(segue: UIStoryboardSegue) {}
-
+	
 }
