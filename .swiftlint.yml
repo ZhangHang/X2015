@@ -6,7 +6,7 @@
   # Find all the available rules by running:
   # swiftlint rules
 excluded: # paths to ignore during linting. Takes precedence over `included`.
-  - X2015/CoreDataSharedCode
+  - Vendor
 # parameterized rules can be customized from this configuration file
 line_length: 110
 # parameterized rules are first parameterized as a warning level, then error level.

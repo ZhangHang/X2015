@@ -78,11 +78,11 @@ extension Array {
 
 extension NSURL {
 
-    static func temporaryURL() -> NSURL {
+    public static func temporaryURL() -> NSURL {
         return try! NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true).URLByAppendingPathComponent(NSUUID().UUIDString)
     }
 
-    static var documentsURL: NSURL {
+    public static var documentsURL: NSURL {
         return try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
     }
 

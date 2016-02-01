@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F5204C51C34F79B00507125"
-               BuildableName = "X2015.app"
-               BlueprintName = "X2015"
+               BlueprintIdentifier = "7F73F3001C5F4C9C003347E4"
+               BuildableName = "X2015Kit.framework"
+               BlueprintName = "X2015Kit"
                ReferencedContainer = "container:X2015.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F73F3091C5F4C9D003347E4"
-               BuildableName = "X2015KitTests.xctest"
-               BlueprintName = "X2015KitTests"
-               ReferencedContainer = "container:X2015.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7F5204C51C34F79B00507125"
-            BuildableName = "X2015.app"
-            BlueprintName = "X2015"
-            ReferencedContainer = "container:X2015.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -61,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7F5204C51C34F79B00507125"
-            BuildableName = "X2015.app"
-            BlueprintName = "X2015"
+            BlueprintIdentifier = "7F73F3001C5F4C9C003347E4"
+            BuildableName = "X2015Kit.framework"
+            BlueprintName = "X2015Kit"
             ReferencedContainer = "container:X2015.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7F5204C51C34F79B00507125"
-            BuildableName = "X2015.app"
-            BlueprintName = "X2015"
+            BlueprintIdentifier = "7F73F3001C5F4C9C003347E4"
+            BuildableName = "X2015Kit.framework"
+            BlueprintName = "X2015Kit"
             ReferencedContainer = "container:X2015.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

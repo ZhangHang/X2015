@@ -7,6 +7,8 @@
 //
 
 import CoreData
+import X2015Kit
+
 
 class NoteUpdater {
 
