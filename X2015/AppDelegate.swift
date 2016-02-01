@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreSpotlight
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -85,6 +86,25 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func applicationDidEnterBackground(application: UIApplication) {
 		self.window!.rootViewController = lockViewController
+	}
+
+
+	func application(application: UIApplication,
+		continueUserActivity userActivity: NSUserActivity,
+		restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+			guard let noteIdentifier =
+				userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String else {
+				return  false
+			}
+
+			guard let nc = rootViewControllerCache!.childViewControllers.first
+				as? UINavigationController else { return false }
+			guard let vc = nc.childViewControllers.first
+				as? NoteTimelineTableViewController else { return false }
+
+			vc.handleEditNoteUserActivity(noteIdentifier: noteIdentifier)
+
+			return true
 	}
 
 	// MARK: - Core Data stack

@@ -26,6 +26,7 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		static let SegueIdentifierCreate = "CreateNoteSegueIdentifier"
 		static let SegueIdentifierCreateWithNoAnimation = "CreateNoteWithNoAnimationSegueIdentifier"
 		static let SegueIdentifierEdit = "EditNoteSegueIdentifier"
+		static let SegueIdentifierEditWithNoAnimation = "EditNoteWithNoAnimationSegueIdentifier"
 		static let SegueIdentifierEmpty = "EmptyNoteSegueIdentifier"
 
 	}

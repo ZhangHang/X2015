@@ -119,6 +119,7 @@
                         <segue destination="AdM-13-5Sr" kind="showDetail" identifier="CreateNoteSegueIdentifier" id="lfa-jh-9Rz"/>
                         <segue destination="AdM-13-5Sr" kind="showDetail" identifier="EmptyNoteSegueIdentifier" id="OsR-zh-tZJ"/>
                         <segue destination="AdM-13-5Sr" kind="showDetail" identifier="CreateNoteWithNoAnimationSegueIdentifier" animates="NO" id="d9d-Fy-bB4"/>
+                        <segue destination="AdM-13-5Sr" kind="showDetail" identifier="EditNoteWithNoAnimationSegueIdentifier" animates="NO" id="gG1-p9-RkD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jS-0L-da3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -268,6 +269,6 @@
         <image name="X2015" width="792" height="792"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d9d-Fy-bB4"/>
+        <segue reference="gG1-p9-RkD"/>
     </inferredMetricsTieBreakers>
 </document>
