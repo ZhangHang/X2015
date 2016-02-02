@@ -108,11 +108,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X2015Kit/Utility/ManagedContextHelper.swift"
-            timestampString = "476088075.421867"
+            timestampString = "476104352.523246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "createMainContext(_:)"
             landmarkType = "5">
          </BreakpointContent>

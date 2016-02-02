@@ -33,7 +33,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	var managedObjectContext: NSManagedObjectContext! {
 		return managedObjectContextHelper.managedObjectContext
 	}
-	let managedObjectContextHelper = ManagedContextHelper()
+	let managedObjectContextHelper = ManagedContextHelper(policies: [.Send, .Receive])
 
 	private var rootViewControllerCache: UISplitViewController?
 	private var lockViewController: LockViewController?
@@ -47,6 +47,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 			// Pass managedObjectContext
 			setupControllers()
+
 			// Touch ID lock screen
 			rootViewControllerCache = window!.rootViewController as? UISplitViewController
 			setupLockViewController()

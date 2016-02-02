@@ -9,52 +9,93 @@
 import Foundation
 import CoreData
 //swiftlint:disable variable_name
-public let X2015GroupIdentifier = "group.x2015container"
-public let X2015DataChangedKey = "X2015DataChangedKey"
+private let X2015GroupIdentifier = "group.x2015container"
+private let X2015DataChangedKey = "X2015DataChangedKey"
+
+public let X2015DataChangedNotificationName = "X2015DataChangedNotificationName"
+public let X2015DataChangeDarwindNotificationName = "X2015DataChangeDarwindNotificationName"
 //swiftlint:enable variable_name
 
 public class ManagedContextHelper {
 
 	public var managedObjectContext: NSManagedObjectContext!
 
-	public init() {
-		managedObjectContext = createMainContext()
+	public enum Policy {
+		case Send
+		case Receive
 	}
 
-	private func createMainContext(observeRemoteChanges: Bool = true) -> NSManagedObjectContext {
-		let storeURL: NSURL = {
-			let url = NSFileManager
-				.defaultManager()
-				.containerURLForSecurityApplicationGroupIdentifier(X2015GroupIdentifier)!
-			return url.URLByAppendingPathComponent("db.sqlit")
-		}()
+	public required init(policies: [Policy]) {
+		managedObjectContext = createMainContext(policies)
+	}
 
-		let bundles = [NSBundle(forClass: Note.self)]
-		guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
-			fatalError("model not found")
-		}
-		let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
-		do {
-			try psc.addPersistentStoreWithType(
-				NSSQLiteStoreType, configuration: nil,
-				URL: storeURL,
-				options: nil)
-			let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-			context.persistentStoreCoordinator = psc
+	deinit {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
 
-			if observeRemoteChanges {
-				NSNotificationCenter
-					.defaultCenter()
-					.addObserver(self,
-						selector: "handleContextDidSave:",
-						name: NSManagedObjectContextDidSaveNotification,
-						object: nil)
+}
+
+extension ManagedContextHelper {
+
+	func createMainContext(
+		policies: [Policy]) -> NSManagedObjectContext {
+			let storeURL: NSURL = {
+				let url = NSFileManager
+					.defaultManager()
+					.containerURLForSecurityApplicationGroupIdentifier(X2015GroupIdentifier)!
+				return url.URLByAppendingPathComponent("db.sqlit")
+			}()
+
+			let bundles = [NSBundle(forClass: Note.self)]
+			guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
+				fatalError("model not found")
 			}
+			let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
+			do {
+				try psc.addPersistentStoreWithType(
+					NSSQLiteStoreType, configuration: nil,
+					URL: storeURL,
+					options: nil)
+				let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+				context.persistentStoreCoordinator = psc
+				handleOptions(policies, context: context)
+				return context
+			} catch {
+				fatalError()
+			}
+	}
 
-			return context
-		} catch {
-			fatalError()
+	private func handleOptions(policies: [Policy], context: NSManagedObjectContext) {
+		if policies.contains(.Send) {
+			NSNotificationCenter.defaultCenter().addObserver(self,
+				selector: "handleContextDidSave:",
+				name: NSManagedObjectContextDidSaveNotification,
+				object: nil)
 		}
+
+		if policies.contains(.Receive) {
+			NSNotificationCenter.defaultCenter().addObserver(self,
+				selector: "handleCFDidSaveContext",
+				name: X2015DataChangedNotificationName,
+				object: nil)
+
+			CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+				nil, { (center, observer, name, object, userInfo) in
+					debugPrint("received notification: \(name)")
+					NSNotificationCenter
+						.defaultCenter()
+						.postNotificationName(X2015DataChangedNotificationName,
+							object: nil)
+				},
+				X2015DataChangeDarwindNotificationName,
+				nil,
+				.DeliverImmediately)
+		}
+	}
+
+	@objc
+	private func handleCFDidSaveContext() {
+		managedObjectContext.mergeChangesFromUserDefaults()
 	}
 
 	// From: https://www.innoq.com/en/blog/ios-writing-core-data-in-today-extension/
@@ -84,7 +125,6 @@ public class ManagedContextHelper {
 			notificationData[key] = uriRepresentations
 		}
 
-
 		var notificationDatas = [AnyObject]()
 		if let data = userDefaults!.objectForKey(X2015DataChangedKey) as? NSData,
 			let existingNotificationDatas = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyObject] {
@@ -96,9 +136,18 @@ public class ManagedContextHelper {
 
 		userDefaults!.setObject(archivedData, forKey: X2015DataChangedKey)
 		userDefaults!.synchronize()
+
+		postCFNotification(X2015DataChangedNotificationName)
 	}
 
+}
 
+extension ManagedContextHelper {
+
+	private func postCFNotification(notificationName: String) {
+		let center = CFNotificationCenterGetDarwinNotifyCenter()
+		CFNotificationCenterPostNotification(center, X2015DataChangedNotificationName, nil, nil, true)
+	}
 
 }
 
