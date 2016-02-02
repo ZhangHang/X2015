@@ -69,11 +69,10 @@
 		7F73F33F1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32E1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift */; };
 		7F73F3411C5F4D0B003347E4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3301C5F4D0B003347E4 /* Utilities.swift */; };
 		7F73F3421C5F4D0B003347E4 /* ValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3311C5F4D0B003347E4 /* ValueTransformer.swift */; };
-		7F73F3471C5F4D72003347E4 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3431C5F4D72003347E4 /* Note.swift */; };
-		7F73F3481C5F4D72003347E4 /* Note+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3441C5F4D72003347E4 /* Note+Search.swift */; };
-		7F73F3491C5F4D72003347E4 /* X2015.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3451C5F4D72003347E4 /* X2015.xcdatamodeld */; };
 		7F73F34D1C5F4DE7003347E4 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */; };
 		7F73F3501C5F53CC003347E4 /* X2015Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; };
+		7F73F3561C604C5C003347E4 /* Note+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3531C604C5C003347E4 /* Note+Search.swift */; };
+		7F73F3571C604C5C003347E4 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3541C604C5C003347E4 /* Note.swift */; };
 		7F73F35A1C604C7F003347E4 /* ManagedContextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3591C604C7F003347E4 /* ManagedContextHelper.swift */; };
 		7F882E691C5705430090AF40 /* NoteUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F882E681C5705430090AF40 /* NoteUpdater.swift */; };
 		7FD4DEF21C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD4DEF11C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */; };
@@ -217,10 +216,9 @@
 		7F73F32F1C5F4D0B003347E4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7F73F3301C5F4D0B003347E4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		7F73F3311C5F4D0B003347E4 /* ValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTransformer.swift; sourceTree = "<group>"; };
-		7F73F3431C5F4D72003347E4 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		7F73F3441C5F4D72003347E4 /* Note+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Search.swift"; sourceTree = "<group>"; };
-		7F73F3461C5F4D72003347E4 /* X2015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = X2015.xcdatamodel; sourceTree = "<group>"; };
 		7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
+		7F73F3531C604C5C003347E4 /* Note+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Search.swift"; sourceTree = "<group>"; };
+		7F73F3541C604C5C003347E4 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		7F73F3591C604C7F003347E4 /* ManagedContextHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedContextHelper.swift; sourceTree = "<group>"; };
 		7F882E681C5705430090AF40 /* NoteUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteUpdater.swift; path = ViewController/NoteUpdater.swift; sourceTree = "<group>"; };
 		7FD4DEF11C511A75009A925B /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift"; path = "ViewController/NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift"; sourceTree = "<group>"; };
@@ -422,10 +420,8 @@
 		7F73F3021C5F4C9D003347E4 /* X2015Kit */ = {
 			isa = PBXGroup;
 			children = (
+				7F73F3521C604C5C003347E4 /* Model */,
 				7F73F34B1C5F4DE7003347E4 /* Utility */,
-				7F73F3431C5F4D72003347E4 /* Note.swift */,
-				7F73F3441C5F4D72003347E4 /* Note+Search.swift */,
-				7F73F3451C5F4D72003347E4 /* X2015.xcdatamodeld */,
 				7F73F31F1C5F4D0B003347E4 /* Vendor */,
 				7F73F3031C5F4C9D003347E4 /* X2015Kit.h */,
 				7F73F3051C5F4C9D003347E4 /* Info.plist */,
@@ -481,6 +477,15 @@
 				7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		7F73F3521C604C5C003347E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7F73F3531C604C5C003347E4 /* Note+Search.swift */,
+				7F73F3541C604C5C003347E4 /* Note.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7FFD814A1C4B5B4B004F1987 /* Views */ = {
@@ -772,13 +777,12 @@
 				7F73F33E1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift in Sources */,
 				7F73F3371C5F4D0B003347E4 /* ManagedObjectObserver.swift in Sources */,
 				7F73F3361C5F4D0B003347E4 /* ManagedObject.swift in Sources */,
-				7F73F3471C5F4D72003347E4 /* Note.swift in Sources */,
-				7F73F3481C5F4D72003347E4 /* Note+Search.swift in Sources */,
 				7F73F3421C5F4D0B003347E4 /* ValueTransformer.swift in Sources */,
 				7F73F3321C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift in Sources */,
 				7F73F3411C5F4D0B003347E4 /* Utilities.swift in Sources */,
 				7F73F33A1C5F4D0B003347E4 /* ModelVersionType.swift in Sources */,
 				7F73F34D1C5F4DE7003347E4 /* Foundation+Extensions.swift in Sources */,
+				7F73F3571C604C5C003347E4 /* Note.swift in Sources */,
 				7F73F3391C5F4D0B003347E4 /* ModelBuilder.swift in Sources */,
 				7F73F3381C5F4D0B003347E4 /* Migration.swift in Sources */,
 				7F73F3331C5F4D0B003347E4 /* CoreDataErrors.swift in Sources */,
@@ -786,8 +790,8 @@
 				7F73F35A1C604C7F003347E4 /* ManagedContextHelper.swift in Sources */,
 				7F73F33C1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift in Sources */,
 				7F73F33B1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift in Sources */,
-				7F73F3491C5F4D72003347E4 /* X2015.xcdatamodeld in Sources */,
 				7F73F33D1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift in Sources */,
+				7F73F3561C604C5C003347E4 /* Note+Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1130,19 +1134,6 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		7F73F3451C5F4D72003347E4 /* X2015.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				7F73F3461C5F4D72003347E4 /* X2015.xcdatamodel */,
-			);
-			currentVersion = 7F73F3461C5F4D72003347E4 /* X2015.xcdatamodel */;
-			path = X2015.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 7F5204BE1C34F79B00507125 /* Project object */;
 }

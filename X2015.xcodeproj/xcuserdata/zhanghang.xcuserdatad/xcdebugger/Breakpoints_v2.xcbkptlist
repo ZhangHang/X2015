@@ -27,22 +27,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "X2015/AppDelegate.swift"
-            timestampString = "476009443.749068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "applicationWillTerminate(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "X2015/Views/UITableViewCell+Reusable.swift"
             timestampString = "475609734.843141"
             startingColumnNumber = "9223372036854775807"
@@ -60,11 +44,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X2015/ViewController/NoteTimelineTableViewController.swift"
-            timestampString = "476008800.08773"
+            timestampString = "476075204.302538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "updateNoteSelectionIfNeeded(_:deselectAll:)"
             landmarkType = "5">
          </BreakpointContent>

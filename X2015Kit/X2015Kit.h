@@ -6,7 +6,7 @@
 //  Copyright © 2016 Zhang Hang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import CoreData;
 
 //! Project version number for X2015Kit.
 FOUNDATION_EXPORT double X2015KitVersionNumber;
@@ -15,5 +15,4 @@ FOUNDATION_EXPORT double X2015KitVersionNumber;
 FOUNDATION_EXPORT const unsigned char X2015KitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <X2015Kit/PublicHeader.h>
-
 

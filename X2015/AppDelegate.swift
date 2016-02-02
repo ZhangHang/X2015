@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import CoreSpotlight
 import X2015Kit
 
@@ -51,7 +50,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 			// Touch ID lock screen
 			rootViewControllerCache = window!.rootViewController as? UISplitViewController
 			setupLockViewController()
-			bringUpLockViewControllerIfNecessary()
+			bringUpLockViewControllerIfNeeded()
 
 			// Handle application shortcut
 			var shouldPerformAdditionalDelegateHandling = true
@@ -81,12 +80,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationWillEnterForeground(application: UIApplication) {
-		managedObjectContext.saveOrRollback()
-		bringUpLockViewControllerIfNecessary()
+		managedObjectContext.mergeChangesFromUserDefaults()
+		bringUpLockViewControllerIfNeeded()
 	}
 
 	func applicationDidEnterBackground(application: UIApplication) {
-		self.window!.rootViewController = lockViewController
+		managedObjectContext.saveOrRollback()
+		window!.rootViewController = lockViewController
 	}
 
 
@@ -189,7 +189,7 @@ extension AppDelegate {
 		lockViewController = LockViewController.instanceFromStoryboard()
 	}
 
-	private func bringUpLockViewControllerIfNecessary(completion: ( () -> Void )? = nil ) {
+	private func bringUpLockViewControllerIfNeeded(completion: ( () -> Void )? = nil ) {
 		if !LockViewController.needTouchIDAuth {
 			bringDownLockViewController()
 			completion?()

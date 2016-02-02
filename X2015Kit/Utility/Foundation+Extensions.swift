@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
 
-    func lineWithContent(index: UInt) -> String? {
+    public func lineWithContent(index: UInt) -> String? {
         var lineWithContentCount: UInt = 0
         var line: String?
 
