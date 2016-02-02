@@ -114,28 +114,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UISplitViewControllerDelegate {
 
 	private func setupControllers() {
-		guard let splitViewController = window!.rootViewController
-			as? UISplitViewController else {
-				fatalError()
-		}
-		splitViewController.delegate = self
-		guard let masterNavigationController = splitViewController.childViewControllers.first
-			as? UINavigationController else {
-				fatalError()
-		}
-		guard let detailNavigationContoller = splitViewController.childViewControllers.last
-			as? UINavigationController else {
-				fatalError()
-		}
-		guard let noteTimelineViewController = masterNavigationController.childViewControllers.first
-			as? NoteTimelineTableViewController else {
-				fatalError()
-		}
-		guard let _ = detailNavigationContoller.childViewControllers.first
-			as? NoteEditViewController else {
+
+		guard let splitViewController = window!.rootViewController as? UISplitViewController,
+			let masterNavigationController = splitViewController.childViewControllers.first,
+			let noteTimelineViewController = masterNavigationController.childViewControllers.first
+				as? NoteTimelineTableViewController else {
 				fatalError()
 		}
 
+		splitViewController.delegate = self
 		noteTimelineViewController.managedObjectContext = managedObjectContext
 	}
 

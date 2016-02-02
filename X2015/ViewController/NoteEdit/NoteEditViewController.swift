@@ -202,13 +202,13 @@ extension NoteEditViewController {
 			emptyWelcomeView?.removeFromSuperview()
 			textView.hidden = false
 			textView.text = noteUpdater!.noteContent
-			navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem()
+			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
 			navigationItem.leftItemsSupplementBackButton = true
 		case .Create(_):
 			emptyWelcomeView?.removeFromSuperview()
 			textView.hidden = false
 			textView.text = ""
-			navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem()
+			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
 			navigationItem.leftItemsSupplementBackButton = true
 		}
 
