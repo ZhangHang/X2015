@@ -30,7 +30,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var launchedShortcutItem: UIApplicationShortcutItem?
-	let managedObjectContext: NSManagedObjectContext = StoreHelper.createMainContext()
+
+	var managedObjectContext: NSManagedObjectContext! {
+		return managedObjectContextHelper.managedObjectContext
+	}
+	let managedObjectContextHelper = ManagedContextHelper()
 
 	private var rootViewControllerCache: UISplitViewController?
 	private var lockViewController: LockViewController?

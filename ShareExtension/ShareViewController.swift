@@ -9,11 +9,17 @@
 import UIKit
 import Social
 import X2015Kit
-import CoreData
 
 final class ShareViewController: SLComposeServiceViewController {
 
-	let managedObjectContext: NSManagedObjectContext = StoreHelper.createMainContext()
+	var managedObjectContext: NSManagedObjectContext! {
+		return managedObjectContextHelper.managedObjectContext
+	}
+	let managedObjectContextHelper = ManagedContextHelper()
+
+	override func presentationAnimationDidFinish() {
+		super.presentationAnimationDidFinish()
+	}
 
     override func isContentValid() -> Bool {
 		return contentText.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
