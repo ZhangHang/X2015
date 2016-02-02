@@ -9,6 +9,10 @@
 import CoreSpotlight
 import MobileCoreServices
 
+//swiftlint:disable variable_name
+private let DomainIdentifier = "domainIdentifier"
+//swiftlint:enable variable_name
+
 extension Note {
 
 	func updateSearchIndex() {
@@ -17,7 +21,7 @@ extension Note {
 		attributeSet.contentDescription = body
 
 		searchIndex = CSSearchableItem(uniqueIdentifier: identifier,
-			domainIdentifier: "me.zhanghang.x2015.note",
+			domainIdentifier: DomainIdentifier,
 			attributeSet: attributeSet)
 
 		CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([searchIndex!]) { error in
