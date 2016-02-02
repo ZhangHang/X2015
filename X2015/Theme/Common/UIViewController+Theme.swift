@@ -11,7 +11,7 @@ import UIKit
 extension UINavigationController: AppearanceAdaptable {
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
-		case .Defualt:
+		case .Default:
 			UIHelper.setupNavigationBarStyle(
 				UIColor.x2015_BlueColor(),
 				backgroundColor: UIColor.whiteColor(),
@@ -29,7 +29,7 @@ extension UINavigationController: ThemeAdaptable {
 
 	func configureTheme(theme: Theme) -> Void {
 		switch theme {
-		case .Defualt:
+		case .Default:
 			navigationBar.barTintColor = UIColor.x2015_BlueColor()
 			navigationBar.tintColor = UIColor.whiteColor()
 			navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -47,8 +47,8 @@ extension ThemeAdaptable where Self: UIViewController {
 	func configureTheme(theme: Theme) -> Void {
 		navigationController?.configureTheme(theme)
 		switch theme {
-		case .Defualt:
-			view.backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
+		case .Default:
+			view.backgroundColor = UIColor.default_ViewControllerBackgroundColor()
 		case .Night:
 			view.backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
@@ -62,14 +62,14 @@ extension ThemeAdaptable where Self: UITableViewController {
 		navigationController?.configureTheme(theme)
 		let grouped = tableView.style == .Grouped
 		switch theme {
-		case .Defualt:
+		case .Default:
 			if grouped {
-				tableView.backgroundColor = UIColor.defualt_tableViewBackgroundColor()
+				tableView.backgroundColor = UIColor.default_tableViewBackgroundColor()
 			} else {
-				tableView.backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
+				tableView.backgroundColor = UIColor.default_ViewControllerBackgroundColor()
 			}
 			tableView.separatorColor = UIColor.lightGrayColor()
-			view.backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
+			view.backgroundColor = UIColor.default_ViewControllerBackgroundColor()
 		case .Night:
 			tableView.backgroundColor = UIColor.night_tableViewBackgroundColor()
 			tableView.separatorColor = UIColor.darkGrayColor()

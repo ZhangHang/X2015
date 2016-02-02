@@ -27,11 +27,11 @@ extension NSUserDefaults {
 		}
 	}
 
-	var theme: Theme {
+	var currentTheme: Theme {
 		get {
 			guard let value = valueForKey(themeKey) as? String else {
-				setValue(Theme.Defualt.rawValue, forKey: themeKey)
-				return .Defualt
+				setValue(Theme.Default.rawValue, forKey: themeKey)
+				return .Default
 			}
 			return Theme(rawValue: value)!
 		}

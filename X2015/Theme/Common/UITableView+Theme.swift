@@ -12,8 +12,8 @@ extension UITableView: AppearanceAdaptable {
 
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
-		case .Defualt:
-			UITableView.appearance().backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
+		case .Default:
+			UITableView.appearance().backgroundColor = UIColor.default_ViewControllerBackgroundColor()
 		case .Night:
 			UITableView.appearance().backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
@@ -25,8 +25,8 @@ extension UITableView: ThemeAdaptable {
 
 	func configureTheme(theme: Theme) {
 		switch theme {
-		case .Defualt:
-			backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
+		case .Default:
+			backgroundColor = UIColor.default_ViewControllerBackgroundColor()
 		case .Night:
 			backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}

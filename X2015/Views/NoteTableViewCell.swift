@@ -29,9 +29,9 @@ extension NoteTableViewCell: ThemeAdaptable {
 	func configureTheme(theme: Theme) {
 		backgroundColor = UIColor.clearColor()
 		switch theme {
-		case .Defualt:
-			textLabel?.textColor = UIColor.defualt_MainTextColor()
-			detailTextLabel?.textColor = UIColor.defualt_SubTextColor()
+		case .Default:
+			textLabel?.textColor = UIColor.default_MainTextColor()
+			detailTextLabel?.textColor = UIColor.default_SubTextColor()
 			selectionStyle = .Gray
 			selectedBackgroundView = nil
 		case .Night:

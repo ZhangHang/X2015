@@ -30,7 +30,7 @@ extension UIColor {
 
 extension UIColor {
 
-	static func defualt_ViewControllerBackgroundColor() -> UIColor {
+	static func default_ViewControllerBackgroundColor() -> UIColor {
 		return UIColor.whiteColor()
 	}
 
@@ -42,7 +42,7 @@ extension UIColor {
 
 extension UIColor {
 
-	static func defualt_tableViewBackgroundColor() -> UIColor {
+	static func default_tableViewBackgroundColor() -> UIColor {
 		return UIColor.groupTableViewBackgroundColor()
 	}
 
@@ -50,7 +50,7 @@ extension UIColor {
 		return night_ViewControllerBackgroundColor()
 	}
 
-	static func defualt_tableViewCellBackgroundColor() -> UIColor {
+	static func default_tableViewCellBackgroundColor() -> UIColor {
 		return UIColor.whiteColor()
 	}
 
@@ -62,7 +62,7 @@ extension UIColor {
 
 extension UIColor {
 
-	static func defualt_MainTextColor() -> UIColor {
+	static func default_MainTextColor() -> UIColor {
 		return UIColor.blackColor()
 	}
 
@@ -70,7 +70,7 @@ extension UIColor {
 		return UIColor.whiteColor()
 	}
 
-	static func defualt_SubTextColor() -> UIColor {
+	static func default_SubTextColor() -> UIColor {
 		return UIColor.darkTextColor()
 	}
 

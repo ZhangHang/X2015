@@ -13,7 +13,7 @@ extension UISearchBar: AppearanceAdaptable {
 	static func configureThemeAppearance(theme: Theme) {
 		UISearchBar.appearance().tintColor = UIColor.whiteColor()
 		switch theme {
-		case .Defualt:
+		case .Default:
 			UISearchBar.appearance().barTintColor = nil
 			break
 		case .Night:
@@ -29,7 +29,7 @@ extension UISearchBar: ThemeAdaptable {
 	func configureTheme(theme: Theme) {
 		tintColor = UIColor.whiteColor()
 		switch theme {
-		case .Defualt:
+		case .Default:
 			barTintColor = nil
 			break
 		case .Night:

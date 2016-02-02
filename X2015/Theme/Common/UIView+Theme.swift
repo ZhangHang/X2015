@@ -12,8 +12,8 @@ extension ThemeAdaptable where Self: UIView {
 
 	func configureTheme(theme: Theme) -> Void {
 		switch theme {
-		case .Defualt:
-			backgroundColor = UIColor.defualt_ViewControllerBackgroundColor()
+		case .Default:
+			backgroundColor = UIColor.default_ViewControllerBackgroundColor()
 		case .Night:
 			backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}

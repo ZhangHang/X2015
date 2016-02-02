@@ -17,9 +17,9 @@ class ThemeManager {
 
 	static let sharedInstance = ThemeManager()
 
-	private var storedTheme: Theme = .Defualt
+	private var storedTheme: Theme = .Default
 
-	private(set) var currentTheme: Theme = .Defualt {
+	private(set) var currentTheme: Theme = .Default {
 
 		didSet {
 			UIApplication.sharedApplication().statusBarStyle = .LightContent
@@ -64,7 +64,7 @@ extension ThemeManager {
 
 	func synchronizeWithSettings() {
 		let settings = NSUserDefaults.standardUserDefaults()
-		storedTheme = settings.theme
+		storedTheme = settings.currentTheme
 		automaticallyAdjustsTheme = settings.automaticallyAdjustsTheme
 		updateCurrentThemeIfNeeded(true)
 	}
@@ -77,7 +77,7 @@ extension ThemeManager {
 		if UIScreen.mainScreen().brightness <=  minimumBrightness {
 			return .Night
 		} else {
-			return .Defualt
+			return .Default
 		}
 	}
 

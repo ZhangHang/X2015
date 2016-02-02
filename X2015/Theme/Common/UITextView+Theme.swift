@@ -12,8 +12,8 @@ extension UITextView: AppearanceAdaptable {
 
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
-		case .Defualt:
-			UITextView.appearance().textColor = UIColor.defualt_MainTextColor()
+		case .Default:
+			UITextView.appearance().textColor = UIColor.default_MainTextColor()
 			UITextView.appearance().backgroundColor = UIColor.clearColor()
 		case .Night:
 			UITextView.appearance().backgroundColor = UIColor.night_MainTextColor()
@@ -28,9 +28,9 @@ extension UITextView: ThemeAdaptable {
 	func configureTheme(theme: Theme) -> Void {
 		backgroundColor = UIColor.clearColor()
 		switch theme {
-		case .Defualt:
+		case .Default:
 			keyboardAppearance = .Light
-			textColor = UIColor.defualt_MainTextColor()
+			textColor = UIColor.default_MainTextColor()
 		case .Night:
 			keyboardAppearance = .Dark
 			textColor = UIColor.night_MainTextColor()

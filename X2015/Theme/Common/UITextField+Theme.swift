@@ -12,7 +12,7 @@ extension UITextField: AppearanceAdaptable {
 
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
-		case .Defualt:
+		case .Default:
 			UITextField.appearance().keyboardAppearance = .Light
 		case .Night:
 			UITextField.appearance().keyboardAppearance = .Dark

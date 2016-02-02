@@ -117,7 +117,7 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 	private enum ThemeSection: Int {
 
 		case AutoTheme = 0
-		case BrightTheme
+		case DefaultTheme
 		case DarkTheme
 
 		//swiftlint:disable variable_name
@@ -143,7 +143,7 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 			switch self {
 			case .AutoTheme:
 				return NSLocalizedString("Switch Automatically", comment: "")
-			case .BrightTheme:
+			case .DefaultTheme:
 				return NSLocalizedString("Default", comment: "")
 			case .DarkTheme:
 				return NSLocalizedString("Night", comment: "")
@@ -309,19 +309,19 @@ extension SettingsTableViewController {
 		}
 		func defualtThemeCell() -> UITableViewCell {
 			let cell = dequeueSettingCheckableCell()
-			cell.configure(ThemeSection.BrightTheme.title, checked: settings.theme == .Defualt)
+			cell.configure(ThemeSection.DefaultTheme.title, checked: settings.currentTheme == .Default)
 			return cell
 		}
 		func nightThemeCell() -> UITableViewCell {
 			let cell = dequeueSettingCheckableCell()
-			cell.configure(ThemeSection.DarkTheme.title, checked: settings.theme == .Night)
+			cell.configure(ThemeSection.DarkTheme.title, checked: settings.currentTheme == .Night)
 			return cell
 		}
 
 		switch cellType {
 		case .AutoTheme:
 			return autoThemeCell()
-		case .BrightTheme:
+		case .DefaultTheme:
 			return defualtThemeCell()
 		case .DarkTheme:
 			return nightThemeCell()
@@ -349,10 +349,10 @@ extension SettingsTableViewController {
 		switch cellType {
 		case .AutoTheme:
 			return
-		case .BrightTheme:
-			settings.theme = .Defualt
+		case .DefaultTheme:
+			settings.currentTheme = .Default
 		case .DarkTheme:
-			settings.theme = .Night
+			settings.currentTheme = .Night
 		default:
 			fatalError()
 		}
