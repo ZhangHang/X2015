@@ -1,5 +1,5 @@
 //
-//  ManagedContextHelper.swift
+//  ManagedObjectContextBridge.swift
 //  X2015
 //
 //  Created by Hang Zhang on 2/1/16.
@@ -16,7 +16,7 @@ public let X2015DataChangedNotificationName = "X2015DataChangedNotificationName"
 public let X2015DataChangeDarwindNotificationName = "X2015DataChangeDarwindNotificationName"
 //swiftlint:enable variable_name
 
-public class ManagedContextHelper {
+public class ManagedObjectContextBridge {
 
 	public var managedObjectContext: NSManagedObjectContext!
 
@@ -35,7 +35,7 @@ public class ManagedContextHelper {
 
 }
 
-extension ManagedContextHelper {
+extension ManagedObjectContextBridge {
 
 	func createMainContext(
 		policies: [Policy]) -> NSManagedObjectContext {
@@ -142,7 +142,7 @@ extension ManagedContextHelper {
 
 }
 
-extension ManagedContextHelper {
+extension ManagedObjectContextBridge {
 
 	private func postCFNotification(notificationName: String) {
 		let center = CFNotificationCenterGetDarwinNotifyCenter()

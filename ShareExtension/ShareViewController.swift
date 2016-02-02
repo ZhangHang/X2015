@@ -13,9 +13,9 @@ import X2015Kit
 final class ShareViewController: SLComposeServiceViewController {
 
 	var managedObjectContext: NSManagedObjectContext! {
-		return managedObjectContextHelper.managedObjectContext
+		return managedObjectContextBridge.managedObjectContext
 	}
-	let managedObjectContextHelper = ManagedContextHelper(policies: [.Send])
+	let managedObjectContextBridge = ManagedObjectContextBridge(policies: [.Send])
 
 	override func presentationAnimationDidFinish() {
 		super.presentationAnimationDidFinish()

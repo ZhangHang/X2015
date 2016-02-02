@@ -50,7 +50,7 @@
 		7F73F3501C5F53CC003347E4 /* X2015Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; };
 		7F73F3561C604C5C003347E4 /* Note+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3531C604C5C003347E4 /* Note+Search.swift */; };
 		7F73F3571C604C5C003347E4 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3541C604C5C003347E4 /* Note.swift */; };
-		7F73F35A1C604C7F003347E4 /* ManagedContextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3591C604C7F003347E4 /* ManagedContextHelper.swift */; };
+		7F73F35A1C604C7F003347E4 /* ManagedObjectContextBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3591C604C7F003347E4 /* ManagedObjectContextBridge.swift */; };
 		7F73F3721C6082C3003347E4 /* UIBarButtonItem+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3651C6082C3003347E4 /* UIBarButtonItem+Theme.swift */; };
 		7F73F3731C6082C3003347E4 /* UILabel+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3661C6082C3003347E4 /* UILabel+Theme.swift */; };
 		7F73F3741C6082C3003347E4 /* UINavigationBar+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3671C6082C3003347E4 /* UINavigationBar+Theme.swift */; };
@@ -200,7 +200,7 @@
 		7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		7F73F3531C604C5C003347E4 /* Note+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Search.swift"; sourceTree = "<group>"; };
 		7F73F3541C604C5C003347E4 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		7F73F3591C604C7F003347E4 /* ManagedContextHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedContextHelper.swift; sourceTree = "<group>"; };
+		7F73F3591C604C7F003347E4 /* ManagedObjectContextBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextBridge.swift; sourceTree = "<group>"; };
 		7F73F3651C6082C3003347E4 /* UIBarButtonItem+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Theme.swift"; sourceTree = "<group>"; };
 		7F73F3661C6082C3003347E4 /* UILabel+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Theme.swift"; sourceTree = "<group>"; };
 		7F73F3671C6082C3003347E4 /* UINavigationBar+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Theme.swift"; sourceTree = "<group>"; };
@@ -423,7 +423,7 @@
 		7F73F34B1C5F4DE7003347E4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				7F73F3591C604C7F003347E4 /* ManagedContextHelper.swift */,
+				7F73F3591C604C7F003347E4 /* ManagedObjectContextBridge.swift */,
 				7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */,
 			);
 			path = Utility;
@@ -831,7 +831,7 @@
 				7F73F3381C5F4D0B003347E4 /* Migration.swift in Sources */,
 				7F73F3331C5F4D0B003347E4 /* CoreDataErrors.swift in Sources */,
 				7F73F33F1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */,
-				7F73F35A1C604C7F003347E4 /* ManagedContextHelper.swift in Sources */,
+				7F73F35A1C604C7F003347E4 /* ManagedObjectContextBridge.swift in Sources */,
 				7F73F33C1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift in Sources */,
 				7F73F33B1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift in Sources */,
 				7F73F33D1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift in Sources */,

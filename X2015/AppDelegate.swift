@@ -31,9 +31,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	var launchedShortcutItem: UIApplicationShortcutItem?
 
 	var managedObjectContext: NSManagedObjectContext! {
-		return managedObjectContextHelper.managedObjectContext
+		return managedObjectContextBridge.managedObjectContext
 	}
-	let managedObjectContextHelper = ManagedContextHelper(policies: [.Send, .Receive])
+	let managedObjectContextBridge = ManagedObjectContextBridge(policies: [.Send, .Receive])
 
 	private var rootViewControllerCache: UISplitViewController?
 	private var lockViewController: LockViewController?
