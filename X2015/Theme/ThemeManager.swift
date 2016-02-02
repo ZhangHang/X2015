@@ -63,7 +63,7 @@ class ThemeManager {
 extension ThemeManager {
 
 	func synchronizeWithSettings() {
-		let settings = Settings()
+		let settings = NSUserDefaults.standardUserDefaults()
 		storedTheme = settings.theme
 		automaticallyAdjustsTheme = settings.automaticallyAdjustsTheme
 		updateCurrentThemeIfNeeded(true)

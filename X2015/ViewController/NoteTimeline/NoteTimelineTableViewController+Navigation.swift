@@ -123,5 +123,5 @@ extension NoteTimelineTableViewController {
 extension NoteTimelineTableViewController {
 
 	@IBAction func closeSettingsViewController(segue: UIStoryboardSegue) {}
-	
+
 }

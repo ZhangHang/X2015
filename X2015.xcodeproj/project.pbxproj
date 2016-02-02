@@ -76,7 +76,6 @@
 		7F73F39E1C6084AE003347E4 /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38E1C6084AE003347E4 /* ManagedObjectContextSettable.swift */; };
 		7F73F39F1C6084AE003347E4 /* SotyboardCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38F1C6084AE003347E4 /* SotyboardCreatable.swift */; };
 		7F73F3A01C6084AE003347E4 /* SettingCheckableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3911C6084AE003347E4 /* SettingCheckableTableViewCell.swift */; };
-		7F73F3A11C6084AE003347E4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3921C6084AE003347E4 /* Settings.swift */; };
 		7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */; };
 		7F73F3A31C6084AE003347E4 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */; };
 		7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */; };
@@ -84,6 +83,7 @@
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
 		7FFEA1101C60877C006BB860 /* X2015.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA10E1C60877C006BB860 /* X2015.xcdatamodeld */; };
+		7FFEA1181C6089DE006BB860 /* NSUserDefault+X2015.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA1161C6089CC006BB860 /* NSUserDefault+X2015.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,7 +226,6 @@
 		7F73F38E1C6084AE003347E4 /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		7F73F38F1C6084AE003347E4 /* SotyboardCreatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SotyboardCreatable.swift; sourceTree = "<group>"; };
 		7F73F3911C6084AE003347E4 /* SettingCheckableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCheckableTableViewCell.swift; sourceTree = "<group>"; };
-		7F73F3921C6084AE003347E4 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSearchTableViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +233,7 @@
 		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
 		7FFEA10F1C60877C006BB860 /* X2015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = X2015.xcdatamodel; sourceTree = "<group>"; };
+		7FFEA1161C6089CC006BB860 /* NSUserDefault+X2015.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+X2015.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				7F73F2FA1C5F4BB4003347E4 /* X2015.entitlements */,
+				7FFEA1151C6089A6006BB860 /* Setting */,
 				7F73F3631C6082C3003347E4 /* Theme */,
 				7FFD814A1C4B5B4B004F1987 /* Views */,
 				7F37C7811C41658E00519B18 /* Extensions */,
@@ -514,7 +515,6 @@
 			isa = PBXGroup;
 			children = (
 				7F73F3911C6084AE003347E4 /* SettingCheckableTableViewCell.swift */,
-				7F73F3921C6084AE003347E4 /* Settings.swift */,
 				7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */,
 				7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */,
 			);
@@ -541,6 +541,14 @@
 				7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		7FFEA1151C6089A6006BB860 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				7FFEA1161C6089CC006BB860 /* NSUserDefault+X2015.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -772,7 +780,6 @@
 				7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */,
 				7F73F37E1C6082C3003347E4 /* ThemeManager.swift in Sources */,
 				7F73F3741C6082C3003347E4 /* UINavigationBar+Theme.swift in Sources */,
-				7F73F3A11C6084AE003347E4 /* Settings.swift in Sources */,
 				7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */,
 				7F73F39D1C6084AE003347E4 /* NoteUpdater.swift in Sources */,
 				7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */,
@@ -791,6 +798,7 @@
 				7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */,
 				7F73F3781C6082C3003347E4 /* UITextView+Theme.swift in Sources */,
 				7F73F3731C6082C3003347E4 /* UILabel+Theme.swift in Sources */,
+				7FFEA1181C6089DE006BB860 /* NSUserDefault+X2015.swift in Sources */,
 				7F73F3791C6082C3003347E4 /* UIView+Theme.swift in Sources */,
 				7F73F39A1C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift in Sources */,
 				7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */,

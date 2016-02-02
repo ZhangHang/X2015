@@ -49,7 +49,7 @@ extension LockViewController: SotyboardCreatable {
 extension LockViewController {
 
 	static var needTouchIDAuth: Bool {
-		return Settings().unlockByTouchID
+		return NSUserDefaults.standardUserDefaults().unlockByTouchID
 	}
 
 }

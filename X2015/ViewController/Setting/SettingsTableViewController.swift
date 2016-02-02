@@ -154,7 +154,7 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 
 	}
 
-	private let settings = Settings()
+	private let settings = NSUserDefaults.standardUserDefaults()
 
 	override func updateThemeInterface(theme: Theme, animated: Bool) {
 		func updateInterface() {
