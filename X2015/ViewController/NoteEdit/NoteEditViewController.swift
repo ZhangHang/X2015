@@ -166,6 +166,15 @@ extension NoteEditViewController: UITextViewDelegate {
 		noteUpdater!.updateNote(textView.text)
 	}
 
+
+	//swiftlint:disable variable_name
+	func textView(textView: UITextView,
+		shouldInteractWithURL URL: NSURL,
+		inRange characterRange: NSRange) -> Bool {
+		return true
+	}
+	//swiftlint:enable variable_name
+
 }
 
 extension NoteEditViewController {

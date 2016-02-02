@@ -1,5 +1,5 @@
 //
-//  ThemeAdaptable.swift
+//  ThemeProtocols.swift
 //  X2015
 //
 //  Created by Hang Zhang on 1/26/16.

@@ -20,11 +20,9 @@ extension Note {
 			domainIdentifier: "me.zhanghang.x2015.note",
 			attributeSet: attributeSet)
 
-		CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([searchIndex!]) { [unowned self] error in
-			if error != nil {
-				print(error?.localizedDescription)
-			} else {
-				print("Note with title \"\(self.title)\" indexed.")
+		CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([searchIndex!]) { error in
+			if let error = error {
+				debugPrint("index error: \(error.localizedDescription)")
 			}
 		}
 	}
@@ -38,11 +36,9 @@ extension Note {
 		CSSearchableIndex
 			.defaultSearchableIndex()
 			.deleteSearchableItemsWithIdentifiers([index.uniqueIdentifier]) { (error) -> Void in
-			if error != nil {
-				print(error?.localizedDescription)
-			} else {
-				print("\(self) indexed.")
-			}
+				if let error = error {
+					debugPrint("index delete error: \(error.localizedDescription)")
+				}
 		}
 	}
 
