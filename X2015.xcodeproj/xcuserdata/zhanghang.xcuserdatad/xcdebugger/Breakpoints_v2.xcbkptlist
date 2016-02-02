@@ -53,5 +53,53 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "X2015/ViewController/Theme/UIBarButtonItem+Theme.swift"
+            timestampString = "476078195.955164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "configureThemeAppearance(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ext.X2015.__ObjC.UIBarButtonItem.configureThemeAppearance (__ObjC.UIBarButtonItem.Type)(X2015.Theme) -&gt; ()"
+                  moduleName = "X2015"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhanghang/Workspace/X2015/X2015/ViewController/Theme/UIBarButtonItem+Theme.swift"
+                  timestampString = "476078202.867584"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "protocol witness for static X2015.AppearanceAdaptable.configureThemeAppearance &lt;A where A: X2015.AppearanceAdaptable&gt; (A.Type)(X2015.Theme) -&gt; () in conformance __ObjC.UIBarButtonItem : X2015.AppearanceAdaptable in X2015"
+                  moduleName = "X2015"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhanghang/Workspace/X2015/X2015/ViewController/Theme/UIBarButtonItem+Theme.swift"
+                  timestampString = "476078202.867844"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

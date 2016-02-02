@@ -63,16 +63,18 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 
 	}
 
-	private var noteUpdater: NoteUpdater?
-
 	weak var delegate: NoteEditViewControllerDelegate?
 
 	@IBOutlet private weak var textView: UITextView!
-
 	private var emptyWelcomeView: EmptyNoteWelcomeView?
+	var actionBarButton: UIBarButtonItem {
+		return navigationItem.rightBarButtonItem!
+	}
 
+	var noteUpdater: NoteUpdater?
 	private var keyboardNotificationObserver: KeyboardNotificationObserver!
 
+	//MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -151,7 +153,16 @@ extension NoteEditViewController: UITextViewDelegate {
 		}
 	}
 
+	func updateActionButtonIfNeeded() {
+		let isContentEmpty = textView.text.empty
+
+		if actionBarButton.enabled != !isContentEmpty {
+			actionBarButton.enabled = !isContentEmpty
+		}
+	}
+
 	func textViewDidChange(textView: UITextView) {
+		updateActionButtonIfNeeded()
 		noteUpdater!.updateNote(textView.text)
 	}
 
@@ -191,6 +202,8 @@ extension NoteEditViewController {
 			navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem()
 			navigationItem.leftItemsSupplementBackButton = true
 		}
+
+		updateActionButtonIfNeeded()
 	}
 
 }
