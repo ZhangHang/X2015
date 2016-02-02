@@ -6,7 +6,7 @@
 //  Copyright © 2016 Zhang Hang. All rights reserved.
 //
 
-import CoreData
+import X2015Kit
 
 class NoteUpdater {
 

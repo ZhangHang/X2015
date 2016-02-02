@@ -65,6 +65,7 @@
                                         <constraint firstItem="v7k-07-esB" firstAttribute="centerY" secondItem="VDR-WS-WYM" secondAttribute="centerY" id="b26-dj-Icx"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.23529411759999999" green="0.4823529412" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="settingTitleLabel" destination="v7k-07-esB" id="6co-hp-m9G"/>
                                 </connections>
@@ -156,7 +157,13 @@
                             <constraint firstAttribute="trailing" secondItem="14B-fx-PXZ" secondAttribute="trailing" id="rvy-OW-yDg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="OhK-Ep-Cbg"/>
+                    <navigationItem key="navigationItem" id="OhK-Ep-Cbg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="L2W-ed-zua">
+                            <connections>
+                                <action selector="handleActionButtonPressed:" destination="LYn-i6-btg" id="U4f-qQ-FZP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="textView" destination="14B-fx-PXZ" id="T85-q9-7c7"/>
                     </connections>
@@ -271,4 +278,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="gG1-p9-RkD"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

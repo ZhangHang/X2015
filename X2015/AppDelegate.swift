@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import CoreData
 import CoreSpotlight
+import X2015Kit
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,15 +16,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	enum ShortcutIdentifier: String {
 		case NewNote
 
-		// MARK: Initializers
-
 		init?(fullType: String) {
 			guard let last = fullType.componentsSeparatedByString(".").last else { return nil }
 
 			self.init(rawValue: last)
 		}
-
-		// MARK: Properties
 
 		var type: String {
 			return NSBundle.mainBundle().bundleIdentifier! + ".\(self.rawValue)"
@@ -33,7 +29,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var launchedShortcutItem: UIApplicationShortcutItem?
-	let managedObjectContext: NSManagedObjectContext = AppDelegate.createMainContext()
+
+	var managedObjectContext: NSManagedObjectContext! {
+		return managedObjectContextHelper.managedObjectContext
+	}
+	let managedObjectContextHelper = ManagedContextHelper()
 
 	private var rootViewControllerCache: UISplitViewController?
 	private var lockViewController: LockViewController?
@@ -50,7 +50,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 			// Touch ID lock screen
 			rootViewControllerCache = window!.rootViewController as? UISplitViewController
 			setupLockViewController()
-			bringUpLockViewControllerIfNecessary()
+			bringUpLockViewControllerIfNeeded()
 
 			// Handle application shortcut
 			var shouldPerformAdditionalDelegateHandling = true
@@ -80,12 +80,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationWillEnterForeground(application: UIApplication) {
-		managedObjectContext.saveOrRollback()
-		bringUpLockViewControllerIfNecessary()
+		managedObjectContext.mergeChangesFromUserDefaults()
+		bringUpLockViewControllerIfNeeded()
 	}
 
 	func applicationDidEnterBackground(application: UIApplication) {
-		self.window!.rootViewController = lockViewController
+		managedObjectContext.saveOrRollback()
+		window!.rootViewController = lockViewController
 	}
 
 
@@ -105,29 +106,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 			vc.handleEditNoteUserActivity(noteIdentifier: noteIdentifier)
 
 			return true
-	}
-
-	// MARK: - Core Data stack
-
-	private static let StoreURL = NSURL.documentsURL.URLByAppendingPathComponent("X2015.moody")
-
-	static func createMainContext() -> NSManagedObjectContext {
-		let bundles = [NSBundle(forClass: Note.self)]
-		guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
-			fatalError("model not found")
-		}
-		let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
-		do {
-			try psc.addPersistentStoreWithType(
-				NSSQLiteStoreType, configuration: nil,
-				URL: StoreURL,
-				options: nil)
-			let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-			context.persistentStoreCoordinator = psc
-			return context
-		} catch {
-			fatalError()
-		}
 	}
 
 }
@@ -185,6 +163,8 @@ extension AppDelegate {
 		ThemeManager.sharedInstance.register(UIWindow)
 		ThemeManager.sharedInstance.register(UISearchBar)
 		ThemeManager.sharedInstance.register(UITextField)
+		ThemeManager.sharedInstance.register(UIBarButtonItem)
+		ThemeManager.sharedInstance.register(UINavigationBar)
 		ThemeManager.sharedInstance.register(UINavigationController)
 		ThemeManager.sharedInstance.synchronizeWithSettings()
 	}
@@ -208,12 +188,12 @@ extension AppDelegate {
 extension AppDelegate {
 
 	private func setupLockViewController() {
-		self.lockViewController = LockViewController.instanceFromStoryboard()
+		lockViewController = LockViewController.instanceFromStoryboard()
 	}
 
-	private func bringUpLockViewControllerIfNecessary(completion: ( () -> Void )? = nil ) {
+	private func bringUpLockViewControllerIfNeeded(completion: ( () -> Void )? = nil ) {
 		if !LockViewController.needTouchIDAuth {
-			self.bringDownLockViewController()
+			bringDownLockViewController()
 			completion?()
 			return
 		}

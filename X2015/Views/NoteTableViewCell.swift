@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import X2015Kit
 
 final class NoteTableViewCell: UITableViewCell {
 

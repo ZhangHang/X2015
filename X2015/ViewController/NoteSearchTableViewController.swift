@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+import X2015Kit
 
 protocol NoteSearchTableViewControllerDelegate: class {
 

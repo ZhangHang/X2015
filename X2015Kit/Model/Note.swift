@@ -66,15 +66,15 @@ extension Note {
 
 extension Note {
 
-    var title: String? {
+    public var title: String? {
         return content?.lineWithContent(0)
     }
 
-    var preview: String? {
+    public var preview: String? {
         return content?.lineWithContent(1)
     }
 
-	var body: String? {
+	public var body: String? {
 		guard let preview = preview else {
 			return nil
 		}
@@ -89,7 +89,7 @@ extension Note {
 
 extension Note {
 
-	static func fetchNote(identifier: String, managedObjectContext: NSManagedObjectContext) -> Note? {
+	public static func fetchNote(identifier: String, managedObjectContext: NSManagedObjectContext) -> Note? {
 		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
 		fetchRequest.predicate = NSPredicate(format: "identifier = %@", identifier)
 		fetchRequest.fetchLimit = 1
