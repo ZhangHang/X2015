@@ -111,6 +111,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: Core Data
+extension AppDelegate {
+
+	func configureCoreData() {
+		Note.searchIndexEnabled = true
+	}
+
+}
+
 extension AppDelegate: UISplitViewControllerDelegate {
 
 	private func setupControllers() {

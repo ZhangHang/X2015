@@ -13,51 +13,57 @@ import CoreSpotlight
 public final class Note: ManagedObject {
 
 	@NSManaged public private(set) var identifier: String
-    @NSManaged public private(set) var content: String?
-    @NSManaged public private(set) var createdAt: NSDate
+	@NSManaged public private(set) var content: String?
+	@NSManaged public private(set) var createdAt: NSDate
 
 	var searchIndex: CSSearchableItem?
+
+	static public var searchIndexEnabled = false
 }
 
 extension Note: ManagedObjectType {
 
-    public override func awakeFromInsert() {
+	public override func awakeFromInsert() {
 		identifier = NSUUID().UUIDString
-        createdAt = NSDate()
-        super.awakeFromInsert()
-    }
+		createdAt = NSDate()
+		super.awakeFromInsert()
+	}
 
 	public override func awakeFromFetch() {
-		updateSearchIndex()
+		if Note.searchIndexEnabled {
+			updateSearchIndex()
+		}
 		super.awakeFromFetch()
 	}
 
 	public override func prepareForDeletion() {
-		deleteSearchIndex()
+		if Note.searchIndexEnabled {
+			deleteSearchIndex()
+		}
 		super.prepareForDeletion()
 	}
 
-    public static var entityName: String {
-        return "Note"
-    }
+	public static var entityName: String {
+		return "Note"
+	}
 
-    public static var defaultSortDescriptors: [NSSortDescriptor] {
-        return [NSSortDescriptor(key: "createdAt", ascending: false)]
-    }
+	public static var defaultSortDescriptors: [NSSortDescriptor] {
+		return [NSSortDescriptor(key: "createdAt", ascending: false)]
+	}
 
 
-    public static var defaultPredicate: NSPredicate {
-        return NSPredicate(format: "%K == NULL", "")
-    }
+	public static var defaultPredicate: NSPredicate {
+		return NSPredicate(format: "%K == NULL", "")
+	}
 
 }
 
 extension Note {
 
-    public func update(content: String) {
-        self.content = content
+	public func update(content: String) {
+		self.content = content
 		updateSearchIndex()
-    }
+	}
 
 	public func hasChange(newContent: String) -> Bool {
 		return self.content != newContent
@@ -66,13 +72,13 @@ extension Note {
 
 extension Note {
 
-    public var title: String? {
-        return content?.lineWithContent(0)
-    }
+	public var title: String? {
+		return content?.lineWithContent(0)
+	}
 
-    public var preview: String? {
-        return content?.lineWithContent(1)
-    }
+	public var preview: String? {
+		return content?.lineWithContent(1)
+	}
 
 	public var body: String? {
 		guard let preview = preview else {
@@ -95,8 +101,8 @@ extension Note {
 		fetchRequest.fetchLimit = 1
 		do {
 			if let results = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Note]
-			where results.count == 1 {
-				return results.first
+				where results.count == 1 {
+					return results.first
 			}
 		} catch let e {
 			debugPrint("fetch with error \(e)")
