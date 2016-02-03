@@ -14,9 +14,8 @@ extension NoteEditViewController {
 		let activityViewController = UIActivityViewController(
 			activityItems: [noteUpdater!.noteContent!],
 			applicationActivities: nil)
-
+		activityViewController.popoverPresentationController?.barButtonItem = sender
 		presentViewController(activityViewController, animated: true, completion: nil)
-
 	}
 
 }
