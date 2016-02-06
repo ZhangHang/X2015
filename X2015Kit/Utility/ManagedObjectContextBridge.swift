@@ -10,10 +10,14 @@ import Foundation
 import CoreData
 //swiftlint:disable variable_name
 private let X2015GroupIdentifier = "group.x2015container"
-private let X2015DataChangedKey = "X2015DataChangedKey"
+private let ManagedObjectContextBridgeDataChangeKey = "ManagedObjectContextBridgeDataChangeKey"
 
-public let X2015DataChangedNotificationName = "X2015DataChangedNotificationName"
-public let X2015DataChangeDarwindNotificationName = "X2015DataChangeDarwindNotificationName"
+//swiftlint:disable variable_name_max_length
+//swiftlint:disable line_length
+private let ManagedObjectContextBridgeDataChangedNotificationName = "ManagedObjectContextBridgeDataChangedNotificationName"
+private let ManagedObjectContextBridgeDataChangedDarwinNotificationName = "ManagedObjectContextBridgeDataChangedDarwinNotificationName"
+//swiftlint:enable line_length
+//swiftlint:enable variable_name_max_length
 //swiftlint:enable variable_name
 
 public class ManagedObjectContextBridge {
@@ -76,7 +80,7 @@ extension ManagedObjectContextBridge {
 		if policies.contains(.Receive) {
 			NSNotificationCenter.defaultCenter().addObserver(self,
 				selector: "handleCFDidSaveContext",
-				name: X2015DataChangedNotificationName,
+				name: ManagedObjectContextBridgeDataChangedNotificationName,
 				object: nil)
 
 			CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
@@ -84,10 +88,10 @@ extension ManagedObjectContextBridge {
 					debugPrint("received notification: \(name)")
 					NSNotificationCenter
 						.defaultCenter()
-						.postNotificationName(X2015DataChangedNotificationName,
+						.postNotificationName(ManagedObjectContextBridgeDataChangedNotificationName,
 							object: nil)
 				},
-				X2015DataChangeDarwindNotificationName,
+				ManagedObjectContextBridgeDataChangedDarwinNotificationName,
 				nil,
 				.DeliverImmediately)
 		}
@@ -126,7 +130,7 @@ extension ManagedObjectContextBridge {
 		}
 
 		var notificationDatas = [AnyObject]()
-		if let data = userDefaults!.objectForKey(X2015DataChangedKey) as? NSData,
+		if let data = userDefaults!.objectForKey(ManagedObjectContextBridgeDataChangeKey) as? NSData,
 			let existingNotificationDatas = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [AnyObject] {
 				notificationDatas.appendContentsOf(existingNotificationDatas)
 		}
@@ -134,10 +138,10 @@ extension ManagedObjectContextBridge {
 		notificationDatas.append(notificationData)
 		let archivedData: NSData = NSKeyedArchiver.archivedDataWithRootObject(notificationDatas)
 
-		userDefaults!.setObject(archivedData, forKey: X2015DataChangedKey)
+		userDefaults!.setObject(archivedData, forKey: ManagedObjectContextBridgeDataChangeKey)
 		userDefaults!.synchronize()
 
-		postCFNotification(X2015DataChangeDarwindNotificationName)
+		postCFNotification(ManagedObjectContextBridgeDataChangedDarwinNotificationName)
 	}
 
 }
@@ -158,11 +162,11 @@ extension NSManagedObjectContext {
 		let userDefaults = NSUserDefaults(suiteName: X2015GroupIdentifier)
 
 		defer {
-			userDefaults!.removeObjectForKey(X2015DataChangedKey)
+			userDefaults!.removeObjectForKey(ManagedObjectContextBridgeDataChangeKey)
 			userDefaults!.synchronize()
 		}
 
-		guard let data = userDefaults!.objectForKey(X2015DataChangedKey) as? NSData else {
+		guard let data = userDefaults!.objectForKey(ManagedObjectContextBridgeDataChangeKey) as? NSData else {
 			return
 		}
 
