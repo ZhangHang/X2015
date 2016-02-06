@@ -12,43 +12,44 @@ import X2015Kit
 
 let cellReuseIdentifier = "Cell"
 
-final class TodayTableViewController: UITableViewController, NCWidgetProviding {
+final class TodayTableViewController: UITableViewController {
 
-	var managedObjectContext: NSManagedObjectContext {
+	private var managedObjectContext: NSManagedObjectContext {
 		return managedObjectContextBridge.managedObjectContext
 	}
-	let managedObjectContextBridge = ManagedObjectContextBridge(policies: [.Receive])
-	var fetchedResultsController: NSFetchedResultsController!
+	private let managedObjectContextBridge = ManagedObjectContextBridge(policies: [.Receive])
+	private var notes: [Note] = [Note]()
+	private var noteFetchRequest: NSFetchRequest = {
+		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
+		fetchRequest.sortDescriptors = Note.defaultSortDescriptors
+		fetchRequest.fetchLimit = 3
+		return fetchRequest
+	}()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		preferredContentSize = CGSize(width: preferredContentSize.width, height: 60)
-
-
 		tableView.separatorEffect = UIVibrancyEffect.notificationCenterVibrancyEffect()
 		tableView.separatorColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
 
-		setupFetchedResultController()
+		NSNotificationCenter
+			.defaultCenter()
+			.addObserverForName(NSManagedObjectContextDidSaveNotification,
+				object: nil,
+				queue: NSOperationQueue.mainQueue()) { (note) -> Void in
+					self.updateInterface()
+		}
+		updateInterface()
 	}
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		managedObjectContext.reset()
-	}
-
-	func widgetMarginInsetsForProposedMarginInsets(
-		defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-			return UIEdgeInsetsZero
-	}
-
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return self.fetchedResultsController.sections?.count ?? 0
+		updateInterface()
 	}
 
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		let sectionInfo = self.fetchedResultsController.sections![section]
-		return sectionInfo.numberOfObjects
+		return notes.count
 	}
 
 	override func tableView(tableView: UITableView,
@@ -67,63 +68,42 @@ final class TodayTableViewController: UITableViewController, NCWidgetProviding {
 		})
 	}
 
-	// MARK: NCWidgetProviding
+}
+
+
+extension TodayTableViewController: NCWidgetProviding {
+
+	func widgetMarginInsetsForProposedMarginInsets(
+		defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+			return UIEdgeInsetsZero
+	}
 
 	func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-		// Perform any setup necessary in order to update the view.
-
-		// If an error is encountered, use NCUpdateResult.Failed
-		// If there's no update required, use NCUpdateResult.NoData
-		// If there's an update, use NCUpdateResult.NewData
-		managedObjectContext.mergeChangesFromUserDefaults()
-		fetchData()
-		if fetchedResultsController.fetchedObjects?.count == 0 {
+		updateInterface()
+		if notes.count == 0 {
 			completionHandler(.NoData)
 		} else {
-			preferredContentSize = tableView.contentSize
 			completionHandler(.NewData)
 		}
 	}
 
 }
 
+
 extension TodayTableViewController {
 
-	func setupFetchedResultController() {
-		fetchedResultsController = { [unowned self] in
-			let fetchRequest = NSFetchRequest(entityName: Note.entityName)
-			fetchRequest.sortDescriptors = Note.defaultSortDescriptors
-			fetchRequest.fetchLimit = 3
-			let fetchedResultsController = NSFetchedResultsController(
-				fetchRequest: fetchRequest,
-				managedObjectContext: self.managedObjectContext,
-				sectionNameKeyPath: nil,
-				cacheName: nil)
-			fetchedResultsController.delegate = self
-			return fetchedResultsController
-			}()
-
+	func updateInterface() {
 		do {
-			try fetchedResultsController.performFetch()
-		} catch {
-
+			//swiftlint:disable force_cast
+			notes = try managedObjectContext.executeFetchRequest(noteFetchRequest) as! [Note]
+			//swiftlint:enable force_cast
+			tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+			preferredContentSize = tableView.contentSize
+		} catch let e {
+			debugPrint("fetch error \(e)")
 		}
 	}
 
-	func fetchData() {
-		do {
-			try fetchedResultsController.performFetch()
-		} catch {
-			fatalError()
-		}
-	}
-
-	func objectAt<T where T:NSManagedObject>(indexPath: NSIndexPath) -> T {
-		guard let object = fetchedResultsController.objectAtIndexPath(indexPath) as? T else {
-			fatalError("Can't find object at indexPath \(indexPath)")
-		}
-		return object
-	}
 }
 
 // MARK: NSFetchedResultsControllerDelegate
@@ -180,7 +160,7 @@ extension TodayTableViewController: NSFetchedResultsControllerDelegate {
 	}
 
 	func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-		let note: Note = objectAt(indexPath)
+		let note: Note = notes[indexPath.row]
 		cell.textLabel?.text = note.title
 		cell.detailTextLabel?.text = note.preview
 

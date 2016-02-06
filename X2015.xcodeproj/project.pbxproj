@@ -315,9 +315,9 @@
 			children = (
 				7F5204C81C34F79B00507125 /* X2015 iOS */,
 				7F73F2EC1C5F4255003347E4 /* ShareExtension */,
+				7FFEA1231C60D2D1006BB860 /* TodayExtension */,
 				7F73F3021C5F4C9D003347E4 /* X2015Kit */,
 				7F73F3101C5F4C9D003347E4 /* X2015KitTests */,
-				7FFEA1231C60D2D1006BB860 /* TodayExtension */,
 				7FFEA1201C60D2D1006BB860 /* Frameworks */,
 				7F5204C71C34F79B00507125 /* Products */,
 			);
@@ -1327,6 +1327,7 @@
 				7FFEA12F1C60D2D1006BB860 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

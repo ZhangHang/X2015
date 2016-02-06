@@ -109,7 +109,7 @@ extension Note {
 		} catch let e {
 			debugPrint("fetch with error \(e)")
 		}
-		
+
 		return nil
 	}
 }
