@@ -62,7 +62,9 @@ extension Note {
 
 	public func update(content: String) {
 		self.content = content
-		updateSearchIndex()
+		if Note.searchIndexEnabled {
+			updateSearchIndex()
+		}
 	}
 
 	public func hasChange(newContent: String) -> Bool {
@@ -107,7 +109,7 @@ extension Note {
 		} catch let e {
 			debugPrint("fetch with error \(e)")
 		}
-
+		
 		return nil
 	}
 }

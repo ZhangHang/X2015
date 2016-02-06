@@ -22,7 +22,7 @@ final class ShareViewController: SLComposeServiceViewController {
 	}
 
     override func isContentValid() -> Bool {
-		return contentText.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
+		return !contentText.empty
     }
 
     override func didSelectPost() {

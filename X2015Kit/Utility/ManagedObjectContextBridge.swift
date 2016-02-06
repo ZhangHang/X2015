@@ -137,7 +137,7 @@ extension ManagedObjectContextBridge {
 		userDefaults!.setObject(archivedData, forKey: X2015DataChangedKey)
 		userDefaults!.synchronize()
 
-		postCFNotification(X2015DataChangedNotificationName)
+		postCFNotification(X2015DataChangeDarwindNotificationName)
 	}
 
 }
@@ -145,8 +145,9 @@ extension ManagedObjectContextBridge {
 extension ManagedObjectContextBridge {
 
 	private func postCFNotification(notificationName: String) {
+		debugPrint("post cf notification with name \(notificationName)")
 		let center = CFNotificationCenterGetDarwinNotifyCenter()
-		CFNotificationCenterPostNotification(center, X2015DataChangedNotificationName, nil, nil, true)
+		CFNotificationCenterPostNotification(center, notificationName, nil, nil, true)
 	}
 
 }
