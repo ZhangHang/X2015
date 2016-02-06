@@ -69,6 +69,10 @@ extension ThemeManager {
 		updateCurrentThemeIfNeeded(true)
 	}
 
+	func register(appearanceAdaptableClasses: [AppearanceAdaptable.Type]) {
+		registeredClass.appendContentsOf(appearanceAdaptableClasses)
+	}
+
 	func register(appearanceAdaptableClass: AppearanceAdaptable.Type) {
 		registeredClass.append(appearanceAdaptableClass)
 	}
