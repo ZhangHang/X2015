@@ -110,10 +110,14 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		annotation: AnyObject) -> Bool {
 			debugPrint("OPEN URL \(url)")
 
-			switch (url.host ?? "", url.path ?? "", url.query ?? "") {
-			case ("note", "/new", _):
+			switch (url.host, url.path, url.query) {
+
+				// x2015://note/new
+			case ("note"?, "/new"?, nil):
 				return createNote()
-			case ("note", _, _):
+
+				// x2015://note/?identifier=<NOTE_IDENTIFIER>
+			case ("note"?, _, let query?) where query.containsString("identifier"):
 				guard let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false) else {
 					return false
 				}
@@ -123,6 +127,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 					return false
 				}
 				return displayNote(noteIdentifier)
+
 			default:
 				return false
 			}
