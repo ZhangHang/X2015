@@ -63,9 +63,14 @@ final class TodayTableViewController: UITableViewController {
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
-		extensionContext?.openURL(NSURL(string: "file://")!, completionHandler: { (completion) -> Void in
-
-		})
+		let component = NSURLComponents()
+		component.scheme = "x2015"
+		component.host = "note"
+		component.query = "identifier=\(notes[indexPath.row].identifier)"
+		guard let url = component.URL else {
+			fatalError()
+		}
+		extensionContext?.openURL(url, completionHandler: nil)
 	}
 
 }
@@ -104,61 +109,6 @@ extension TodayTableViewController {
 		}
 	}
 
-}
-
-// MARK: NSFetchedResultsControllerDelegate
-
-extension TodayTableViewController: NSFetchedResultsControllerDelegate {
-
-	func controllerWillChangeContent(controller: NSFetchedResultsController) {
-		// WORKAROUND BEGIN
-		if tableView.numberOfSections == 1
-			&& tableView.numberOfRowsInSection(0) == 0 {
-				debugPrint("Workaround")
-				tableView.reloadData()
-		}
-		// WORKAROUND END
-		tableView.beginUpdates()
-	}
-
-	func controller(controller: NSFetchedResultsController,
-		didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-		atIndex sectionIndex: Int,
-		forChangeType type: NSFetchedResultsChangeType) {
-			switch type {
-			case .Insert:
-				tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-			case .Delete:
-				tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-			default:
-				return
-			}
-	}
-
-	func controller(controller: NSFetchedResultsController,
-		didChangeObject anObject: AnyObject,
-		atIndexPath indexPath: NSIndexPath?,
-		forChangeType type: NSFetchedResultsChangeType,
-		newIndexPath: NSIndexPath?) {
-			switch type {
-			case .Insert:
-				tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-			case .Delete:
-				tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-			case .Update:
-				if let cell = tableView.cellForRowAtIndexPath(indexPath!) {
-					configureCell(cell, atIndexPath: indexPath!)
-				}
-			case .Move:
-				tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-				tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-			}
-	}
-
-	func controllerDidChangeContent(controller: NSFetchedResultsController) {
-		tableView.endUpdates()
-	}
-
 	func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
 		let note: Note = notes[indexPath.row]
 		cell.textLabel?.text = note.title
@@ -181,6 +131,22 @@ extension TodayTableViewController: NSFetchedResultsControllerDelegate {
 		//Workaround begin
 		cell.contentView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.001)
 		//Workaround end
+	}
+
+}
+
+extension TodayTableViewController {
+
+	@objc
+	@IBAction func handleAddButtonPressed(sender: UIButton) {
+		let component = NSURLComponents()
+		component.scheme = "x2015"
+		component.host = "note"
+		component.path = "/new"
+		guard let url = component.URL else {
+			fatalError()
+		}
+		extensionContext?.openURL(url, completionHandler: nil)
 	}
 
 }

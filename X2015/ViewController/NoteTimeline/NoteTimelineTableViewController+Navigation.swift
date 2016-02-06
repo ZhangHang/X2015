@@ -13,7 +13,7 @@ extension NoteTimelineTableViewController {
 
 	typealias NoteEditVCStoryboard = NoteEditViewController.Storyboard
 
-	private func backToTimeline(
+	func backToTimeline(
 		completion: (() -> Void)?,
 		workaround: (() -> Void)? ) {
 		if let presentedViewController = navigationController?.presentedViewController
@@ -31,55 +31,6 @@ extension NoteTimelineTableViewController {
 		// WORKAROUND END
 
 		completion?()
-	}
-
-	func handleNewNoteShortcut() {
-		backToTimeline({ [unowned self] () -> Void in
-			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation,
-				sender: self)
-			}) { [unowned self] () -> Void in
-				guard let vc = self.storyboard!
-					.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier)
-					as? NoteEditViewController else {
-						fatalError()
-				}
-				self.selectedNote = self.managedObjectContext.insertObject() as Note
-				vc.noteActionMode = .Create(self.selectedNote!.objectID, self.managedObjectContext)
-
-				self.navigationController?.pushViewController(vc, animated: false)
-		}
-	}
-
-	func handleEditNoteUserActivity(noteIdentifier identifier: String) {
-		guard let note = Note.fetchNote(identifier, managedObjectContext: managedObjectContext) else {
-			let alert = UIAlertController(
-				title: NSLocalizedString("Error", comment: ""),
-				message: NSLocalizedString("Note not found", comment: ""),
-				preferredStyle: .Alert)
-			let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (_) -> Void in
-				self.dismissViewControllerAnimated(true, completion: nil)
-			})
-			alert.addAction(okAction)
-			presentViewController(alert, animated: true, completion: nil)
-			debugPrint("can't find note with identifier \(identifier)")
-			return
-		}
-
-		selectedNote = note
-
-		backToTimeline({ [unowned self] () -> Void in
-			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierEditWithNoAnimation,
-				sender: self)
-			}) { [unowned self] () -> Void in
-				guard let vc = self.storyboard!
-					.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier)
-					as? NoteEditViewController else {
-						fatalError()
-				}
-
-				vc.noteActionMode = .Edit(self.selectedNote!.objectID, self.managedObjectContext)
-				self.navigationController?.pushViewController(vc, animated: false)
-		}
 	}
 
 	@IBAction func insertNewNote(sender: UIBarButtonItem) {

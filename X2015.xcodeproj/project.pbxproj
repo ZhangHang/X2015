@@ -11,12 +11,18 @@
 		7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36331C4E0AB4009F18A6 /* TouchIDHelper.swift */; };
 		7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */; };
 		7F0D86F91C4CE078000DA469 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D86FB1C4CE078000DA469 /* InfoPlist.strings */; };
+		7F102B671C65FD7A0013AF9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B661C65FD7A0013AF9A /* AppDelegate.swift */; };
+		7F102B691C65FDBF0013AF9A /* AppDelegate+Passcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B681C65FDBF0013AF9A /* AppDelegate+Passcode.swift */; };
+		7F102B6B1C6601330013AF9A /* AppDelegate+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */; };
+		7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */; };
+		7F102B6F1C66029D0013AF9A /* AppDelegate+Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */; };
+		7F102B711C6618430013AF9A /* AppDelegate+Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B701C6618430013AF9A /* AppDelegate+Route.swift */; };
+		7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift */; };
 		7F14F3AF1C50949000468F29 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3AE1C50949000468F29 /* LockViewController.swift */; };
 		7F14F3B71C50EF6200468F29 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F14F3B61C50EF6200468F29 /* NoteTableViewCell.xib */; };
 		7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
 		7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7841C41658E00519B18 /* UIHelper.swift */; };
-		7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5204C91C34F79B00507125 /* AppDelegate.swift */; };
 		7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204CD1C34F79B00507125 /* Main.storyboard */; };
 		7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D31C34F79B00507125 /* Assets.xcassets */; };
 		7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */; };
@@ -68,7 +74,7 @@
 		7F73F3951C6084AE003347E4 /* FetchedResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3821C6084AE003347E4 /* FetchedResultTableViewController.swift */; };
 		7F73F3961C6084AE003347E4 /* NoteEditViewController+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3841C6084AE003347E4 /* NoteEditViewController+Action.swift */; };
 		7F73F3971C6084AE003347E4 /* NoteEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3851C6084AE003347E4 /* NoteEditViewController.swift */; };
-		7F73F3991C6084AE003347E4 /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */; };
+		7F73F3991C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift */; };
 		7F73F39A1C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */; };
 		7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */; };
 		7F73F39C1C6084AE003347E4 /* NoteTimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38B1C6084AE003347E4 /* NoteTimelineTableViewController.swift */; };
@@ -166,6 +172,14 @@
 		7F0D86FC1C4CE0BE000DA469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7F0D86FF1C4CE0D4000DA469 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7F0D87001C4CE0D4000DA469 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		7F102B661C65FD7A0013AF9A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7F102B681C65FDBF0013AF9A /* AppDelegate+Passcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Passcode.swift"; sourceTree = "<group>"; };
+		7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Interface.swift"; sourceTree = "<group>"; };
+		7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CoreData.swift"; sourceTree = "<group>"; };
+		7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Shortcut.swift"; sourceTree = "<group>"; };
+		7F102B701C6618430013AF9A /* AppDelegate+Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Route.swift"; sourceTree = "<group>"; };
+		7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+Route.swift"; sourceTree = "<group>"; };
+		7F102B741C6621690013AF9A /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		7F14F3AE1C50949000468F29 /* LockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LockViewController.swift; path = ViewController/LockViewController.swift; sourceTree = "<group>"; };
 		7F14F3B61C50EF6200468F29 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteTableViewCell.xib; path = Views/NoteTableViewCell.xib; sourceTree = "<group>"; };
 		7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteTableViewCell.swift; path = Views/NoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -173,7 +187,6 @@
 		7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7841C41658E00519B18 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		7F5204C61C34F79B00507125 /* X2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = X2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F5204C91C34F79B00507125 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F5204CE1C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F5204D31C34F79B00507125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F5204D61C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -231,7 +244,7 @@
 		7F73F3821C6084AE003347E4 /* FetchedResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultTableViewController.swift; sourceTree = "<group>"; };
 		7F73F3841C6084AE003347E4 /* NoteEditViewController+Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Action.swift"; sourceTree = "<group>"; };
 		7F73F3851C6084AE003347E4 /* NoteEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteEditViewController.swift; sourceTree = "<group>"; };
-		7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift"; sourceTree = "<group>"; };
+		7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift"; sourceTree = "<group>"; };
 		7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+Navigation.swift"; sourceTree = "<group>"; };
 		7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+Search.swift"; sourceTree = "<group>"; };
 		7F73F38B1C6084AE003347E4 /* NoteTimelineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTimelineTableViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +312,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F102B651C65FD7A0013AF9A /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				7F102B661C65FD7A0013AF9A /* AppDelegate.swift */,
+				7F102B681C65FDBF0013AF9A /* AppDelegate+Passcode.swift */,
+				7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */,
+				7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */,
+				7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */,
+				7F102B701C6618430013AF9A /* AppDelegate+Route.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
 		7F37C7811C41658E00519B18 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +339,7 @@
 		7F5204BD1C34F79B00507125 = {
 			isa = PBXGroup;
 			children = (
+				7F102B741C6621690013AF9A /* Playground.playground */,
 				7F5204C81C34F79B00507125 /* X2015 iOS */,
 				7F73F2EC1C5F4255003347E4 /* ShareExtension */,
 				7FFEA1231C60D2D1006BB860 /* TodayExtension */,
@@ -339,13 +366,13 @@
 			isa = PBXGroup;
 			children = (
 				7F73F2FA1C5F4BB4003347E4 /* X2015.entitlements */,
+				7F102B651C65FD7A0013AF9A /* AppDelegate */,
 				7FFEA1151C6089A6006BB860 /* Setting */,
 				7F73F3631C6082C3003347E4 /* Theme */,
 				7FFD814A1C4B5B4B004F1987 /* Views */,
 				7F37C7811C41658E00519B18 /* Extensions */,
 				7F5205091C350BBD00507125 /* ViewControllers */,
 				7F5204E31C35041000507125 /* Vendors */,
-				7F5204C91C34F79B00507125 /* AppDelegate.swift */,
 				7F5204CD1C34F79B00507125 /* Main.storyboard */,
 				7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */,
 				7F5204D31C34F79B00507125 /* Assets.xcassets */,
@@ -522,11 +549,12 @@
 			isa = PBXGroup;
 			children = (
 				7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */,
-				7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift */,
+				7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift */,
 				7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */,
 				7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */,
 				7F73F38B1C6084AE003347E4 /* NoteTimelineTableViewController.swift */,
 				7F73F38C1C6084AE003347E4 /* NoteUpdater.swift */,
+				7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift */,
 			);
 			name = NoteTimeline;
 			path = ViewController/NoteTimeline;
@@ -851,8 +879,9 @@
 				7F73F3761C6082C3003347E4 /* UITableView+Theme.swift in Sources */,
 				7F73F3801C608336003347E4 /* ThemeProtocols.swift in Sources */,
 				7F73F39F1C6084AE003347E4 /* SotyboardCreatable.swift in Sources */,
+				7F102B671C65FD7A0013AF9A /* AppDelegate.swift in Sources */,
 				7F59ACF31C59392400F20A31 /* UITableViewCell+Reusable.swift in Sources */,
-				7F73F3991C6084AE003347E4 /* NoteTimelineTableViewController+ UIViewControllerPreviewingDelegate.swift in Sources */,
+				7F73F3991C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift in Sources */,
 				7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */,
 				7F73F3971C6084AE003347E4 /* NoteEditViewController.swift in Sources */,
 				7F73F37C1C6082C3003347E4 /* ThemeAdaptableTableViewController.swift in Sources */,
@@ -862,19 +891,24 @@
 				7F73F3721C6082C3003347E4 /* UIBarButtonItem+Theme.swift in Sources */,
 				7F73F39E1C6084AE003347E4 /* ManagedObjectContextSettable.swift in Sources */,
 				7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */,
+				7F102B691C65FDBF0013AF9A /* AppDelegate+Passcode.swift in Sources */,
 				7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */,
 				7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */,
+				7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */,
 				7F73F37E1C6082C3003347E4 /* ThemeManager.swift in Sources */,
 				7F73F3741C6082C3003347E4 /* UINavigationBar+Theme.swift in Sources */,
+				7F102B711C6618430013AF9A /* AppDelegate+Route.swift in Sources */,
 				7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */,
 				7F73F39D1C6084AE003347E4 /* NoteUpdater.swift in Sources */,
 				7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */,
+				7F102B6B1C6601330013AF9A /* AppDelegate+Interface.swift in Sources */,
 				7F14F3AF1C50949000468F29 /* LockViewController.swift in Sources */,
-				7F5204CA1C34F79B00507125 /* AppDelegate.swift in Sources */,
 				7F73F3951C6084AE003347E4 /* FetchedResultTableViewController.swift in Sources */,
 				7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */,
+				7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift in Sources */,
 				7F73F37D1C6082C3003347E4 /* ThemeAdaptableViewController.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
+				7F102B6F1C66029D0013AF9A /* AppDelegate+Shortcut.swift in Sources */,
 				7F73F37A1C6082C3003347E4 /* UIViewController+Theme.swift in Sources */,
 				7F73F3751C6082C3003347E4 /* UISearchBar+Theme.swift in Sources */,
 				7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */,
@@ -1124,7 +1158,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = X2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.zhanghang.X2015;
+				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1140,7 +1174,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = X2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.zhanghang.X2015;
+				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1154,7 +1188,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.zhanghang.X2015.ShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.imzh.x2015.share-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1169,7 +1203,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.zhanghang.X2015.ShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.imzh.x2015.share-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1190,7 +1224,7 @@
 				INFOPLIST_FILE = X2015Kit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.zhanghang.X2015Kit;
+				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015kit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1212,7 +1246,7 @@
 				INFOPLIST_FILE = X2015Kit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.zhanghang.X2015Kit;
+				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015kit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1250,7 +1284,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.zhanghang.X2015.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.imzh.x2015.today-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1265,7 +1299,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.zhanghang.X2015.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.imzh.x2015.today-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
