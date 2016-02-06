@@ -13,7 +13,6 @@ extension NoteTimelineTableViewController {
 
 	typealias NoteEditVCStoryboard = NoteEditViewController.Storyboard
 
-
 	private func backToTimeline(
 		completion: (() -> Void)?,
 		workaround: (() -> Void)? ) {
