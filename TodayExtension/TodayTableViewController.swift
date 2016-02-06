@@ -102,7 +102,7 @@ extension TodayTableViewController {
 			//swiftlint:disable force_cast
 			notes = try managedObjectContext.executeFetchRequest(noteFetchRequest) as! [Note]
 			//swiftlint:enable force_cast
-			tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+			tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .None)
 			preferredContentSize = tableView.contentSize
 		} catch let e {
 			debugPrint("fetch error \(e)")
@@ -129,7 +129,7 @@ extension TodayTableViewController {
 		cell.selectionStyle = .Default
 
 		//Workaround begin
-		cell.contentView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.001)
+		cell.contentView.backgroundColor = UIColor(white: 0, alpha: 0.1)
 		//Workaround end
 	}
 
