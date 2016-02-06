@@ -1,5 +1,5 @@
 //
-//  NoteTimelineTableViewController+Route.swift
+//  NoteTimelineTableViewController+Shortcut.swift
 //  X2015
 //
 //  Created by Hang Zhang on 2/6/16.
@@ -11,7 +11,7 @@ import X2015Kit
 
 extension NoteTimelineTableViewController {
 
-	func handleCreatingNoteRequest() {
+	func handleCreatingNoteShortcut() {
 		backToTimeline({ [unowned self] () -> Void in
 			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation,
 				sender: self)
@@ -28,7 +28,7 @@ extension NoteTimelineTableViewController {
 		}
 	}
 
-	func handleDisplayNoteRequest(noteIdentifier identifier: String) {
+	func handleDisplayNoteShortcut(noteIdentifier identifier: String) {
 		guard let note = Note.fetchNote(identifier, managedObjectContext: managedObjectContext) else {
 			let alert = UIAlertController(
 				title: NSLocalizedString("Error", comment: ""),
@@ -66,4 +66,10 @@ extension NoteTimelineTableViewController {
 				self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
 		}
 	}
+
+	func handleFocusOnSearchBarShortcut() {
+		searchController.active = true
+		searchController.searchBar.becomeFirstResponder()
+	}
+
 }
