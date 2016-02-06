@@ -72,7 +72,9 @@ extension NoteTimelineTableViewController: UISearchControllerDelegate {
 
 	func willPresentSearchController(searchController: UISearchController) {}
 
-	func didPresentSearchController(searchController: UISearchController) {}
+	func didPresentSearchController(searchController: UISearchController) {
+		searchController.searchBar.becomeFirstResponder()
+	}
 
 	func willDismissSearchController(searchController: UISearchController) {}
 

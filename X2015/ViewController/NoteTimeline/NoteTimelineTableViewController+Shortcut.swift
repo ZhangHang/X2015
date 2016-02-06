@@ -69,7 +69,6 @@ extension NoteTimelineTableViewController {
 
 	func handleFocusOnSearchBarShortcut() {
 		searchController.active = true
-		searchController.searchBar.becomeFirstResponder()
 	}
 
 }
