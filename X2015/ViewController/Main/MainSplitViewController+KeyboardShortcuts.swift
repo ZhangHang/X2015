@@ -15,12 +15,12 @@ extension MainSplitViewController {
 			UIKeyCommand(input: "n",
 				modifierFlags: .Command,
 				action: "handleNewNoteKeyboardshortcut:",
-				discoverabilityTitle: "New Note"),
+				discoverabilityTitle: NSLocalizedString("Create Note", comment: "")),
 
 			UIKeyCommand(input: "f",
 				modifierFlags: .Command,
 				action: "handleSearchNoteKeyboardshortcut:",
-				discoverabilityTitle: "Find…"),
+				discoverabilityTitle: NSLocalizedString("Find...", comment: "")),
 		]
 	}
 
