@@ -38,7 +38,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	// MARK: Interface
 	var window: UIWindow?
 	var rootViewControllerCache: UISplitViewController?
-	var passcodeViewController: PasscodeViewController? = {
+	var passcodeViewController: PasscodeViewController! = {
 		return PasscodeViewController.instanceFromStoryboard()
 	}()
 

@@ -17,11 +17,11 @@ extension AppDelegate {
 			return
 		}
 
-		passcodeViewController!.authSuccessHandler = { [unowned self] in
+		passcodeViewController.authSuccessHandler = { [unowned self] in
 			self.dismissPasscodeViewController()
 			completion?()
 		}
-		passcodeViewController!.authFailedHandler = {
+		passcodeViewController.authFailedHandler = {
 			fatalError()
 		}
 
