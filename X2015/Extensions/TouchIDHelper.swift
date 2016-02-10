@@ -10,6 +10,7 @@ import UIKit
 import LocalAuthentication
 
 struct TouchIDHelper {
+
 	static var hasTouchID: Bool {
 		let context = LAContext()
 		return context.canEvaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, error: nil)

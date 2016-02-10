@@ -38,7 +38,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	// MARK: Interface
 	var window: UIWindow?
 	var rootViewControllerCache: UISplitViewController?
-	var lockViewController: LockViewController?
+	var passcodeViewController: PasscodeViewController? = {
+		return PasscodeViewController.instanceFromStoryboard()
+	}()
 
 	// MARK: UIApplicationDelegate
 	func application(
@@ -53,8 +55,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 			// Touch ID lock screen
 			rootViewControllerCache = window!.rootViewController as? UISplitViewController
-			setupLockViewController()
-			bringUpLockViewControllerIfNeeded()
+			presentPasscodeViewControllerIfNeeded()
 
 			// Handle application shortcut
 			var shouldPerformAdditionalDelegateHandling = true
@@ -85,12 +86,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func applicationWillEnterForeground(application: UIApplication) {
 		managedObjectContext.mergeChangesFromUserDefaults()
-		bringUpLockViewControllerIfNeeded()
+		presentPasscodeViewControllerIfNeeded()
 	}
 
 	func applicationDidEnterBackground(application: UIApplication) {
 		managedObjectContext.saveOrRollback()
-		bringDownLockViewController()
+		window?.rootViewController = passcodeViewController
 	}
 
 	func application(application: UIApplication,

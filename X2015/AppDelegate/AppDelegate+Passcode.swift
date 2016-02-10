@@ -10,29 +10,29 @@ import Foundation
 
 extension AppDelegate {
 
-	func setupLockViewController() {
-		lockViewController = LockViewController.instanceFromStoryboard()
-	}
-
-	func bringUpLockViewControllerIfNeeded(completion: ( () -> Void )? = nil ) {
-		if !LockViewController.needTouchIDAuth {
-			bringDownLockViewController()
+	func presentPasscodeViewControllerIfNeeded(completion: ( () -> Void )? = nil ) {
+		if !PasscodeViewController.needTouchIDAuth {
+			dismissPasscodeViewController()
 			completion?()
 			return
 		}
 
-		lockViewController!.authSuccessHandler = { [unowned self] in
-			self.bringDownLockViewController()
+		passcodeViewController!.authSuccessHandler = { [unowned self] in
+			self.dismissPasscodeViewController()
 			completion?()
 		}
-		lockViewController!.authFailedHandler = {
+		passcodeViewController!.authFailedHandler = {
 			fatalError()
 		}
-		window!.rootViewController = lockViewController
-		lockViewController!.performTouchIDAuth()
+
+		if window?.rootViewController != passcodeViewController {
+			window!.rootViewController = passcodeViewController
+		}
+
+		passcodeViewController!.performTouchIDAuth()
 	}
 
-	func bringDownLockViewController() {
+	func dismissPasscodeViewController() {
 		window!.rootViewController = rootViewControllerCache
 	}
 

@@ -16,9 +16,11 @@
 		7F102B6B1C6601330013AF9A /* AppDelegate+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */; };
 		7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */; };
 		7F102B6F1C66029D0013AF9A /* AppDelegate+Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */; };
-		7F102B711C6618430013AF9A /* AppDelegate+Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B701C6618430013AF9A /* AppDelegate+Route.swift */; };
-		7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift */; };
-		7F14F3AF1C50949000468F29 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3AE1C50949000468F29 /* LockViewController.swift */; };
+		7F102B711C6618430013AF9A /* AppDelegate+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift */; };
+		7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */; };
+		7F102B7E1C6667350013AF9A /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */; };
+		7F102B7F1C6667350013AF9A /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B7D1C6667350013AF9A /* PasscodeViewController.swift */; };
+		7F102B811C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift */; };
 		7F14F3B71C50EF6200468F29 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F14F3B61C50EF6200468F29 /* NoteTableViewCell.xib */; };
 		7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
@@ -177,10 +179,12 @@
 		7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Interface.swift"; sourceTree = "<group>"; };
 		7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CoreData.swift"; sourceTree = "<group>"; };
 		7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Shortcut.swift"; sourceTree = "<group>"; };
-		7F102B701C6618430013AF9A /* AppDelegate+Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Route.swift"; sourceTree = "<group>"; };
-		7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+Route.swift"; sourceTree = "<group>"; };
+		7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+KeyboardCommand.swift"; sourceTree = "<group>"; };
+		7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+Shortcut.swift"; sourceTree = "<group>"; };
 		7F102B741C6621690013AF9A /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
-		7F14F3AE1C50949000468F29 /* LockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LockViewController.swift; path = ViewController/LockViewController.swift; sourceTree = "<group>"; };
+		7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		7F102B7D1C6667350013AF9A /* PasscodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
+		7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainSplitViewController+KeyboardCommand.swift"; sourceTree = "<group>"; };
 		7F14F3B61C50EF6200468F29 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteTableViewCell.xib; path = Views/NoteTableViewCell.xib; sourceTree = "<group>"; };
 		7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteTableViewCell.swift; path = Views/NoteTableViewCell.swift; sourceTree = "<group>"; };
 		7F1580FB1C579ABE00EFFF82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -320,9 +324,28 @@
 				7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */,
 				7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */,
 				7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */,
-				7F102B701C6618430013AF9A /* AppDelegate+Route.swift */,
+				7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift */,
 			);
 			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		7F102B7A1C6667350013AF9A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */,
+				7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift */,
+			);
+			name = Main;
+			path = ViewController/Main;
+			sourceTree = "<group>";
+		};
+		7F102B7C1C6667350013AF9A /* Passcode */ = {
+			isa = PBXGroup;
+			children = (
+				7F102B7D1C6667350013AF9A /* PasscodeViewController.swift */,
+			);
+			name = Passcode;
+			path = ViewController/Passcode;
 			sourceTree = "<group>";
 		};
 		7F37C7811C41658E00519B18 /* Extensions */ = {
@@ -395,12 +418,13 @@
 		7F5205091C350BBD00507125 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7F102B7A1C6667350013AF9A /* Main */,
+				7F102B7C1C6667350013AF9A /* Passcode */,
 				7F73F3811C6084AE003347E4 /* Common */,
 				7F73F3831C6084AE003347E4 /* NoteEdit */,
 				7F73F3871C6084AE003347E4 /* NoteTimeline */,
 				7F73F38D1C6084AE003347E4 /* Protocols */,
 				7F73F3901C6084AE003347E4 /* Setting */,
-				7F14F3AE1C50949000468F29 /* LockViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -554,7 +578,7 @@
 				7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */,
 				7F73F38B1C6084AE003347E4 /* NoteTimelineTableViewController.swift */,
 				7F73F38C1C6084AE003347E4 /* NoteUpdater.swift */,
-				7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift */,
+				7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */,
 			);
 			name = NoteTimeline;
 			path = ViewController/NoteTimeline;
@@ -882,6 +906,7 @@
 				7F102B671C65FD7A0013AF9A /* AppDelegate.swift in Sources */,
 				7F59ACF31C59392400F20A31 /* UITableViewCell+Reusable.swift in Sources */,
 				7F73F3991C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift in Sources */,
+				7F102B7E1C6667350013AF9A /* MainSplitViewController.swift in Sources */,
 				7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */,
 				7F73F3971C6084AE003347E4 /* NoteEditViewController.swift in Sources */,
 				7F73F37C1C6082C3003347E4 /* ThemeAdaptableTableViewController.swift in Sources */,
@@ -897,19 +922,20 @@
 				7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */,
 				7F73F37E1C6082C3003347E4 /* ThemeManager.swift in Sources */,
 				7F73F3741C6082C3003347E4 /* UINavigationBar+Theme.swift in Sources */,
-				7F102B711C6618430013AF9A /* AppDelegate+Route.swift in Sources */,
+				7F102B711C6618430013AF9A /* AppDelegate+KeyboardCommand.swift in Sources */,
 				7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */,
+				7F102B7F1C6667350013AF9A /* PasscodeViewController.swift in Sources */,
 				7F73F39D1C6084AE003347E4 /* NoteUpdater.swift in Sources */,
 				7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */,
 				7F102B6B1C6601330013AF9A /* AppDelegate+Interface.swift in Sources */,
-				7F14F3AF1C50949000468F29 /* LockViewController.swift in Sources */,
 				7F73F3951C6084AE003347E4 /* FetchedResultTableViewController.swift in Sources */,
 				7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */,
-				7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Route.swift in Sources */,
+				7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift in Sources */,
 				7F73F37D1C6082C3003347E4 /* ThemeAdaptableViewController.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
 				7F102B6F1C66029D0013AF9A /* AppDelegate+Shortcut.swift in Sources */,
 				7F73F37A1C6082C3003347E4 /* UIViewController+Theme.swift in Sources */,
+				7F102B811C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift in Sources */,
 				7F73F3751C6082C3003347E4 /* UISearchBar+Theme.swift in Sources */,
 				7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */,
 				7F73F39C1C6084AE003347E4 /* NoteTimelineTableViewController.swift in Sources */,

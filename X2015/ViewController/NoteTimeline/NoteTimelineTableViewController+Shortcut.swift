@@ -1,5 +1,5 @@
 //
-//  NoteTimelineTableViewController+Route.swift
+//  NoteTimelineTableViewController+Shortcut.swift
 //  X2015
 //
 //  Created by Hang Zhang on 2/6/16.
@@ -11,7 +11,7 @@ import X2015Kit
 
 extension NoteTimelineTableViewController {
 
-	func handleCreatingNoteRequest() {
+	func createNote() {
 		backToTimeline({ [unowned self] () -> Void in
 			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation,
 				sender: self)
@@ -28,7 +28,7 @@ extension NoteTimelineTableViewController {
 		}
 	}
 
-	func handleDisplayNoteRequest(noteIdentifier identifier: String) {
+	func displayNote(noteIdentifier identifier: String) {
 		guard let note = Note.fetchNote(identifier, managedObjectContext: managedObjectContext) else {
 			let alert = UIAlertController(
 				title: NSLocalizedString("Error", comment: ""),
@@ -66,4 +66,46 @@ extension NoteTimelineTableViewController {
 				self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
 		}
 	}
+
+	func enterSearchMode() {
+		becomeFirstResponder()
+		searchController.active = true
+	}
+
+	func selectNextNote() {
+		debugPrint("selectNextNote")
+		let noteCount = fetchedResultsController.fetchedObjects?.count ?? 0
+		let selectionIndex = tableView.indexPathForSelectedRow?.row
+
+		switch (selectionIndex, noteCount) {
+		case (_, 0):
+			return
+		case (nil, _):
+			selectNote(atRow: 0)
+		case (let index?, _):
+			selectNote(atRow: min(index + 1, noteCount - 1))
+		}
+	}
+
+	func selectPreviousNote() {
+		debugPrint("selectPreviousNote")
+		let noteCount = fetchedResultsController.fetchedObjects?.count ?? 0
+		let selectionIndex = tableView.indexPathForSelectedRow?.row
+
+		switch (selectionIndex, noteCount) {
+		case (_, 0):
+			return
+		case (nil, _):
+			selectNote(atRow: 0)
+		case (let index?, _):
+			selectNote(atRow: max(index - 1, 0))
+		}
+	}
+
+	private func selectNote(atRow row: Int) {
+		let indexPath = NSIndexPath(forRow: row, inSection: 0)
+		tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
+		tableView(tableView, didSelectRowAtIndexPath: indexPath)
+	}
+
 }

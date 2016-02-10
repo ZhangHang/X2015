@@ -1,5 +1,5 @@
 //
-//  LockViewController.swift
+//  PasscodeViewController.swift
 //  X2015
 //
 //  Created by Hang Zhang on 1/21/16.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-final class LockViewController: ThemeAdaptableViewController {
+final class PasscodeViewController: ThemeAdaptableViewController {
 
 	var authSuccessHandler: ( () -> Void )?
 	var authFailedHandler: ( () -> Void )?
 
 	func performTouchIDAuth() {
-		assert(LockViewController.needTouchIDAuth && TouchIDHelper.hasTouchID)
+		assert(PasscodeViewController.needTouchIDAuth && TouchIDHelper.hasTouchID)
 		TouchIDHelper.auth(
 			NSLocalizedString("Use Touch ID to Unlock", comment: ""),
 			successHandler: { [unowned self] () -> Void in
@@ -32,21 +32,22 @@ final class LockViewController: ThemeAdaptableViewController {
 			view.backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
 	}
+
 }
 
-extension LockViewController: SotyboardCreatable {
+extension PasscodeViewController: SotyboardCreatable {
 
 	static var storyboardName: String {
 		return "Main"
 	}
 
 	static var viewControllerIdentifier: String {
-		return "LockViewController"
+		return "PasscodeViewController"
 	}
 
 }
 
-extension LockViewController {
+extension PasscodeViewController {
 
 	static var needTouchIDAuth: Bool {
 		return NSUserDefaults.standardUserDefaults().unlockByTouchID

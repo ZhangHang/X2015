@@ -36,7 +36,8 @@ class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 			object: nil)
 	}
 
-	@objc private func handleThemeChangeNotification() {
+	@objc
+	private func handleThemeChangeNotification() {
 		updateThemeInterface(currentTheme)
 	}
 
