@@ -1,5 +1,5 @@
 //
-//  MainSplitViewController+KeyboardShortcuts.swift
+//  MainSplitViewController+KeyboardCommands.swift
 //  X2015
 //
 //  Created by Hang Zhang on 2/7/16.
@@ -14,45 +14,45 @@ extension MainSplitViewController {
 		return [
 			UIKeyCommand(input: "n",
 				modifierFlags: .Command,
-				action: "handleNewNoteKeyboardshortcut:",
+				action: "handleNewNoteKeyboardCommand:",
 				discoverabilityTitle: NSLocalizedString("Create Note", comment: "")),
 
 			UIKeyCommand(input: "f",
 				modifierFlags: .Command,
-				action: "handleSearchNoteKeyboardshortcut:",
+				action: "handleSearchNoteKeyboardCommand:",
 				discoverabilityTitle: NSLocalizedString("Find...", comment: "")),
 			UIKeyCommand(input: UIKeyInputDownArrow,
 				modifierFlags: .Command,
-				action: "handleSelectNextNoteShortcut:",
+				action: "handleSelectNextNoteKeyboardcommand:",
 				discoverabilityTitle: NSLocalizedString("Select Next Note", comment: "")),
 
 			UIKeyCommand(input: UIKeyInputUpArrow,
 				modifierFlags: .Command,
-				action: "handleSelectPreviousNoteShortcut:",
+				action: "handleSelectPreviousNoteKeyboardcommand:",
 				discoverabilityTitle: NSLocalizedString("Select Previous Note", comment: ""))
 		]
 	}
 
 	@objc
-	private func handleNewNoteKeyboardshortcut(command: UIKeyCommand) {
-		debugPrint("handleNewNoteKeyboardshortcut")
+	private func handleNewNoteKeyboardCommand(command: UIKeyCommand) {
+		debugPrint("handleNewNoteKeyboardCommand")
 		createNote()
 	}
 
 	@objc
-	private func handleSearchNoteKeyboardshortcut(command: UIKeyCommand) {
-		debugPrint("handleSearchNoteKeyboardshortcut")
-		focusOnSearchBar()
+	private func handleSearchNoteKeyboardCommand(command: UIKeyCommand) {
+		debugPrint("handleSearchNoteKeyboardCommand")
+		noteTimelineViewController.enterSearchMode()
 	}
 
 	@objc
-	private func handleSelectNextNoteShortcut(command: UIKeyCommand) {
-		noteTimelineViewController.handleSelectNextNoteShortcut()
+	private func handleSelectNextNoteKeyboardcommand(command: UIKeyCommand) {
+		noteTimelineViewController.selectNextNote()
 	}
 
 	@objc
-	private func handleSelectPreviousNoteShortcut(command: UIKeyCommand) {
-		noteTimelineViewController.handleSelectPreviousNoteShortcut()
+	private func handleSelectPreviousNoteKeyboardcommand(command: UIKeyCommand) {
+		noteTimelineViewController.selectPreviousNote()
 	}
 
 }

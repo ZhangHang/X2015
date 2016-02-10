@@ -9,7 +9,9 @@
 import Foundation
 
 enum Theme: String {
+
 	case Default, Night
+
 }
 
 protocol AppearanceAdaptable: class {

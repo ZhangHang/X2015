@@ -16,11 +16,11 @@
 		7F102B6B1C6601330013AF9A /* AppDelegate+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */; };
 		7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */; };
 		7F102B6F1C66029D0013AF9A /* AppDelegate+Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */; };
-		7F102B711C6618430013AF9A /* AppDelegate+KeyboardCommand.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift.swift */; };
+		7F102B711C6618430013AF9A /* AppDelegate+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift */; };
 		7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */; };
 		7F102B7E1C6667350013AF9A /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */; };
 		7F102B7F1C6667350013AF9A /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B7D1C6667350013AF9A /* PasscodeViewController.swift */; };
-		7F102B811C66689A0013AF9A /* MainSplitViewController+KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardShortcuts.swift */; };
+		7F102B811C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift */; };
 		7F14F3B71C50EF6200468F29 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F14F3B61C50EF6200468F29 /* NoteTableViewCell.xib */; };
 		7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
@@ -179,12 +179,12 @@
 		7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Interface.swift"; sourceTree = "<group>"; };
 		7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CoreData.swift"; sourceTree = "<group>"; };
 		7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Shortcut.swift"; sourceTree = "<group>"; };
-		7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+KeyboardCommand.swift.swift"; sourceTree = "<group>"; };
+		7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+KeyboardCommand.swift"; sourceTree = "<group>"; };
 		7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+Shortcut.swift"; sourceTree = "<group>"; };
 		7F102B741C6621690013AF9A /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		7F102B7D1C6667350013AF9A /* PasscodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
-		7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardShortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainSplitViewController+KeyboardShortcuts.swift"; sourceTree = "<group>"; };
+		7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainSplitViewController+KeyboardCommand.swift"; sourceTree = "<group>"; };
 		7F14F3B61C50EF6200468F29 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteTableViewCell.xib; path = Views/NoteTableViewCell.xib; sourceTree = "<group>"; };
 		7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteTableViewCell.swift; path = Views/NoteTableViewCell.swift; sourceTree = "<group>"; };
 		7F1580FB1C579ABE00EFFF82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 				7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */,
 				7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */,
 				7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */,
-				7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift.swift */,
+				7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -333,7 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */,
-				7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardShortcuts.swift */,
+				7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift */,
 			);
 			name = Main;
 			path = ViewController/Main;
@@ -922,7 +922,7 @@
 				7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */,
 				7F73F37E1C6082C3003347E4 /* ThemeManager.swift in Sources */,
 				7F73F3741C6082C3003347E4 /* UINavigationBar+Theme.swift in Sources */,
-				7F102B711C6618430013AF9A /* AppDelegate+KeyboardCommand.swift.swift in Sources */,
+				7F102B711C6618430013AF9A /* AppDelegate+KeyboardCommand.swift in Sources */,
 				7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */,
 				7F102B7F1C6667350013AF9A /* PasscodeViewController.swift in Sources */,
 				7F73F39D1C6084AE003347E4 /* NoteUpdater.swift in Sources */,
@@ -935,7 +935,7 @@
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
 				7F102B6F1C66029D0013AF9A /* AppDelegate+Shortcut.swift in Sources */,
 				7F73F37A1C6082C3003347E4 /* UIViewController+Theme.swift in Sources */,
-				7F102B811C66689A0013AF9A /* MainSplitViewController+KeyboardShortcuts.swift in Sources */,
+				7F102B811C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift in Sources */,
 				7F73F3751C6082C3003347E4 /* UISearchBar+Theme.swift in Sources */,
 				7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */,
 				7F73F39C1C6084AE003347E4 /* NoteTimelineTableViewController.swift in Sources */,

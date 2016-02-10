@@ -38,16 +38,11 @@ class MainSplitViewController: UISplitViewController {
 extension MainSplitViewController {
 
 	func createNote() {
-		noteTimelineViewController.handleCreatingNoteShortcut()
+		noteTimelineViewController.createNote()
 	}
 
 	func displayNote(noteIdentifier: String) {
-		noteTimelineViewController.handleDisplayNoteShortcut(noteIdentifier: noteIdentifier)
-	}
-
-	func focusOnSearchBar() {
-		noteTimelineViewController.becomeFirstResponder()
-		noteTimelineViewController.handleFocusOnSearchBarShortcut()
+		noteTimelineViewController.displayNote(noteIdentifier: noteIdentifier)
 	}
 
 }

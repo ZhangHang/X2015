@@ -11,7 +11,7 @@ import X2015Kit
 
 extension NoteTimelineTableViewController {
 
-	func handleCreatingNoteShortcut() {
+	func createNote() {
 		backToTimeline({ [unowned self] () -> Void in
 			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation,
 				sender: self)
@@ -28,7 +28,7 @@ extension NoteTimelineTableViewController {
 		}
 	}
 
-	func handleDisplayNoteShortcut(noteIdentifier identifier: String) {
+	func displayNote(noteIdentifier identifier: String) {
 		guard let note = Note.fetchNote(identifier, managedObjectContext: managedObjectContext) else {
 			let alert = UIAlertController(
 				title: NSLocalizedString("Error", comment: ""),
@@ -67,12 +67,13 @@ extension NoteTimelineTableViewController {
 		}
 	}
 
-	func handleFocusOnSearchBarShortcut() {
+	func enterSearchMode() {
+		becomeFirstResponder()
 		searchController.active = true
 	}
 
-	func handleSelectNextNoteShortcut() {
-		debugPrint("handleSelectNextNoteShortcut")
+	func selectNextNote() {
+		debugPrint("selectNextNote")
 		let noteCount = fetchedResultsController.fetchedObjects?.count ?? 0
 		let selectionIndex = tableView.indexPathForSelectedRow?.row
 
@@ -86,8 +87,8 @@ extension NoteTimelineTableViewController {
 		}
 	}
 
-	func handleSelectPreviousNoteShortcut() {
-		debugPrint("handleSelectPreviousNoteShortcut")
+	func selectPreviousNote() {
+		debugPrint("selectPreviousNote")
 		let noteCount = fetchedResultsController.fetchedObjects?.count ?? 0
 		let selectionIndex = tableView.indexPathForSelectedRow?.row
 
