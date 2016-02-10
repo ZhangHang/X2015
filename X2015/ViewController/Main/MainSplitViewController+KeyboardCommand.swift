@@ -15,7 +15,7 @@ extension MainSplitViewController {
 			UIKeyCommand(input: "n",
 				modifierFlags: .Command,
 				action: "handleNewNoteKeyboardCommand:",
-				discoverabilityTitle: NSLocalizedString("Create Note", comment: "")),
+				discoverabilityTitle: NSLocalizedString("New Note", comment: "")),
 
 			UIKeyCommand(input: "f",
 				modifierFlags: .Command,
