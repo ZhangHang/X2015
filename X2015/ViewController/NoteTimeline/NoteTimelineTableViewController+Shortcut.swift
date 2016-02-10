@@ -71,4 +71,40 @@ extension NoteTimelineTableViewController {
 		searchController.active = true
 	}
 
+	func handleSelectNextNoteShortcut() {
+		debugPrint("handleSelectNextNoteShortcut")
+		let noteCount = fetchedResultsController.fetchedObjects?.count ?? 0
+		let selectionIndex = tableView.indexPathForSelectedRow?.row
+
+		switch (selectionIndex, noteCount) {
+		case (_, 0):
+			return
+		case (nil, _):
+			selectNote(atRow: 0)
+		case (let index?, _):
+			selectNote(atRow: min(index + 1, noteCount - 1))
+		}
+	}
+
+	func handleSelectPreviousNoteShortcut() {
+		debugPrint("handleSelectPreviousNoteShortcut")
+		let noteCount = fetchedResultsController.fetchedObjects?.count ?? 0
+		let selectionIndex = tableView.indexPathForSelectedRow?.row
+
+		switch (selectionIndex, noteCount) {
+		case (_, 0):
+			return
+		case (nil, _):
+			selectNote(atRow: 0)
+		case (let index?, _):
+			selectNote(atRow: max(index - 1, 0))
+		}
+	}
+
+	private func selectNote(atRow row: Int) {
+		let indexPath = NSIndexPath(forRow: row, inSection: 0)
+		tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
+		tableView(tableView, didSelectRowAtIndexPath: indexPath)
+	}
+
 }

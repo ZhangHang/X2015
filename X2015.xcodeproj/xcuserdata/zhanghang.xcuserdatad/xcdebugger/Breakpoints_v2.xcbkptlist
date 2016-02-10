@@ -124,11 +124,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X2015/ViewController/Main/MainSplitViewController+KeyboardShortcuts.swift"
-            timestampString = "476474725.167594"
+            timestampString = "476794635.484628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "handleSearchNoteKeyboardshortcut(_:)"
             landmarkType = "5">
          </BreakpointContent>

@@ -21,6 +21,15 @@ extension MainSplitViewController {
 				modifierFlags: .Command,
 				action: "handleSearchNoteKeyboardshortcut:",
 				discoverabilityTitle: NSLocalizedString("Find...", comment: "")),
+			UIKeyCommand(input: UIKeyInputDownArrow,
+				modifierFlags: .Command,
+				action: "handleSelectNextNoteShortcut:",
+				discoverabilityTitle: NSLocalizedString("Select Next Note", comment: "")),
+
+			UIKeyCommand(input: UIKeyInputUpArrow,
+				modifierFlags: .Command,
+				action: "handleSelectPreviousNoteShortcut:",
+				discoverabilityTitle: NSLocalizedString("Select Previous Note", comment: ""))
 		]
 	}
 
@@ -34,6 +43,16 @@ extension MainSplitViewController {
 	private func handleSearchNoteKeyboardshortcut(command: UIKeyCommand) {
 		debugPrint("handleSearchNoteKeyboardshortcut")
 		focusOnSearchBar()
+	}
+
+	@objc
+	private func handleSelectNextNoteShortcut(command: UIKeyCommand) {
+		noteTimelineViewController.handleSelectNextNoteShortcut()
+	}
+
+	@objc
+	private func handleSelectPreviousNoteShortcut(command: UIKeyCommand) {
+		noteTimelineViewController.handleSelectPreviousNoteShortcut()
 	}
 
 }

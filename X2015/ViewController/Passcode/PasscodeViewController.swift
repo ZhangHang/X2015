@@ -32,6 +32,7 @@ final class PasscodeViewController: ThemeAdaptableViewController {
 			view.backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
 	}
+
 }
 
 extension PasscodeViewController: SotyboardCreatable {
