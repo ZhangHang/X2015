@@ -118,7 +118,7 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 
 		case AutoTheme = 0
 		case DefaultTheme
-		case DarkTheme
+		case NightTheme
 
 		//swiftlint:disable variable_name
 		//swiftlint:disable type_name
@@ -145,7 +145,7 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 				return NSLocalizedString("Switch Automatically", comment: "")
 			case .DefaultTheme:
 				return NSLocalizedString("Default", comment: "")
-			case .DarkTheme:
+			case .NightTheme:
 				return NSLocalizedString("Night", comment: "")
 			default:
 				fatalError()
@@ -309,12 +309,12 @@ extension SettingsTableViewController {
 		}
 		func defualtThemeCell() -> UITableViewCell {
 			let cell = dequeueSettingCheckableCell()
-			cell.configure(ThemeSection.DefaultTheme.title, checked: settings.currentTheme == .Default)
+			cell.configure(ThemeSection.DefaultTheme.title, checked: currentTheme == .Default)
 			return cell
 		}
 		func nightThemeCell() -> UITableViewCell {
 			let cell = dequeueSettingCheckableCell()
-			cell.configure(ThemeSection.DarkTheme.title, checked: settings.currentTheme == .Night)
+			cell.configure(ThemeSection.NightTheme.title, checked: currentTheme == .Night)
 			return cell
 		}
 
@@ -323,7 +323,7 @@ extension SettingsTableViewController {
 			return autoThemeCell()
 		case .DefaultTheme:
 			return defualtThemeCell()
-		case .DarkTheme:
+		case .NightTheme:
 			return nightThemeCell()
 		default:
 			fatalError()
@@ -350,23 +350,25 @@ extension SettingsTableViewController {
 		case .AutoTheme:
 			return
 		case .DefaultTheme:
-			settings.currentTheme = .Default
-		case .DarkTheme:
-			settings.currentTheme = .Night
+			ThemeManager.sharedInstance.userSelectedTheme = .Default
+		case .NightTheme:
+			ThemeManager.sharedInstance.userSelectedTheme = .Night
 		default:
 			fatalError()
 		}
 
-		settings.synchronize()
-		ThemeManager.sharedInstance.synchronizeWithSettings()
+		guard ThemeManager.sharedInstance.synchronizeWithSettings() else {
+			fatalError()
+		}
 		tableView.reloadSections(NSIndexSet(index: Section.Theme.rawValue), withRowAnimation: .None)
 	}
 
 	@objc
 	private func handleAutoThemeSwitchValueChanged(sender: UISwitch) {
-		settings.automaticallyAdjustsTheme = sender.on
-		settings.synchronize()
-		ThemeManager.sharedInstance.synchronizeWithSettings()
+		ThemeManager.sharedInstance.automaticallyAdjustsTheme = sender.on
+		guard ThemeManager.sharedInstance.synchronizeWithSettings() else {
+			fatalError()
+		}
 		tableView.reloadSections(NSIndexSet(index: Section.Theme.rawValue), withRowAnimation: .Automatic)
 	}
 

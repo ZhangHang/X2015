@@ -20,7 +20,7 @@ extension AppDelegate {
 			UIBarButtonItem.self,
 			UINavigationBar.self,
 			UINavigationController.self])
-		ThemeManager.sharedInstance.synchronizeWithSettings()
+		ThemeManager.sharedInstance.restoreFromSettings()
 	}
 
 }

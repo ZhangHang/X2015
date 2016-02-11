@@ -25,6 +25,8 @@
 		7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
 		7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7841C41658E00519B18 /* UIHelper.swift */; };
+		7F3EDB331C6C87660063D403 /* NSUserDefault+TouchID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDB321C6C87660063D403 /* NSUserDefault+TouchID.swift */; };
+		7F3EDB351C6C87810063D403 /* NSUserDefault+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDB341C6C87810063D403 /* NSUserDefault+Theme.swift */; };
 		7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204CD1C34F79B00507125 /* Main.storyboard */; };
 		7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D31C34F79B00507125 /* Assets.xcassets */; };
 		7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */; };
@@ -91,7 +93,6 @@
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
 		7FFEA1101C60877C006BB860 /* X2015.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA10E1C60877C006BB860 /* X2015.xcdatamodeld */; };
-		7FFEA1181C6089DE006BB860 /* NSUserDefault+X2015.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA1161C6089CC006BB860 /* NSUserDefault+X2015.swift */; };
 		7FFEA1221C60D2D1006BB860 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FFEA1211C60D2D1006BB860 /* NotificationCenter.framework */; };
 		7FFEA1281C60D2D1006BB860 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA1261C60D2D1006BB860 /* MainInterface.storyboard */; };
 		7FFEA12C1C60D2D1006BB860 /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7FFEA11F1C60D2D0006BB860 /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -190,6 +191,8 @@
 		7F1580FB1C579ABE00EFFF82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7841C41658E00519B18 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		7F3EDB321C6C87660063D403 /* NSUserDefault+TouchID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+TouchID.swift"; sourceTree = "<group>"; };
+		7F3EDB341C6C87810063D403 /* NSUserDefault+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+Theme.swift"; sourceTree = "<group>"; };
 		7F5204C61C34F79B00507125 /* X2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = X2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5204CE1C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F5204D31C34F79B00507125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -263,7 +266,6 @@
 		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
 		7FFEA10F1C60877C006BB860 /* X2015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = X2015.xcdatamodel; sourceTree = "<group>"; };
-		7FFEA1161C6089CC006BB860 /* NSUserDefault+X2015.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+X2015.swift"; sourceTree = "<group>"; };
 		7FFEA11F1C60D2D0006BB860 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FFEA1211C60D2D1006BB860 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		7FFEA1271C60D2D1006BB860 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -629,7 +631,8 @@
 		7FFEA1151C6089A6006BB860 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				7FFEA1161C6089CC006BB860 /* NSUserDefault+X2015.swift */,
+				7F3EDB321C6C87660063D403 /* NSUserDefault+TouchID.swift */,
+				7F3EDB341C6C87810063D403 /* NSUserDefault+Theme.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -938,13 +941,14 @@
 				7F102B811C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift in Sources */,
 				7F73F3751C6082C3003347E4 /* UISearchBar+Theme.swift in Sources */,
 				7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */,
+				7F3EDB331C6C87660063D403 /* NSUserDefault+TouchID.swift in Sources */,
 				7F73F39C1C6084AE003347E4 /* NoteTimelineTableViewController.swift in Sources */,
 				7F73F3961C6084AE003347E4 /* NoteEditViewController+Action.swift in Sources */,
 				7F73F3A01C6084AE003347E4 /* SettingCheckableTableViewCell.swift in Sources */,
 				7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */,
 				7F73F3781C6082C3003347E4 /* UITextView+Theme.swift in Sources */,
 				7F73F3731C6082C3003347E4 /* UILabel+Theme.swift in Sources */,
-				7FFEA1181C6089DE006BB860 /* NSUserDefault+X2015.swift in Sources */,
+				7F3EDB351C6C87810063D403 /* NSUserDefault+Theme.swift in Sources */,
 				7F73F3791C6082C3003347E4 /* UIView+Theme.swift in Sources */,
 				7F73F39A1C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift in Sources */,
 				7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */,
