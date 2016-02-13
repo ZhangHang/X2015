@@ -65,7 +65,7 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 
 	weak var delegate: NoteEditViewControllerDelegate?
 
-	@IBOutlet private weak var textView: UITextView!
+	@IBOutlet weak var textView: UITextView!
 	private var emptyWelcomeView: EmptyNoteWelcomeView?
 	var actionBarButton: UIBarButtonItem {
 		return navigationItem.rightBarButtonItem!

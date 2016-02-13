@@ -20,7 +20,7 @@ class MainSplitViewController: UISplitViewController {
 	}
 	var noteEditViewController: NoteEditViewController {
 		guard
-			let nc = self.childViewControllers.first as? UINavigationController,
+			let nc = self.childViewControllers.last as? UINavigationController,
 			let vc = nc.childViewControllers.first as? NoteEditViewController else {
 				fatalError()
 		}

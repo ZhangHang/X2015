@@ -21,6 +21,12 @@ extension MainSplitViewController {
 				modifierFlags: .Command,
 				action: "handleSearchNoteKeyboardCommand:",
 				discoverabilityTitle: NSLocalizedString("Find...", comment: "")),
+
+			UIKeyCommand(input: "e",
+				modifierFlags: .Command,
+				action: "handleEditNoteKeyboardCommand:",
+				discoverabilityTitle: NSLocalizedString("Edit Note", comment: "")),
+
 			UIKeyCommand(input: UIKeyInputDownArrow,
 				modifierFlags: .Command,
 				action: "handleSelectNextNoteKeyboardcommand:",
@@ -43,6 +49,12 @@ extension MainSplitViewController {
 	private func handleSearchNoteKeyboardCommand(command: UIKeyCommand) {
 		debugPrint("handleSearchNoteKeyboardCommand")
 		noteTimelineViewController.enterSearchMode()
+	}
+
+	@objc
+	private func handleEditNoteKeyboardCommand(command: UIKeyCommand) {
+		debugPrint("handleEditNoteKeyboardCommand")
+		noteEditViewController.startEditingIfNeeded()
 	}
 
 	@objc
