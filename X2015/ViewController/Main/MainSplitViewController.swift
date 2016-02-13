@@ -10,19 +10,19 @@ import UIKit
 
 class MainSplitViewController: UISplitViewController {
 
-	var noteTimelineViewController: NoteTimelineTableViewController {
+	var noteTimelineViewController: NoteTimelineTableViewController? {
 		guard
 			let nc = self.childViewControllers.first as? UINavigationController,
 			let vc = nc.childViewControllers.first as? NoteTimelineTableViewController else {
-				fatalError()
+				return nil
 		}
 		return vc
 	}
-	var noteEditViewController: NoteEditViewController {
+	var noteEditViewController: NoteEditViewController? {
 		guard
 			let nc = self.childViewControllers.last as? UINavigationController,
 			let vc = nc.childViewControllers.first as? NoteEditViewController else {
-				fatalError()
+				return nil
 		}
 		return vc
 	}
@@ -42,11 +42,17 @@ class MainSplitViewController: UISplitViewController {
 extension MainSplitViewController {
 
 	func createNote() {
-		noteTimelineViewController.createNote()
+		guard let vc = noteTimelineViewController else {
+			fatalError()
+		}
+		vc.createNote()
 	}
 
 	func displayNote(noteIdentifier: String) {
-		noteTimelineViewController.displayNote(noteIdentifier: noteIdentifier)
+		guard let vc = noteTimelineViewController else {
+			fatalError()
+		}
+		vc.displayNote(noteIdentifier: noteIdentifier)
 	}
 
 }

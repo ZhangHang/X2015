@@ -48,23 +48,35 @@ extension MainSplitViewController {
 	@objc
 	private func handleSearchNoteKeyboardCommand(command: UIKeyCommand) {
 		debugPrint("handleSearchNoteKeyboardCommand")
-		noteTimelineViewController.enterSearchMode()
+		guard let vc = noteTimelineViewController else {
+			fatalError()
+		}
+		vc.enterSearchMode()
 	}
 
 	@objc
 	private func handleEditNoteKeyboardCommand(command: UIKeyCommand) {
 		debugPrint("handleEditNoteKeyboardCommand")
-		noteEditViewController.startEditingIfNeeded()
+		guard let vc = noteEditViewController else {
+			fatalError()
+		}
+		vc.startEditingIfNeeded()
 	}
 
 	@objc
 	private func handleSelectNextNoteKeyboardcommand(command: UIKeyCommand) {
-		noteTimelineViewController.selectNextNote()
+		guard let vc = noteTimelineViewController else {
+			fatalError()
+		}
+		vc.selectNextNote()
 	}
 
 	@objc
 	private func handleSelectPreviousNoteKeyboardcommand(command: UIKeyCommand) {
-		noteTimelineViewController.selectPreviousNote()
+		guard let vc = noteTimelineViewController else {
+			fatalError()
+		}
+		vc.selectPreviousNote()
 	}
 
 }
