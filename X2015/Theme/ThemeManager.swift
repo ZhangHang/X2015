@@ -22,8 +22,6 @@ class ThemeManager {
 	private(set) var currentTheme: Theme = .Default {
 
 		didSet {
-			UIApplication.sharedApplication().statusBarStyle = .LightContent
-
 			for adaptable in registeredClass {
 				adaptable.configureThemeAppearance(currentTheme)
 			}

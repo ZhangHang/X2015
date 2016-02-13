@@ -33,6 +33,10 @@ class MainSplitViewController: UISplitViewController {
 		// Do any additional setup after loading the view.
 	}
 
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return .LightContent
+	}
+
 }
 
 extension MainSplitViewController {
