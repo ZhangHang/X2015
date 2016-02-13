@@ -161,6 +161,14 @@ extension NoteEditViewController: UITextViewDelegate {
 		}
 	}
 
+	func textViewDidBeginEditing(textView: UITextView) {
+		navigationController?.setNavigationBarHidden(true, animated: true)
+	}
+
+	func textViewDidEndEditing(textView: UITextView) {
+		navigationController?.setNavigationBarHidden(false, animated: true)
+	}
+
 	func textViewDidChange(textView: UITextView) {
 		updateActionButtonIfNeeded()
 		noteUpdater!.updateNote(textView.text)
