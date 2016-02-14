@@ -22,7 +22,7 @@ extension NoteTimelineTableViewController: UIViewControllerPreviewingDelegate {
 				cell = tableView.cellForRowAtIndexPath(indexPath) else { return nil }
 
 			guard let detailViewController =
-				storyboard?.instantiateViewControllerWithIdentifier("NoteEditViewController")
+				storyboard?.instantiateViewControllerWithIdentifier(NoteEditViewController.Storyboard.identifier)
 					as? NoteEditViewController else { return nil }
 
 			let previewNote: Note = objectAt(indexPath)

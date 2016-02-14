@@ -90,6 +90,7 @@
 		7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */; };
 		7F73F3A31C6084AE003347E4 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */; };
 		7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */; };
+		7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */; };
 		7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */; };
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
@@ -264,6 +265,7 @@
 		7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSearchTableViewController.swift; sourceTree = "<group>"; };
+		7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainSplitViewController+Delegate.swift"; sourceTree = "<group>"; };
 		7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyNoteWelcomeView.xib; path = Views/EmptyNoteWelcomeView.xib; sourceTree = "<group>"; };
 		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			children = (
 				7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */,
 				7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift */,
+				7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */,
 			);
 			name = Main;
 			path = ViewController/Main;
@@ -905,6 +908,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */,
 				7F73F37B1C6082C3003347E4 /* UIWindow+Theme.swift in Sources */,
 				7F73F3761C6082C3003347E4 /* UITableView+Theme.swift in Sources */,
 				7F73F3801C608336003347E4 /* ThemeProtocols.swift in Sources */,

@@ -24,37 +24,3 @@ extension AppDelegate {
 	}
 
 }
-
-extension AppDelegate: UISplitViewControllerDelegate {
-
-	func setupControllers() {
-		guard
-			let splitViewController = window!.rootViewController as? UISplitViewController,
-			let masterNavigationController = splitViewController.childViewControllers.first,
-			let noteTimelineViewController = masterNavigationController.childViewControllers.first
-				as? NoteTimelineTableViewController else {
-				fatalError()
-		}
-
-		splitViewController.delegate = self
-		noteTimelineViewController.managedObjectContext = managedObjectContext
-	}
-
-	func splitViewController(splitViewController: UISplitViewController,
-		collapseSecondaryViewController secondaryViewController: UIViewController,
-		ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
-			guard
-				let sc = splitViewController as? MainSplitViewController,
-				let vc = sc.noteEditViewController else {
-				fatalError()
-			}
-
-			switch vc.noteActionMode {
-			case .Empty:
-				return false
-			default:
-				return true
-			}
-	}
-
-}

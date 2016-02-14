@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
-class MainSplitViewController: UISplitViewController {
+final class MainSplitViewController: UISplitViewController, ManagedObjectContextSettable {
+
+	var managedObjectContext: NSManagedObjectContext! {
+		didSet {
+			guard let timelineVC = noteTimelineViewController else {
+				fatalError()
+			}
+			timelineVC.managedObjectContext = managedObjectContext
+		}
+	}
 
 	var noteTimelineViewController: NoteTimelineTableViewController? {
 		guard
@@ -18,6 +28,7 @@ class MainSplitViewController: UISplitViewController {
 		}
 		return vc
 	}
+
 	var noteEditViewController: NoteEditViewController? {
 		if childViewControllers.count == 1 {
 			guard
@@ -44,11 +55,8 @@ class MainSplitViewController: UISplitViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		// Do any additional setup after loading the view.
+		delegate = self
 	}
-
-
 
 }
 

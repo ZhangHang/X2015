@@ -48,7 +48,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		launchOptions: [NSObject: AnyObject]?) -> Bool {
 			configureCoreData()
 			configureInterface()
-			setupControllers()
+
+			// Pass ManagedObjectContext
+			({ [unowned self] in
+				guard let vc = self.window!.rootViewController as? ManagedObjectContextSettable else {
+					fatalError()
+				}
+				vc.managedObjectContext = self.managedObjectContext
+				})()
+
+			// Passcode
 			({ [unowned self] in
 				self.rootViewControllerCache = self.window!.rootViewController as? UISplitViewController
 				self.presentPasscodeViewControllerIfNeeded()
