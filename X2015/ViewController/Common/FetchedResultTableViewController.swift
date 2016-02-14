@@ -53,6 +53,7 @@ extension FetchedResultTableViewController {
 		}
 		return object
 	}
+
 }
 
 // MARK: NSFetchedResultsControllerDelegate

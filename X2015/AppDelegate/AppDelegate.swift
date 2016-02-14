@@ -46,16 +46,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(
 		application: UIApplication, didFinishLaunchingWithOptions
 		launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-			// Configure interface
+			configureCoreData()
 			configureInterface()
-
-			// Pass managedObjectContext
 			setupControllers()
-
-			// Touch ID lock screen
-			rootViewControllerCache = window!.rootViewController as? UISplitViewController
-			presentPasscodeViewControllerIfNeeded()
+			({ [unowned self] in
+				self.rootViewControllerCache = self.window!.rootViewController as? UISplitViewController
+				self.presentPasscodeViewControllerIfNeeded()
+				})()
 
 			// Handle application shortcut
 			var shouldPerformAdditionalDelegateHandling = true

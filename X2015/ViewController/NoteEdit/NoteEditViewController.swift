@@ -140,6 +140,24 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 
 }
 
+extension NoteEditViewController {
+
+	override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+		return .Slide
+	}
+
+	override func prefersStatusBarHidden() -> Bool {
+		if !isViewLoaded() {
+			return false
+		}
+
+		let isEditing = textView.isFirstResponder()
+
+		return isEditing
+	}
+
+}
+
 extension NoteEditViewController: UITextViewDelegate {
 
 	func updateTitleIfNeeded() {
@@ -163,10 +181,12 @@ extension NoteEditViewController: UITextViewDelegate {
 
 	func textViewDidBeginEditing(textView: UITextView) {
 		navigationController?.setNavigationBarHidden(true, animated: true)
+		setNeedsStatusBarAppearanceUpdate()
 	}
 
 	func textViewDidEndEditing(textView: UITextView) {
 		navigationController?.setNavigationBarHidden(false, animated: true)
+		setNeedsStatusBarAppearanceUpdate()
 	}
 
 	func textViewDidChange(textView: UITextView) {
@@ -179,7 +199,7 @@ extension NoteEditViewController: UITextViewDelegate {
 	func textView(textView: UITextView,
 		shouldInteractWithURL URL: NSURL,
 		inRange characterRange: NSRange) -> Bool {
-		return true
+			return true
 	}
 	//swiftlint:enable variable_name
 

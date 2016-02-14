@@ -12,19 +12,34 @@ class MainSplitViewController: UISplitViewController {
 
 	var noteTimelineViewController: NoteTimelineTableViewController? {
 		guard
-			let nc = self.childViewControllers.first as? UINavigationController,
+			let nc = childViewControllers.first as? UINavigationController,
 			let vc = nc.childViewControllers.first as? NoteTimelineTableViewController else {
 				return nil
 		}
 		return vc
 	}
 	var noteEditViewController: NoteEditViewController? {
-		guard
-			let nc = self.childViewControllers.last as? UINavigationController,
-			let vc = nc.childViewControllers.first as? NoteEditViewController else {
-				return nil
+		if childViewControllers.count == 1 {
+			guard
+				let mnc = childViewControllers.last as? UINavigationController,
+				let dnc = mnc.childViewControllers.last as? UINavigationController,
+				let vc = dnc.topViewController as? NoteEditViewController else {
+					return nil
+			}
+			return vc
 		}
-		return vc
+
+		if childViewControllers.count == 2 {
+			guard
+				let nc = childViewControllers.last as? UINavigationController,
+				let vc = nc.childViewControllers.first as? NoteEditViewController else {
+					return nil
+			}
+			return vc
+		}
+
+		debugPrint("can't find note edit controller")
+		return nil
 	}
 
 	override func viewDidLoad() {
@@ -33,8 +48,22 @@ class MainSplitViewController: UISplitViewController {
 		// Do any additional setup after loading the view.
 	}
 
+
+
+}
+
+extension MainSplitViewController {
+
 	override func preferredStatusBarStyle() -> UIStatusBarStyle {
 		return .LightContent
+	}
+
+	override func prefersStatusBarHidden() -> Bool {
+		return false
+	}
+
+	override func childViewControllerForStatusBarHidden() -> UIViewController? {
+		return noteEditViewController
 	}
 
 }

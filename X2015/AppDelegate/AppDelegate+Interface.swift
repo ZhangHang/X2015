@@ -43,10 +43,11 @@ extension AppDelegate: UISplitViewControllerDelegate {
 	func splitViewController(splitViewController: UISplitViewController,
 		collapseSecondaryViewController secondaryViewController: UIViewController,
 		ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
-			guard let secondaryAsNavController = secondaryViewController
-				as? UINavigationController else { return false }
-			guard let topAsDetailController = secondaryAsNavController.topViewController
-				as? NoteEditViewController else { return false }
+			guard
+			let secondaryAsNavController = secondaryViewController as? UINavigationController,
+			let topAsDetailController = secondaryAsNavController.topViewController as? NoteEditViewController else {
+					return false
+			}
 			switch topAsDetailController.noteActionMode {
 			case .Empty:
 				return true
