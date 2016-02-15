@@ -569,8 +569,8 @@
 		7F73F3831C6084AE003347E4 /* NoteEdit */ = {
 			isa = PBXGroup;
 			children = (
-				7F73F3841C6084AE003347E4 /* NoteEditViewController+Action.swift */,
 				7F73F3851C6084AE003347E4 /* NoteEditViewController.swift */,
+				7F73F3841C6084AE003347E4 /* NoteEditViewController+Action.swift */,
 				7F3EDB361C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift */,
 			);
 			name = NoteEdit;
@@ -581,12 +581,12 @@
 			isa = PBXGroup;
 			children = (
 				7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */,
-				7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift */,
-				7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */,
-				7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */,
 				7F73F38B1C6084AE003347E4 /* NoteTimelineTableViewController.swift */,
-				7F73F38C1C6084AE003347E4 /* NoteUpdater.swift */,
+				7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */,
+				7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */,
 				7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */,
+				7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift */,
+				7F73F38C1C6084AE003347E4 /* NoteUpdater.swift */,
 			);
 			name = NoteTimeline;
 			path = ViewController/NoteTimeline;

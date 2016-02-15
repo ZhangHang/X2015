@@ -14,15 +14,14 @@ extension MainSplitViewController: UISplitViewControllerDelegate {
 		splitViewController: UISplitViewController,
 		collapseSecondaryViewController secondaryViewController: UIViewController,
 		ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
-			guard let detailVC = noteEditViewController else {
-				return false
+			guard let vc = secondaryViewController.childViewControllers.first as? NoteEditViewController else {
+				fatalError()
 			}
-
-			switch detailVC.noteActionMode {
+			switch vc.noteActionMode {
 			case .Empty:
-				return false
-			default:
 				return true
+			default:
+				return false
 			}
 	}
 

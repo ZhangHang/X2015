@@ -19,15 +19,13 @@ protocol NoteEditViewControllerDelegate: class {
 
 final class NoteEditViewController: ThemeAdaptableViewController {
 
-	struct Storyboard {
+	struct SegueIdentifier {
 
-		static let identifier = "NoteEditViewController"
-
-		static let SegueIdentifierCreate = "CreateNoteSegueIdentifier"
-		static let SegueIdentifierCreateWithNoAnimation = "CreateNoteWithNoAnimationSegueIdentifier"
-		static let SegueIdentifierEdit = "EditNoteSegueIdentifier"
-		static let SegueIdentifierEditWithNoAnimation = "EditNoteWithNoAnimationSegueIdentifier"
-		static let SegueIdentifierEmpty = "EmptyNoteSegueIdentifier"
+		static let Create = "CreateNoteSegueIdentifier"
+		static let CreateWithNoAnimation = "CreateNoteWithNoAnimationSegueIdentifier"
+		static let Edit = "EditNoteSegueIdentifier"
+		static let EditWithNoAnimation = "EditNoteWithNoAnimationSegueIdentifier"
+		static let Empty = "EmptyNoteSegueIdentifier"
 
 	}
 
@@ -136,6 +134,18 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		} else {
 			updateInterface()
 		}
+	}
+
+}
+
+extension NoteEditViewController: SotyboardCreatable {
+
+	static var storyboardName: String {
+		return "Main"
+	}
+
+	static var viewControllerIdentifier: String {
+		return "NoteEditViewController"
 	}
 
 }

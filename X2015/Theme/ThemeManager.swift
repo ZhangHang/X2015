@@ -13,7 +13,7 @@ let ThemeChangeNotification: String = "ThemeChangeNotification"
 let ThemeChangeNotificationThemeKey: String = "ThemeChangeNotificationThemeKey"
 // swiftlint:enable variable_name
 
-class ThemeManager {
+final class ThemeManager {
 
 	static let sharedInstance = ThemeManager()
 

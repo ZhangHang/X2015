@@ -13,12 +13,10 @@ extension NoteTimelineTableViewController {
 
 	func createNote() {
 		backToTimeline({ [unowned self] () -> Void in
-			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation,
+			self.performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.CreateWithNoAnimation,
 				sender: self)
 			}) { [unowned self] () -> Void in
-				guard let vc = self.storyboard!
-					.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier)
-					as? NoteEditViewController else {
+				guard let vc = NoteEditViewController.instanceFromStoryboard() else {
 						fatalError()
 				}
 				self.selectedNote = self.managedObjectContext.insertObject() as Note
@@ -49,13 +47,12 @@ extension NoteTimelineTableViewController {
 		}
 
 		backToTimeline({ [unowned self] () -> Void in
-			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierEditWithNoAnimation,
+			self.performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.EditWithNoAnimation,
 				sender: self)
 			self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
 			}) { [unowned self] () -> Void in
 				guard
-					let vc = self.storyboard!
-					.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier) as? NoteEditViewController,
+					let vc = NoteEditViewController.instanceFromStoryboard(),
 					let selectedNote = self.selectedNote else {
 						fatalError()
 				}
