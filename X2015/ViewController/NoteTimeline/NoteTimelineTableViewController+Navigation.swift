@@ -12,8 +12,8 @@ import X2015Kit
 extension NoteTimelineTableViewController {
 
 	func backToTimeline(
-		completion: (() -> Void)?,
-		workaround: (() -> Void)? ) {
+		@noescape completion: () -> Void,
+		@noescape workaround: () -> Void ) {
 			if let presentedViewController = navigationController?.presentedViewController
 				where presentedViewController != self {
 					navigationController!.dismissViewControllerAnimated(false, completion: nil)
@@ -23,12 +23,12 @@ extension NoteTimelineTableViewController {
 			if navigationController!.topViewController != self {
 				debugPrint("Workaround")
 				navigationController!.popToViewController(self, animated: false)
-				workaround?()
+				workaround()
 				return
 			}
 			// WORKAROUND END
 
-			completion?()
+			completion()
 	}
 
 	@IBAction func insertNewNote(sender: UIBarButtonItem) {
