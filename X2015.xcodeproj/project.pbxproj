@@ -42,21 +42,6 @@
 		7F73F3121C5F4C9D003347E4 /* X2015KitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3111C5F4C9D003347E4 /* X2015KitTests.swift */; };
 		7F73F3161C5F4C9D003347E4 /* X2015Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; };
 		7F73F3171C5F4C9D003347E4 /* X2015Kit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7F73F3321C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3211C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift */; };
-		7F73F3331C5F4D0B003347E4 /* CoreDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3221C5F4D0B003347E4 /* CoreDataErrors.swift */; };
-		7F73F3341C5F4D0B003347E4 /* KeyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3231C5F4D0B003347E4 /* KeyCodable.swift */; };
-		7F73F3361C5F4D0B003347E4 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3251C5F4D0B003347E4 /* ManagedObject.swift */; };
-		7F73F3371C5F4D0B003347E4 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3261C5F4D0B003347E4 /* ManagedObjectObserver.swift */; };
-		7F73F3381C5F4D0B003347E4 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3271C5F4D0B003347E4 /* Migration.swift */; };
-		7F73F3391C5F4D0B003347E4 /* ModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3281C5F4D0B003347E4 /* ModelBuilder.swift */; };
-		7F73F33A1C5F4D0B003347E4 /* ModelVersionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3291C5F4D0B003347E4 /* ModelVersionType.swift */; };
-		7F73F33B1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32A1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift */; };
-		7F73F33C1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32B1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift */; };
-		7F73F33D1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32C1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift */; };
-		7F73F33E1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32D1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift */; };
-		7F73F33F1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32E1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift */; };
-		7F73F3411C5F4D0B003347E4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3301C5F4D0B003347E4 /* Utilities.swift */; };
-		7F73F3421C5F4D0B003347E4 /* ValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3311C5F4D0B003347E4 /* ValueTransformer.swift */; };
 		7F73F34D1C5F4DE7003347E4 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */; };
 		7F73F3501C5F53CC003347E4 /* X2015Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; };
 		7F73F3561C604C5C003347E4 /* Note+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3531C604C5C003347E4 /* Note+Search.swift */; };
@@ -91,6 +76,7 @@
 		7F73F3A31C6084AE003347E4 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */; };
 		7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */; };
 		7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */; };
+		7F98B6301C71C1AB00156917 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */; };
 		7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */; };
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
@@ -216,23 +202,6 @@
 		7F73F30A1C5F4C9D003347E4 /* X2015KitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = X2015KitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F73F3111C5F4C9D003347E4 /* X2015KitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X2015KitTests.swift; sourceTree = "<group>"; };
 		7F73F3131C5F4C9D003347E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F73F3211C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataExtensions.swift"; sourceTree = "<group>"; };
-		7F73F3221C5F4D0B003347E4 /* CoreDataErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataErrors.swift; sourceTree = "<group>"; };
-		7F73F3231C5F4D0B003347E4 /* KeyCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCodable.swift; sourceTree = "<group>"; };
-		7F73F3241C5F4D0B003347E4 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		7F73F3251C5F4D0B003347E4 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
-		7F73F3261C5F4D0B003347E4 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
-		7F73F3271C5F4D0B003347E4 /* Migration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
-		7F73F3281C5F4D0B003347E4 /* ModelBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBuilder.swift; sourceTree = "<group>"; };
-		7F73F3291C5F4D0B003347E4 /* ModelVersionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelVersionType.swift; sourceTree = "<group>"; };
-		7F73F32A1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFetchRequest+Extensions.swift"; sourceTree = "<group>"; };
-		7F73F32B1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extensions.swift"; sourceTree = "<group>"; };
-		7F73F32C1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
-		7F73F32D1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Observers.swift"; sourceTree = "<group>"; };
-		7F73F32E1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPersistentStoreCoordinator+Extensions.swift"; sourceTree = "<group>"; };
-		7F73F32F1C5F4D0B003347E4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		7F73F3301C5F4D0B003347E4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		7F73F3311C5F4D0B003347E4 /* ValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTransformer.swift; sourceTree = "<group>"; };
 		7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		7F73F3531C604C5C003347E4 /* Note+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Search.swift"; sourceTree = "<group>"; };
 		7F73F3541C604C5C003347E4 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -266,6 +235,7 @@
 		7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSearchTableViewController.swift; sourceTree = "<group>"; };
 		7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainSplitViewController+Delegate.swift"; sourceTree = "<group>"; };
+		7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyNoteWelcomeView.xib; path = Views/EmptyNoteWelcomeView.xib; sourceTree = "<group>"; };
 		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
@@ -480,40 +450,16 @@
 		7F73F31F1C5F4D0B003347E4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				7F73F3201C5F4D0B003347E4 /* CoreDataSharedCode */,
 			);
 			path = Vendor;
 			sourceTree = SOURCE_ROOT;
-		};
-		7F73F3201C5F4D0B003347E4 /* CoreDataSharedCode */ = {
-			isa = PBXGroup;
-			children = (
-				7F73F3211C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift */,
-				7F73F3221C5F4D0B003347E4 /* CoreDataErrors.swift */,
-				7F73F3231C5F4D0B003347E4 /* KeyCodable.swift */,
-				7F73F3241C5F4D0B003347E4 /* LICENSE.md */,
-				7F73F3251C5F4D0B003347E4 /* ManagedObject.swift */,
-				7F73F3261C5F4D0B003347E4 /* ManagedObjectObserver.swift */,
-				7F73F3271C5F4D0B003347E4 /* Migration.swift */,
-				7F73F3281C5F4D0B003347E4 /* ModelBuilder.swift */,
-				7F73F3291C5F4D0B003347E4 /* ModelVersionType.swift */,
-				7F73F32A1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift */,
-				7F73F32B1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift */,
-				7F73F32C1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift */,
-				7F73F32D1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift */,
-				7F73F32E1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift */,
-				7F73F32F1C5F4D0B003347E4 /* README.md */,
-				7F73F3301C5F4D0B003347E4 /* Utilities.swift */,
-				7F73F3311C5F4D0B003347E4 /* ValueTransformer.swift */,
-			);
-			path = CoreDataSharedCode;
-			sourceTree = "<group>";
 		};
 		7F73F34B1C5F4DE7003347E4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				7F73F3591C604C7F003347E4 /* ManagedObjectContextBridge.swift */,
 				7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */,
+				7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -975,24 +921,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F73F3341C5F4D0B003347E4 /* KeyCodable.swift in Sources */,
-				7F73F33E1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift in Sources */,
-				7F73F3371C5F4D0B003347E4 /* ManagedObjectObserver.swift in Sources */,
-				7F73F3361C5F4D0B003347E4 /* ManagedObject.swift in Sources */,
-				7F73F3421C5F4D0B003347E4 /* ValueTransformer.swift in Sources */,
-				7F73F3321C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift in Sources */,
-				7F73F3411C5F4D0B003347E4 /* Utilities.swift in Sources */,
-				7F73F33A1C5F4D0B003347E4 /* ModelVersionType.swift in Sources */,
 				7F73F34D1C5F4DE7003347E4 /* Foundation+Extensions.swift in Sources */,
 				7F73F3571C604C5C003347E4 /* Note.swift in Sources */,
-				7F73F3391C5F4D0B003347E4 /* ModelBuilder.swift in Sources */,
-				7F73F3381C5F4D0B003347E4 /* Migration.swift in Sources */,
-				7F73F3331C5F4D0B003347E4 /* CoreDataErrors.swift in Sources */,
-				7F73F33F1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */,
+				7F98B6301C71C1AB00156917 /* CoreDataExtensions.swift in Sources */,
 				7F73F35A1C604C7F003347E4 /* ManagedObjectContextBridge.swift in Sources */,
-				7F73F33C1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift in Sources */,
-				7F73F33B1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift in Sources */,
-				7F73F33D1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift in Sources */,
 				7FFEA1101C60877C006BB860 /* X2015.xcdatamodeld in Sources */,
 				7F73F3561C604C5C003347E4 /* Note+Search.swift in Sources */,
 			);

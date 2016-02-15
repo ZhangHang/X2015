@@ -10,7 +10,7 @@ import CoreData
 import CoreSpotlight
 
 @objc(Note)
-public final class Note: ManagedObject {
+public final class Note: NSManagedObject {
 
 	@NSManaged public private(set) var identifier: String
 	@NSManaged public private(set) var content: String?
@@ -22,6 +22,14 @@ public final class Note: ManagedObject {
 }
 
 extension Note: ManagedObjectType {
+
+	public static var entityName: String {
+		return "Note"
+	}
+
+}
+
+extension Note {
 
 	public override func awakeFromInsert() {
 		identifier = NSUUID().UUIDString
@@ -41,10 +49,6 @@ extension Note: ManagedObjectType {
 			deleteSearchIndex()
 		}
 		super.prepareForDeletion()
-	}
-
-	public static var entityName: String {
-		return "Note"
 	}
 
 	public static var defaultSortDescriptors: [NSSortDescriptor] {
