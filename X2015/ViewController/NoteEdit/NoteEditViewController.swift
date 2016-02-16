@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Marklight
 
 protocol NoteEditViewControllerDelegate: class {
 
@@ -33,6 +34,10 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		case Empty
 	}
 
+	// Mark: Editor
+	@IBOutlet weak var textView: UITextView!
+	var emptyWelcomeView: EmptyNoteWelcomeView?
+	var noteUpdater: NoteUpdater?
 	var noteActionMode: Mode = .Empty {
 		didSet {
 			switch noteActionMode {
@@ -54,38 +59,12 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 			updateTitleIfNeeded()
 		}
 	}
+	let markdownTextStorage = MarklightTextStorage()
 
 	weak var delegate: NoteEditViewControllerDelegate?
 
-	@IBOutlet weak var textView: UITextView!
-
-	private var emptyWelcomeView: EmptyNoteWelcomeView?
-
 	var actionBarButton: UIBarButtonItem {
 		return navigationItem.rightBarButtonItem!
-	}
-
-	var noteUpdater: NoteUpdater?
-
-	//MARK: Life cycle
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		registerForKeyboardEvent()
-		configureInterface(noteActionMode)
-	}
-
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		navigationController?.hidesBarsOnSwipe = false
-		navigationController?.hidesBarsOnTap = true
-		navigationController?.hidesBarsWhenKeyboardAppears = true
-
-		switch noteActionMode {
-		case .Create:
-			textView.becomeFirstResponder()
-		default:
-			break
-		}
 	}
 
 	// Preview action items.
@@ -122,6 +101,32 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 
 }
 
+// MARK: Life cycle
+extension NoteEditViewController {
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setupTextView()
+		registerForKeyboardEvent()
+		configureInterface(noteActionMode)
+	}
+
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.hidesBarsOnSwipe = false
+		navigationController?.hidesBarsOnTap = true
+		navigationController?.hidesBarsWhenKeyboardAppears = true
+
+		switch noteActionMode {
+		case .Create:
+			textView.becomeFirstResponder()
+		default:
+			break
+		}
+	}
+
+}
+
 extension NoteEditViewController: SotyboardCreatable {
 
 	static var storyboardName: String {
@@ -130,106 +135,6 @@ extension NoteEditViewController: SotyboardCreatable {
 
 	static var viewControllerIdentifier: String {
 		return "NoteEditViewController"
-	}
-
-}
-
-extension NoteEditViewController {
-
-	override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
-		return .Slide
-	}
-
-	override func prefersStatusBarHidden() -> Bool {
-		if !isViewLoaded() {
-			return false
-		}
-
-		let isEditing = textView.isFirstResponder()
-
-		return isEditing
-	}
-
-}
-
-extension NoteEditViewController: UITextViewDelegate {
-
-	func updateTitleIfNeeded() {
-		if let updater = noteUpdater {
-			let noteTitle =  updater.noteTitle
-			if noteTitle != title {
-				title = updater.noteTitle
-			}
-		} else {
-			title = nil
-		}
-	}
-
-	func updateActionButtonIfNeeded() {
-		let isContentEmpty = textView.text.empty
-
-		if actionBarButton.enabled != !isContentEmpty {
-			actionBarButton.enabled = !isContentEmpty
-		}
-	}
-
-	func textViewDidEndEditing(textView: UITextView) {
-		navigationController?.setNavigationBarHidden(false, animated: true)
-		setNeedsStatusBarAppearanceUpdate()
-	}
-
-	func textViewDidChange(textView: UITextView) {
-		updateActionButtonIfNeeded()
-		noteUpdater!.updateNote(textView.text)
-	}
-
-
-	//swiftlint:disable variable_name
-	func textView(textView: UITextView,
-		shouldInteractWithURL URL: NSURL,
-		inRange characterRange: NSRange) -> Bool {
-			return true
-	}
-	//swiftlint:enable variable_name
-
-}
-
-extension NoteEditViewController {
-
-	private func configureInterface(mode: Mode) {
-		switch noteActionMode {
-		case .Empty:
-			textView.hidden = true
-			emptyWelcomeView = EmptyNoteWelcomeView.instantiateFromNib()
-			guard let emptyView = emptyWelcomeView else {
-				fatalError()
-			}
-			emptyView.translatesAutoresizingMaskIntoConstraints = false
-			view.addSubview(emptyView)
-			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[welcomeView]-0-|",
-				options: .DirectionLeadingToTrailing,
-				metrics: nil,
-				views: ["welcomeView": emptyView]))
-			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[welcomeView]-0-|",
-				options: .DirectionLeadingToTrailing,
-				metrics: nil,
-				views: ["welcomeView": emptyView]))
-			view.bringSubviewToFront(emptyView)
-		case .Edit(_, _):
-			emptyWelcomeView?.removeFromSuperview()
-			textView.hidden = false
-			textView.text = noteUpdater!.noteContent
-			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-			navigationItem.leftItemsSupplementBackButton = true
-		case .Create(_):
-			emptyWelcomeView?.removeFromSuperview()
-			textView.hidden = false
-			textView.text = ""
-			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-			navigationItem.leftItemsSupplementBackButton = true
-		}
-
-		updateActionButtonIfNeeded()
 	}
 
 }
