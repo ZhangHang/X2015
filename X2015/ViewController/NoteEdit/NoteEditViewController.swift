@@ -64,32 +64,27 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 	weak var delegate: NoteEditViewControllerDelegate?
 
 	@IBOutlet weak var textView: UITextView!
+
 	private var emptyWelcomeView: EmptyNoteWelcomeView?
+
 	var actionBarButton: UIBarButtonItem {
 		return navigationItem.rightBarButtonItem!
 	}
 
 	var noteUpdater: NoteUpdater?
-	private var keyboardNotificationObserver: KeyboardNotificationObserver!
 
 	//MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		keyboardNotificationObserver = KeyboardNotificationObserver(
-			viewControllerView: view,
-			keyboardOffsetChangeHandler: { [unowned self] (newKeyboardOffset) -> Void in
-				var newContentInsect = self.textView.contentInset
-				newContentInsect.bottom = newKeyboardOffset
-				self.textView.contentInset = newContentInsect
-			})
-
+		registerForKeyboardEvent()
 		configureInterface(noteActionMode)
 	}
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		keyboardNotificationObserver.startMonitor()
+		navigationController?.hidesBarsOnSwipe = false
+		navigationController?.hidesBarsOnTap = true
+		navigationController?.hidesBarsWhenKeyboardAppears = true
 
 		switch noteActionMode {
 		case .Create:
@@ -97,11 +92,6 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		default:
 			break
 		}
-	}
-
-	override func viewWillDisappear(animated: Bool) {
-		super.viewWillDisappear(animated)
-		keyboardNotificationObserver.stopMonitor()
 	}
 
 	// Preview action items.
@@ -187,11 +177,6 @@ extension NoteEditViewController: UITextViewDelegate {
 		if actionBarButton.enabled != !isContentEmpty {
 			actionBarButton.enabled = !isContentEmpty
 		}
-	}
-
-	func textViewDidBeginEditing(textView: UITextView) {
-		navigationController?.setNavigationBarHidden(true, animated: true)
-		setNeedsStatusBarAppearanceUpdate()
 	}
 
 	func textViewDidEndEditing(textView: UITextView) {
