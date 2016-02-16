@@ -54,7 +54,6 @@ extension NoteEditViewController: UITextViewDelegate {
 		noteUpdater!.updateNote(markdownTextStorage.string)
 	}
 
-
 	//swiftlint:disable variable_name
 	func textView(textView: UITextView,
 		shouldInteractWithURL URL: NSURL,
