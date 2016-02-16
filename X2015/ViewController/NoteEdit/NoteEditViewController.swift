@@ -89,6 +89,10 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		super.updateThemeInterface(theme, animated: animated)
 		func updateInterface() {
 			textView.configureTheme(theme)
+			guard let accessorView = textView.inputAccessoryView as? MarkdownInputAccessoryView else {
+				fatalError()
+			}
+			accessorView.configureTheme(theme)
 			emptyWelcomeView?.configureTheme(theme)
 			markdownTextStorage.configureTheme(theme)
 			refreshTextView_WORKAROUND()

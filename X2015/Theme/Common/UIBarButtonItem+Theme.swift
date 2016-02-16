@@ -36,7 +36,12 @@ extension UIBarButtonItem: AppearanceAdaptable {
 extension UIBarButtonItem: ThemeAdaptable {
 
 	func configureTheme(theme: Theme) {
-		tintColor = UIColor.whiteColor()
+		switch theme {
+		case .Default:
+			tintColor = UIColor.x2015_BlueColor()
+		case .Night:
+			tintColor = UIColor.whiteColor()
+		}
 	}
 
 }
