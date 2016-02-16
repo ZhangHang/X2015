@@ -138,6 +138,13 @@ extension NoteEditViewController {
 
 	// MARK
 	func insertListSymbolIfNeeded(editedRange: NSRange, replacementText text: String) -> Bool {
+		if text == "-" && editedRange.length == 0 {
+			// insert a space
+			markdownTextStorage.replaceCharactersInRange(NSMakeRange(editedRange.location, 0), withString: "- ")
+			textView.selectedRange = NSMakeRange(editedRange.location + 2, 0)
+			return false
+		}
+
 		if text == "\n" {
 			let string = markdownTextStorage.string
 			let paragraphRange = (string as NSString).paragraphRangeForRange(editedRange)
@@ -154,8 +161,11 @@ extension NoteEditViewController {
 			}
 
 			// skip if last paragraph has no content
+			// remove list symbol from last paragraph
 			if paragraphRange.length == listPrefix.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) {
-				return true
+				markdownTextStorage.replaceCharactersInRange(NSMakeRange(paragraphRange.location, 2), withString: "\n")
+				textView.selectedRange = NSMakeRange(paragraphRange.location + 1, 0)
+				return false
 			}
 
 			// insert list symbol
