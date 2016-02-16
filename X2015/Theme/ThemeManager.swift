@@ -20,7 +20,6 @@ final class ThemeManager {
 	var userSelectedTheme: Theme = .Default
 
 	private(set) var currentTheme: Theme = .Default {
-
 		didSet {
 			for adaptable in registeredClass {
 				adaptable.configureThemeAppearance(currentTheme)
@@ -33,7 +32,6 @@ final class ThemeManager {
 					object: nil,
 					userInfo: [ThemeChangeNotificationThemeKey: currentTheme.rawValue])
 		}
-
 	}
 
 	var automaticallyAdjustsTheme: Bool = false

@@ -20,25 +20,20 @@ protocol NoteEditViewControllerDelegate: class {
 final class NoteEditViewController: ThemeAdaptableViewController {
 
 	struct SegueIdentifier {
-
 		static let Create = "CreateNoteSegueIdentifier"
 		static let CreateWithNoAnimation = "CreateNoteWithNoAnimationSegueIdentifier"
 		static let Edit = "EditNoteSegueIdentifier"
 		static let EditWithNoAnimation = "EditNoteWithNoAnimationSegueIdentifier"
 		static let Empty = "EmptyNoteSegueIdentifier"
-
 	}
 
 	enum Mode {
-
 		case Create(NSManagedObjectID, NSManagedObjectContext)
 		case Edit(NSManagedObjectID, NSManagedObjectContext)
 		case Empty
-
 	}
 
 	var noteActionMode: Mode = .Empty {
-
 		didSet {
 			switch noteActionMode {
 			case let .Create(managedObjectID, managedObjectContext):
@@ -58,7 +53,6 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 
 			updateTitleIfNeeded()
 		}
-
 	}
 
 	weak var delegate: NoteEditViewControllerDelegate?
