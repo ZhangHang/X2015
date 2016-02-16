@@ -29,12 +29,9 @@ extension TableViewSection {
 
 }
 
+final class SettingsTableViewController: ThemeAdaptableTableViewController {
 
-class SettingsTableViewController: ThemeAdaptableTableViewController {
-
-
-	private enum Section: Int {
-
+	enum Section: Int {
 		case General = 0
 		case Theme
 
@@ -79,11 +76,9 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 				fatalError()
 			}
 		}
-
 	}
 
-	private enum GeneralSection: Int, TableViewSection {
-
+	enum GeneralSection: Int, TableViewSection {
 		case UnlockByTouchID = 0
 
 		//swiftlint:disable variable_name
@@ -111,11 +106,9 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 				fatalError()
 			}
 		}
-
 	}
 
-	private enum ThemeSection: Int {
-
+	enum ThemeSection: Int {
 		case AutoTheme = 0
 		case DefaultTheme
 		case NightTheme
@@ -151,10 +144,9 @@ class SettingsTableViewController: ThemeAdaptableTableViewController {
 				fatalError()
 			}
 		}
-
 	}
 
-	private let settings = NSUserDefaults.standardUserDefaults()
+	var settings = NSUserDefaults.standardUserDefaults()
 
 	override func updateThemeInterface(theme: Theme, animated: Bool) {
 		func updateInterface() {
@@ -236,147 +228,11 @@ extension SettingsTableViewController {
 
 }
 
-// MARK: General
 
+// MARK: Helper
 extension SettingsTableViewController {
 
-	private func cellForGeneralSectionAtRow(row: Int) -> UITableViewCell {
-		guard let cellType = GeneralSection(rawValue: row) else { fatalError() }
-
-		func touchIDCell() -> SettingSwitchTableViewCell {
-			let cell = dequeueSettingSwitchCell()
-			cell.configure(
-				NSLocalizedString("Touch ID", comment: ""),
-				switchOn: settings.unlockByTouchID,
-				switchTarget: self,
-				switchSelector: "handleUnlockByTouchIDSwitchValueChanged:",
-				enabled: TouchIDHelper.hasTouchID)
-			return cell
-		}
-
-		switch cellType {
-		case .UnlockByTouchID:
-			return touchIDCell()
-		default:
-			fatalError()
-		}
-	}
-
-	@objc
-	private func handleUnlockByTouchIDSwitchValueChanged(sender: UISwitch) {
-		TouchIDHelper.auth(
-			NSLocalizedString("Use Touch ID to Unlock", comment: ""),
-			successHandler: { () -> Void in
-				self.settings.unlockByTouchID = sender.on
-				guard self.settings.synchronize() else {
-					fatalError("Setting save failed")
-				}
-			},
-			errorHandler: { (errorMessage) -> Void in
-				sender.setOn(!sender.on, animated: true)
-				if errorMessage?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
-					let alertView = UIAlertController(
-						title: NSLocalizedString("Error", comment: ""),
-						message: errorMessage,
-						preferredStyle:.Alert)
-					let okAction = UIAlertAction(
-						title: NSLocalizedString("OK", comment: ""),
-						style: .Default,
-						handler: nil)
-					alertView.addAction(okAction)
-					self.presentViewController(alertView, animated: true, completion: nil)
-				}
-		})
-	}
-
-}
-
-
-// MARK: Theme
-extension SettingsTableViewController {
-
-	private func cellForThemeSectionAtRow(row: Int) -> UITableViewCell {
-		guard let cellType = ThemeSection(rawValue: row) else { fatalError() }
-
-		func autoThemeCell() -> UITableViewCell {
-			let cell = dequeueSettingSwitchCell()
-			cell.configure(
-				ThemeSection.AutoTheme.title,
-				switchOn: settings.automaticallyAdjustsTheme,
-				switchTarget: self,
-				switchSelector: "handleAutoThemeSwitchValueChanged:")
-			return cell
-		}
-		func defualtThemeCell() -> UITableViewCell {
-			let cell = dequeueSettingCheckableCell()
-			cell.configure(ThemeSection.DefaultTheme.title, checked: currentTheme == .Default)
-			return cell
-		}
-		func nightThemeCell() -> UITableViewCell {
-			let cell = dequeueSettingCheckableCell()
-			cell.configure(ThemeSection.NightTheme.title, checked: currentTheme == .Night)
-			return cell
-		}
-
-		switch cellType {
-		case .AutoTheme:
-			return autoThemeCell()
-		case .DefaultTheme:
-			return defualtThemeCell()
-		case .NightTheme:
-			return nightThemeCell()
-		default:
-			fatalError()
-		}
-	}
-
-	private func numberOFRowInThemeSection() -> Int {
-		if settings.automaticallyAdjustsTheme {
-			return 1
-		}
-		return ThemeSection.numberOfRow
-	}
-
-	private func footerTitleForThemeSection() -> String? {
-		if settings.automaticallyAdjustsTheme {
-			return ThemeSection.footerText
-		}
-		return nil
-	}
-
-	private func didSelectThemeSectionCell(indexPath: NSIndexPath) {
-		guard let cellType = ThemeSection(rawValue: indexPath.row) else { fatalError() }
-		switch cellType {
-		case .AutoTheme:
-			return
-		case .DefaultTheme:
-			ThemeManager.sharedInstance.userSelectedTheme = .Default
-		case .NightTheme:
-			ThemeManager.sharedInstance.userSelectedTheme = .Night
-		default:
-			fatalError()
-		}
-
-		guard ThemeManager.sharedInstance.synchronizeWithSettings() else {
-			fatalError()
-		}
-		tableView.reloadSections(NSIndexSet(index: Section.Theme.rawValue), withRowAnimation: .None)
-	}
-
-	@objc
-	private func handleAutoThemeSwitchValueChanged(sender: UISwitch) {
-		ThemeManager.sharedInstance.automaticallyAdjustsTheme = sender.on
-		guard ThemeManager.sharedInstance.synchronizeWithSettings() else {
-			fatalError()
-		}
-		tableView.reloadSections(NSIndexSet(index: Section.Theme.rawValue), withRowAnimation: .Automatic)
-	}
-
-}
-
-extension SettingsTableViewController {
-
-	private func dequeueSettingSwitchCell() -> SettingSwitchTableViewCell {
+	func dequeueSettingSwitchCell() -> SettingSwitchTableViewCell {
 		guard let cell = tableView.dequeueReusableCellWithIdentifier(
 			SettingSwitchTableViewCell.reusableIdentifier)
 			as? SettingSwitchTableViewCell else {
@@ -385,7 +241,7 @@ extension SettingsTableViewController {
 		return cell
 	}
 
-	private func dequeueSettingCheckableCell() -> SettingCheckableTableViewCell {
+	func dequeueSettingCheckableCell() -> SettingCheckableTableViewCell {
 		guard let cell = tableView.dequeueReusableCellWithIdentifier(
 			SettingCheckableTableViewCell.reusableIdentifier)
 			as? SettingCheckableTableViewCell else {
