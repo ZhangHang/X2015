@@ -137,35 +137,35 @@ extension NoteEditViewController {
 	}
 
 	// MARK
-	func insertListSymbolIfNeeded(editedRange: NSRange, replacementText text: String) -> Bool {
+	// return true if handled
+	func processListSymbolIfNeeded(editedRange: NSRange, replacementText text: String) -> Bool {
 		if text == "-" && editedRange.length == 0 {
+			let string = markdownTextStorage.string
+			let paragraphRange = (string as NSString).paragraphRangeForRange(editedRange)
+			if paragraphRange.location != editedRange.location { return false }
 			// insert a space
 			markdownTextStorage.replaceCharactersInRange(NSMakeRange(editedRange.location, 0), withString: "- ")
 			textView.selectedRange = NSMakeRange(editedRange.location + 2, 0)
-			return false
+			return true
 		}
 
 		if text == "\n" {
 			let string = markdownTextStorage.string
 			let paragraphRange = (string as NSString).paragraphRangeForRange(editedRange)
 
-			// empty line
-			if paragraphRange.length == 0 { return true }
+			if paragraphRange.length == 0 { return false } // empty line
 
 			let paragraphString = (string as NSString).substringWithRange(paragraphRange)
 			let listPrefix = "- "
 
-			// not a list
-			if !paragraphString.hasPrefix(listPrefix) {
-				return true
-			}
+			if !paragraphString.hasPrefix(listPrefix) { return false } // not a list
 
 			// skip if last paragraph has no content
 			// remove list symbol from last paragraph
 			if paragraphRange.length == listPrefix.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) {
 				markdownTextStorage.replaceCharactersInRange(NSMakeRange(paragraphRange.location, 2), withString: "\n")
 				textView.selectedRange = NSMakeRange(paragraphRange.location + 1, 0)
-				return false
+				return true
 			}
 
 			// insert list symbol
@@ -174,10 +174,10 @@ extension NoteEditViewController {
 			let nextSelectedIndex = insertIndex + stringToInsert.length
 			markdownTextStorage.insertAttributedString(stringToInsert, atIndex: editedRange.location)
 			textView.selectedRange = NSMakeRange(nextSelectedIndex + 2, 0)
-			return false
+			return true
 		}
 
-		return true
+		return false
 	}
 }
 
@@ -216,7 +216,11 @@ extension NoteEditViewController: UITextViewDelegate {
 		textView: UITextView,
 		shouldChangeTextInRange range: NSRange,
 		replacementText text: String) -> Bool {
-			return insertListSymbolIfNeeded(range, replacementText: text)
+			if processListSymbolIfNeeded(range, replacementText: text) {
+				return false
+			}
+
+			return true
 	}
 
 	//swiftlint:disable variable_name
@@ -226,5 +230,5 @@ extension NoteEditViewController: UITextViewDelegate {
 			return true
 	}
 	//swiftlint:enable variable_name
-	
+
 }
