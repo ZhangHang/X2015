@@ -77,6 +77,8 @@
 		7F98B6541C72DE1700156917 /* NoteEditViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */; };
 		7F98B6571C72E9D400156917 /* SettingsTableViewController+ThemeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6551C72E9BE00156917 /* SettingsTableViewController+ThemeSection.swift */; };
 		7F98B6591C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6581C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift */; };
+		7F98B65C1C73076000156917 /* Marklight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F98B65A1C73073600156917 /* Marklight.framework */; };
+		7F98B65D1C73076000156917 /* Marklight.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F98B65A1C73073600156917 /* Marklight.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */; };
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
@@ -145,6 +147,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7F98B65D1C73076000156917 /* Marklight.framework in Embed Frameworks */,
 				7F73F3171C5F4C9D003347E4 /* X2015Kit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -236,6 +239,7 @@
 		7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		7F98B6551C72E9BE00156917 /* SettingsTableViewController+ThemeSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsTableViewController+ThemeSection.swift"; sourceTree = "<group>"; };
 		7F98B6581C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsTableViewController+GeneralSection.swift"; sourceTree = "<group>"; };
+		7F98B65A1C73073600156917 /* Marklight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marklight.framework; path = Carthage/Build/iOS/Marklight.framework; sourceTree = "<group>"; };
 		7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyNoteWelcomeView.xib; path = Views/EmptyNoteWelcomeView.xib; sourceTree = "<group>"; };
 		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F98B65C1C73076000156917 /* Marklight.framework in Frameworks */,
 				7F73F3161C5F4C9D003347E4 /* X2015Kit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,6 +581,7 @@
 		7FFEA1201C60D2D1006BB860 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F98B65A1C73073600156917 /* Marklight.framework */,
 				7FFEA1211C60D2D1006BB860 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -1110,6 +1116,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = X2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015;
@@ -1126,6 +1136,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = X2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015;
