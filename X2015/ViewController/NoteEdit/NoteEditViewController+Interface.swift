@@ -36,13 +36,13 @@ extension NoteEditViewController {
 		case .Edit(_, _):
 			emptyWelcomeView?.removeFromSuperview()
 			textView.hidden = false
-			loadText(noteUpdater!.noteContent)
+			loadText_WORKAROUND(noteUpdater!.noteContent)
 			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
 			navigationItem.leftItemsSupplementBackButton = true
 		case .Create(_):
 			emptyWelcomeView?.removeFromSuperview()
 			textView.hidden = false
-			loadText("")
+			loadText_WORKAROUND("")
 			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
 			navigationItem.leftItemsSupplementBackButton = true
 		}

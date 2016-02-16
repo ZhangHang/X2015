@@ -11,16 +11,25 @@ import UIKit
 extension NoteEditViewController {
 
 	func setupTextView() {
+		textView.textContainerInset = UIEdgeInsetsMake(4, 4, 4, 4)
 		markdownTextStorage.addLayoutManager(textView.layoutManager)
 	}
 
 	// MARK: Workaround, See [Readme of Marklight](https://github.com/macteo/marklight)
-	func loadText(text: String?) {
+	func loadText_WORKAROUND(text: String?) {
 		let attributedString = NSAttributedString(string: text ?? "")
 		textView.attributedText = attributedString
 		markdownTextStorage.appendAttributedString(attributedString)
 	}
 
+	// Reload text while keep selectedRange
+	func refreshTextView_WORKAROUND() {
+		let selectedRange = textView.selectedRange
+		let attributedString = NSAttributedString(string: markdownTextStorage.string)
+		textView.attributedText = attributedString
+		markdownTextStorage.setAttributedString(attributedString)
+		textView.selectedRange = selectedRange
+	}
 }
 
 extension NoteEditViewController: UITextViewDelegate {

@@ -90,6 +90,8 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		func updateInterface() {
 			textView.configureTheme(theme)
 			emptyWelcomeView?.configureTheme(theme)
+			markdownTextStorage.configureTheme(theme)
+			refreshTextView_WORKAROUND()
 		}
 
 		if animated {
