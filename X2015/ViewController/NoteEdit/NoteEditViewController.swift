@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Marklight
 
 protocol NoteEditViewControllerDelegate: class {
 
@@ -19,28 +20,25 @@ protocol NoteEditViewControllerDelegate: class {
 
 final class NoteEditViewController: ThemeAdaptableViewController {
 
-	struct Storyboard {
-
-		static let identifier = "NoteEditViewController"
-
-		static let SegueIdentifierCreate = "CreateNoteSegueIdentifier"
-		static let SegueIdentifierCreateWithNoAnimation = "CreateNoteWithNoAnimationSegueIdentifier"
-		static let SegueIdentifierEdit = "EditNoteSegueIdentifier"
-		static let SegueIdentifierEditWithNoAnimation = "EditNoteWithNoAnimationSegueIdentifier"
-		static let SegueIdentifierEmpty = "EmptyNoteSegueIdentifier"
-
+	struct SegueIdentifier {
+		static let Create = "CreateNoteSegueIdentifier"
+		static let CreateWithNoAnimation = "CreateNoteWithNoAnimationSegueIdentifier"
+		static let Edit = "EditNoteSegueIdentifier"
+		static let EditWithNoAnimation = "EditNoteWithNoAnimationSegueIdentifier"
+		static let Empty = "EmptyNoteSegueIdentifier"
 	}
 
 	enum Mode {
-
 		case Create(NSManagedObjectID, NSManagedObjectContext)
 		case Edit(NSManagedObjectID, NSManagedObjectContext)
 		case Empty
-
 	}
 
+	// Mark: Editor
+	@IBOutlet weak var textView: UITextView!
+	var emptyWelcomeView: EmptyNoteWelcomeView?
+	var noteUpdater: NoteUpdater?
 	var noteActionMode: Mode = .Empty {
-
 		didSet {
 			switch noteActionMode {
 			case let .Create(managedObjectID, managedObjectContext):
@@ -60,50 +58,13 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 
 			updateTitleIfNeeded()
 		}
-
 	}
-
+	let markdownTextStorage = MarklightTextStorage()
+	var markdownShortcutHandler: MarkdownShortcutHandler?
 	weak var delegate: NoteEditViewControllerDelegate?
 
-	@IBOutlet private weak var textView: UITextView!
-	private var emptyWelcomeView: EmptyNoteWelcomeView?
 	var actionBarButton: UIBarButtonItem {
 		return navigationItem.rightBarButtonItem!
-	}
-
-	var noteUpdater: NoteUpdater?
-	private var keyboardNotificationObserver: KeyboardNotificationObserver!
-
-	//MARK: Life cycle
-	override func viewDidLoad() {
-		super.viewDidLoad()
-
-		keyboardNotificationObserver = KeyboardNotificationObserver(
-			viewControllerView: view,
-			keyboardOffsetChangeHandler: { [unowned self] (newKeyboardOffset) -> Void in
-				var newContentInsect = self.textView.contentInset
-				newContentInsect.bottom = newKeyboardOffset
-				self.textView.contentInset = newContentInsect
-			})
-
-		configureInterface(noteActionMode)
-	}
-
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		keyboardNotificationObserver.startMonitor()
-
-		switch noteActionMode {
-		case .Create:
-			textView.becomeFirstResponder()
-		default:
-			break
-		}
-	}
-
-	override func viewWillDisappear(animated: Bool) {
-		super.viewWillDisappear(animated)
-		keyboardNotificationObserver.stopMonitor()
 	}
 
 	// Preview action items.
@@ -128,7 +89,13 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		super.updateThemeInterface(theme, animated: animated)
 		func updateInterface() {
 			textView.configureTheme(theme)
+			guard let accessorView = textView.inputAccessoryView as? MarkdownInputAccessoryView else {
+				fatalError()
+			}
+			accessorView.configureTheme(theme)
 			emptyWelcomeView?.configureTheme(theme)
+			markdownTextStorage.configureTheme(theme)
+			refreshTextView_WORKAROUND()
 		}
 
 		if animated {
@@ -140,79 +107,40 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 
 }
 
-extension NoteEditViewController: UITextViewDelegate {
+// MARK: Life cycle
+extension NoteEditViewController {
 
-	func updateTitleIfNeeded() {
-		if let updater = noteUpdater {
-			let noteTitle =  updater.noteTitle
-			if noteTitle != title {
-				title = updater.noteTitle
-			}
-		} else {
-			title = nil
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		configureEditor()
+		registerForKeyboardEvent()
+		configureInterface(noteActionMode)
+	}
+
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.hidesBarsOnSwipe = false
+		navigationController?.hidesBarsOnTap = true
+		navigationController?.hidesBarsWhenKeyboardAppears = true
+
+		switch noteActionMode {
+		case .Create:
+			textView.becomeFirstResponder()
+		default:
+			break
 		}
 	}
-
-	func updateActionButtonIfNeeded() {
-		let isContentEmpty = textView.text.empty
-
-		if actionBarButton.enabled != !isContentEmpty {
-			actionBarButton.enabled = !isContentEmpty
-		}
-	}
-
-	func textViewDidChange(textView: UITextView) {
-		updateActionButtonIfNeeded()
-		noteUpdater!.updateNote(textView.text)
-	}
-
-
-	//swiftlint:disable variable_name
-	func textView(textView: UITextView,
-		shouldInteractWithURL URL: NSURL,
-		inRange characterRange: NSRange) -> Bool {
-		return true
-	}
-	//swiftlint:enable variable_name
 
 }
 
-extension NoteEditViewController {
+extension NoteEditViewController: SotyboardCreatable {
 
-	private func configureInterface(mode: Mode) {
-		switch noteActionMode {
-		case .Empty:
-			textView.hidden = true
-			emptyWelcomeView = EmptyNoteWelcomeView.instantiateFromNib()
-			guard let emptyView = emptyWelcomeView else {
-				fatalError()
-			}
-			emptyView.translatesAutoresizingMaskIntoConstraints = false
-			view.addSubview(emptyView)
-			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[welcomeView]-0-|",
-				options: .DirectionLeadingToTrailing,
-				metrics: nil,
-				views: ["welcomeView": emptyView]))
-			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[welcomeView]-0-|",
-				options: .DirectionLeadingToTrailing,
-				metrics: nil,
-				views: ["welcomeView": emptyView]))
-			view.bringSubviewToFront(emptyView)
-		case .Edit(_, _):
-			emptyWelcomeView?.removeFromSuperview()
-			textView.hidden = false
-			textView.text = noteUpdater!.noteContent
-			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-			navigationItem.leftItemsSupplementBackButton = true
-		case .Create(_):
-			emptyWelcomeView?.removeFromSuperview()
-			textView.hidden = false
-			textView.text = ""
-			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-			navigationItem.leftItemsSupplementBackButton = true
-		}
+	static var storyboardName: String {
+		return "Main"
+	}
 
-		updateActionButtonIfNeeded()
+	static var viewControllerIdentifier: String {
+		return "NoteEditViewController"
 	}
 
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
 
@@ -29,6 +30,40 @@ extension String {
 
 	public var empty: Bool {
 		return lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0
+	}
+
+}
+
+extension String {
+
+	public func rangeFromNSRange(range: NSRange) -> Range<String.Index> {
+		let start = startIndex.advancedBy(range.location)
+		let end = startIndex.advancedBy(range.location + range.length)
+		return Range<String.Index>(start: start, end: end)
+	}
+
+	public func paragraphsRangeForRange(range: Range<String.Index>) -> Range<String.Index> {
+		let startParagraphRange = paragraphRangeForRange(range)
+		let endParagraphRange = paragraphRangeForRange(range)
+		let wholeRange = Range<String.Index>(
+			start: startParagraphRange.startIndex,
+			end: endParagraphRange.endIndex)
+
+		return wholeRange
+	}
+
+	public func paragraphsRangeForNSRange(range: NSRange) -> Range<String.Index> {
+		let nativeRange = rangeFromNSRange(range)
+		return paragraphsRangeForRange(nativeRange)
+	}
+
+	public func paragraphsStringForRange(range: Range<String.Index>) -> String {
+		return substringWithRange(paragraphsRangeForRange(range))
+	}
+
+	public func paragraphsStringForNSRange(range: NSRange) -> String {
+		let nativeRange = rangeFromNSRange(range)
+		return substringWithRange(paragraphsRangeForRange(nativeRange))
 	}
 
 }

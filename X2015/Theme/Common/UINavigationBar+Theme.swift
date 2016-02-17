@@ -9,13 +9,17 @@
 import UIKit
 
 extension UINavigationBar: AppearanceAdaptable {
+
 	static func configureThemeAppearance(theme: Theme) {
 		appearance().tintColor = UIColor.whiteColor()
 	}
+
 }
 
 extension UINavigationBar: ThemeAdaptable {
+
 	func configureTheme(theme: Theme) {
 		tintColor = UIColor.whiteColor()
 	}
+
 }

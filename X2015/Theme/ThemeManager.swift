@@ -9,21 +9,18 @@
 import UIKit
 
 // swiftlint:disable variable_name
-public let ThemeChangeNotification: String = "ThemeChangeNotification"
-public let ThemeChangeNotificationThemeKey: String = "ThemeChangeNotificationThemeKey"
+let ThemeChangeNotification: String = "ThemeChangeNotification"
+let ThemeChangeNotificationThemeKey: String = "ThemeChangeNotificationThemeKey"
 // swiftlint:enable variable_name
 
-class ThemeManager {
+final class ThemeManager {
 
 	static let sharedInstance = ThemeManager()
 
-	private var storedTheme: Theme = .Default
+	var userSelectedTheme: Theme = .Default
 
 	private(set) var currentTheme: Theme = .Default {
-
 		didSet {
-			UIApplication.sharedApplication().statusBarStyle = .LightContent
-
 			for adaptable in registeredClass {
 				adaptable.configureThemeAppearance(currentTheme)
 			}
@@ -35,10 +32,9 @@ class ThemeManager {
 					object: nil,
 					userInfo: [ThemeChangeNotificationThemeKey: currentTheme.rawValue])
 		}
-
 	}
 
-	private var automaticallyAdjustsTheme: Bool = false
+	var automaticallyAdjustsTheme: Bool = false
 
 	private var registeredClass: [AppearanceAdaptable.Type] = []
 
@@ -62,13 +58,6 @@ class ThemeManager {
 
 extension ThemeManager {
 
-	func synchronizeWithSettings() {
-		let settings = NSUserDefaults.standardUserDefaults()
-		storedTheme = settings.currentTheme
-		automaticallyAdjustsTheme = settings.automaticallyAdjustsTheme
-		updateCurrentThemeIfNeeded(true)
-	}
-
 	func register(appearanceAdaptableClasses: [AppearanceAdaptable.Type]) {
 		registeredClass.appendContentsOf(appearanceAdaptableClasses)
 	}
@@ -87,17 +76,19 @@ extension ThemeManager {
 
 	@objc
 	private func handleBrightnessChangeNotification(note: NSNotification) {
-		updateCurrentThemeIfNeeded()
+		if automaticallyAdjustsTheme {
+			updateCurrentThemeIfNeeded()
+		}
 	}
 
-	private func updateCurrentThemeIfNeeded(forceUpdate: Bool = false) {
+	func updateCurrentThemeIfNeeded(forceUpdate: Bool = false) {
 		if automaticallyAdjustsTheme {
 			if themeByBrightness != currentTheme || forceUpdate {
 				currentTheme = themeByBrightness
 			}
 		} else {
-			if storedTheme != currentTheme || forceUpdate {
-				currentTheme = storedTheme
+			if userSelectedTheme != currentTheme || forceUpdate {
+				currentTheme = userSelectedTheme
 			}
 		}
 	}

@@ -77,7 +77,7 @@ extension NoteTimelineTableViewController {
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		selectedNote = objectAt(indexPath) as Note
-		performSegueWithIdentifier(NoteEditViewController.Storyboard.SegueIdentifierEdit, sender: self)
+		performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.Edit, sender: self)
 	}
 
 
@@ -110,7 +110,7 @@ extension NoteTimelineTableViewController {
 		willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
 			if !self.splitViewController!.collapsed {
 				self.performSegueWithIdentifier(
-					NoteEditViewController.Storyboard.SegueIdentifierEmpty,
+					NoteEditViewController.SegueIdentifier.Empty,
 					sender: self)
 			}
 	}
@@ -120,13 +120,13 @@ extension NoteTimelineTableViewController {
 			updateNoteSelectionIfNeeded({ (indexPath) -> Void in
 				if !self.splitViewController!.collapsed {
 					self.performSegueWithIdentifier(
-						NoteEditViewController.Storyboard.SegueIdentifierEdit,
+						NoteEditViewController.SegueIdentifier.Edit,
 						sender: self)
 				}
 				}) { () -> Void in
 					if !self.splitViewController!.collapsed {
 						self.performSegueWithIdentifier(
-							NoteEditViewController.Storyboard.SegueIdentifierEmpty,
+							NoteEditViewController.SegueIdentifier.Empty,
 							sender: self)
 					}
 			}
@@ -195,7 +195,7 @@ extension NoteTimelineTableViewController {
 
 		updateNoteSelectionIfNeeded(nil) { [unowned self] () -> Void in
 			self.performSegueWithIdentifier(
-				NoteEditViewController.Storyboard.SegueIdentifierEmpty,
+				NoteEditViewController.SegueIdentifier.Empty,
 				sender: self)
 		}
 	}

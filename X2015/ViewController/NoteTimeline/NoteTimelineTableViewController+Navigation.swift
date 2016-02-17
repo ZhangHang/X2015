@@ -11,30 +11,28 @@ import X2015Kit
 
 extension NoteTimelineTableViewController {
 
-	typealias NoteEditVCStoryboard = NoteEditViewController.Storyboard
-
 	func backToTimeline(
-		completion: (() -> Void)?,
-		workaround: (() -> Void)? ) {
-		if let presentedViewController = navigationController?.presentedViewController
-			where presentedViewController != self {
-				navigationController!.dismissViewControllerAnimated(false, completion: nil)
-		}
+		@noescape completion: () -> Void,
+		@noescape workaround: () -> Void ) {
+			if let presentedViewController = navigationController?.presentedViewController
+				where presentedViewController != self {
+					navigationController!.dismissViewControllerAnimated(false, completion: nil)
+			}
 
-		// WORKAROUND BEGIN
-		if navigationController!.topViewController != self {
-			debugPrint("Workaround")
-			navigationController!.popToViewController(self, animated: false)
-			workaround?()
-			return
-		}
-		// WORKAROUND END
+			// WORKAROUND BEGIN
+			if navigationController!.topViewController != self {
+				debugPrint("Workaround")
+				navigationController!.popToViewController(self, animated: false)
+				workaround()
+				return
+			}
+			// WORKAROUND END
 
-		completion?()
+			completion()
 	}
 
 	@IBAction func insertNewNote(sender: UIBarButtonItem) {
-		performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreate, sender: self)
+		performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.Create, sender: self)
 	}
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -43,7 +41,9 @@ extension NoteTimelineTableViewController {
 		}
 
 		switch identifier {
-		case NoteEditVCStoryboard.SegueIdentifierCreate, NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation:
+		case
+			NoteEditViewController.SegueIdentifier.Create,
+			NoteEditViewController.SegueIdentifier.CreateWithNoAnimation:
 			guard
 				let nc = segue.destinationViewController as? UINavigationController,
 				let vc = nc.childViewControllers.first as? NoteEditViewController else {
@@ -52,7 +52,9 @@ extension NoteTimelineTableViewController {
 
 			selectedNote = managedObjectContext.insertObject() as Note
 			vc.noteActionMode = .Create(selectedNote!.objectID, managedObjectContext)
-		case NoteEditVCStoryboard.SegueIdentifierEdit, NoteEditVCStoryboard.SegueIdentifierEditWithNoAnimation:
+		case
+			NoteEditViewController.SegueIdentifier.Edit,
+			NoteEditViewController.SegueIdentifier.EditWithNoAnimation:
 			guard
 				let nc = segue.destinationViewController as? UINavigationController,
 				let vc = nc.childViewControllers.first as? NoteEditViewController,
@@ -61,7 +63,8 @@ extension NoteTimelineTableViewController {
 			}
 
 			vc.noteActionMode = .Edit(selectedNote.objectID, managedObjectContext)
-		case NoteEditVCStoryboard.SegueIdentifierEmpty:
+		case
+			NoteEditViewController.SegueIdentifier.Empty:
 			break
 		default:
 			return

@@ -7,30 +7,71 @@
 //
 
 import UIKit
+import CoreData
 
-class MainSplitViewController: UISplitViewController {
+final class MainSplitViewController: UISplitViewController, ManagedObjectContextSettable {
 
-	var noteTimelineViewController: NoteTimelineTableViewController {
-		guard
-			let nc = self.childViewControllers.first as? UINavigationController,
-			let vc = nc.childViewControllers.first as? NoteTimelineTableViewController else {
+	var managedObjectContext: NSManagedObjectContext! {
+		didSet {
+			guard let timelineVC = noteTimelineViewController else {
 				fatalError()
+			}
+			timelineVC.managedObjectContext = managedObjectContext
+		}
+	}
+
+	var noteTimelineViewController: NoteTimelineTableViewController? {
+		guard
+			let nc = childViewControllers.first as? UINavigationController,
+			let vc = nc.childViewControllers.first as? NoteTimelineTableViewController else {
+				return nil
 		}
 		return vc
 	}
-	var noteEditViewController: NoteEditViewController {
-		guard
-			let nc = self.childViewControllers.first as? UINavigationController,
-			let vc = nc.childViewControllers.first as? NoteEditViewController else {
-				fatalError()
+
+	var noteEditViewController: NoteEditViewController? {
+		if childViewControllers.count == 1 {
+			guard
+				let mnc = childViewControllers.last as? UINavigationController,
+				let dnc = mnc.childViewControllers.last as? UINavigationController,
+				let vc = dnc.topViewController as? NoteEditViewController else {
+					return nil
+			}
+			return vc
 		}
-		return vc
+
+		if childViewControllers.count == 2 {
+			guard
+				let nc = childViewControllers.last as? UINavigationController,
+				let vc = nc.childViewControllers.first as? NoteEditViewController else {
+					return nil
+			}
+			return vc
+		}
+
+		debugPrint("can't find note edit controller")
+		return nil
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		delegate = self
+	}
 
-		// Do any additional setup after loading the view.
+}
+
+extension MainSplitViewController {
+
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return .LightContent
+	}
+
+	override func prefersStatusBarHidden() -> Bool {
+		return false
+	}
+
+	override func childViewControllerForStatusBarHidden() -> UIViewController? {
+		return noteEditViewController
 	}
 
 }
@@ -38,11 +79,17 @@ class MainSplitViewController: UISplitViewController {
 extension MainSplitViewController {
 
 	func createNote() {
-		noteTimelineViewController.createNote()
+		guard let vc = noteTimelineViewController else {
+			fatalError()
+		}
+		vc.createNote()
 	}
 
 	func displayNote(noteIdentifier: String) {
-		noteTimelineViewController.displayNote(noteIdentifier: noteIdentifier)
+		guard let vc = noteTimelineViewController else {
+			fatalError()
+		}
+		vc.displayNote(noteIdentifier: noteIdentifier)
 	}
 
 }

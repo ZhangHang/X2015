@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIWindow: AppearanceAdaptable {
+
 	static func configureThemeAppearance(theme: Theme) {
 		switch theme {
 		case .Default:
@@ -19,4 +20,5 @@ extension UIWindow: AppearanceAdaptable {
 			UIWindow.appearance().backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 		}
 	}
+
 }

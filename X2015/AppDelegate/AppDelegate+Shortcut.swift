@@ -19,4 +19,28 @@ extension AppDelegate {
 		}
 	}
 
+	// MARK
+	func createNote() -> Bool {
+		guard let vc = unboxMainContrtoller() else {
+			return false
+		}
+		vc.createNote()
+		return true
+	}
+
+	func displayNote(identifier: String) -> Bool {
+		guard let vc = unboxMainContrtoller() else {
+			return false
+		}
+		vc.displayNote(identifier)
+		return true
+	}
+
+	private func unboxMainContrtoller() -> MainSplitViewController? {
+		guard let vc = window?.rootViewController as? MainSplitViewController else {
+			return nil
+		}
+		return vc
+	}
+
 }

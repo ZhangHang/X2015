@@ -33,6 +33,10 @@ final class PasscodeViewController: ThemeAdaptableViewController {
 		}
 	}
 
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return .LightContent
+	}
+
 }
 
 extension PasscodeViewController: SotyboardCreatable {

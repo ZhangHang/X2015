@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0A606B1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */; };
 		7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D36191C4D346B009F18A6 /* Localizable.strings */; };
 		7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36331C4E0AB4009F18A6 /* TouchIDHelper.swift */; };
 		7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */; };
@@ -16,7 +17,6 @@
 		7F102B6B1C6601330013AF9A /* AppDelegate+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */; };
 		7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */; };
 		7F102B6F1C66029D0013AF9A /* AppDelegate+Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */; };
-		7F102B711C6618430013AF9A /* AppDelegate+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift */; };
 		7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */; };
 		7F102B7E1C6667350013AF9A /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */; };
 		7F102B7F1C6667350013AF9A /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F102B7D1C6667350013AF9A /* PasscodeViewController.swift */; };
@@ -25,12 +25,16 @@
 		7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */; };
 		7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */; };
 		7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37C7841C41658E00519B18 /* UIHelper.swift */; };
+		7F3EDB331C6C87660063D403 /* NSUserDefault+TouchID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDB321C6C87660063D403 /* NSUserDefault+TouchID.swift */; };
+		7F3EDB351C6C87810063D403 /* NSUserDefault+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDB341C6C87810063D403 /* NSUserDefault+Theme.swift */; };
+		7F3EDB371C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDB361C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift */; };
 		7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204CD1C34F79B00507125 /* Main.storyboard */; };
 		7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D31C34F79B00507125 /* Assets.xcassets */; };
 		7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */; };
-		7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205111C3639C100507125 /* KeyboardNotification.swift */; };
-		7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */; };
 		7F59ACF31C59392400F20A31 /* UITableViewCell+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59ACF21C59392400F20A31 /* UITableViewCell+Reusable.swift */; };
+		7F6EE2671C73187C00D94323 /* MarkdownInputAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6EE2661C73187C00D94323 /* MarkdownInputAccessoryView.xib */; };
+		7F6EE2691C73189400D94323 /* MarkdownInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6EE2681C73189400D94323 /* MarkdownInputAccessoryView.swift */; };
+		7F6EE2891C7324DF00D94323 /* MarklightTextStorage+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6EE2881C7324DF00D94323 /* MarklightTextStorage+Theme.swift */; };
 		7F73F2EE1C5F4255003347E4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F2ED1C5F4255003347E4 /* ShareViewController.swift */; };
 		7F73F2F11C5F4255003347E4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F73F2EF1C5F4255003347E4 /* MainInterface.storyboard */; };
 		7F73F2F61C5F4255003347E4 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7F73F2EB1C5F4255003347E4 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -39,21 +43,6 @@
 		7F73F3121C5F4C9D003347E4 /* X2015KitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3111C5F4C9D003347E4 /* X2015KitTests.swift */; };
 		7F73F3161C5F4C9D003347E4 /* X2015Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; };
 		7F73F3171C5F4C9D003347E4 /* X2015Kit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7F73F3321C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3211C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift */; };
-		7F73F3331C5F4D0B003347E4 /* CoreDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3221C5F4D0B003347E4 /* CoreDataErrors.swift */; };
-		7F73F3341C5F4D0B003347E4 /* KeyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3231C5F4D0B003347E4 /* KeyCodable.swift */; };
-		7F73F3361C5F4D0B003347E4 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3251C5F4D0B003347E4 /* ManagedObject.swift */; };
-		7F73F3371C5F4D0B003347E4 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3261C5F4D0B003347E4 /* ManagedObjectObserver.swift */; };
-		7F73F3381C5F4D0B003347E4 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3271C5F4D0B003347E4 /* Migration.swift */; };
-		7F73F3391C5F4D0B003347E4 /* ModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3281C5F4D0B003347E4 /* ModelBuilder.swift */; };
-		7F73F33A1C5F4D0B003347E4 /* ModelVersionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3291C5F4D0B003347E4 /* ModelVersionType.swift */; };
-		7F73F33B1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32A1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift */; };
-		7F73F33C1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32B1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift */; };
-		7F73F33D1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32C1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift */; };
-		7F73F33E1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32D1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift */; };
-		7F73F33F1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F32E1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift */; };
-		7F73F3411C5F4D0B003347E4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3301C5F4D0B003347E4 /* Utilities.swift */; };
-		7F73F3421C5F4D0B003347E4 /* ValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3311C5F4D0B003347E4 /* ValueTransformer.swift */; };
 		7F73F34D1C5F4DE7003347E4 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */; };
 		7F73F3501C5F53CC003347E4 /* X2015Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; };
 		7F73F3561C604C5C003347E4 /* Note+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3531C604C5C003347E4 /* Note+Search.swift */; };
@@ -87,11 +76,20 @@
 		7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */; };
 		7F73F3A31C6084AE003347E4 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */; };
 		7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */; };
+		7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */; };
+		7F98B6301C71C1AB00156917 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */; };
+		7F98B6541C72DE1700156917 /* NoteEditViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */; };
+		7F98B6571C72E9D400156917 /* SettingsTableViewController+ThemeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6551C72E9BE00156917 /* SettingsTableViewController+ThemeSection.swift */; };
+		7F98B6591C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6581C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift */; };
+		7F98B65C1C73076000156917 /* Marklight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F98B65A1C73073600156917 /* Marklight.framework */; };
+		7F98B65D1C73076000156917 /* Marklight.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F98B65A1C73073600156917 /* Marklight.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F98B65F1C730A0C00156917 /* NoteEditViewController+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */; };
+		7F98B6611C730B9B00156917 /* NoteEditViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */; };
+		7FC16B401C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */; };
 		7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */; };
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
 		7FFEA1101C60877C006BB860 /* X2015.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA10E1C60877C006BB860 /* X2015.xcdatamodeld */; };
-		7FFEA1181C6089DE006BB860 /* NSUserDefault+X2015.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA1161C6089CC006BB860 /* NSUserDefault+X2015.swift */; };
 		7FFEA1221C60D2D1006BB860 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FFEA1211C60D2D1006BB860 /* NotificationCenter.framework */; };
 		7FFEA1281C60D2D1006BB860 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA1261C60D2D1006BB860 /* MainInterface.storyboard */; };
 		7FFEA12C1C60D2D1006BB860 /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7FFEA11F1C60D2D0006BB860 /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -156,6 +154,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7F98B65D1C73076000156917 /* Marklight.framework in Embed Frameworks */,
 				7F73F3171C5F4C9D003347E4 /* X2015Kit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -164,6 +163,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownShortcutHandler.swift; sourceTree = "<group>"; };
 		7F0D36131C4D2F9D009F18A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7F0D36161C4D3467009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7F0D36181C4D346B009F18A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -179,7 +179,6 @@
 		7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Interface.swift"; sourceTree = "<group>"; };
 		7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CoreData.swift"; sourceTree = "<group>"; };
 		7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Shortcut.swift"; sourceTree = "<group>"; };
-		7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+KeyboardCommand.swift"; sourceTree = "<group>"; };
 		7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+Shortcut.swift"; sourceTree = "<group>"; };
 		7F102B741C6621690013AF9A /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
@@ -190,14 +189,18 @@
 		7F1580FB1C579ABE00EFFF82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7F37C7831C41658E00519B18 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7F37C7841C41658E00519B18 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		7F3EDB321C6C87660063D403 /* NSUserDefault+TouchID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+TouchID.swift"; sourceTree = "<group>"; };
+		7F3EDB341C6C87810063D403 /* NSUserDefault+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+Theme.swift"; sourceTree = "<group>"; };
+		7F3EDB361C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Shortcut.swift"; sourceTree = "<group>"; };
 		7F5204C61C34F79B00507125 /* X2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = X2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5204CE1C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F5204D31C34F79B00507125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F5204D61C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F5204D81C34F79B00507125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F5205111C3639C100507125 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
-		7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationObserver.swift; sourceTree = "<group>"; };
 		7F59ACF21C59392400F20A31 /* UITableViewCell+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableViewCell+Reusable.swift"; path = "Views/UITableViewCell+Reusable.swift"; sourceTree = "<group>"; };
+		7F6EE2661C73187C00D94323 /* MarkdownInputAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MarkdownInputAccessoryView.xib; path = Views/MarkdownInputAccessoryView.xib; sourceTree = "<group>"; };
+		7F6EE2681C73189400D94323 /* MarkdownInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkdownInputAccessoryView.swift; path = Views/MarkdownInputAccessoryView.swift; sourceTree = "<group>"; };
+		7F6EE2881C7324DF00D94323 /* MarklightTextStorage+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MarklightTextStorage+Theme.swift"; sourceTree = "<group>"; };
 		7F73F2EB1C5F4255003347E4 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F73F2ED1C5F4255003347E4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		7F73F2F01C5F4255003347E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -210,23 +213,6 @@
 		7F73F30A1C5F4C9D003347E4 /* X2015KitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = X2015KitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F73F3111C5F4C9D003347E4 /* X2015KitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X2015KitTests.swift; sourceTree = "<group>"; };
 		7F73F3131C5F4C9D003347E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F73F3211C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataExtensions.swift"; sourceTree = "<group>"; };
-		7F73F3221C5F4D0B003347E4 /* CoreDataErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataErrors.swift; sourceTree = "<group>"; };
-		7F73F3231C5F4D0B003347E4 /* KeyCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCodable.swift; sourceTree = "<group>"; };
-		7F73F3241C5F4D0B003347E4 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		7F73F3251C5F4D0B003347E4 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
-		7F73F3261C5F4D0B003347E4 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
-		7F73F3271C5F4D0B003347E4 /* Migration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
-		7F73F3281C5F4D0B003347E4 /* ModelBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBuilder.swift; sourceTree = "<group>"; };
-		7F73F3291C5F4D0B003347E4 /* ModelVersionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelVersionType.swift; sourceTree = "<group>"; };
-		7F73F32A1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFetchRequest+Extensions.swift"; sourceTree = "<group>"; };
-		7F73F32B1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extensions.swift"; sourceTree = "<group>"; };
-		7F73F32C1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
-		7F73F32D1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Observers.swift"; sourceTree = "<group>"; };
-		7F73F32E1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPersistentStoreCoordinator+Extensions.swift"; sourceTree = "<group>"; };
-		7F73F32F1C5F4D0B003347E4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		7F73F3301C5F4D0B003347E4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		7F73F3311C5F4D0B003347E4 /* ValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTransformer.swift; sourceTree = "<group>"; };
 		7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		7F73F3531C604C5C003347E4 /* Note+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Search.swift"; sourceTree = "<group>"; };
 		7F73F3541C604C5C003347E4 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -259,11 +245,19 @@
 		7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSearchTableViewController.swift; sourceTree = "<group>"; };
+		7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainSplitViewController+Delegate.swift"; sourceTree = "<group>"; };
+		7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
+		7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		7F98B6551C72E9BE00156917 /* SettingsTableViewController+ThemeSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsTableViewController+ThemeSection.swift"; sourceTree = "<group>"; };
+		7F98B6581C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsTableViewController+GeneralSection.swift"; sourceTree = "<group>"; };
+		7F98B65A1C73073600156917 /* Marklight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marklight.framework; path = Carthage/Build/iOS/Marklight.framework; sourceTree = "<group>"; };
+		7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Editor.swift"; sourceTree = "<group>"; };
+		7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Interface.swift"; sourceTree = "<group>"; };
+		7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+KeyboardCommand.swift"; sourceTree = "<group>"; };
 		7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyNoteWelcomeView.xib; path = Views/EmptyNoteWelcomeView.xib; sourceTree = "<group>"; };
 		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
 		7FFEA10F1C60877C006BB860 /* X2015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = X2015.xcdatamodel; sourceTree = "<group>"; };
-		7FFEA1161C6089CC006BB860 /* NSUserDefault+X2015.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+X2015.swift"; sourceTree = "<group>"; };
 		7FFEA11F1C60D2D0006BB860 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FFEA1211C60D2D1006BB860 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		7FFEA1271C60D2D1006BB860 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -277,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F98B65C1C73076000156917 /* Marklight.framework in Frameworks */,
 				7F73F3161C5F4C9D003347E4 /* X2015Kit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,7 +319,6 @@
 				7F102B6A1C6601330013AF9A /* AppDelegate+Interface.swift */,
 				7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */,
 				7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */,
-				7F102B701C6618430013AF9A /* AppDelegate+KeyboardCommand.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -334,6 +328,7 @@
 			children = (
 				7F102B7B1C6667350013AF9A /* MainSplitViewController.swift */,
 				7F102B801C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift */,
+				7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */,
 			);
 			name = Main;
 			path = ViewController/Main;
@@ -395,7 +390,6 @@
 				7FFD814A1C4B5B4B004F1987 /* Views */,
 				7F37C7811C41658E00519B18 /* Extensions */,
 				7F5205091C350BBD00507125 /* ViewControllers */,
-				7F5204E31C35041000507125 /* Vendors */,
 				7F5204CD1C34F79B00507125 /* Main.storyboard */,
 				7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */,
 				7F5204D31C34F79B00507125 /* Assets.xcassets */,
@@ -405,14 +399,6 @@
 			);
 			name = "X2015 iOS";
 			path = X2015;
-			sourceTree = "<group>";
-		};
-		7F5204E31C35041000507125 /* Vendors */ = {
-			isa = PBXGroup;
-			children = (
-				7F5205161C3646A700507125 /* KeyboardNotificationHelper */,
-			);
-			name = Vendors;
 			sourceTree = "<group>";
 		};
 		7F5205091C350BBD00507125 /* ViewControllers */ = {
@@ -427,15 +413,6 @@
 				7F73F3901C6084AE003347E4 /* Setting */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		7F5205161C3646A700507125 /* KeyboardNotificationHelper */ = {
-			isa = PBXGroup;
-			children = (
-				7F5205111C3639C100507125 /* KeyboardNotification.swift */,
-				7F5205131C3643D600507125 /* KeyboardNotificationObserver.swift */,
-			);
-			name = KeyboardNotificationHelper;
 			sourceTree = "<group>";
 		};
 		7F73F2EC1C5F4255003347E4 /* ShareExtension */ = {
@@ -454,7 +431,6 @@
 			children = (
 				7F73F3521C604C5C003347E4 /* Model */,
 				7F73F34B1C5F4DE7003347E4 /* Utility */,
-				7F73F31F1C5F4D0B003347E4 /* Vendor */,
 				7F73F3031C5F4C9D003347E4 /* X2015Kit.h */,
 				7F73F3051C5F4C9D003347E4 /* Info.plist */,
 			);
@@ -470,43 +446,12 @@
 			path = X2015KitTests;
 			sourceTree = "<group>";
 		};
-		7F73F31F1C5F4D0B003347E4 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				7F73F3201C5F4D0B003347E4 /* CoreDataSharedCode */,
-			);
-			path = Vendor;
-			sourceTree = SOURCE_ROOT;
-		};
-		7F73F3201C5F4D0B003347E4 /* CoreDataSharedCode */ = {
-			isa = PBXGroup;
-			children = (
-				7F73F3211C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift */,
-				7F73F3221C5F4D0B003347E4 /* CoreDataErrors.swift */,
-				7F73F3231C5F4D0B003347E4 /* KeyCodable.swift */,
-				7F73F3241C5F4D0B003347E4 /* LICENSE.md */,
-				7F73F3251C5F4D0B003347E4 /* ManagedObject.swift */,
-				7F73F3261C5F4D0B003347E4 /* ManagedObjectObserver.swift */,
-				7F73F3271C5F4D0B003347E4 /* Migration.swift */,
-				7F73F3281C5F4D0B003347E4 /* ModelBuilder.swift */,
-				7F73F3291C5F4D0B003347E4 /* ModelVersionType.swift */,
-				7F73F32A1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift */,
-				7F73F32B1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift */,
-				7F73F32C1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift */,
-				7F73F32D1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift */,
-				7F73F32E1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift */,
-				7F73F32F1C5F4D0B003347E4 /* README.md */,
-				7F73F3301C5F4D0B003347E4 /* Utilities.swift */,
-				7F73F3311C5F4D0B003347E4 /* ValueTransformer.swift */,
-			);
-			path = CoreDataSharedCode;
-			sourceTree = "<group>";
-		};
 		7F73F34B1C5F4DE7003347E4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				7F73F3591C604C7F003347E4 /* ManagedObjectContextBridge.swift */,
 				7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */,
+				7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -562,8 +507,15 @@
 		7F73F3831C6084AE003347E4 /* NoteEdit */ = {
 			isa = PBXGroup;
 			children = (
-				7F73F3841C6084AE003347E4 /* NoteEditViewController+Action.swift */,
 				7F73F3851C6084AE003347E4 /* NoteEditViewController.swift */,
+				7F73F3841C6084AE003347E4 /* NoteEditViewController+Action.swift */,
+				7F3EDB361C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift */,
+				7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */,
+				7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */,
+				7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */,
+				7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */,
+				7F6EE2881C7324DF00D94323 /* MarklightTextStorage+Theme.swift */,
+				7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */,
 			);
 			name = NoteEdit;
 			path = ViewController/NoteEdit;
@@ -573,12 +525,12 @@
 			isa = PBXGroup;
 			children = (
 				7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */,
-				7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift */,
-				7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */,
-				7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */,
 				7F73F38B1C6084AE003347E4 /* NoteTimelineTableViewController.swift */,
-				7F73F38C1C6084AE003347E4 /* NoteUpdater.swift */,
+				7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */,
+				7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */,
 				7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */,
+				7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift */,
+				7F73F38C1C6084AE003347E4 /* NoteUpdater.swift */,
 			);
 			name = NoteTimeline;
 			path = ViewController/NoteTimeline;
@@ -597,8 +549,10 @@
 		7F73F3901C6084AE003347E4 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				7F73F3911C6084AE003347E4 /* SettingCheckableTableViewCell.swift */,
 				7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */,
+				7F98B6551C72E9BE00156917 /* SettingsTableViewController+ThemeSection.swift */,
+				7F98B6581C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift */,
+				7F73F3911C6084AE003347E4 /* SettingCheckableTableViewCell.swift */,
 				7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */,
 			);
 			name = Setting;
@@ -614,6 +568,8 @@
 				7F14F3B61C50EF6200468F29 /* NoteTableViewCell.xib */,
 				7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */,
 				7F59ACF21C59392400F20A31 /* UITableViewCell+Reusable.swift */,
+				7F6EE2661C73187C00D94323 /* MarkdownInputAccessoryView.xib */,
+				7F6EE2681C73189400D94323 /* MarkdownInputAccessoryView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -629,7 +585,8 @@
 		7FFEA1151C6089A6006BB860 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				7FFEA1161C6089CC006BB860 /* NSUserDefault+X2015.swift */,
+				7F3EDB321C6C87660063D403 /* NSUserDefault+TouchID.swift */,
+				7F3EDB341C6C87810063D403 /* NSUserDefault+Theme.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -637,6 +594,7 @@
 		7FFEA1201C60D2D1006BB860 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F98B65A1C73073600156917 /* Marklight.framework */,
 				7FFEA1211C60D2D1006BB860 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -837,6 +795,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F14F3B71C50EF6200468F29 /* NoteTableViewCell.xib in Resources */,
+				7F6EE2671C73187C00D94323 /* MarkdownInputAccessoryView.xib in Resources */,
 				7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */,
 				7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */,
 				7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */,
@@ -899,13 +858,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F98B6541C72DE1700156917 /* NoteEditViewController+Keyboard.swift in Sources */,
+				7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */,
 				7F73F37B1C6082C3003347E4 /* UIWindow+Theme.swift in Sources */,
 				7F73F3761C6082C3003347E4 /* UITableView+Theme.swift in Sources */,
+				7F6EE2691C73189400D94323 /* MarkdownInputAccessoryView.swift in Sources */,
 				7F73F3801C608336003347E4 /* ThemeProtocols.swift in Sources */,
 				7F73F39F1C6084AE003347E4 /* SotyboardCreatable.swift in Sources */,
 				7F102B671C65FD7A0013AF9A /* AppDelegate.swift in Sources */,
 				7F59ACF31C59392400F20A31 /* UITableViewCell+Reusable.swift in Sources */,
 				7F73F3991C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift in Sources */,
+				7F98B6591C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift in Sources */,
+				7F98B6611C730B9B00156917 /* NoteEditViewController+Interface.swift in Sources */,
 				7F102B7E1C6667350013AF9A /* MainSplitViewController.swift in Sources */,
 				7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */,
 				7F73F3971C6084AE003347E4 /* NoteEditViewController.swift in Sources */,
@@ -913,23 +877,25 @@
 				7F73F3A31C6084AE003347E4 /* SettingSwitchTableViewCell.swift in Sources */,
 				7F73F3771C6082C3003347E4 /* UITextField+Theme.swift in Sources */,
 				7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */,
+				7F98B6571C72E9D400156917 /* SettingsTableViewController+ThemeSection.swift in Sources */,
+				7F3EDB371C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift in Sources */,
 				7F73F3721C6082C3003347E4 /* UIBarButtonItem+Theme.swift in Sources */,
 				7F73F39E1C6084AE003347E4 /* ManagedObjectContextSettable.swift in Sources */,
 				7F37C7871C41658E00519B18 /* UIHelper.swift in Sources */,
 				7F102B691C65FDBF0013AF9A /* AppDelegate+Passcode.swift in Sources */,
 				7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */,
 				7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */,
+				7FC16B401C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift in Sources */,
 				7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */,
 				7F73F37E1C6082C3003347E4 /* ThemeManager.swift in Sources */,
 				7F73F3741C6082C3003347E4 /* UINavigationBar+Theme.swift in Sources */,
-				7F102B711C6618430013AF9A /* AppDelegate+KeyboardCommand.swift in Sources */,
 				7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */,
 				7F102B7F1C6667350013AF9A /* PasscodeViewController.swift in Sources */,
 				7F73F39D1C6084AE003347E4 /* NoteUpdater.swift in Sources */,
 				7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */,
 				7F102B6B1C6601330013AF9A /* AppDelegate+Interface.swift in Sources */,
 				7F73F3951C6084AE003347E4 /* FetchedResultTableViewController.swift in Sources */,
-				7F5205141C3643D600507125 /* KeyboardNotificationObserver.swift in Sources */,
+				7F6EE2891C7324DF00D94323 /* MarklightTextStorage+Theme.swift in Sources */,
 				7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift in Sources */,
 				7F73F37D1C6082C3003347E4 /* ThemeAdaptableViewController.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
@@ -938,16 +904,18 @@
 				7F102B811C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift in Sources */,
 				7F73F3751C6082C3003347E4 /* UISearchBar+Theme.swift in Sources */,
 				7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */,
+				7F98B65F1C730A0C00156917 /* NoteEditViewController+Editor.swift in Sources */,
+				7F0A606B1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift in Sources */,
+				7F3EDB331C6C87660063D403 /* NSUserDefault+TouchID.swift in Sources */,
 				7F73F39C1C6084AE003347E4 /* NoteTimelineTableViewController.swift in Sources */,
 				7F73F3961C6084AE003347E4 /* NoteEditViewController+Action.swift in Sources */,
 				7F73F3A01C6084AE003347E4 /* SettingCheckableTableViewCell.swift in Sources */,
 				7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */,
 				7F73F3781C6082C3003347E4 /* UITextView+Theme.swift in Sources */,
 				7F73F3731C6082C3003347E4 /* UILabel+Theme.swift in Sources */,
-				7FFEA1181C6089DE006BB860 /* NSUserDefault+X2015.swift in Sources */,
+				7F3EDB351C6C87810063D403 /* NSUserDefault+Theme.swift in Sources */,
 				7F73F3791C6082C3003347E4 /* UIView+Theme.swift in Sources */,
 				7F73F39A1C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift in Sources */,
-				7F5205121C3639C100507125 /* KeyboardNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -963,24 +931,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F73F3341C5F4D0B003347E4 /* KeyCodable.swift in Sources */,
-				7F73F33E1C5F4D0B003347E4 /* NSManagedObjectContext+Observers.swift in Sources */,
-				7F73F3371C5F4D0B003347E4 /* ManagedObjectObserver.swift in Sources */,
-				7F73F3361C5F4D0B003347E4 /* ManagedObject.swift in Sources */,
-				7F73F3421C5F4D0B003347E4 /* ValueTransformer.swift in Sources */,
-				7F73F3321C5F4D0B003347E4 /* Collection+CoreDataExtensions.swift in Sources */,
-				7F73F3411C5F4D0B003347E4 /* Utilities.swift in Sources */,
-				7F73F33A1C5F4D0B003347E4 /* ModelVersionType.swift in Sources */,
 				7F73F34D1C5F4DE7003347E4 /* Foundation+Extensions.swift in Sources */,
 				7F73F3571C604C5C003347E4 /* Note.swift in Sources */,
-				7F73F3391C5F4D0B003347E4 /* ModelBuilder.swift in Sources */,
-				7F73F3381C5F4D0B003347E4 /* Migration.swift in Sources */,
-				7F73F3331C5F4D0B003347E4 /* CoreDataErrors.swift in Sources */,
-				7F73F33F1C5F4D0B003347E4 /* NSPersistentStoreCoordinator+Extensions.swift in Sources */,
+				7F98B6301C71C1AB00156917 /* CoreDataExtensions.swift in Sources */,
 				7F73F35A1C604C7F003347E4 /* ManagedObjectContextBridge.swift in Sources */,
-				7F73F33C1C5F4D0B003347E4 /* NSManagedObject+Extensions.swift in Sources */,
-				7F73F33B1C5F4D0B003347E4 /* NSFetchRequest+Extensions.swift in Sources */,
-				7F73F33D1C5F4D0B003347E4 /* NSManagedObjectContext+Extensions.swift in Sources */,
 				7FFEA1101C60877C006BB860 /* X2015.xcdatamodeld in Sources */,
 				7F73F3561C604C5C003347E4 /* Note+Search.swift in Sources */,
 			);
@@ -1182,6 +1136,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = X2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015;
@@ -1198,6 +1156,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = X2015/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015;

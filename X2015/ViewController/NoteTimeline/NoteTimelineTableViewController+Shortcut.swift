@@ -12,19 +12,17 @@ import X2015Kit
 extension NoteTimelineTableViewController {
 
 	func createNote() {
-		backToTimeline({ [unowned self] () -> Void in
-			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierCreateWithNoAnimation,
+		backToTimeline({
+			performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.CreateWithNoAnimation,
 				sender: self)
-			}) { [unowned self] () -> Void in
-				guard let vc = self.storyboard!
-					.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier)
-					as? NoteEditViewController else {
+			}) {
+				guard let vc = NoteEditViewController.instanceFromStoryboard() else {
 						fatalError()
 				}
-				self.selectedNote = self.managedObjectContext.insertObject() as Note
-				vc.noteActionMode = .Create(self.selectedNote!.objectID, self.managedObjectContext)
+				selectedNote = managedObjectContext.insertObject() as Note
+				vc.noteActionMode = .Create(selectedNote!.objectID, managedObjectContext)
 
-				self.navigationController?.pushViewController(vc, animated: false)
+				navigationController?.pushViewController(vc, animated: false)
 		}
 	}
 
@@ -44,26 +42,25 @@ extension NoteTimelineTableViewController {
 		}
 
 		selectedNote = note
-		guard let indexPath = self.fetchedResultsController.indexPathForObject(note) else {
+		guard let indexPath = fetchedResultsController.indexPathForObject(note) else {
 			fatalError()
 		}
 
-		backToTimeline({ [unowned self] () -> Void in
-			self.performSegueWithIdentifier(NoteEditVCStoryboard.SegueIdentifierEditWithNoAnimation,
+		backToTimeline({
+			performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.EditWithNoAnimation,
 				sender: self)
-			self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
-			}) { [unowned self] () -> Void in
+			tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
+			}) {
 				guard
-					let vc = self.storyboard!
-					.instantiateViewControllerWithIdentifier(NoteEditVCStoryboard.identifier) as? NoteEditViewController,
+					let vc = NoteEditViewController.instanceFromStoryboard(),
 					let selectedNote = self.selectedNote else {
 						fatalError()
 				}
 
-				vc.noteActionMode = .Edit(selectedNote.objectID, self.managedObjectContext)
-				self.navigationController?.pushViewController(vc, animated: false)
+				vc.noteActionMode = .Edit(selectedNote.objectID, managedObjectContext)
+				navigationController?.pushViewController(vc, animated: false)
 
-				self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
+				tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
 		}
 	}
 

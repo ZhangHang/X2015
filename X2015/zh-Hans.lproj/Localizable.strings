@@ -25,3 +25,9 @@
 "New Note"="新建笔记";
 "Select Previous Note"="选择上一条笔记";
 "Select Next Note"="选择下一条笔记";
+"Edit Note"="编辑笔记";
+"Title"="标题";
+"Link"="链接";
+"Make List"="创建列表";
+"Make Text Bold"="加粗";
+"Make Text Italic"="加斜";

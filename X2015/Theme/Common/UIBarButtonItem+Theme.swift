@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIBarButtonItem: AppearanceAdaptable {
+
 	static func configureThemeAppearance(theme: Theme) {
 		appearance().tintColor = UIColor.whiteColor()
 		appearanceWhenContainedInInstancesOfClasses([
@@ -29,10 +30,18 @@ extension UIBarButtonItem: AppearanceAdaptable {
 			UIActivityViewController.self
 			]).setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
 	}
+
 }
 
 extension UIBarButtonItem: ThemeAdaptable {
+
 	func configureTheme(theme: Theme) {
-		tintColor = UIColor.whiteColor()
+		switch theme {
+		case .Default:
+			tintColor = UIColor.x2015_BlueColor()
+		case .Night:
+			tintColor = UIColor.whiteColor()
+		}
 	}
+
 }
