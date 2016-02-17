@@ -90,7 +90,7 @@ extension MarkdownShortcutHandler {
 	func moveCursorRight() {
 		beginEditing()
 		let stringLength = text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-		selectedRange = NSMakeRange(min(stringLength + 1, selectedRange.location + 1), 0)
+		selectedRange = NSMakeRange(min(stringLength, selectedRange.location + 1 + selectedRange.length), 0)
 		delegate?.markdownShortcutHandlerDidModifyText(self)
 		endEditing()
 	}
