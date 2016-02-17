@@ -49,15 +49,10 @@ extension NoteEditViewController {
 
 	// Reload text while keep selectedRange
 	func refreshTextView_WORKAROUND() {
-		let selectedRange = textView.selectedRange
-		let attributedString = NSAttributedString(string: markdownTextStorage.string)
-		textView.attributedText = attributedString
-		markdownTextStorage.setAttributedString(attributedString)
-		textView.selectedRange = selectedRange
+		markdownTextStorage.insertAttributedString(NSAttributedString(string: ""), atIndex: 0)
 	}
 
 	// MARK: AccessoryView Methods
-
 	@objc
 	private func handleLeftArrowButtonPressed() {
 		markdownShortcutHandler?.moveCursorLeft()
