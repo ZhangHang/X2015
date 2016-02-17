@@ -13,7 +13,6 @@ extension AppDelegate {
 	func configureInterface() {
 		ThemeManager.sharedInstance.register([
 			UITableView.self,
-			UITextView.self,
 			UIWindow.self,
 			UISearchBar.self,
 			UITextField.self,
