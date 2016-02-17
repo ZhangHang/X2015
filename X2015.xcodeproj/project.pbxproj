@@ -431,7 +431,6 @@
 			children = (
 				7F73F3521C604C5C003347E4 /* Model */,
 				7F73F34B1C5F4DE7003347E4 /* Utility */,
-				7F73F31F1C5F4D0B003347E4 /* Vendor */,
 				7F73F3031C5F4C9D003347E4 /* X2015Kit.h */,
 				7F73F3051C5F4C9D003347E4 /* Info.plist */,
 			);
@@ -446,13 +445,6 @@
 			);
 			path = X2015KitTests;
 			sourceTree = "<group>";
-		};
-		7F73F31F1C5F4D0B003347E4 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Vendor;
-			sourceTree = SOURCE_ROOT;
 		};
 		7F73F34B1C5F4DE7003347E4 /* Utility */ = {
 			isa = PBXGroup;
