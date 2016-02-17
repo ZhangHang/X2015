@@ -11,31 +11,38 @@ import UIKit
 extension NoteEditViewController {
 
 	func configureEditor() {
-		textView.textContainerInset = UIEdgeInsetsMake(4, 4, 4, 4)
-		markdownTextStorage.addLayoutManager(textView.layoutManager)
 		guard let inputAccessoryView = MarkdownInputAccessoryView.instantiateFromNib() else {
 			fatalError()
 		}
-		textView.inputAccessoryView = inputAccessoryView
-		inputAccessoryView.configureTheme(currentTheme)
-		inputAccessoryView.rightArrowButton.target = self
-		inputAccessoryView.leftArrowButton.target = self
-		inputAccessoryView.indentButton.target = self
-		inputAccessoryView.headerButton.target = self
-		inputAccessoryView.listButton.target = self
-		inputAccessoryView.emphButton.target = self
-		inputAccessoryView.linkButton.target = self
-		inputAccessoryView.qouteButton.target = self
+		({
+			$0.configureTheme(currentTheme)
+			$0.rightArrowButton.target = self
+			$0.leftArrowButton.target = self
+			$0.indentButton.target = self
+			$0.headerButton.target = self
+			$0.listButton.target = self
+			$0.emphButton.target = self
+			$0.linkButton.target = self
+			$0.qouteButton.target = self
 
-		inputAccessoryView.leftArrowButton.action = "handleLeftArrowButtonPressed"
-		inputAccessoryView.rightArrowButton.action = "handleRightArrowButtonPressed"
-		inputAccessoryView.indentButton.action = "handleIndentButtonPressed"
-		inputAccessoryView.headerButton.action = "handleHeaderButtonPressed"
-		inputAccessoryView.listButton.action = "handleListButtonPressed"
-		inputAccessoryView.emphButton.action = "handleEmphButtonPressed"
-		inputAccessoryView.linkButton.action = "handleLinkButtonPressed"
-		inputAccessoryView.qouteButton.action = "handleQuoteButtonPressed"
+			$0.leftArrowButton.action = "handleLeftArrowButtonPressed"
+			$0.rightArrowButton.action = "handleRightArrowButtonPressed"
+			$0.indentButton.action = "handleIndentButtonPressed"
+			$0.headerButton.action = "handleHeaderButtonPressed"
+			$0.listButton.action = "handleListButtonPressed"
+			$0.emphButton.action = "handleEmphButtonPressed"
+			$0.linkButton.action = "handleLinkButtonPressed"
+			$0.qouteButton.action = "handleQuoteButtonPressed"
+		})(inputAccessoryView)
 
+		({
+			// remove original layout manager from default textStorage
+			$0.textStorage.removeLayoutManager($0.layoutManager)
+			$0.textContainerInset = UIEdgeInsetsMake(4, 4, 4, 4)
+			$0.inputAccessoryView = inputAccessoryView
+		})(textView)
+
+		markdownTextStorage.addLayoutManager(textView.layoutManager)
 		markdownShortcutHandler = MarkdownShortcutHandler(textView: textView, textStorage: markdownTextStorage)
 		markdownShortcutHandler?.delegate = self
 	}
@@ -215,5 +222,5 @@ extension NoteEditViewController: UITextViewDelegate {
 			return true
 	}
 	//swiftlint:enable variable_name
-
+	
 }
