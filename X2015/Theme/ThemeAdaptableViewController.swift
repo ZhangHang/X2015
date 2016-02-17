@@ -10,6 +10,8 @@ import UIKit
 
 class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 
+	private var needsUpdateTheme: Bool = true
+
 	var currentTheme: Theme {
 		return ThemeManager.sharedInstance.currentTheme
 	}
@@ -17,7 +19,10 @@ class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 	var themeTransitionDuration: NSTimeInterval = 0.25
 
 	override func viewWillAppear(animated: Bool) {
-		updateThemeInterface(currentTheme, animated: false)
+		if needsUpdateTheme {
+			updateThemeInterface(currentTheme, animated: false)
+			needsUpdateTheme = false
+		}
 		super.viewWillAppear(animated)
 	}
 
@@ -38,7 +43,11 @@ class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 
 	@objc
 	private func handleThemeChangeNotification() {
-		updateThemeInterface(currentTheme)
+		if isViewLoaded() {
+			updateThemeInterface(currentTheme, animated: true)
+		}
+
+		needsUpdateTheme = true
 	}
 
 	func updateThemeInterface(theme: Theme, animated: Bool = true) {

@@ -10,6 +10,8 @@ import UIKit
 
 class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 
+	private var needsUpdateTheme: Bool = true
+
 	var currentTheme: Theme {
 		return ThemeManager.sharedInstance.currentTheme
 	}
@@ -17,8 +19,11 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 	var themeTransitionDuration: NSTimeInterval = 0.25
 
 	override func viewWillAppear(animated: Bool) {
+		if needsUpdateTheme {
+			updateThemeInterface(currentTheme, animated: false)
+			needsUpdateTheme = false
+		}
 		super.viewWillAppear(animated)
-		updateThemeInterface(currentTheme, animated: false)
 	}
 
 	override func viewDidLoad() {
@@ -44,7 +49,11 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 
 	@objc
 	private func handleThemeChangeNotification() {
-		updateThemeInterface(currentTheme, animated: true)
+		if isViewLoaded() {
+			updateThemeInterface(currentTheme, animated: true)
+		}
+
+		needsUpdateTheme = true
 	}
 
 	func updateThemeInterface(theme: Theme, animated: Bool = true) {
