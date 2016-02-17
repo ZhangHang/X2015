@@ -60,7 +60,7 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		}
 	}
 	let markdownTextStorage = MarklightTextStorage()
-
+	var markdownShortcutHandler: MarkdownShortcutHandler?
 	weak var delegate: NoteEditViewControllerDelegate?
 
 	var actionBarButton: UIBarButtonItem {
@@ -112,7 +112,7 @@ extension NoteEditViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupTextView()
+		configureEditor()
 		registerForKeyboardEvent()
 		configureInterface(noteActionMode)
 	}

@@ -10,7 +10,7 @@ import UIKit
 
 extension NoteEditViewController {
 
-	func setupTextView() {
+	func configureEditor() {
 		textView.textContainerInset = UIEdgeInsetsMake(4, 4, 4, 4)
 		markdownTextStorage.addLayoutManager(textView.layoutManager)
 		guard let inputAccessoryView = MarkdownInputAccessoryView.instantiateFromNib() else {
@@ -35,13 +35,16 @@ extension NoteEditViewController {
 		inputAccessoryView.emphButton.action = "handleEmphButtonPressed"
 		inputAccessoryView.linkButton.action = "handleLinkButtonPressed"
 		inputAccessoryView.qouteButton.action = "handleQuoteButtonPressed"
+
+		markdownShortcutHandler = MarkdownShortcutHandler(textView: textView, textStorage: markdownTextStorage)
+		markdownShortcutHandler?.delegate = self
 	}
 
 	// MARK: Workaround, See [Readme of Marklight](https://github.com/macteo/marklight)
 	func loadText_WORKAROUND(text: String?) {
 		let attributedString = NSAttributedString(string: text ?? "")
 		textView.attributedText = attributedString
-		markdownTextStorage.appendAttributedString(attributedString)
+		markdownTextStorage.setAttributedString(attributedString)
 	}
 
 	// Reload text while keep selectedRange
@@ -57,91 +60,49 @@ extension NoteEditViewController {
 
 	@objc
 	private func handleLeftArrowButtonPressed() {
-		let selectedRange = textView.selectedRange
-		textView.selectedRange = NSMakeRange(max(0, selectedRange.location - 1), 0)
+		markdownShortcutHandler?.moveCursorLeft()
 	}
 
 	@objc
 	func handleRightArrowButtonPressed() {
-		let selectedRange = textView.selectedRange
-		let stringLength = textView.textStorage.string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-		textView.selectedRange = NSMakeRange(min(stringLength + 1, selectedRange.location + 1), 0)
+		markdownShortcutHandler?.moveCursorRight()
 	}
 
 	@objc
 	private func handleHeaderButtonPressed() {
-		let selectedRange = textView.selectedRange
-		let string = markdownTextStorage.string
-
-		let paragraphRange = (string as NSString).paragraphRangeForRange(selectedRange)
-		let startCharacterOfParagraph = string[string.startIndex.advancedBy(paragraphRange.location)]
-		if startCharacterOfParagraph == "#" {
-			let stringToInsert = NSAttributedString(string: "#")
-			markdownTextStorage.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-			textView.selectedRange = NSMakeRange(selectedRange.location + 1, 0)
-		} else {
-			let stringToInsert = NSAttributedString(string: "# ")
-			markdownTextStorage.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-			textView.selectedRange = NSMakeRange(selectedRange.location + 2, 0)
-		}
+		markdownShortcutHandler?.addHeaderSymbolIfNeeded()
 	}
 
 	@objc
 	private func handleIndentButtonPressed() {
-		let selectedRange = textView.selectedRange
-		let stringToInsert = NSAttributedString(string: "\t")
-		markdownTextStorage.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-		textView.selectedRange = NSMakeRange(selectedRange.location + 1, 0)
+		markdownShortcutHandler?.addIndentSymbol()
 	}
 
 	@objc
 	private func handleQuoteButtonPressed() {
-		let selectedRange = textView.selectedRange
-		let stringToInsert = NSAttributedString(string: "> ")
-		let paragraphRange = (markdownTextStorage.string as NSString).paragraphRangeForRange(selectedRange)
-		markdownTextStorage.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-		textView.selectedRange = NSMakeRange(
-			selectedRange.location + stringToInsert.string.characters.count,
-			0)
+		markdownShortcutHandler?.addQuoteSymbol()
 	}
 
 	@objc
 	private func handleListButtonPressed() {
-		let selectedRange = textView.selectedRange
-		let string = markdownTextStorage.string
-		let paragraphRange = (string as NSString).paragraphRangeForRange(selectedRange)
-		let stringToInsert = NSAttributedString(string: "- ")
-		markdownTextStorage.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-		textView.selectedRange = NSMakeRange(selectedRange.location + 2, 0)
+		markdownShortcutHandler?.makeTextList()
 	}
 
 	@objc
 	private func handleEmphButtonPressed() {
-		let selectedRange = textView.selectedRange
-		let stringToInsert = NSAttributedString(string: "*")
-		markdownTextStorage.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-		textView.selectedRange = NSMakeRange(selectedRange.location + 1, 0)
+		markdownShortcutHandler?.addEmphSymbol()
 	}
 
 	@objc
 	private func handleLinkButtonPressed() {
-		let selectedRange = textView.selectedRange
-		let titleString = NSLocalizedString("Title", comment: "")
-		let linkString = NSLocalizedString("Link", comment: "")
-		let stringToInsert = NSAttributedString(string: "[\(titleString)](\(linkString))")
-		markdownTextStorage.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-		textView.selectedRange = NSMakeRange(
-			selectedRange.location + 1,
-			titleString.characters.count)
-
+		markdownShortcutHandler?.addLinkSymbol()
 	}
 
 	// MARK
 	// return true if handled
 	func processListSymbolIfNeeded(editedRange: NSRange, replacementText text: String) -> Bool {
 		if text == "-" && editedRange.length == 0 {
-			let string = markdownTextStorage.string
-			let paragraphRange = (string as NSString).paragraphRangeForRange(editedRange)
+			let (_, paragraphRange) = noteParagraph(editedRange)
 			if paragraphRange.location != editedRange.location { return false }
 			// insert a space
 			markdownTextStorage.replaceCharactersInRange(NSMakeRange(editedRange.location, 0), withString: "- ")
@@ -150,15 +111,12 @@ extension NoteEditViewController {
 		}
 
 		if text == "\n" {
-			let string = markdownTextStorage.string
-			let paragraphRange = (string as NSString).paragraphRangeForRange(editedRange)
+			guard let (_, paragraphRange) = noteParagraphWithPrefix("- ", range: editedRange) else {
+				// not a list
+				return false
+			}
 
-			if paragraphRange.length == 0 { return false } // empty line
-
-			let paragraphString = (string as NSString).substringWithRange(paragraphRange)
 			let listPrefix = "- "
-
-			if !paragraphString.hasPrefix(listPrefix) { return false } // not a list
 
 			// skip if last paragraph has no content
 			// remove list symbol from last paragraph
@@ -179,6 +137,38 @@ extension NoteEditViewController {
 
 		return false
 	}
+}
+
+extension NoteEditViewController {
+
+	func noteParagraph(range: NSRange) -> (String?, NSRange) {
+		let string = markdownTextStorage.string
+		let paragraphRange = (string as NSString).paragraphRangeForRange(range)
+
+		if paragraphRange.length == 0 { return (nil, paragraphRange) }
+
+		let paragraphString = (string as NSString).substringWithRange(paragraphRange)
+		return (paragraphString, paragraphRange)
+	}
+
+	func noteParagraphWithPrefix(prefix: String, range: NSRange) -> (String, NSRange)? {
+		let (paragraphString, paragraphRange) = noteParagraph(range)
+
+		if let string = paragraphString where string.hasPrefix(prefix) {
+			return (string, paragraphRange)
+		}
+
+		return nil
+	}
+
+}
+
+extension NoteEditViewController: MarkdownShortcutHandlerDelegate {
+
+	func markdownShortcutHandlerDidModifyText(handler: MarkdownShortcutHandler) {
+		noteUpdater?.updateNote(markdownTextStorage.string)
+	}
+
 }
 
 extension NoteEditViewController: UITextViewDelegate {

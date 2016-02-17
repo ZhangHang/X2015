@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0A606B1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */; };
 		7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D36191C4D346B009F18A6 /* Localizable.strings */; };
 		7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36331C4E0AB4009F18A6 /* TouchIDHelper.swift */; };
 		7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */; };
@@ -84,6 +85,7 @@
 		7F98B65D1C73076000156917 /* Marklight.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F98B65A1C73073600156917 /* Marklight.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F98B65F1C730A0C00156917 /* NoteEditViewController+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */; };
 		7F98B6611C730B9B00156917 /* NoteEditViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */; };
+		7FC16B401C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */; };
 		7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */; };
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
@@ -161,6 +163,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownShortcutHandler.swift; sourceTree = "<group>"; };
 		7F0D36131C4D2F9D009F18A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7F0D36161C4D3467009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7F0D36181C4D346B009F18A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -250,6 +253,7 @@
 		7F98B65A1C73073600156917 /* Marklight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marklight.framework; path = Carthage/Build/iOS/Marklight.framework; sourceTree = "<group>"; };
 		7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Editor.swift"; sourceTree = "<group>"; };
 		7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Interface.swift"; sourceTree = "<group>"; };
+		7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+KeyboardCommand.swift"; sourceTree = "<group>"; };
 		7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyNoteWelcomeView.xib; path = Views/EmptyNoteWelcomeView.xib; sourceTree = "<group>"; };
 		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
@@ -517,7 +521,9 @@
 				7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */,
 				7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */,
 				7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */,
+				7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */,
 				7F6EE2881C7324DF00D94323 /* MarklightTextStorage+Theme.swift */,
+				7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */,
 			);
 			name = NoteEdit;
 			path = ViewController/NoteEdit;
@@ -887,6 +893,7 @@
 				7F102B691C65FDBF0013AF9A /* AppDelegate+Passcode.swift in Sources */,
 				7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */,
 				7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */,
+				7FC16B401C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift in Sources */,
 				7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */,
 				7F73F37E1C6082C3003347E4 /* ThemeManager.swift in Sources */,
 				7F73F3741C6082C3003347E4 /* UINavigationBar+Theme.swift in Sources */,
@@ -906,6 +913,7 @@
 				7F73F3751C6082C3003347E4 /* UISearchBar+Theme.swift in Sources */,
 				7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */,
 				7F98B65F1C730A0C00156917 /* NoteEditViewController+Editor.swift in Sources */,
+				7F0A606B1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift in Sources */,
 				7F3EDB331C6C87660063D403 /* NSUserDefault+TouchID.swift in Sources */,
 				7F73F39C1C6084AE003347E4 /* NoteTimelineTableViewController.swift in Sources */,
 				7F73F3961C6084AE003347E4 /* NoteEditViewController+Action.swift in Sources */,
