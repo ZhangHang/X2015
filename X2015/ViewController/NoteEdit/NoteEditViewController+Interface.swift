@@ -14,6 +14,7 @@ extension NoteEditViewController {
 		return .Slide
 	}
 
+	// Hide status bar if user is editing
 	override func prefersStatusBarHidden() -> Bool {
 		if !isViewLoaded() {
 			return false
@@ -28,8 +29,8 @@ extension NoteEditViewController {
 
 extension NoteEditViewController {
 
-	func configureInterface(mode: Mode) {
-		switch noteActionMode {
+	func configureInterface(mode: EditingMode) {
+		switch editingMode {
 		case .Empty:
 			textView.hidden = true
 			emptyWelcomeView = setupEmptyWelcomeViewAndReturn()

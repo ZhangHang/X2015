@@ -10,6 +10,11 @@ import UIKit
 
 extension NoteEditViewController {
 
+	/**
+	Share a note to third-party app
+
+	- parameter sender: a trigger button
+	*/
 	@IBAction func handleActionButtonPressed(sender: UIBarButtonItem) {
 		let activityViewController = UIActivityViewController(
 			activityItems: [noteUpdater!.noteContent!],

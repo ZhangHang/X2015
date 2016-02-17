@@ -11,6 +11,13 @@ import X2015Kit
 
 extension NoteTimelineTableViewController {
 
+	/**
+	Pop back to timeline controller
+
+	- parameter completion: called if success
+	- parameter workaround: called if success
+							and needs yout to manually push view controller
+	*/
 	func backToTimeline(
 		@noescape completion: () -> Void,
 		@noescape workaround: () -> Void ) {
@@ -51,7 +58,7 @@ extension NoteTimelineTableViewController {
 			}
 
 			selectedNote = managedObjectContext.insertObject() as Note
-			vc.noteActionMode = .Create(selectedNote!.objectID, managedObjectContext)
+			vc.editingMode = .Create(selectedNote!.objectID, managedObjectContext)
 		case
 			NoteEditViewController.SegueIdentifier.Edit,
 			NoteEditViewController.SegueIdentifier.EditWithNoAnimation:
@@ -62,7 +69,7 @@ extension NoteTimelineTableViewController {
 					fatalError("Wrong edit-viewcontroller")
 			}
 
-			vc.noteActionMode = .Edit(selectedNote.objectID, managedObjectContext)
+			vc.editingMode = .Edit(selectedNote.objectID, managedObjectContext)
 		case
 			NoteEditViewController.SegueIdentifier.Empty:
 			break

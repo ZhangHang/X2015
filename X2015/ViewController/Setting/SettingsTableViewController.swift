@@ -160,8 +160,6 @@ final class SettingsTableViewController: ThemeAdaptableTableViewController {
 		}
 	}
 
-	override func updateCellThemeInterface<CellType: UITableViewCell>(cell: CellType, theme: Theme) {}
-
 }
 
 extension SettingsTableViewController {

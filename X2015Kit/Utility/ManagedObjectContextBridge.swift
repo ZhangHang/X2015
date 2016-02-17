@@ -24,6 +24,12 @@ public class ManagedObjectContextBridge {
 
 	public var managedObjectContext: NSManagedObjectContext!
 
+	/**
+	Policy
+
+	- Send:    Send out ManagedObjectContextDidChange notification to other process
+	- Receive: Receive ManagedObjectContextDidChange from other process
+	*/
 	public enum Policy {
 		case Send
 		case Receive
@@ -41,6 +47,7 @@ public class ManagedObjectContextBridge {
 
 extension ManagedObjectContextBridge {
 
+	// Create a single managedObjectContext
 	func createMainContext(
 		policies: [Policy]) -> NSManagedObjectContext {
 			let storeURL: NSURL = {

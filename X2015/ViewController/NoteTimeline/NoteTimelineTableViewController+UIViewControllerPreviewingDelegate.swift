@@ -24,7 +24,7 @@ extension NoteTimelineTableViewController: UIViewControllerPreviewingDelegate {
 			guard let detailViewController = NoteEditViewController.instanceFromStoryboard() else { return nil }
 
 			let previewNote: Note = objectAt(indexPath)
-			detailViewController.noteActionMode = .Edit(previewNote.objectID, managedObjectContext)
+			detailViewController.editingMode = .Edit(previewNote.objectID, managedObjectContext)
 			detailViewController.delegate = self
 
 			previewingContext.sourceRect = cell.frame

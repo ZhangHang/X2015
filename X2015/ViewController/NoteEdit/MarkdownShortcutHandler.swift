@@ -80,6 +80,7 @@ extension MarkdownShortcutHandler {
 
 extension MarkdownShortcutHandler {
 
+	// Move cursor to next character
 	func moveCursorLeft() {
 		beginEditing()
 		selectedRange = NSMakeRange(max(0, selectedRange.location - 1), 0)
@@ -87,6 +88,7 @@ extension MarkdownShortcutHandler {
 		endEditing()
 	}
 
+	// Move cursor to previous character
 	func moveCursorRight() {
 		beginEditing()
 		let stringLength = text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
@@ -95,6 +97,9 @@ extension MarkdownShortcutHandler {
 		endEditing()
 	}
 
+	/**
+	Insert `#` or `# ` to the begining based on the content of line where cursor is
+	*/
 	func addHeaderSymbolIfNeeded() {
 		beginEditing()
 		let string = text
@@ -113,6 +118,9 @@ extension MarkdownShortcutHandler {
 		endEditing()
 	}
 
+	/**
+	Insert `\t` to the position where cursor is
+	*/
 	func addIndentSymbol() {
 		beginEditing()
 		let stringToInsert = NSAttributedString(string: "\t")
@@ -122,6 +130,9 @@ extension MarkdownShortcutHandler {
 		endEditing()
 	}
 
+	/**
+	Insert `> ` to the begining of the line which cursor is
+	*/
 	func addQuoteSymbol() {
 		beginEditing()
 		let stringToInsert = NSAttributedString(string: "> ")
@@ -134,6 +145,9 @@ extension MarkdownShortcutHandler {
 		endEditing()
 	}
 
+	/**
+	Insert `*` to the position where cursor is
+	*/
 	func addEmphSymbol() {
 		beginEditing()
 		let stringToInsert = NSAttributedString(string: "*")
@@ -143,6 +157,9 @@ extension MarkdownShortcutHandler {
 		endEditing()
 	}
 
+	/**
+	Insert link symbol to the position where cursor is
+	*/
 	func addLinkSymbol() {
 		beginEditing()
 		let titleString = NSLocalizedString("Title", comment: "")
@@ -156,7 +173,9 @@ extension MarkdownShortcutHandler {
 		endEditing()
 	}
 
-
+	/**
+	Make text bold based on current selection
+	*/
 	func makeTextBold() {
 		beginEditing()
 		let string = text as NSString
@@ -178,6 +197,9 @@ extension MarkdownShortcutHandler {
 		endEditing()
 	}
 
+	/**
+	Make text bold based on current selection
+	*/
 	func makeTextItalic() {
 		beginEditing()
 		let string = text as NSString
@@ -199,6 +221,9 @@ extension MarkdownShortcutHandler {
 		endEditing()
 	}
 
+	/**
+	Add or remove list symbol based on the content of line where cursor is
+	*/
 	func makeTextList() {
 		beginEditing()
 		let string = text as NSString

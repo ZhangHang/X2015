@@ -16,6 +16,7 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 		return ThemeManager.sharedInstance.currentTheme
 	}
 
+	/// Duration of theme transition
 	var themeTransitionDuration: NSTimeInterval = 0.25
 
 	override func viewWillAppear(animated: Bool) {
@@ -56,6 +57,13 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 		}
 	}
 
+	/**
+	Called when currentTheme has changed or view is about to appearing and `needsUpdateTheme` is true.
+	Override this method to implement custom behavior
+
+	- parameter theme:    current theme
+	- parameter animated: Default is true
+	*/
 	func updateThemeInterface(theme: Theme, animated: Bool = true) {
 		func updateInterface() {
 			configureTheme(theme)
@@ -71,7 +79,14 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 		}
 	}
 
-	func updateCellThemeInterface<CellType: UITableViewCell>(cell: CellType, theme: Theme) {
+	/**
+	Called when cell needs update its theme interface.
+	Override this method to implement custom behavior
+
+	- parameter cell:  cell that needs update
+	- parameter theme: current theme
+	*/
+	func updateCellThemeInterface(cell: UITableViewCell, theme: Theme) {
 		if let cell = cell as? ThemeAdaptable {
 			cell.configureTheme(currentTheme)
 		}

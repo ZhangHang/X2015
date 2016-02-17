@@ -28,7 +28,14 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		static let Empty = "EmptyNoteSegueIdentifier"
 	}
 
-	enum Mode {
+	/**
+	Editing Mode
+
+	- Create: Create new note
+	- Edit:   Edit existing note
+	- Empty:  No note to edit or display
+	*/
+	enum EditingMode {
 		case Create(NSManagedObjectID, NSManagedObjectContext)
 		case Edit(NSManagedObjectID, NSManagedObjectContext)
 		case Empty
@@ -36,11 +43,17 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 
 	// Mark: Editor
 	@IBOutlet weak var textView: UITextView!
+
+	/// background view
 	var emptyWelcomeView: EmptyNoteWelcomeView?
+
+	/// Manage note entity
 	var noteUpdater: NoteUpdater?
-	var noteActionMode: Mode = .Empty {
+
+	/// Curren note editing mode
+	var editingMode: EditingMode = .Empty {
 		didSet {
-			switch noteActionMode {
+			switch editingMode {
 			case let .Create(managedObjectID, managedObjectContext):
 				noteUpdater = NoteUpdater(noteObjectID: managedObjectID,
 					managedObjectContext: managedObjectContext)
@@ -53,23 +66,32 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 				break
 			}
 			if isViewLoaded() {
-				configureInterface(noteActionMode)
+				configureInterface(editingMode)
 			}
 
 			updateTitleIfNeeded()
 		}
 	}
-	let markdownTextStorage = MarklightTextStorage()
-	var markdownShortcutHandler: MarkdownShortcutHandler?
-	weak var delegate: NoteEditViewControllerDelegate?
 
+	/// Provides markdown render
+	let markdownTextStorage = MarklightTextStorage()
+
+	/// Handle markdown shortcuts
+	var markdownShortcutHandler: MarkdownShortcutHandler?
+
+	/// Set to true if `markdownShortcutHandler` is processing
 	var markdownShortcutHandlerIsEditing = false
 
+
+	/// The delegate
+	weak var delegate: NoteEditViewControllerDelegate?
+
+	/// Action button
 	var actionBarButton: UIBarButtonItem {
 		return navigationItem.rightBarButtonItem!
 	}
 
-	// Preview action items.
+	/// Preview action items.
 	lazy var previewActions: [UIPreviewActionItem] = {
 		let deleteAction = UIPreviewAction(
 			title: NSLocalizedString("Delete", comment: ""),
@@ -116,7 +138,7 @@ extension NoteEditViewController {
 		super.viewDidLoad()
 		configureEditor()
 		registerForKeyboardEvent()
-		configureInterface(noteActionMode)
+		configureInterface(editingMode)
 	}
 
 	override func viewWillAppear(animated: Bool) {
@@ -125,7 +147,7 @@ extension NoteEditViewController {
 		navigationController?.hidesBarsOnTap = true
 		navigationController?.hidesBarsWhenKeyboardAppears = true
 
-		switch noteActionMode {
+		switch editingMode {
 		case .Create:
 			textView.becomeFirstResponder()
 		default:

@@ -12,6 +12,7 @@ private let unlockByTouchIDKey = "unlockByTouchID"
 
 extension NSUserDefaults {
 
+	/// Default is false
 	var unlockByTouchID: Bool {
 		get {
 			guard let value = valueForKey(unlockByTouchIDKey) as? Bool else {

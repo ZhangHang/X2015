@@ -13,6 +13,7 @@ private let automaticallyAdjustsThemeKey = "automaticallyAdjustsTheme"
 
 extension NSUserDefaults {
 
+	/// Default is .Defualt theme
 	var theme: Theme {
 		get {
 			guard let value = valueForKey(themeKey) as? String else {
@@ -26,6 +27,7 @@ extension NSUserDefaults {
 		}
 	}
 
+	/// Default is false
 	var automaticallyAdjustsTheme: Bool {
 		get {
 			guard let value = valueForKey(automaticallyAdjustsThemeKey) as? Bool else {

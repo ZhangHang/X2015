@@ -19,6 +19,7 @@ final class ThemeManager {
 
 	var userSelectedTheme: Theme = .Default
 
+	/// currentTheme, based on `automaticallyAdjustsTheme` and `userSelectedTheme`
 	private(set) var currentTheme: Theme = .Default {
 		didSet {
 			for adaptable in registeredClass {
@@ -34,6 +35,7 @@ final class ThemeManager {
 		}
 	}
 
+	/// automatically adjusts theme based on screen brightness
 	var automaticallyAdjustsTheme: Bool = false
 
 	private var registeredClass: [AppearanceAdaptable.Type] = []

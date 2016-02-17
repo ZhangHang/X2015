@@ -17,7 +17,7 @@ extension MainSplitViewController: UISplitViewControllerDelegate {
 			guard let vc = secondaryViewController.childViewControllers.first as? NoteEditViewController else {
 				fatalError()
 			}
-			switch vc.noteActionMode {
+			switch vc.editingMode {
 			case .Empty:
 				return true
 			default:

@@ -66,6 +66,11 @@ extension MainSplitViewController {
 		return .LightContent
 	}
 
+	/**
+	Called if noteEditViewController is nil
+
+	- returns: false, always
+	*/
 	override func prefersStatusBarHidden() -> Bool {
 		return false
 	}

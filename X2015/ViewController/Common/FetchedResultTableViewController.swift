@@ -37,7 +37,9 @@ class FetchedResultTableViewController: ThemeAdaptableTableViewController, Manag
 
 extension FetchedResultTableViewController {
 
-	// Override point
+	/**
+	Override this method to create custom fetchedResultsController
+	*/
 	func setupFetchedResultController() {
 		fatalError("Override this method to configure fetchedResultController")
 	}
@@ -50,6 +52,13 @@ extension FetchedResultTableViewController {
 		}
 	}
 
+	/**
+	Helper method, returns object in fetchedResultsController at indexPath
+
+	- parameter indexPath: indexPath of object
+
+	- returns: object in fetchedResultsController at indexPath
+	*/
 	func objectAt<T where T:NSManagedObject>(indexPath: NSIndexPath) -> T {
 		guard let object = fetchedResultsController.objectAtIndexPath(indexPath) as? T else {
 			fatalError("Can't find object at indexPath \(indexPath)")

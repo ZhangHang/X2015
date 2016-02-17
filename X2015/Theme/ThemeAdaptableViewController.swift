@@ -16,6 +16,7 @@ class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 		return ThemeManager.sharedInstance.currentTheme
 	}
 
+	/// Duration of theme transition
 	var themeTransitionDuration: NSTimeInterval = 0.25
 
 	override func viewWillAppear(animated: Bool) {
@@ -50,6 +51,13 @@ class ThemeAdaptableViewController: UIViewController, ThemeAdaptable {
 		}
 	}
 
+	/**
+	Called when currentTheme has changed or view is about to appearing and `needsUpdateTheme` is true.
+	Override this method to implement custom behavior
+
+	- parameter theme:    current theme
+	- parameter animated: Default is true
+	*/
 	func updateThemeInterface(theme: Theme, animated: Bool = true) {
 		func updateInterface() {
 			configureTheme(theme)

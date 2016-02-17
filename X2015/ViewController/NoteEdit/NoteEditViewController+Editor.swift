@@ -47,14 +47,22 @@ extension NoteEditViewController {
 		markdownShortcutHandler?.delegate = self
 	}
 
-	// MARK: Workaround, See [Readme of Marklight](https://github.com/macteo/marklight)
+	/**
+	Loads text onto editor
+	This is a Workaround, See [Readme of Marklight](https://github.com/macteo/marklight)
+
+	- parameter text: text to display
+	*/
 	func loadText_WORKAROUND(text: String?) {
 		let attributedString = NSAttributedString(string: text ?? "")
 		textView.attributedText = attributedString
 		markdownTextStorage.setAttributedString(attributedString)
 	}
 
-	// Reload text while keep selectedRange
+	/**
+	Reload editor while keep selectedRange
+	This is a Workaround
+	*/
 	func refreshTextView_WORKAROUND() {
 		markdownTextStorage.insertAttributedString(NSAttributedString(string: ""), atIndex: 0)
 	}
@@ -100,9 +108,17 @@ extension NoteEditViewController {
 		markdownShortcutHandler?.addLinkSymbol()
 	}
 
-	// MARK
-	// return true if handled
+	/**
+	Provides auto completion for markdown list
+
+	- parameter editedRange: editedRange
+	- parameter text:        text
+
+	- returns: return ture if this method has changed anyting
+	*/
 	func processListSymbolIfNeeded(editedRange: NSRange, replacementText text: String) -> Bool {
+
+		// Puts an extra white space after `-` if
 		if text == "-" && editedRange.length == 0 {
 			let (_, paragraphRange) = noteParagraph(editedRange)
 			if paragraphRange.location != editedRange.location { return false }
@@ -120,15 +136,14 @@ extension NoteEditViewController {
 
 			let listPrefix = "- "
 
-			// skip if last paragraph has no content
-			// remove list symbol from last paragraph
+			// skip if last paragraph has no content and also removes list symbol from last paragraph
 			if paragraphRange.length == listPrefix.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) {
 				markdownTextStorage.replaceCharactersInRange(NSMakeRange(paragraphRange.location, 2), withString: "\n")
 				textView.selectedRange = NSMakeRange(paragraphRange.location + 1, 0)
 				return true
 			}
 
-			// insert list symbol
+			// Puts `- ` to the new line
 			let stringToInsert = NSAttributedString(string: "\n- ")
 			let insertIndex = editedRange.location + editedRange.location
 			let nextSelectedIndex = insertIndex + stringToInsert.length
@@ -183,6 +198,9 @@ extension NoteEditViewController: MarkdownShortcutHandlerDelegate {
 
 extension NoteEditViewController: UITextViewDelegate {
 
+	/**
+	Update Editor title
+	*/
 	func updateTitleIfNeeded() {
 		if let updater = noteUpdater {
 			let noteTitle =  updater.noteTitle
@@ -194,6 +212,9 @@ extension NoteEditViewController: UITextViewDelegate {
 		}
 	}
 
+	/**
+	Update sharing button based on whether note is empty or not
+	*/
 	func updateActionButtonIfNeeded() {
 		let isContentEmpty = textView.text.empty
 
@@ -216,10 +237,12 @@ extension NoteEditViewController: UITextViewDelegate {
 		textView: UITextView,
 		shouldChangeTextInRange range: NSRange,
 		replacementText text: String) -> Bool {
+			// ignore everthing if markdown shortcut handler is processing
 			if markdownShortcutHandlerIsEditing {
 				return false
 			}
 
+			// try to provide auto completion for markdown list
 			if processListSymbolIfNeeded(range, replacementText: text) {
 				return false
 			}

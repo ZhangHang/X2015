@@ -11,6 +11,9 @@ import X2015Kit
 
 extension NoteTimelineTableViewController {
 
+	/**
+	Push to note editor view controller to create a new note
+	*/
 	func createNote() {
 		backToTimeline({
 			performSegueWithIdentifier(NoteEditViewController.SegueIdentifier.CreateWithNoAnimation,
@@ -20,12 +23,17 @@ extension NoteTimelineTableViewController {
 						fatalError()
 				}
 				selectedNote = managedObjectContext.insertObject() as Note
-				vc.noteActionMode = .Create(selectedNote!.objectID, managedObjectContext)
+				vc.editingMode = .Create(selectedNote!.objectID, managedObjectContext)
 
 				navigationController?.pushViewController(vc, animated: false)
 		}
 	}
 
+	/**
+	Push to note editor view controller to view a existing note
+
+	- parameter identifier: <#identifier description#>
+	*/
 	func displayNote(noteIdentifier identifier: String) {
 		guard let note = Note.fetchNote(identifier, managedObjectContext: managedObjectContext) else {
 			let alert = UIAlertController(
@@ -57,18 +65,24 @@ extension NoteTimelineTableViewController {
 						fatalError()
 				}
 
-				vc.noteActionMode = .Edit(selectedNote.objectID, managedObjectContext)
+				vc.editingMode = .Edit(selectedNote.objectID, managedObjectContext)
 				navigationController?.pushViewController(vc, animated: false)
 
 				tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
 		}
 	}
 
+	/**
+	Focus on search bar
+	*/
 	func enterSearchMode() {
 		becomeFirstResponder()
 		searchController.active = true
 	}
 
+	/**
+	Select next note in the note list
+	*/
 	func selectNextNote() {
 		debugPrint("selectNextNote")
 		let noteCount = fetchedResultsController.fetchedObjects?.count ?? 0
@@ -84,6 +98,9 @@ extension NoteTimelineTableViewController {
 		}
 	}
 
+	/**
+	Select previous note in the note list
+	*/
 	func selectPreviousNote() {
 		debugPrint("selectPreviousNote")
 		let noteCount = fetchedResultsController.fetchedObjects?.count ?? 0

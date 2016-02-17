@@ -10,8 +10,11 @@ import UIKit
 
 extension NoteEditViewController {
 
+	/**
+	Focus on editor if there is a note
+	*/
 	func startEditingIfNeeded() {
-		switch noteActionMode {
+		switch editingMode {
 		case .Empty:
 			return
 		default:
