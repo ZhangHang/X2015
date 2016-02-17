@@ -51,9 +51,9 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 	private func handleThemeChangeNotification() {
 		if isViewLoaded() {
 			updateThemeInterface(currentTheme, animated: true)
+		} else {
+			needsUpdateTheme = true
 		}
-
-		needsUpdateTheme = true
 	}
 
 	func updateThemeInterface(theme: Theme, animated: Bool = true) {
