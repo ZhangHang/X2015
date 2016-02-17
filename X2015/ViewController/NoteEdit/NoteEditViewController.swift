@@ -63,6 +63,8 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 	var markdownShortcutHandler: MarkdownShortcutHandler?
 	weak var delegate: NoteEditViewControllerDelegate?
 
+	var markdownShortcutHandlerIsEditing = false
+
 	var actionBarButton: UIBarButtonItem {
 		return navigationItem.rightBarButtonItem!
 	}

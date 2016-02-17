@@ -171,6 +171,14 @@ extension NoteEditViewController: MarkdownShortcutHandlerDelegate {
 		noteUpdater?.updateNote(markdownTextStorage.string)
 	}
 
+	func markdownShortcutHandlerWillBeginEditing(handler: MarkdownShortcutHandler) {
+		markdownShortcutHandlerIsEditing = true
+	}
+
+	func markdownShortcutHandlerDidEndEditing(handler: MarkdownShortcutHandler) {
+		markdownShortcutHandlerIsEditing = false
+	}
+
 }
 
 extension NoteEditViewController: UITextViewDelegate {
@@ -208,6 +216,10 @@ extension NoteEditViewController: UITextViewDelegate {
 		textView: UITextView,
 		shouldChangeTextInRange range: NSRange,
 		replacementText text: String) -> Bool {
+			if markdownShortcutHandlerIsEditing {
+				return false
+			}
+
 			if processListSymbolIfNeeded(range, replacementText: text) {
 				return false
 			}
@@ -222,5 +234,5 @@ extension NoteEditViewController: UITextViewDelegate {
 			return true
 	}
 	//swiftlint:enable variable_name
-	
+
 }
