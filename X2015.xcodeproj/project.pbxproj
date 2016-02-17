@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F0A606B1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */; };
+		7F0A606D1C746B16009F9BD8 /* X2015KitFoundationExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A606C1C746B16009F9BD8 /* X2015KitFoundationExtensionTests.swift */; };
 		7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D36191C4D346B009F18A6 /* Localizable.strings */; };
 		7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36331C4E0AB4009F18A6 /* TouchIDHelper.swift */; };
 		7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D86E91C4CA086000DA469 /* UIView+AnimationHandler.swift */; };
@@ -40,7 +41,6 @@
 		7F73F2F61C5F4255003347E4 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7F73F2EB1C5F4255003347E4 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7F73F3041C5F4C9D003347E4 /* X2015Kit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F73F3031C5F4C9D003347E4 /* X2015Kit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F73F30B1C5F4C9D003347E4 /* X2015Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; };
-		7F73F3121C5F4C9D003347E4 /* X2015KitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3111C5F4C9D003347E4 /* X2015KitTests.swift */; };
 		7F73F3161C5F4C9D003347E4 /* X2015Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; };
 		7F73F3171C5F4C9D003347E4 /* X2015Kit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F73F3011C5F4C9C003347E4 /* X2015Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F73F34D1C5F4DE7003347E4 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */; };
@@ -164,6 +164,7 @@
 
 /* Begin PBXFileReference section */
 		7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownShortcutHandler.swift; sourceTree = "<group>"; };
+		7F0A606C1C746B16009F9BD8 /* X2015KitFoundationExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = X2015KitFoundationExtensionTests.swift; sourceTree = "<group>"; };
 		7F0D36131C4D2F9D009F18A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7F0D36161C4D3467009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7F0D36181C4D346B009F18A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -211,7 +212,6 @@
 		7F73F3031C5F4C9D003347E4 /* X2015Kit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = X2015Kit.h; sourceTree = "<group>"; };
 		7F73F3051C5F4C9D003347E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F73F30A1C5F4C9D003347E4 /* X2015KitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = X2015KitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F73F3111C5F4C9D003347E4 /* X2015KitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X2015KitTests.swift; sourceTree = "<group>"; };
 		7F73F3131C5F4C9D003347E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F73F34C1C5F4DE7003347E4 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		7F73F3531C604C5C003347E4 /* Note+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+Search.swift"; sourceTree = "<group>"; };
@@ -440,7 +440,7 @@
 		7F73F3101C5F4C9D003347E4 /* X2015KitTests */ = {
 			isa = PBXGroup;
 			children = (
-				7F73F3111C5F4C9D003347E4 /* X2015KitTests.swift */,
+				7F0A606C1C746B16009F9BD8 /* X2015KitFoundationExtensionTests.swift */,
 				7F73F3131C5F4C9D003347E4 /* Info.plist */,
 			);
 			path = X2015KitTests;
@@ -944,7 +944,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F73F3121C5F4C9D003347E4 /* X2015KitTests.swift in Sources */,
+				7F0A606D1C746B16009F9BD8 /* X2015KitFoundationExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
