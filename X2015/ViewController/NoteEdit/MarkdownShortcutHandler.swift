@@ -12,167 +12,209 @@ protocol MarkdownShortcutHandlerDelegate: class {
 
 	func markdownShortcutHandlerDidModifyText(handler: MarkdownShortcutHandler) -> Void
 
+	func markdownShortcutHandlerWillBeginEditing(handler: MarkdownShortcutHandler) -> Void
+
+	func markdownShortcutHandlerDidEndEditing(handler: MarkdownShortcutHandler) -> Void
+
 }
+
+// for test
+protocol SelectionRangeProvider: class {
+
+	var selectedRange: NSRange { get set }
+
+}
+
+typealias TextProvider = NSMutableAttributedString
+
+extension UITextView: SelectionRangeProvider {}
+
 
 final class MarkdownShortcutHandler {
 
-	private(set) weak var textViewCache: UITextView?
+	private(set) weak var rangeProviderCache: SelectionRangeProvider?
 
-	private(set) weak var textStorageCahce: NSTextStorage?
+	private(set) weak var textProviderCache: TextProvider?
 
 	weak var delegate: MarkdownShortcutHandlerDelegate?
 
-	var textView: UITextView {
-		return textViewCache!
-	}
-
-	var textStorage: NSTextStorage {
-		return textStorageCahce!
+	var textProvider: TextProvider {
+		return textProviderCache!
 	}
 
 	var text: String {
-		return textStorage.string
+		return textProvider.string
 	}
 
-	var userSelectedRange: NSRange {
-		return textView.selectedRange
+	var selectedRange: NSRange {
+		get {
+			return rangeProviderCache!.selectedRange
+		}
+		set {
+			rangeProviderCache!.selectedRange = newValue
+		}
+	}
+
+	init(rangeProvider: SelectionRangeProvider, textProvider: TextProvider) {
+		self.textProviderCache = textProvider
+		self.rangeProviderCache = rangeProvider
 	}
 
 	init(textView: UITextView, textStorage: NSTextStorage) {
-		self.textStorageCahce = textStorage
-		self.textViewCache = textView
+		self.textProviderCache = textStorage
+		self.rangeProviderCache = textView
 	}
-
 
 }
 
 extension MarkdownShortcutHandler {
 
+	func beginEditing() {
+		delegate?.markdownShortcutHandlerWillBeginEditing(self)
+	}
+
+	func endEditing() {
+		delegate?.markdownShortcutHandlerDidEndEditing(self)
+	}
+}
+
+extension MarkdownShortcutHandler {
+
 	func moveCursorLeft() {
-		let selectedRange = userSelectedRange
-		textView.selectedRange = NSMakeRange(max(0, selectedRange.location - 1), 0)
+		beginEditing()
+		selectedRange = NSMakeRange(max(0, selectedRange.location - 1), 0)
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 	func moveCursorRight() {
-		let selectedRange = userSelectedRange
-		let stringLength = textView.textStorage.string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-		textView.selectedRange = NSMakeRange(min(stringLength + 1, selectedRange.location + 1), 0)
+		beginEditing()
+		let stringLength = text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+		selectedRange = NSMakeRange(min(stringLength + 1, selectedRange.location + 1), 0)
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 	func addHeaderSymbolIfNeeded() {
+		beginEditing()
 		let string = text
-		let selectedRange = userSelectedRange
 		let paragraphRange = (string as NSString).paragraphRangeForRange(selectedRange)
 		let startCharacterOfParagraph = string[string.startIndex.advancedBy(paragraphRange.location)]
 		if startCharacterOfParagraph == "#" {
 			let stringToInsert = NSAttributedString(string: "#")
-			textStorage.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-			textView.selectedRange = NSMakeRange(selectedRange.location + 1, 0)
+			textProvider.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
+			selectedRange = NSMakeRange(selectedRange.location + 1, 0)
 		} else {
 			let stringToInsert = NSAttributedString(string: "# ")
-			textStorage.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-			textView.selectedRange = NSMakeRange(selectedRange.location + 2, 0)
+			textProvider.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
+			selectedRange = NSMakeRange(selectedRange.location + 2, 0)
 		}
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 	func addIndentSymbol() {
-		let selectedRange = userSelectedRange
+		beginEditing()
 		let stringToInsert = NSAttributedString(string: "\t")
-		textStorage.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-		textView.selectedRange = NSMakeRange(selectedRange.location + 1, 0)
+		textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
+		selectedRange = NSMakeRange(selectedRange.location + 1, 0)
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 	func addQuoteSymbol() {
-		let selectedRange = userSelectedRange
+		beginEditing()
 		let stringToInsert = NSAttributedString(string: "> ")
-		let paragraphRange = (textStorage.string as NSString).paragraphRangeForRange(selectedRange)
-		textStorage.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-		textView.selectedRange = NSMakeRange(
+		let paragraphRange = (textProvider.string as NSString).paragraphRangeForRange(selectedRange)
+		textProvider.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
+		selectedRange = NSMakeRange(
 			selectedRange.location + stringToInsert.string.characters.count,
 			0)
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 	func addEmphSymbol() {
-		let selectedRange = userSelectedRange
+		beginEditing()
 		let stringToInsert = NSAttributedString(string: "*")
-		textStorage.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-		textView.selectedRange = NSMakeRange(selectedRange.location + 1, 0)
+		textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
+		selectedRange = NSMakeRange(selectedRange.location + 1, 0)
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 	func addLinkSymbol() {
-		let selectedRange = userSelectedRange
+		beginEditing()
 		let titleString = NSLocalizedString("Title", comment: "")
 		let linkString = NSLocalizedString("Link", comment: "")
 		let stringToInsert = NSAttributedString(string: "[\(titleString)](\(linkString))")
-		textStorage.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-		textView.selectedRange = NSMakeRange(
+		textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
+		selectedRange = NSMakeRange(
 			selectedRange.location + 1,
 			titleString.characters.count)
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 
 	func makeTextBold() {
-		let selectedRange = userSelectedRange
-		let string = textStorage.string
+		beginEditing()
+		let string = text as NSString
 
 		if selectedRange.length > 0 {
-			let selectedString = (string as NSString).substringWithRange(selectedRange)
+			let selectedString = string.substringWithRange(selectedRange)
 			let stringToInsert = NSAttributedString(string: "**\(selectedString)**")
-			textStorage.replaceCharactersInRange(selectedRange, withAttributedString: stringToInsert)
+			textProvider.replaceCharactersInRange(selectedRange, withAttributedString: stringToInsert)
 
 			var newSelectedRange = selectedRange
 			newSelectedRange.length += 4
-			textView.selectedRange = newSelectedRange
+			selectedRange = newSelectedRange
 		} else {
 			let stringToInsert = NSAttributedString(string: "****")
-			textStorage.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-			textView.selectedRange = NSMakeRange(selectedRange.location + 2, 0)
+			textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
+			selectedRange = NSMakeRange(selectedRange.location + 2, 0)
 		}
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 	func makeTextItalic() {
-		let selectedRange = userSelectedRange
-		let string = textStorage.string
+		beginEditing()
+		let string = text as NSString
 
 		if selectedRange.length > 0 {
-			let selectedString = (string as NSString).substringWithRange(selectedRange)
+			let selectedString = string.substringWithRange(selectedRange)
 			let stringToInsert = NSAttributedString(string: "*\(selectedString)*")
-			textStorage.replaceCharactersInRange(selectedRange, withAttributedString: stringToInsert)
+			textProvider.replaceCharactersInRange(selectedRange, withAttributedString: stringToInsert)
 
 			var newSelectedRange = selectedRange
 			newSelectedRange.length += 2
-			textView.selectedRange = newSelectedRange
+			selectedRange = newSelectedRange
 		} else {
 			let stringToInsert = NSAttributedString(string: "**")
-			textStorage.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-			textView.selectedRange = NSMakeRange(selectedRange.location + 1, 0)
+			textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
+			selectedRange = NSMakeRange(selectedRange.location + 1, 0)
 		}
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 	func makeTextList() {
-		let selectedRange = userSelectedRange
-		let string = textStorage.string
+		beginEditing()
+		let string = text as NSString
 
-		let paragraphRange = (string as NSString).paragraphRangeForRange(selectedRange)
-		let paragraphString = (string as NSString).substringWithRange(paragraphRange)
+		let paragraphRange = string.paragraphRangeForRange(selectedRange)
+		let paragraphString = string.substringWithRange(paragraphRange)
 		if paragraphString.hasPrefix("- ") {
-			textStorage.replaceCharactersInRange(NSMakeRange(paragraphRange.location, 2), withString: "")
-			textView.selectedRange = NSMakeRange(selectedRange.location - 2, 0)
+			textProvider.replaceCharactersInRange(NSMakeRange(paragraphRange.location, 2), withString: "")
+			selectedRange = NSMakeRange(selectedRange.location - 2, 0)
 		} else {
 			let stringToInsert = NSAttributedString(string: "- ")
-			textStorage.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-			textView.selectedRange = NSMakeRange(selectedRange.location + 2, 0)
+			textProvider.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
+			selectedRange = NSMakeRange(selectedRange.location + 2, 0)
 		}
 		delegate?.markdownShortcutHandlerDidModifyText(self)
+		endEditing()
 	}
 
 }
