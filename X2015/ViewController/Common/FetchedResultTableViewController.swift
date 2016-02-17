@@ -16,8 +16,11 @@ class FetchedResultTableViewController: ThemeAdaptableTableViewController, Manag
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
 		setupFetchedResultController()
+	}
+
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 		fetchData()
 	}
 

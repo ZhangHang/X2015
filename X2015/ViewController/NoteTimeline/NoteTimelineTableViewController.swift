@@ -25,6 +25,7 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 	}
 
 	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 		updateWelcomeViewVisibility()
 		clearsSelectionOnViewWillAppear = splitViewController!.collapsed
 		if clearsSelectionOnViewWillAppear {
@@ -33,7 +34,6 @@ final class NoteTimelineTableViewController: FetchedResultTableViewController {
 				tableView(tableView, didDeselectRowAtIndexPath: indexPath)
 			}
 		}
-		super.viewWillAppear(animated)
 	}
 
 	lazy var emptyNoteWelcomeView: EmptyNoteWelcomeView = {
