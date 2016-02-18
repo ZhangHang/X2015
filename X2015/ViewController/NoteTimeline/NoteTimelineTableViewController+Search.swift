@@ -53,7 +53,7 @@ extension NoteTimelineTableViewController: NoteSearchTableViewControllerDelegate
 			self.selectedNote = noteFromEditVC
 			searchController.dismissViewControllerAnimated(true) { [unowned self] () -> Void in
 				self.performSegueWithIdentifier(
-					NoteEditViewController.viewControllerIdentifier,
+					NoteEditViewController.SegueIdentifier.Edit,
 					sender: self)
 			}
 	}
