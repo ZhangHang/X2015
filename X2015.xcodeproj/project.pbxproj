@@ -63,7 +63,7 @@
 		7F73F39A1C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */; };
 		7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */; };
 		7F73F39C1C6084AE003347E4 /* NoteTimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38B1C6084AE003347E4 /* NoteTimelineTableViewController.swift */; };
-		7F73F39D1C6084AE003347E4 /* NoteUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38C1C6084AE003347E4 /* NoteUpdater.swift */; };
+		7F73F39D1C6084AE003347E4 /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38C1C6084AE003347E4 /* NoteManager.swift */; };
 		7F73F39E1C6084AE003347E4 /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38E1C6084AE003347E4 /* ManagedObjectContextSettable.swift */; };
 		7F73F39F1C6084AE003347E4 /* SotyboardCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F38F1C6084AE003347E4 /* SotyboardCreatable.swift */; };
 		7F73F3A01C6084AE003347E4 /* SettingCheckableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3911C6084AE003347E4 /* SettingCheckableTableViewCell.swift */; };
@@ -241,7 +241,7 @@
 		7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+Navigation.swift"; sourceTree = "<group>"; };
 		7F73F38A1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteTimelineTableViewController+Search.swift"; sourceTree = "<group>"; };
 		7F73F38B1C6084AE003347E4 /* NoteTimelineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTimelineTableViewController.swift; sourceTree = "<group>"; };
-		7F73F38C1C6084AE003347E4 /* NoteUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteUpdater.swift; sourceTree = "<group>"; };
+		7F73F38C1C6084AE003347E4 /* NoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteManager.swift; path = ../NoteTimeline/NoteManager.swift; sourceTree = "<group>"; };
 		7F73F38E1C6084AE003347E4 /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		7F73F38F1C6084AE003347E4 /* SotyboardCreatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SotyboardCreatable.swift; sourceTree = "<group>"; };
 		7F73F3911C6084AE003347E4 /* SettingCheckableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCheckableTableViewCell.swift; sourceTree = "<group>"; };
@@ -529,6 +529,7 @@
 		7F73F3831C6084AE003347E4 /* NoteEdit */ = {
 			isa = PBXGroup;
 			children = (
+				7F73F38C1C6084AE003347E4 /* NoteManager.swift */,
 				7F73F3851C6084AE003347E4 /* NoteEditViewController.swift */,
 				7F73F3841C6084AE003347E4 /* NoteEditViewController+Action.swift */,
 				7F3EDB361C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift */,
@@ -550,7 +551,6 @@
 				7F73F3891C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift */,
 				7F102B721C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift */,
 				7F73F3881C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift */,
-				7F73F38C1C6084AE003347E4 /* NoteUpdater.swift */,
 			);
 			name = NoteTimeline;
 			path = ViewController/NoteTimeline;
@@ -971,7 +971,7 @@
 				7F73F3741C6082C3003347E4 /* UINavigationBar+Theme.swift in Sources */,
 				7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */,
 				7F102B7F1C6667350013AF9A /* PasscodeViewController.swift in Sources */,
-				7F73F39D1C6084AE003347E4 /* NoteUpdater.swift in Sources */,
+				7F73F39D1C6084AE003347E4 /* NoteManager.swift in Sources */,
 				7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */,
 				7F102B6B1C6601330013AF9A /* AppDelegate+Interface.swift in Sources */,
 				7F73F3951C6084AE003347E4 /* FetchedResultTableViewController.swift in Sources */,

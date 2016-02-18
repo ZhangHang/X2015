@@ -1,5 +1,5 @@
 //
-//  NoteUpdater.swift
+//  NoteManager.swift
 //  X2015
 //
 //  Created by Hang Zhang on 1/26/16.
@@ -8,12 +8,17 @@
 
 import X2015Kit
 
-class NoteUpdater {
+final class NoteManager {
 
 	let noteObjectID: NSManagedObjectID
 	let managedObjectContext: NSManagedObjectContext
 
 	private(set) var note: Note?
+	private(set) var currentTitle: String?
+	private(set) var isCurrentNoteEmpty: Bool = false
+
+	var titleDidChange: (() -> Void)?
+	var emptyStatusDidChange: (() -> Void)?
 
 	init?(noteObjectID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext) {
 		self.noteObjectID = noteObjectID
@@ -24,6 +29,7 @@ class NoteUpdater {
 				return nil
 		}
 		self.note = note
+		update()
 	}
 
 	deinit {
@@ -32,24 +38,35 @@ class NoteUpdater {
 
 }
 
-extension NoteUpdater {
+extension NoteManager {
 
 	var noteContent: String? {
 		return note!.content
 	}
 
-	var noteTitle: String? {
-		return note!.title
-	}
-
 }
 
-extension NoteUpdater {
+extension NoteManager {
+
+	private var isNoteEmpty: Bool {
+		return note?.content?.empty == true
+	}
 
 	func updateNote(content: String) {
 		if note!.hasChange(content) {
 			note!.update(content)
-			// inform delegate
+			update()
+		}
+	}
+
+	func update() {
+		if isCurrentNoteEmpty != (note?.content?.empty == true) {
+			isCurrentNoteEmpty = !isCurrentNoteEmpty
+			emptyStatusDidChange?()
+		}
+		if note!.title != currentTitle {
+			currentTitle = note!.title
+			titleDidChange?()
 		}
 	}
 

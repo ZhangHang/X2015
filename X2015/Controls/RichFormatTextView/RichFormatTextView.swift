@@ -65,7 +65,6 @@ class RichFormatTextView: UITextView {
 	*/
 	func loadText_WORKAROUND(text: String?) {
 		let attributedString = NSAttributedString(string: text ?? "")
-		attributedText = attributedString
 		richFormatTextStorage.setAttributedString(attributedString)
 	}
 

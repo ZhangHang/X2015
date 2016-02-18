@@ -19,10 +19,7 @@ extension NoteEditViewController {
 		if !isViewLoaded() {
 			return false
 		}
-
-		let isEditing = textView.isFirstResponder()
-
-		return isEditing
+		return textView.isFirstResponder()
 	}
 
 }
@@ -56,10 +53,10 @@ extension NoteEditViewController {
 	Update Editor title
 	*/
 	func updateTitleIfNeeded() {
-		if let updater = noteUpdater {
-			let noteTitle =  updater.noteTitle
+		if let manager = noteManager {
+			let noteTitle =  manager.currentTitle
 			if noteTitle != title {
-				title = updater.noteTitle
+				title = manager.currentTitle
 			}
 		} else {
 			title = nil
@@ -70,8 +67,8 @@ extension NoteEditViewController {
 	Update sharing button based on whether note is empty or not
 	*/
 	func updateActionButtonIfNeeded() {
-		if let updater = noteUpdater {
-			actionBarButton.enabled = updater.noteContent?.isEmpty ?? false
+		if let updater = noteManager {
+			actionBarButton.enabled = !updater.isCurrentNoteEmpty
 		} else {
 			actionBarButton.enabled = false
 		}
@@ -87,14 +84,10 @@ extension NoteEditViewController {
 			textView.hidden = true
 			emptyWelcomeView = setupEmptyWelcomeViewAndReturn()
 		case .Edit(_, _):
-			emptyWelcomeView?.removeFromSuperview()
-			textView.hidden = false
-			textView.loadText_WORKAROUND(noteUpdater!.noteContent)
+			textView.loadText_WORKAROUND(noteManager!.noteContent)
 			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
 			navigationItem.leftItemsSupplementBackButton = true
 		case .Create(_):
-			emptyWelcomeView?.removeFromSuperview()
-			textView.hidden = false
 			textView.loadText_WORKAROUND("")
 			navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
 			navigationItem.leftItemsSupplementBackButton = true

@@ -34,7 +34,7 @@ extension RichFormatTextView: ThemeAdaptable {
 			fatalError()
 		}
 		accessorView.configureTheme(theme)
-		
+
 		richFormatTextStorage.configureTheme(theme)
 		refreshTextView_WORKAROUND()
 		backgroundColor = UIColor.clearColor()

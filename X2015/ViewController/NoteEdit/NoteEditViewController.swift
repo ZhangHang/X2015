@@ -48,18 +48,18 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 	var emptyWelcomeView: EmptyNoteWelcomeView?
 
 	/// Manage note entity
-	var noteUpdater: NoteUpdater?
+	var noteManager: NoteManager?
 
 	/// Curren note editing mode
 	var editingMode: EditingMode = .Empty {
 		didSet {
 			switch editingMode {
 			case let .Create(managedObjectID, managedObjectContext):
-				noteUpdater = NoteUpdater(noteObjectID: managedObjectID,
+				noteManager = NoteManager(noteObjectID: managedObjectID,
 					managedObjectContext: managedObjectContext)
 				break
 			case let .Edit(managedObjectID, managedObjectContext):
-				noteUpdater = NoteUpdater(noteObjectID: managedObjectID,
+				noteManager = NoteManager(noteObjectID: managedObjectID,
 					managedObjectContext: managedObjectContext)
 				break
 			case .Empty:
@@ -68,6 +68,12 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 			if isViewLoaded() {
 				configureInterface(editingMode)
 				updateInterface()
+			}
+			noteManager?.emptyStatusDidChange = { [unowned self] in
+				self.updateActionButtonIfNeeded()
+			}
+			noteManager?.titleDidChange = { [unowned self] in
+				self.updateTitleIfNeeded()
 			}
 		}
 	}
@@ -87,7 +93,7 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 			style: .Destructive,
 			handler: { [unowned self] (_, _) -> Void in
 				self.delegate?.noteEditViewController(self,
-					didTapDeleteNoteShortCutWithNoteObjectID: self.noteUpdater!.noteObjectID)
+					didTapDeleteNoteShortCutWithNoteObjectID: self.noteManager!.noteObjectID)
 			})
 		return [deleteAction]
 	}()

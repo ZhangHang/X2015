@@ -17,7 +17,7 @@ extension NoteEditViewController {
 	*/
 	@IBAction func handleActionButtonPressed(sender: UIBarButtonItem) {
 		let activityViewController = UIActivityViewController(
-			activityItems: [noteUpdater!.noteContent!],
+			activityItems: [noteManager!.noteContent!],
 			applicationActivities: nil)
 		activityViewController.popoverPresentationController?.barButtonItem = sender
 		presentViewController(activityViewController, animated: true, completion: nil)
