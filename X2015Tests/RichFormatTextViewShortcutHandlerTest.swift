@@ -97,6 +97,7 @@ extension RichFormatTextViewShortcutHandlerTest {
 		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.addHeaderSymbolIfNeeded()
 		XCTAssert(textProvider.string == "# title")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(2, 0)))
 	}
 
 	func testAddHeaderSymbolIfNeededWithHeaderLine() {
@@ -105,6 +106,7 @@ extension RichFormatTextViewShortcutHandlerTest {
 		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.addHeaderSymbolIfNeeded()
 		XCTAssert(textProvider.string == "## title")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(1, 0)))
 	}
 
 	func testAddHeaderSymbolIfNeededWithHeaderBrokenLine() {
@@ -113,6 +115,17 @@ extension RichFormatTextViewShortcutHandlerTest {
 		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.addHeaderSymbolIfNeeded()
 		XCTAssert(textProvider.string == "# #title")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(2, 0)))
+	}
+
+
+	func testAddHeaderSymbolIfNeededWithEmptyLine() {
+		let textProvider = TextProvider(string: "\n")
+		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.addHeaderSymbolIfNeeded()
+		XCTAssert(textProvider.string == "\n# ")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(3, 0)))
 	}
 
 }

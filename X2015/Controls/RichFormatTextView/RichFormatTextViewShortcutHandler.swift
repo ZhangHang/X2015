@@ -111,12 +111,12 @@ extension RichFormatTextViewShortcutHandler {
 		if paragraphString.hasPrefix("# ") {
 			let stringToInsert = NSAttributedString(string: "#")
 			textProvider.insertAttributedString(stringToInsert,
-				atIndex: paragraphRange.startIndex.distanceTo(string.startIndex))
+				atIndex: string.startIndex.distanceTo(paragraphRange.startIndex))
 			selectedRange.location += 1
 		} else {
 			let stringToInsert = NSAttributedString(string: "# ")
 			textProvider.insertAttributedString(stringToInsert,
-				atIndex: paragraphRange.startIndex.distanceTo(string.startIndex))
+				atIndex: string.startIndex.distanceTo(paragraphRange.startIndex))
 			selectedRange.location += 2
 		}
 		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
