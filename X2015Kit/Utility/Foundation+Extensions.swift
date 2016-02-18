@@ -66,4 +66,42 @@ extension String {
 		return substringWithRange(paragraphsRangeForRange(nativeRange))
 	}
 
+	public func firstParagraphRangeForNSRange(range: NSRange) -> Range<String.Index> {
+		let start = startIndex.advancedBy(range.location)
+		let selectedRange = Range<String.Index>(start: start, end: start)
+		return paragraphRangeForRange(selectedRange)
+	}
+
+	public func firstParagraphRangeForRange(range: Range<String.Index>) -> Range<String.Index> {
+		let selectedRange = Range<String.Index>(start: range.startIndex, end: range.startIndex)
+		return paragraphRangeForRange(selectedRange)
+	}
+
+	public func firstParagraphForNSRange(range: NSRange) -> String {
+		let range = firstParagraphRangeForNSRange(range)
+		return substringWithRange(range)
+	}
+
+	public func firstParagraphForRange(range: Range<String.Index>) -> String {
+		let range = firstParagraphRangeForRange(range)
+		return substringWithRange(range)
+	}
+
+}
+
+extension String {
+
+	/**
+	Returns string and range for the first found paragraph from given range
+
+	- parameter range: selectedRange
+	- returns: (string of first found paragraph, range of first found paragraph)
+	*/
+	public func firstParagraphResult(range: NSRange) -> (String, Range<String.Index>) {
+		let string = paragraphsStringForNSRange(range)
+		let range = paragraphsRangeForNSRange(range)
+
+		return (string, range)
+	}
+
 }

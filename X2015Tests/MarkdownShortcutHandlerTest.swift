@@ -228,3 +228,43 @@ extension MarkdownShortcutHandlerTest {
 
 }
 
+// MARK: List auto completion
+extension MarkdownShortcutHandlerTest {
+
+	func testListWithWhiteSpaceAutoCompletion() {
+		let textProvider = TextProvider(string: "title\n")
+		let rangeProvider = RangeProvider(range: NSMakeRange(6, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let editRange = NSMakeRange(6, 0)
+		if !handler.processListSymbolIfNeeded(editRange, replacementText: "-") {
+			XCTFail()
+		}
+		XCTAssert(textProvider.string == "title\n- ")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(8, 0)))
+	}
+
+	func testListWithNewListLineAutoCompletion() {
+		let textProvider = TextProvider(string: "- title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(7, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let editRange = NSMakeRange(7, 0)
+		if !handler.processListSymbolIfNeeded(editRange, replacementText: "\n") {
+			XCTFail()
+		}
+		XCTAssert(textProvider.string == "- title\n- ")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(10, 0)))
+	}
+
+	func testListWithRemoveListLineAutoCompletion() {
+		let textProvider = TextProvider(string: "- ")
+		let rangeProvider = RangeProvider(range: NSMakeRange(2, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let editRange = NSMakeRange(2, 0)
+		if !handler.processListSymbolIfNeeded(editRange, replacementText: "\n") {
+			XCTFail()
+		}
+		XCTAssert(textProvider.string == "\n")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(1, 0)))
+	}
+
+}

@@ -108,76 +108,6 @@ extension NoteEditViewController {
 		markdownShortcutHandler?.addLinkSymbol()
 	}
 
-	/**
-	Provides auto completion for markdown list
-
-	- parameter editedRange: editedRange
-	- parameter text:        text
-
-	- returns: return ture if this method has changed anyting
-	*/
-	func processListSymbolIfNeeded(editedRange: NSRange, replacementText text: String) -> Bool {
-
-		// Puts an extra white space after `-` if
-		if text == "-" && editedRange.length == 0 {
-			let (_, paragraphRange) = noteParagraph(editedRange)
-			if paragraphRange.location != editedRange.location { return false }
-			// insert a space
-			markdownTextStorage.replaceCharactersInRange(NSMakeRange(editedRange.location, 0), withString: "- ")
-			textView.selectedRange = NSMakeRange(editedRange.location + 2, 0)
-			return true
-		}
-
-		if text == "\n" {
-			guard let (_, paragraphRange) = noteParagraphWithPrefix("- ", range: editedRange) else {
-				// not a list
-				return false
-			}
-
-			let listPrefix = "- "
-
-			// skip if last paragraph has no content and also removes list symbol from last paragraph
-			if paragraphRange.length == listPrefix.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) {
-				markdownTextStorage.replaceCharactersInRange(NSMakeRange(paragraphRange.location, 2), withString: "\n")
-				textView.selectedRange = NSMakeRange(paragraphRange.location + 1, 0)
-				return true
-			}
-
-			// Puts `- ` to the new line
-			let stringToInsert = NSAttributedString(string: "\n- ")
-			let insertIndex = editedRange.location + editedRange.location
-			let nextSelectedIndex = insertIndex + stringToInsert.length
-			markdownTextStorage.insertAttributedString(stringToInsert, atIndex: editedRange.location)
-			textView.selectedRange = NSMakeRange(nextSelectedIndex + 2, 0)
-			return true
-		}
-
-		return false
-	}
-}
-
-extension NoteEditViewController {
-
-	func noteParagraph(range: NSRange) -> (String?, NSRange) {
-		let string = markdownTextStorage.string
-		let paragraphRange = (string as NSString).paragraphRangeForRange(range)
-
-		if paragraphRange.length == 0 { return (nil, paragraphRange) }
-
-		let paragraphString = (string as NSString).substringWithRange(paragraphRange)
-		return (paragraphString, paragraphRange)
-	}
-
-	func noteParagraphWithPrefix(prefix: String, range: NSRange) -> (String, NSRange)? {
-		let (paragraphString, paragraphRange) = noteParagraph(range)
-
-		if let string = paragraphString where string.hasPrefix(prefix) {
-			return (string, paragraphRange)
-		}
-
-		return nil
-	}
-
 }
 
 extension NoteEditViewController: MarkdownShortcutHandlerDelegate {
@@ -243,7 +173,9 @@ extension NoteEditViewController: UITextViewDelegate {
 			}
 
 			// try to provide auto completion for markdown list
-			if processListSymbolIfNeeded(range, replacementText: text) {
+			if markdownShortcutHandler!.processListSymbolIfNeeded(
+				range,
+				replacementText: text) {
 				return false
 			}
 

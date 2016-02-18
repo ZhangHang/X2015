@@ -239,3 +239,55 @@ extension MarkdownShortcutHandler {
 	}
 
 }
+
+// MARK: Auto completion
+extension MarkdownShortcutHandler {
+
+	/**
+	Provides auto completion for markdown list
+
+	- parameter editedRange: editedRange
+	- parameter text:        text
+
+	- returns: return ture if this method has changed anyting
+	*/
+	func processListSymbolIfNeeded(editedRange: NSRange, replacementText text: String) -> Bool {
+
+		// Puts an extra white space after `-` if
+		if text == "-" && editedRange.length == 0 {
+			let (_, paragraphRange) = textProvider.string.firstParagraphResult(editedRange)
+			let prargraphStratLocation = textProvider.string.startIndex.distanceTo(paragraphRange.startIndex)
+			if editedRange.location != prargraphStratLocation { return false }
+			// insert a space
+			textProvider.replaceCharactersInRange(NSMakeRange(editedRange.location, 0), withString: "- ")
+			selectedRange = NSMakeRange(editedRange.location + 2, 0)
+			return true
+		}
+
+		if text == "\n" {
+			let (paragraphString, paragraphRange) = textProvider.string.firstParagraphResult(editedRange)
+
+			let listPrefix = "- "
+			// not a list
+			if !paragraphString.hasPrefix(listPrefix) { return false }
+
+			// skip if last paragraph has no content and also removes list symbol from last paragraph
+			if paragraphString == listPrefix {
+				let note = textProvider.string
+				textProvider.replaceCharactersInRange(
+					NSMakeRange(note.startIndex.distanceTo(paragraphRange.startIndex), 2), withString: "\n")
+				selectedRange = NSMakeRange(note.startIndex.distanceTo(paragraphRange.startIndex) + 1, 0)
+				return true
+			}
+
+			// Puts `- ` to the new line
+			let stringToInsert = NSAttributedString(string: "\n- ")
+			textProvider.insertAttributedString(stringToInsert, atIndex: editedRange.location)
+			selectedRange.location += 3
+			return true
+		}
+
+		return false
+	}
+
+}
