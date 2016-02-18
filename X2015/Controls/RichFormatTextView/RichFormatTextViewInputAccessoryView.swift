@@ -1,5 +1,5 @@
 //
-//  MarkdownInputAccessoryView.swift
+//  RichFormatTextViewInputAccessoryView.swift
 //  X2015
 //
 //  Created by Hang Zhang on 2/16/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MarkdownInputAccessoryView: UIToolbar {
+final class RichFormatTextViewInputAccessoryView: UIToolbar {
 
 	@IBOutlet var leftArrowButton: UIBarButtonItem!
 	@IBOutlet var rightArrowButton: UIBarButtonItem!
@@ -21,9 +21,9 @@ final class MarkdownInputAccessoryView: UIToolbar {
 
 }
 
-extension MarkdownInputAccessoryView: NibLoadable {}
+extension RichFormatTextViewInputAccessoryView: NibLoadable {}
 
-extension MarkdownInputAccessoryView: ThemeAdaptable {
+extension RichFormatTextViewInputAccessoryView: ThemeAdaptable {
 
 	func configureTheme(theme: Theme) {
 		switch theme {

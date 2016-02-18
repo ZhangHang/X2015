@@ -42,7 +42,7 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 	}
 
 	// Mark: Editor
-	@IBOutlet weak var textView: UITextView!
+	@IBOutlet weak var textView: RichFormatTextView!
 
 	/// background view
 	var emptyWelcomeView: EmptyNoteWelcomeView?
@@ -67,21 +67,10 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 			}
 			if isViewLoaded() {
 				configureInterface(editingMode)
+				updateInterface()
 			}
-
-			updateTitleIfNeeded()
 		}
 	}
-
-	/// Provides markdown render
-	let markdownTextStorage = MarklightTextStorage()
-
-	/// Handle markdown shortcuts
-	var markdownShortcutHandler: MarkdownShortcutHandler?
-
-	/// Set to true if `markdownShortcutHandler` is processing
-	var markdownShortcutHandlerIsEditing = false
-
 
 	/// The delegate
 	weak var delegate: NoteEditViewControllerDelegate?
@@ -113,13 +102,7 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		super.updateThemeInterface(theme, animated: animated)
 		func updateInterface() {
 			textView.configureTheme(theme)
-			guard let accessorView = textView.inputAccessoryView as? MarkdownInputAccessoryView else {
-				fatalError()
-			}
-			accessorView.configureTheme(theme)
 			emptyWelcomeView?.configureTheme(theme)
-			markdownTextStorage.configureTheme(theme)
-			refreshTextView_WORKAROUND()
 		}
 
 		if animated {
@@ -143,16 +126,7 @@ extension NoteEditViewController {
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		navigationController?.hidesBarsOnSwipe = false
-		navigationController?.hidesBarsOnTap = true
-		navigationController?.hidesBarsWhenKeyboardAppears = true
-
-		switch editingMode {
-		case .Create:
-			textView.becomeFirstResponder()
-		default:
-			break
-		}
+		updateInterface()
 	}
 
 }

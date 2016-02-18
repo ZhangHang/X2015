@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F0A606B1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */; };
 		7F0A606D1C746B16009F9BD8 /* X2015KitFoundationExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A606C1C746B16009F9BD8 /* X2015KitFoundationExtensionTests.swift */; };
 		7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F0D36191C4D346B009F18A6 /* Localizable.strings */; };
 		7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D36331C4E0AB4009F18A6 /* TouchIDHelper.swift */; };
@@ -32,10 +31,6 @@
 		7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204CD1C34F79B00507125 /* Main.storyboard */; };
 		7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D31C34F79B00507125 /* Assets.xcassets */; };
 		7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */; };
-		7F59ACF31C59392400F20A31 /* UITableViewCell+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59ACF21C59392400F20A31 /* UITableViewCell+Reusable.swift */; };
-		7F6EE2671C73187C00D94323 /* MarkdownInputAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6EE2661C73187C00D94323 /* MarkdownInputAccessoryView.xib */; };
-		7F6EE2691C73189400D94323 /* MarkdownInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6EE2681C73189400D94323 /* MarkdownInputAccessoryView.swift */; };
-		7F6EE2891C7324DF00D94323 /* MarklightTextStorage+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6EE2881C7324DF00D94323 /* MarklightTextStorage+Theme.swift */; };
 		7F73F2EE1C5F4255003347E4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F2ED1C5F4255003347E4 /* ShareViewController.swift */; };
 		7F73F2F11C5F4255003347E4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F73F2EF1C5F4255003347E4 /* MainInterface.storyboard */; };
 		7F73F2F61C5F4255003347E4 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7F73F2EB1C5F4255003347E4 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -54,7 +49,6 @@
 		7F73F3751C6082C3003347E4 /* UISearchBar+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3681C6082C3003347E4 /* UISearchBar+Theme.swift */; };
 		7F73F3761C6082C3003347E4 /* UITableView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3691C6082C3003347E4 /* UITableView+Theme.swift */; };
 		7F73F3771C6082C3003347E4 /* UITextField+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F36A1C6082C3003347E4 /* UITextField+Theme.swift */; };
-		7F73F3781C6082C3003347E4 /* UITextView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F36B1C6082C3003347E4 /* UITextView+Theme.swift */; };
 		7F73F3791C6082C3003347E4 /* UIView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F36C1C6082C3003347E4 /* UIView+Theme.swift */; };
 		7F73F37A1C6082C3003347E4 /* UIViewController+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F36D1C6082C3003347E4 /* UIViewController+Theme.swift */; };
 		7F73F37B1C6082C3003347E4 /* UIWindow+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F36E1C6082C3003347E4 /* UIWindow+Theme.swift */; };
@@ -86,7 +80,14 @@
 		7F98B65F1C730A0C00156917 /* NoteEditViewController+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */; };
 		7F98B6611C730B9B00156917 /* NoteEditViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */; };
 		7FC16B401C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */; };
-		7FD925D41C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD925D31C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift */; };
+		7FD925D41C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD925D31C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift */; };
+		7FEE4CB01C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CAA1C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift */; };
+		7FEE4CB11C75CEF1006754C9 /* RichFormatTextView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CAB1C75CEF1006754C9 /* RichFormatTextView+Theme.swift */; };
+		7FEE4CB21C75CEF1006754C9 /* RichFormatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CAC1C75CEF1006754C9 /* RichFormatTextView.swift */; };
+		7FEE4CB31C75CEF1006754C9 /* RichFormatTextViewInputAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FEE4CAD1C75CEF1006754C9 /* RichFormatTextViewInputAccessoryView.xib */; };
+		7FEE4CB41C75CEF1006754C9 /* RichFormatTextViewShortcutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CAE1C75CEF1006754C9 /* RichFormatTextViewShortcutHandler.swift */; };
+		7FEE4CB71C75CF3E006754C9 /* RichFormatTextViewInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CB61C75CF3E006754C9 /* RichFormatTextViewInputAccessoryView.swift */; };
+		7FEE4CB91C75D445006754C9 /* UITableViewCell+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CB81C75D445006754C9 /* UITableViewCell+Reusable.swift */; };
 		7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */; };
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
 		7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */; };
@@ -171,7 +172,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownShortcutHandler.swift; sourceTree = "<group>"; };
 		7F0A606C1C746B16009F9BD8 /* X2015KitFoundationExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = X2015KitFoundationExtensionTests.swift; sourceTree = "<group>"; };
 		7F0D36131C4D2F9D009F18A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7F0D36161C4D3467009F18A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -206,10 +206,6 @@
 		7F5204D31C34F79B00507125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F5204D61C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F5204D81C34F79B00507125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F59ACF21C59392400F20A31 /* UITableViewCell+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableViewCell+Reusable.swift"; path = "Views/UITableViewCell+Reusable.swift"; sourceTree = "<group>"; };
-		7F6EE2661C73187C00D94323 /* MarkdownInputAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MarkdownInputAccessoryView.xib; path = Views/MarkdownInputAccessoryView.xib; sourceTree = "<group>"; };
-		7F6EE2681C73189400D94323 /* MarkdownInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkdownInputAccessoryView.swift; path = Views/MarkdownInputAccessoryView.swift; sourceTree = "<group>"; };
-		7F6EE2881C7324DF00D94323 /* MarklightTextStorage+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MarklightTextStorage+Theme.swift"; sourceTree = "<group>"; };
 		7F73F2EB1C5F4255003347E4 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F73F2ED1C5F4255003347E4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		7F73F2F01C5F4255003347E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -231,7 +227,6 @@
 		7F73F3681C6082C3003347E4 /* UISearchBar+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Theme.swift"; sourceTree = "<group>"; };
 		7F73F3691C6082C3003347E4 /* UITableView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Theme.swift"; sourceTree = "<group>"; };
 		7F73F36A1C6082C3003347E4 /* UITextField+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Theme.swift"; sourceTree = "<group>"; };
-		7F73F36B1C6082C3003347E4 /* UITextView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Theme.swift"; sourceTree = "<group>"; };
 		7F73F36C1C6082C3003347E4 /* UIView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Theme.swift"; sourceTree = "<group>"; };
 		7F73F36D1C6082C3003347E4 /* UIViewController+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Theme.swift"; sourceTree = "<group>"; };
 		7F73F36E1C6082C3003347E4 /* UIWindow+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Theme.swift"; sourceTree = "<group>"; };
@@ -264,7 +259,14 @@
 		7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+KeyboardCommand.swift"; sourceTree = "<group>"; };
 		7FD925C91C74BB0D00BC26AE /* X2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = X2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD925CD1C74BB0D00BC26AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7FD925D31C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownShortcutHandlerTest.swift; sourceTree = "<group>"; };
+		7FD925D31C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichFormatTextViewShortcutHandlerTest.swift; sourceTree = "<group>"; };
+		7FEE4CAA1C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RichFormatTextView+AccessoryView.swift"; sourceTree = "<group>"; };
+		7FEE4CAB1C75CEF1006754C9 /* RichFormatTextView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RichFormatTextView+Theme.swift"; sourceTree = "<group>"; };
+		7FEE4CAC1C75CEF1006754C9 /* RichFormatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichFormatTextView.swift; sourceTree = "<group>"; };
+		7FEE4CAD1C75CEF1006754C9 /* RichFormatTextViewInputAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RichFormatTextViewInputAccessoryView.xib; sourceTree = "<group>"; };
+		7FEE4CAE1C75CEF1006754C9 /* RichFormatTextViewShortcutHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichFormatTextViewShortcutHandler.swift; sourceTree = "<group>"; };
+		7FEE4CB61C75CF3E006754C9 /* RichFormatTextViewInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichFormatTextViewInputAccessoryView.swift; sourceTree = "<group>"; };
+		7FEE4CB81C75D445006754C9 /* UITableViewCell+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableViewCell+Reusable.swift"; path = "Views/UITableViewCell+Reusable.swift"; sourceTree = "<group>"; };
 		7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyNoteWelcomeView.xib; path = Views/EmptyNoteWelcomeView.xib; sourceTree = "<group>"; };
 		7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyNoteWelcomeView.swift; path = Views/EmptyNoteWelcomeView.swift; sourceTree = "<group>"; };
 		7FFD81501C4B5F6F004F1987 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Views/Protocols/NibLoadable.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 		7F5204C81C34F79B00507125 /* X2015 iOS */ = {
 			isa = PBXGroup;
 			children = (
+				7FEE4CA81C75CEF1006754C9 /* Controls */,
 				7F73F2FA1C5F4BB4003347E4 /* X2015.entitlements */,
 				7F102B651C65FD7A0013AF9A /* AppDelegate */,
 				7FFEA1151C6089A6006BB860 /* Setting */,
@@ -507,7 +510,6 @@
 				7F73F3681C6082C3003347E4 /* UISearchBar+Theme.swift */,
 				7F73F3691C6082C3003347E4 /* UITableView+Theme.swift */,
 				7F73F36A1C6082C3003347E4 /* UITextField+Theme.swift */,
-				7F73F36B1C6082C3003347E4 /* UITextView+Theme.swift */,
 				7F73F36C1C6082C3003347E4 /* UIView+Theme.swift */,
 				7F73F36D1C6082C3003347E4 /* UIViewController+Theme.swift */,
 				7F73F36E1C6082C3003347E4 /* UIWindow+Theme.swift */,
@@ -534,8 +536,6 @@
 				7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */,
 				7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */,
 				7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */,
-				7F6EE2881C7324DF00D94323 /* MarklightTextStorage+Theme.swift */,
-				7F0A606A1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift */,
 			);
 			name = NoteEdit;
 			path = ViewController/NoteEdit;
@@ -582,23 +582,42 @@
 		7FD925CA1C74BB0D00BC26AE /* X2015Tests */ = {
 			isa = PBXGroup;
 			children = (
-				7FD925D31C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift */,
+				7FD925D31C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift */,
 				7FD925CD1C74BB0D00BC26AE /* Info.plist */,
 			);
 			path = X2015Tests;
+			sourceTree = "<group>";
+		};
+		7FEE4CA81C75CEF1006754C9 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				7FEE4CA91C75CEF1006754C9 /* RichFormatTextView */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		7FEE4CA91C75CEF1006754C9 /* RichFormatTextView */ = {
+			isa = PBXGroup;
+			children = (
+				7FEE4CB61C75CF3E006754C9 /* RichFormatTextViewInputAccessoryView.swift */,
+				7FEE4CAA1C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift */,
+				7FEE4CAB1C75CEF1006754C9 /* RichFormatTextView+Theme.swift */,
+				7FEE4CAC1C75CEF1006754C9 /* RichFormatTextView.swift */,
+				7FEE4CAD1C75CEF1006754C9 /* RichFormatTextViewInputAccessoryView.xib */,
+				7FEE4CAE1C75CEF1006754C9 /* RichFormatTextViewShortcutHandler.swift */,
+			);
+			path = RichFormatTextView;
 			sourceTree = "<group>";
 		};
 		7FFD814A1C4B5B4B004F1987 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				7FFD814F1C4B5F46004F1987 /* Protocols */,
+				7FEE4CB81C75D445006754C9 /* UITableViewCell+Reusable.swift */,
 				7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */,
 				7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */,
 				7F14F3B61C50EF6200468F29 /* NoteTableViewCell.xib */,
 				7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */,
-				7F59ACF21C59392400F20A31 /* UITableViewCell+Reusable.swift */,
-				7F6EE2661C73187C00D94323 /* MarkdownInputAccessoryView.xib */,
-				7F6EE2681C73189400D94323 /* MarkdownInputAccessoryView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -847,13 +866,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F14F3B71C50EF6200468F29 /* NoteTableViewCell.xib in Resources */,
-				7F6EE2671C73187C00D94323 /* MarkdownInputAccessoryView.xib in Resources */,
 				7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */,
 				7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */,
 				7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */,
 				7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */,
 				7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */,
 				7F0D86F91C4CE078000DA469 /* InfoPlist.strings in Resources */,
+				7FEE4CB31C75CEF1006754C9 /* RichFormatTextViewInputAccessoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,11 +940,11 @@
 				7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */,
 				7F73F37B1C6082C3003347E4 /* UIWindow+Theme.swift in Sources */,
 				7F73F3761C6082C3003347E4 /* UITableView+Theme.swift in Sources */,
-				7F6EE2691C73189400D94323 /* MarkdownInputAccessoryView.swift in Sources */,
 				7F73F3801C608336003347E4 /* ThemeProtocols.swift in Sources */,
 				7F73F39F1C6084AE003347E4 /* SotyboardCreatable.swift in Sources */,
+				7FEE4CB41C75CEF1006754C9 /* RichFormatTextViewShortcutHandler.swift in Sources */,
+				7FEE4CB71C75CF3E006754C9 /* RichFormatTextViewInputAccessoryView.swift in Sources */,
 				7F102B671C65FD7A0013AF9A /* AppDelegate.swift in Sources */,
-				7F59ACF31C59392400F20A31 /* UITableViewCell+Reusable.swift in Sources */,
 				7F73F3991C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift in Sources */,
 				7F98B6591C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift in Sources */,
 				7F98B6611C730B9B00156917 /* NoteEditViewController+Interface.swift in Sources */,
@@ -937,6 +956,7 @@
 				7F73F3771C6082C3003347E4 /* UITextField+Theme.swift in Sources */,
 				7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */,
 				7F98B6571C72E9D400156917 /* SettingsTableViewController+ThemeSection.swift in Sources */,
+				7FEE4CB21C75CEF1006754C9 /* RichFormatTextView.swift in Sources */,
 				7F3EDB371C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift in Sources */,
 				7F73F3721C6082C3003347E4 /* UIBarButtonItem+Theme.swift in Sources */,
 				7F73F39E1C6084AE003347E4 /* ManagedObjectContextSettable.swift in Sources */,
@@ -944,6 +964,7 @@
 				7F102B691C65FDBF0013AF9A /* AppDelegate+Passcode.swift in Sources */,
 				7F14F3B91C50EFF200468F29 /* NoteTableViewCell.swift in Sources */,
 				7F37C7861C41658E00519B18 /* UIColor+Extensions.swift in Sources */,
+				7FEE4CB91C75D445006754C9 /* UITableViewCell+Reusable.swift in Sources */,
 				7FC16B401C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift in Sources */,
 				7F102B6D1C6601810013AF9A /* AppDelegate+CoreData.swift in Sources */,
 				7F73F37E1C6082C3003347E4 /* ThemeManager.swift in Sources */,
@@ -954,7 +975,6 @@
 				7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */,
 				7F102B6B1C6601330013AF9A /* AppDelegate+Interface.swift in Sources */,
 				7F73F3951C6084AE003347E4 /* FetchedResultTableViewController.swift in Sources */,
-				7F6EE2891C7324DF00D94323 /* MarklightTextStorage+Theme.swift in Sources */,
 				7F102B731C661ABE0013AF9A /* NoteTimelineTableViewController+Shortcut.swift in Sources */,
 				7F73F37D1C6082C3003347E4 /* ThemeAdaptableViewController.swift in Sources */,
 				7FFD81511C4B5F6F004F1987 /* NibLoadable.swift in Sources */,
@@ -964,16 +984,16 @@
 				7F73F3751C6082C3003347E4 /* UISearchBar+Theme.swift in Sources */,
 				7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */,
 				7F98B65F1C730A0C00156917 /* NoteEditViewController+Editor.swift in Sources */,
-				7F0A606B1C7431F3009F9BD8 /* MarkdownShortcutHandler.swift in Sources */,
 				7F3EDB331C6C87660063D403 /* NSUserDefault+TouchID.swift in Sources */,
 				7F73F39C1C6084AE003347E4 /* NoteTimelineTableViewController.swift in Sources */,
 				7F73F3961C6084AE003347E4 /* NoteEditViewController+Action.swift in Sources */,
 				7F73F3A01C6084AE003347E4 /* SettingCheckableTableViewCell.swift in Sources */,
 				7F0D86EA1C4CA086000DA469 /* UIView+AnimationHandler.swift in Sources */,
-				7F73F3781C6082C3003347E4 /* UITextView+Theme.swift in Sources */,
 				7F73F3731C6082C3003347E4 /* UILabel+Theme.swift in Sources */,
 				7F3EDB351C6C87810063D403 /* NSUserDefault+Theme.swift in Sources */,
 				7F73F3791C6082C3003347E4 /* UIView+Theme.swift in Sources */,
+				7FEE4CB01C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift in Sources */,
+				7FEE4CB11C75CEF1006754C9 /* RichFormatTextView+Theme.swift in Sources */,
 				7F73F39A1C6084AE003347E4 /* NoteTimelineTableViewController+Navigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1011,7 +1031,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FD925D41C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift in Sources */,
+				7FD925D41C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

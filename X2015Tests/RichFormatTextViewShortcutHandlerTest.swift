@@ -1,5 +1,5 @@
 //
-//  MarkdownShortcutHandlerTest.swift
+//  RichFormatTextViewShortcutHandlerTest.swift
 //  X2015
 //
 //  Created by Hang Zhang on 2/17/16.
@@ -19,7 +19,9 @@ final class RangeProvider: SelectionRangeProvider {
 
 }
 
-class MarkdownShortcutHandlerTest: XCTestCase {
+class RichFormatTextViewShortcutHandlerTest: XCTestCase {
+
+	typealias Handler = RichFormatTextViewShortcutHandler
 
 	let note = [
 		"first line",
@@ -45,13 +47,13 @@ class MarkdownShortcutHandlerTest: XCTestCase {
 }
 
 // MARK: Cursor-moving tests
-extension MarkdownShortcutHandlerTest {
+extension RichFormatTextViewShortcutHandlerTest {
 
 	//x         = x
 	//ooooooooo = ooooooooo
 	func testMoveCursorLeftAtStringHead() {
 		let rangeProvider = RangeProvider(range: NSMakeRange(0, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.moveCursorLeft()
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(0, 0)))
 	}
@@ -60,7 +62,7 @@ extension MarkdownShortcutHandlerTest {
 	//ooooooooo = ooooooooo
 	func testMoveCursorLeftAtStringBody() {
 		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.moveCursorLeft()
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(0, 0)))
 	}
@@ -70,7 +72,7 @@ extension MarkdownShortcutHandlerTest {
 	func testMoveCursorRightAtStringTail() {
 		let endSelectionRange = NSMakeRange(textProvider.string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding), 0)
 		let rangeProvider = RangeProvider(range: endSelectionRange)
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.moveCursorRight()
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, endSelectionRange))
 	}
@@ -79,7 +81,7 @@ extension MarkdownShortcutHandlerTest {
 	//ooooooooo = ooooooooo
 	func testMoveCursorRightWithMultipleCharacterSelected() {
 		let rangeProvider = RangeProvider(range: NSMakeRange(0, 2))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.moveCursorRight()
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(3, 0)))
 	}
@@ -87,12 +89,12 @@ extension MarkdownShortcutHandlerTest {
 }
 
 // MARK: Header symbol tests
-extension MarkdownShortcutHandlerTest {
+extension RichFormatTextViewShortcutHandlerTest {
 
 	func testAddHeaderSymbolIfNeededWithNromalLine() {
 		let textProvider = TextProvider(string: "title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(0, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.addHeaderSymbolIfNeeded()
 		XCTAssert(textProvider.string == "# title")
 	}
@@ -100,7 +102,7 @@ extension MarkdownShortcutHandlerTest {
 	func testAddHeaderSymbolIfNeededWithHeaderLine() {
 		let textProvider = TextProvider(string: "# title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(0, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.addHeaderSymbolIfNeeded()
 		XCTAssert(textProvider.string == "## title")
 	}
@@ -108,7 +110,7 @@ extension MarkdownShortcutHandlerTest {
 	func testAddHeaderSymbolIfNeededWithHeaderBrokenLine() {
 		let textProvider = TextProvider(string: "#title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(0, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.addHeaderSymbolIfNeeded()
 		XCTAssert(textProvider.string == "# #title")
 	}
@@ -116,12 +118,12 @@ extension MarkdownShortcutHandlerTest {
 }
 
 // MARK: Indent test
-extension MarkdownShortcutHandlerTest {
+extension RichFormatTextViewShortcutHandlerTest {
 
 	func testAddIndentSymbol() {
 		let textProvider = TextProvider(string: "title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.addIndentSymbol()
 		XCTAssert(textProvider.string == "t\title")
 	}
@@ -129,12 +131,12 @@ extension MarkdownShortcutHandlerTest {
 }
 
 // MARK: Emph test
-extension MarkdownShortcutHandlerTest {
+extension RichFormatTextViewShortcutHandlerTest {
 
 	func testAddEmphSymbol() {
 		let textProvider = TextProvider(string: "title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.addEmphSymbol()
 		XCTAssert(textProvider.string == "t*itle")
 	}
@@ -142,13 +144,13 @@ extension MarkdownShortcutHandlerTest {
 }
 
 // MARK: Link test
-extension MarkdownShortcutHandlerTest {
+extension RichFormatTextViewShortcutHandlerTest {
 
 	func testAddLinkSymbol() {
 		let textProvider = TextProvider(string: "title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
-		let bundle = NSBundle(forClass: MarkdownShortcutHandler.self)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let bundle = NSBundle(forClass: Handler.self)
 		let titleString = NSLocalizedString("Title", tableName: nil, bundle: bundle, value: "", comment: "")
 		let linkString = NSLocalizedString("Link", tableName: nil, bundle: bundle, value: "", comment: "")
 		handler.addLinkSymbol()
@@ -158,12 +160,12 @@ extension MarkdownShortcutHandlerTest {
 }
 
 // MARK: Bold text test
-extension MarkdownShortcutHandlerTest {
+extension RichFormatTextViewShortcutHandlerTest {
 
 	func testMakeTextBold() {
 		let textProvider = TextProvider(string: "title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.makeTextBold()
 		XCTAssert(textProvider.string == "t****itle")
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(3, 0)))
@@ -172,7 +174,7 @@ extension MarkdownShortcutHandlerTest {
 	func testMakeTextBoldWithMultipleCharacterSelected() {
 		let textProvider = TextProvider(string: "title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(1, 1))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.makeTextBold()
 		XCTAssert(textProvider.string == "t**i**tle")
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(3, 1)))
@@ -181,12 +183,12 @@ extension MarkdownShortcutHandlerTest {
 }
 
 // MARK: Italic text test
-extension MarkdownShortcutHandlerTest {
+extension RichFormatTextViewShortcutHandlerTest {
 
 	func testMakeTextItalic() {
 		let textProvider = TextProvider(string: "title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.makeTextItalic()
 		XCTAssert(textProvider.string == "t**itle")
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(2, 0)))
@@ -195,7 +197,7 @@ extension MarkdownShortcutHandlerTest {
 	func testMakeTextItalicWithMultipleCharacterSelected() {
 		let textProvider = TextProvider(string: "title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(1, 1))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.makeTextItalic()
 		XCTAssert(textProvider.string == "t*i*tle")
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(2, 1)))
@@ -204,12 +206,12 @@ extension MarkdownShortcutHandlerTest {
 }
 
 // MARK: List test
-extension MarkdownShortcutHandlerTest {
+extension RichFormatTextViewShortcutHandlerTest {
 
 	func testMakeListWithNormalLine() {
 		let textProvider = TextProvider(string: "title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.makeTextList()
 		XCTAssert(textProvider.string == "- title")
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(3, 0)))
@@ -218,7 +220,7 @@ extension MarkdownShortcutHandlerTest {
 	func testMakeListWithListLine() {
 		let textProvider = TextProvider(string: "- title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(4, 1))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		handler.makeTextList()
 		XCTAssert(textProvider.string == "title")
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(2, 1)))
@@ -227,12 +229,12 @@ extension MarkdownShortcutHandlerTest {
 }
 
 // MARK: List auto completion
-extension MarkdownShortcutHandlerTest {
+extension RichFormatTextViewShortcutHandlerTest {
 
 	func testListWithWhiteSpaceAutoCompletion() {
 		let textProvider = TextProvider(string: "title\n")
 		let rangeProvider = RangeProvider(range: NSMakeRange(6, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		let editRange = NSMakeRange(6, 0)
 		if !handler.processListSymbolIfNeeded(editRange, replacementText: "-") {
 			XCTFail()
@@ -244,7 +246,7 @@ extension MarkdownShortcutHandlerTest {
 	func testListWithNewListLineAutoCompletion() {
 		let textProvider = TextProvider(string: "- title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(7, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		let editRange = NSMakeRange(7, 0)
 		if !handler.processListSymbolIfNeeded(editRange, replacementText: "\n") {
 			XCTFail()
@@ -256,7 +258,7 @@ extension MarkdownShortcutHandlerTest {
 	func testListWithRemoveListLineAutoCompletion() {
 		let textProvider = TextProvider(string: "- ")
 		let rangeProvider = RangeProvider(range: NSMakeRange(2, 0))
-		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
 		let editRange = NSMakeRange(2, 0)
 		if !handler.processListSymbolIfNeeded(editRange, replacementText: "\n") {
 			XCTFail()

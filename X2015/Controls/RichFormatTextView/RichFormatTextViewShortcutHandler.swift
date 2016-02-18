@@ -1,5 +1,5 @@
 //
-//  MarkdownShortcutHandler.swift
+//  RichFormatTextViewShortcutHandler.swift
 //  X2015
 //
 //  Created by Hang Zhang on 2/17/16.
@@ -8,13 +8,16 @@
 
 import UIKit
 
-protocol MarkdownShortcutHandlerDelegate: class {
+protocol RichFormatTextViewShortcutHandlerDelegate: class {
 
-	func markdownShortcutHandlerDidModifyText(handler: MarkdownShortcutHandler) -> Void
+	func richFormatTextViewShortcutHandlerHandlerDidModifyText(
+		handler: RichFormatTextViewShortcutHandler) -> Void
 
-	func markdownShortcutHandlerWillBeginEditing(handler: MarkdownShortcutHandler) -> Void
+	func richFormatTextViewShortcutHandlerHandlerWillBeginEditing(
+		handler: RichFormatTextViewShortcutHandler) -> Void
 
-	func markdownShortcutHandlerDidEndEditing(handler: MarkdownShortcutHandler) -> Void
+	func richFormatTextViewShortcutHandlerHandlerDidEndEditing(
+		handler: RichFormatTextViewShortcutHandler) -> Void
 
 }
 
@@ -30,13 +33,13 @@ typealias TextProvider = NSMutableAttributedString
 extension UITextView: SelectionRangeProvider {}
 
 
-final class MarkdownShortcutHandler {
+final class RichFormatTextViewShortcutHandler {
 
 	private(set) weak var rangeProviderCache: SelectionRangeProvider?
 
 	private(set) weak var textProviderCache: TextProvider?
 
-	weak var delegate: MarkdownShortcutHandlerDelegate?
+	weak var delegate: RichFormatTextViewShortcutHandlerDelegate?
 
 	var textProvider: TextProvider {
 		return textProviderCache!
@@ -67,24 +70,24 @@ final class MarkdownShortcutHandler {
 
 }
 
-extension MarkdownShortcutHandler {
+extension RichFormatTextViewShortcutHandler {
 
 	func beginEditing() {
-		delegate?.markdownShortcutHandlerWillBeginEditing(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerWillBeginEditing(self)
 	}
 
 	func endEditing() {
-		delegate?.markdownShortcutHandlerDidEndEditing(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidEndEditing(self)
 	}
 }
 
-extension MarkdownShortcutHandler {
+extension RichFormatTextViewShortcutHandler {
 
 	// Move cursor to next character
 	func moveCursorLeft() {
 		beginEditing()
 		selectedRange = NSMakeRange(max(0, selectedRange.location - 1), 0)
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
@@ -93,7 +96,7 @@ extension MarkdownShortcutHandler {
 		beginEditing()
 		let stringLength = text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
 		selectedRange = NSMakeRange(min(stringLength, selectedRange.location + 1 + selectedRange.length), 0)
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
@@ -116,7 +119,7 @@ extension MarkdownShortcutHandler {
 				atIndex: paragraphRange.startIndex.distanceTo(string.startIndex))
 			selectedRange.location += 2
 		}
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
@@ -128,7 +131,7 @@ extension MarkdownShortcutHandler {
 		let stringToInsert = NSAttributedString(string: "\t")
 		textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
 		selectedRange = NSMakeRange(selectedRange.location + 1, 0)
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
@@ -143,7 +146,7 @@ extension MarkdownShortcutHandler {
 		selectedRange = NSMakeRange(
 			selectedRange.location + stringToInsert.string.characters.count,
 			0)
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
@@ -155,7 +158,7 @@ extension MarkdownShortcutHandler {
 		let stringToInsert = NSAttributedString(string: "*")
 		textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
 		selectedRange = NSMakeRange(selectedRange.location + 1, 0)
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
@@ -171,7 +174,7 @@ extension MarkdownShortcutHandler {
 		selectedRange = NSMakeRange(
 			selectedRange.location + 1,
 			titleString.characters.count)
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
@@ -192,7 +195,7 @@ extension MarkdownShortcutHandler {
 			textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
 			selectedRange.location += 2
 		}
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
@@ -213,7 +216,7 @@ extension MarkdownShortcutHandler {
 			textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
 			selectedRange.location += 1
 		}
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
@@ -234,14 +237,14 @@ extension MarkdownShortcutHandler {
 			textProvider.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
 			selectedRange.location += 2
 		}
-		delegate?.markdownShortcutHandlerDidModifyText(self)
+		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)
 		endEditing()
 	}
 
 }
 
 // MARK: Auto completion
-extension MarkdownShortcutHandler {
+extension RichFormatTextViewShortcutHandler {
 
 	/**
 	Provides auto completion for markdown list

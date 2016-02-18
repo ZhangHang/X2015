@@ -32,20 +32,20 @@ extension NoteEditViewController {
 	@objc
 	private func handleMakeTextBoldKeyboardCommand(command: UIKeyCommand) {
 		debugPrint("handleNewNoteKeyboardCommand")
-		markdownShortcutHandler?.makeTextBold()
+		textView.shortcutHandler.makeTextBold()
 	}
 
 	@objc
 	private func handleMakeTextItalicKeyboardCommand(command: UIKeyCommand) {
 		debugPrint("handleMakeTextItalicKeyboardCommand")
-		markdownShortcutHandler?.makeTextItalic()
+		textView.shortcutHandler.makeTextItalic()
 	}
 
 
 	@objc
 	private func handleMakeTextListKeyboardCommand(command: UIKeyCommand) {
 		debugPrint("handleMakeTextListKeyboardCommand")
-		markdownShortcutHandler?.makeTextList()
+		textView.shortcutHandler.makeTextList()
 	}
 
 }
