@@ -46,6 +46,7 @@ class MarkdownShortcutHandlerTest: XCTestCase {
 
 }
 
+// MARK: Cursor-moving tests
 extension MarkdownShortcutHandlerTest {
 
 	//x         = x
@@ -86,3 +87,144 @@ extension MarkdownShortcutHandlerTest {
 	}
 
 }
+
+// MARK: Header symbol tests
+extension MarkdownShortcutHandlerTest {
+
+	func testAddHeaderSymbolIfNeededWithNromalLine() {
+		let textProvider = TextProvider(string: "title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(0, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.addHeaderSymbolIfNeeded()
+		XCTAssert(textProvider.string == "# title")
+	}
+
+	func testAddHeaderSymbolIfNeededWithHeaderLine() {
+		let textProvider = TextProvider(string: "# title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(0, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.addHeaderSymbolIfNeeded()
+		XCTAssert(textProvider.string == "## title")
+	}
+
+	func testAddHeaderSymbolIfNeededWithHeaderBrokenLine() {
+		let textProvider = TextProvider(string: "#title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(0, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.addHeaderSymbolIfNeeded()
+		XCTAssert(textProvider.string == "# #title")
+	}
+
+}
+
+// MARK: Indent test
+extension MarkdownShortcutHandlerTest {
+
+	func testAddIndentSymbol() {
+		let textProvider = TextProvider(string: "title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.addIndentSymbol()
+		XCTAssert(textProvider.string == "t\title")
+	}
+
+}
+
+// MARK: Emph test
+extension MarkdownShortcutHandlerTest {
+
+	func testAddEmphSymbol() {
+		let textProvider = TextProvider(string: "title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.addEmphSymbol()
+		XCTAssert(textProvider.string == "t*itle")
+	}
+
+}
+
+// MARK: Link test
+extension MarkdownShortcutHandlerTest {
+
+	func testAddLinkSymbol() {
+		let textProvider = TextProvider(string: "title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		let bundle = NSBundle(forClass: MarkdownShortcutHandler.self)
+		let titleString = NSLocalizedString("Title", tableName: nil, bundle: bundle, value: "", comment: "")
+		let linkString = NSLocalizedString("Link", tableName: nil, bundle: bundle, value: "", comment: "")
+		handler.addLinkSymbol()
+		XCTAssert(textProvider.string == "t[\(titleString)](\(linkString))itle")
+	}
+
+}
+
+// MARK: Bold text test
+extension MarkdownShortcutHandlerTest {
+
+	func testMakeTextBold() {
+		let textProvider = TextProvider(string: "title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.makeTextBold()
+		XCTAssert(textProvider.string == "t****itle")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(3, 0)))
+	}
+
+	func testMakeTextBoldWithMultipleCharacterSelected() {
+		let textProvider = TextProvider(string: "title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(1, 1))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.makeTextBold()
+		XCTAssert(textProvider.string == "t**i**tle")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(3, 1)))
+	}
+
+}
+
+// MARK: Italic text test
+extension MarkdownShortcutHandlerTest {
+
+	func testMakeTextItalic() {
+		let textProvider = TextProvider(string: "title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.makeTextItalic()
+		XCTAssert(textProvider.string == "t**itle")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(2, 0)))
+	}
+
+	func testMakeTextItalicWithMultipleCharacterSelected() {
+		let textProvider = TextProvider(string: "title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(1, 1))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.makeTextItalic()
+		XCTAssert(textProvider.string == "t*i*tle")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(2, 1)))
+	}
+
+}
+
+// MARK: List test
+extension MarkdownShortcutHandlerTest {
+
+	func testMakeListWithNormalLine() {
+		let textProvider = TextProvider(string: "title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(1, 0))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.makeTextList()
+		XCTAssert(textProvider.string == "- title")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(3, 0)))
+	}
+
+	func testMakeListWithListLine() {
+		let textProvider = TextProvider(string: "- title")
+		let rangeProvider = RangeProvider(range: NSMakeRange(4, 1))
+		let handler = MarkdownShortcutHandler(rangeProvider: rangeProvider, textProvider: textProvider)
+		handler.makeTextList()
+		XCTAssert(textProvider.string == "title")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(2, 1)))
+	}
+
+}
+

@@ -103,16 +103,18 @@ extension MarkdownShortcutHandler {
 	func addHeaderSymbolIfNeeded() {
 		beginEditing()
 		let string = text
-		let paragraphRange = (string as NSString).paragraphRangeForRange(selectedRange)
-		let startCharacterOfParagraph = string[string.startIndex.advancedBy(paragraphRange.location)]
-		if startCharacterOfParagraph == "#" {
+		let paragraphRange = string.firstParagraphRangeForNSRange(selectedRange)
+		let paragraphString = string.firstParagraphForNSRange(selectedRange)
+		if paragraphString.hasPrefix("# ") {
 			let stringToInsert = NSAttributedString(string: "#")
-			textProvider.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-			selectedRange = NSMakeRange(selectedRange.location + 1, 0)
+			textProvider.insertAttributedString(stringToInsert,
+				atIndex: paragraphRange.startIndex.distanceTo(string.startIndex))
+			selectedRange.location += 1
 		} else {
 			let stringToInsert = NSAttributedString(string: "# ")
-			textProvider.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-			selectedRange = NSMakeRange(selectedRange.location + 2, 0)
+			textProvider.insertAttributedString(stringToInsert,
+				atIndex: paragraphRange.startIndex.distanceTo(string.startIndex))
+			selectedRange.location += 2
 		}
 		delegate?.markdownShortcutHandlerDidModifyText(self)
 		endEditing()
@@ -184,14 +186,11 @@ extension MarkdownShortcutHandler {
 			let selectedString = string.substringWithRange(selectedRange)
 			let stringToInsert = NSAttributedString(string: "**\(selectedString)**")
 			textProvider.replaceCharactersInRange(selectedRange, withAttributedString: stringToInsert)
-
-			var newSelectedRange = selectedRange
-			newSelectedRange.length += 4
-			selectedRange = newSelectedRange
+			selectedRange.location += 2
 		} else {
 			let stringToInsert = NSAttributedString(string: "****")
 			textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-			selectedRange = NSMakeRange(selectedRange.location + 2, 0)
+			selectedRange.location += 2
 		}
 		delegate?.markdownShortcutHandlerDidModifyText(self)
 		endEditing()
@@ -208,14 +207,11 @@ extension MarkdownShortcutHandler {
 			let selectedString = string.substringWithRange(selectedRange)
 			let stringToInsert = NSAttributedString(string: "*\(selectedString)*")
 			textProvider.replaceCharactersInRange(selectedRange, withAttributedString: stringToInsert)
-
-			var newSelectedRange = selectedRange
-			newSelectedRange.length += 2
-			selectedRange = newSelectedRange
+			selectedRange.location += 1
 		} else {
 			let stringToInsert = NSAttributedString(string: "**")
 			textProvider.insertAttributedString(stringToInsert, atIndex: selectedRange.location)
-			selectedRange = NSMakeRange(selectedRange.location + 1, 0)
+			selectedRange.location += 1
 		}
 		delegate?.markdownShortcutHandlerDidModifyText(self)
 		endEditing()
@@ -232,11 +228,11 @@ extension MarkdownShortcutHandler {
 		let paragraphString = string.substringWithRange(paragraphRange)
 		if paragraphString.hasPrefix("- ") {
 			textProvider.replaceCharactersInRange(NSMakeRange(paragraphRange.location, 2), withString: "")
-			selectedRange = NSMakeRange(selectedRange.location - 2, 0)
+			selectedRange.location -= 2
 		} else {
 			let stringToInsert = NSAttributedString(string: "- ")
 			textProvider.insertAttributedString(stringToInsert, atIndex: paragraphRange.location)
-			selectedRange = NSMakeRange(selectedRange.location + 2, 0)
+			selectedRange.location += 2
 		}
 		delegate?.markdownShortcutHandlerDidModifyText(self)
 		endEditing()
