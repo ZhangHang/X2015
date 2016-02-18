@@ -11,18 +11,13 @@ import CoreData
 
 class FetchedResultTableViewController: ThemeAdaptableTableViewController, ManagedObjectContextSettable {
 
-	var managedObjectContext: NSManagedObjectContext!
+	var managedObjectContext: NSManagedObjectContext! {
+		didSet {
+			setupFetchedResultController()
+			fetchData()
+		}
+	}
 	var fetchedResultsController: NSFetchedResultsController!
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		setupFetchedResultController()
-	}
-
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		fetchData()
-	}
 
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return self.fetchedResultsController.sections?.count ?? 0
@@ -47,8 +42,8 @@ extension FetchedResultTableViewController {
 	func fetchData() {
 		do {
 			try fetchedResultsController.performFetch()
-		} catch {
-			fatalError()
+		} catch let e {
+			fatalError("fetch error \(e)")
 		}
 	}
 
