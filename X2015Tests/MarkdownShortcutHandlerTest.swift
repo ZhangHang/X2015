@@ -42,8 +42,6 @@ class MarkdownShortcutHandlerTest: XCTestCase {
 		super.tearDown()
 	}
 
-
-
 }
 
 // MARK: Cursor-moving tests

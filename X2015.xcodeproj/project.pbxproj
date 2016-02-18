@@ -86,7 +86,6 @@
 		7F98B65F1C730A0C00156917 /* NoteEditViewController+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */; };
 		7F98B6611C730B9B00156917 /* NoteEditViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */; };
 		7FC16B401C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */; };
-		7FD925CC1C74BB0D00BC26AE /* X2015Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD925CB1C74BB0D00BC26AE /* X2015Tests.swift */; };
 		7FD925D41C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD925D31C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift */; };
 		7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */; };
 		7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */; };
@@ -264,7 +263,6 @@
 		7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Interface.swift"; sourceTree = "<group>"; };
 		7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+KeyboardCommand.swift"; sourceTree = "<group>"; };
 		7FD925C91C74BB0D00BC26AE /* X2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = X2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FD925CB1C74BB0D00BC26AE /* X2015Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = X2015Tests.swift; sourceTree = "<group>"; };
 		7FD925CD1C74BB0D00BC26AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FD925D31C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownShortcutHandlerTest.swift; sourceTree = "<group>"; };
 		7FFD814B1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyNoteWelcomeView.xib; path = Views/EmptyNoteWelcomeView.xib; sourceTree = "<group>"; };
@@ -584,9 +582,8 @@
 		7FD925CA1C74BB0D00BC26AE /* X2015Tests */ = {
 			isa = PBXGroup;
 			children = (
-				7FD925CB1C74BB0D00BC26AE /* X2015Tests.swift */,
-				7FD925CD1C74BB0D00BC26AE /* Info.plist */,
 				7FD925D31C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift */,
+				7FD925CD1C74BB0D00BC26AE /* Info.plist */,
 			);
 			path = X2015Tests;
 			sourceTree = "<group>";
@@ -1014,7 +1011,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FD925CC1C74BB0D00BC26AE /* X2015Tests.swift in Sources */,
 				7FD925D41C74BB4A00BC26AE /* MarkdownShortcutHandlerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1449,6 +1445,7 @@
 				7FD925D11C74BB0D00BC26AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FFEA12D1C60D2D1006BB860 /* Build configuration list for PBXNativeTarget "TodayExtension" */ = {
 			isa = XCConfigurationList;
