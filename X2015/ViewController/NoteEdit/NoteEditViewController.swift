@@ -65,6 +65,9 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 			case .Empty:
 				break
 			}
+			// alaways update the title of controller after an edting mode has been set
+			updateTitleIfNeeded()
+
 			if isViewLoaded() {
 				configureInterface(editingMode)
 				updateInterface()

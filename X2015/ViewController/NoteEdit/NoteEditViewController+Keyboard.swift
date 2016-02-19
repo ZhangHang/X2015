@@ -43,7 +43,7 @@ extension NoteEditViewController {
 			UITextViewTextDidChangeNotification,
 			object: textView,
 			queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
-				if self.textView.textStorage.string.hasSuffix("\n") {
+				if self.textView.richFormatText.hasSuffix("\n") {
 					CATransaction.setCompletionBlock({ () -> Void in
 						self.scrollToCaret(self.textView, animated: false)
 					})
