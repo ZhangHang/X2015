@@ -16,8 +16,14 @@ extension NoteEditViewController {
 	- parameter sender: a trigger button
 	*/
 	@IBAction func handleActionButtonPressed(sender: UIBarButtonItem) {
+		guard let noteContent = noteManager?.noteContent else {
+			fatalError()
+		}
+
+		let snapshot = textView.exportToImage()
+		let templateSnapshot = ExportTemplateView.generateSnapshot(snapshot, theme: currentTheme)
 		let activityViewController = UIActivityViewController(
-			activityItems: [noteManager!.noteContent!],
+			activityItems: [noteContent, templateSnapshot],
 			applicationActivities: nil)
 		activityViewController.popoverPresentationController?.barButtonItem = sender
 		presentViewController(activityViewController, animated: true, completion: nil)

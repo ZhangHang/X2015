@@ -37,11 +37,12 @@ extension RichFormatTextView: ThemeAdaptable {
 
 		richFormatTextStorage.configureTheme(theme)
 		refreshTextView_WORKAROUND()
-		backgroundColor = UIColor.clearColor()
 		switch theme {
 		case .Default:
+			backgroundColor = UIColor.default_ViewControllerBackgroundColor()
 			keyboardAppearance = .Light
 		case .Night:
+			backgroundColor = UIColor.night_ViewControllerBackgroundColor()
 			keyboardAppearance = .Dark
 		}
 		reloadInputViews()

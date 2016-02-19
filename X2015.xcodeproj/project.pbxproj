@@ -79,6 +79,8 @@
 		7F98B65D1C73076000156917 /* Marklight.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F98B65A1C73073600156917 /* Marklight.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F98B65F1C730A0C00156917 /* NoteEditViewController+Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */; };
 		7F98B6611C730B9B00156917 /* NoteEditViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */; };
+		7FAAA9C31C76BC0700577C1B /* RichFormatTextView+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAAA9C21C76BC0700577C1B /* RichFormatTextView+Export.swift */; };
+		7FAAA9C71C76E21D00577C1B /* ExportTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAAA9C61C76E21D00577C1B /* ExportTemplateView.swift */; };
 		7FC16B401C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */; };
 		7FD925D41C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD925D31C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift */; };
 		7FEE4CB01C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CAA1C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift */; };
@@ -256,6 +258,8 @@
 		7F98B65A1C73073600156917 /* Marklight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marklight.framework; path = Carthage/Build/iOS/Marklight.framework; sourceTree = "<group>"; };
 		7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Editor.swift"; sourceTree = "<group>"; };
 		7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Interface.swift"; sourceTree = "<group>"; };
+		7FAAA9C21C76BC0700577C1B /* RichFormatTextView+Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RichFormatTextView+Export.swift"; sourceTree = "<group>"; };
+		7FAAA9C61C76E21D00577C1B /* ExportTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExportTemplateView.swift; path = Views/ExportTemplateView.swift; sourceTree = "<group>"; };
 		7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+KeyboardCommand.swift"; sourceTree = "<group>"; };
 		7FD925C91C74BB0D00BC26AE /* X2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = X2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD925CD1C74BB0D00BC26AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -599,12 +603,13 @@
 		7FEE4CA91C75CEF1006754C9 /* RichFormatTextView */ = {
 			isa = PBXGroup;
 			children = (
+				7FEE4CAD1C75CEF1006754C9 /* RichFormatTextViewInputAccessoryView.xib */,
 				7FEE4CB61C75CF3E006754C9 /* RichFormatTextViewInputAccessoryView.swift */,
+				7FEE4CAC1C75CEF1006754C9 /* RichFormatTextView.swift */,
 				7FEE4CAA1C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift */,
 				7FEE4CAB1C75CEF1006754C9 /* RichFormatTextView+Theme.swift */,
-				7FEE4CAC1C75CEF1006754C9 /* RichFormatTextView.swift */,
-				7FEE4CAD1C75CEF1006754C9 /* RichFormatTextViewInputAccessoryView.xib */,
 				7FEE4CAE1C75CEF1006754C9 /* RichFormatTextViewShortcutHandler.swift */,
+				7FAAA9C21C76BC0700577C1B /* RichFormatTextView+Export.swift */,
 			);
 			path = RichFormatTextView;
 			sourceTree = "<group>";
@@ -618,6 +623,7 @@
 				7FFD814D1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift */,
 				7F14F3B61C50EF6200468F29 /* NoteTableViewCell.xib */,
 				7F14F3B81C50EFF200468F29 /* NoteTableViewCell.swift */,
+				7FAAA9C61C76E21D00577C1B /* ExportTemplateView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -938,6 +944,7 @@
 			files = (
 				7F98B6541C72DE1700156917 /* NoteEditViewController+Keyboard.swift in Sources */,
 				7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */,
+				7FAAA9C71C76E21D00577C1B /* ExportTemplateView.swift in Sources */,
 				7F73F37B1C6082C3003347E4 /* UIWindow+Theme.swift in Sources */,
 				7F73F3761C6082C3003347E4 /* UITableView+Theme.swift in Sources */,
 				7F73F3801C608336003347E4 /* ThemeProtocols.swift in Sources */,
@@ -970,6 +977,7 @@
 				7F73F37E1C6082C3003347E4 /* ThemeManager.swift in Sources */,
 				7F73F3741C6082C3003347E4 /* UINavigationBar+Theme.swift in Sources */,
 				7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */,
+				7FAAA9C31C76BC0700577C1B /* RichFormatTextView+Export.swift in Sources */,
 				7F102B7F1C6667350013AF9A /* PasscodeViewController.swift in Sources */,
 				7F73F39D1C6084AE003347E4 /* NoteManager.swift in Sources */,
 				7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */,
