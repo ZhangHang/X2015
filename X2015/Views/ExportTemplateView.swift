@@ -10,12 +10,20 @@ import UIKit
 
 final class ExportTemplateView: UIView {
 
-	var contentView: UIView = UIView()
-	var imageView: UIImageView = UIImageView()
+	var contentView: UIView = {
+		let view = UIView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	var imageView: UIImageView = {
+		let view = UIImageView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
 
 	static var contentViewMargin: CGFloat = 20
 	static var imageViewCommonMargin: CGFloat = 10
-	static var imageViewBottomMargin: CGFloat = 30
+	static var imageViewBottomMargin: CGFloat = 40
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -28,19 +36,17 @@ final class ExportTemplateView: UIView {
 	}
 
 	func configureViews() {
-		contentView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(contentView)
 		addConstraints(
 			NSLayoutConstraint.constraintsWithVisualFormat(
 				"H:|-margin-[contentView]-margin-|",
-				options: .AlignAllBaseline,
+				options: .DirectionLeadingToTrailing,
 				metrics: ["margin": ExportTemplateView.contentViewMargin],
 				views: ["contentView": contentView]))
 		addConstraints(
 			NSLayoutConstraint.constraintsWithVisualFormat(
 				"V:|-margin-[contentView]-margin-|",
-				options: .AlignAllBaseline,
+				options: .DirectionLeadingToTrailing,
 				metrics: ["margin": ExportTemplateView.contentViewMargin],
 				views: ["contentView": contentView]))
 
@@ -53,11 +59,12 @@ final class ExportTemplateView: UIView {
 				views: ["imageView": imageView]))
 		contentView.addConstraints(
 			NSLayoutConstraint.constraintsWithVisualFormat(
-				"V:|-topMargin-[imageView]-bottomMargin-|",
-				options: .AlignAllBaseline,
+				"V:|-margin-[imageView]-bottomMargin-|",
+				options: .DirectionLeadingToTrailing,
 				metrics: [
-					"topMargin": ExportTemplateView.imageViewCommonMargin,
-					"bottomMargin": ExportTemplateView.imageViewBottomMargin],
+					"margin": ExportTemplateView.imageViewCommonMargin,
+					"bottomMargin": ExportTemplateView.imageViewBottomMargin
+				],
 				views: ["imageView": imageView]))
 	}
 
