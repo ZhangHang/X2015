@@ -28,9 +28,15 @@
 		7F3EDB331C6C87660063D403 /* NSUserDefault+TouchID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDB321C6C87660063D403 /* NSUserDefault+TouchID.swift */; };
 		7F3EDB351C6C87810063D403 /* NSUserDefault+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDB341C6C87810063D403 /* NSUserDefault+Theme.swift */; };
 		7F3EDB371C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDB361C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift */; };
+		7F47DE051C78123100E3A001 /* NoteReaderControllerToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F47DE041C78123100E3A001 /* NoteReaderControllerToolBar.xib */; };
+		7F47DE091C7813B900E3A001 /* NoteReaderControllerToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F47DE081C7813B900E3A001 /* NoteReaderControllerToolBar.swift */; };
+		7F47DE0B1C7814D500E3A001 /* NoteReaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F47DE0A1C7814D500E3A001 /* NoteReaderController.swift */; };
+		7F47DE0D1C781F9100E3A001 /* NoteEditViewController+Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F47DE0C1C781F9100E3A001 /* NoteEditViewController+Reader.swift */; };
 		7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204CD1C34F79B00507125 /* Main.storyboard */; };
 		7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D31C34F79B00507125 /* Assets.xcassets */; };
 		7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */; };
+		7F707A251C78549B00F92381 /* NoteReaderController+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F707A241C78549B00F92381 /* NoteReaderController+Theme.swift */; };
+		7F707A271C7854A200F92381 /* NoteReaderControllerToolBar+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F707A261C7854A200F92381 /* NoteReaderControllerToolBar+Theme.swift */; };
 		7F73F2EE1C5F4255003347E4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F2ED1C5F4255003347E4 /* ShareViewController.swift */; };
 		7F73F2F11C5F4255003347E4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F73F2EF1C5F4255003347E4 /* MainInterface.storyboard */; };
 		7F73F2F61C5F4255003347E4 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7F73F2EB1C5F4255003347E4 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -203,11 +209,17 @@
 		7F3EDB321C6C87660063D403 /* NSUserDefault+TouchID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+TouchID.swift"; sourceTree = "<group>"; };
 		7F3EDB341C6C87810063D403 /* NSUserDefault+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+Theme.swift"; sourceTree = "<group>"; };
 		7F3EDB361C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Shortcut.swift"; sourceTree = "<group>"; };
+		7F47DE041C78123100E3A001 /* NoteReaderControllerToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteReaderControllerToolBar.xib; sourceTree = "<group>"; };
+		7F47DE081C7813B900E3A001 /* NoteReaderControllerToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteReaderControllerToolBar.swift; sourceTree = "<group>"; };
+		7F47DE0A1C7814D500E3A001 /* NoteReaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteReaderController.swift; sourceTree = "<group>"; };
+		7F47DE0C1C781F9100E3A001 /* NoteEditViewController+Reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Reader.swift"; sourceTree = "<group>"; };
 		7F5204C61C34F79B00507125 /* X2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = X2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5204CE1C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F5204D31C34F79B00507125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F5204D61C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F5204D81C34F79B00507125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F707A241C78549B00F92381 /* NoteReaderController+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteReaderController+Theme.swift"; sourceTree = "<group>"; };
+		7F707A261C7854A200F92381 /* NoteReaderControllerToolBar+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteReaderControllerToolBar+Theme.swift"; sourceTree = "<group>"; };
 		7F73F2EB1C5F4255003347E4 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F73F2ED1C5F4255003347E4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		7F73F2F01C5F4255003347E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -378,6 +390,26 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7F47DE001C776FD200E3A001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7F47DE011C776FD200E3A001 /* NoteReader */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7F47DE011C776FD200E3A001 /* NoteReader */ = {
+			isa = PBXGroup;
+			children = (
+				7F47DE041C78123100E3A001 /* NoteReaderControllerToolBar.xib */,
+				7F47DE081C7813B900E3A001 /* NoteReaderControllerToolBar.swift */,
+				7F707A261C7854A200F92381 /* NoteReaderControllerToolBar+Theme.swift */,
+				7F47DE0A1C7814D500E3A001 /* NoteReaderController.swift */,
+				7F707A241C78549B00F92381 /* NoteReaderController+Theme.swift */,
+			);
+			path = NoteReader;
+			sourceTree = "<group>";
+		};
 		7F5204BD1C34F79B00507125 = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +441,7 @@
 		7F5204C81C34F79B00507125 /* X2015 iOS */ = {
 			isa = PBXGroup;
 			children = (
+				7F47DE001C776FD200E3A001 /* Services */,
 				7FEE4CA81C75CEF1006754C9 /* Controls */,
 				7F73F2FA1C5F4BB4003347E4 /* X2015.entitlements */,
 				7F102B651C65FD7A0013AF9A /* AppDelegate */,
@@ -541,6 +574,7 @@
 				7F98B65E1C730A0C00156917 /* NoteEditViewController+Editor.swift */,
 				7F98B6601C730B9B00156917 /* NoteEditViewController+Interface.swift */,
 				7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */,
+				7F47DE0C1C781F9100E3A001 /* NoteEditViewController+Reader.swift */,
 			);
 			name = NoteEdit;
 			path = ViewController/NoteEdit;
@@ -875,6 +909,7 @@
 				7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */,
 				7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */,
 				7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */,
+				7F47DE051C78123100E3A001 /* NoteReaderControllerToolBar.xib in Resources */,
 				7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */,
 				7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */,
 				7F0D86F91C4CE078000DA469 /* InfoPlist.strings in Resources */,
@@ -944,9 +979,11 @@
 			files = (
 				7F98B6541C72DE1700156917 /* NoteEditViewController+Keyboard.swift in Sources */,
 				7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */,
+				7F47DE0B1C7814D500E3A001 /* NoteReaderController.swift in Sources */,
 				7FAAA9C71C76E21D00577C1B /* ExportTemplateView.swift in Sources */,
 				7F73F37B1C6082C3003347E4 /* UIWindow+Theme.swift in Sources */,
 				7F73F3761C6082C3003347E4 /* UITableView+Theme.swift in Sources */,
+				7F707A271C7854A200F92381 /* NoteReaderControllerToolBar+Theme.swift in Sources */,
 				7F73F3801C608336003347E4 /* ThemeProtocols.swift in Sources */,
 				7F73F39F1C6084AE003347E4 /* SotyboardCreatable.swift in Sources */,
 				7FEE4CB41C75CEF1006754C9 /* RichFormatTextViewShortcutHandler.swift in Sources */,
@@ -956,6 +993,7 @@
 				7F98B6591C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift in Sources */,
 				7F98B6611C730B9B00156917 /* NoteEditViewController+Interface.swift in Sources */,
 				7F102B7E1C6667350013AF9A /* MainSplitViewController.swift in Sources */,
+				7F47DE0D1C781F9100E3A001 /* NoteEditViewController+Reader.swift in Sources */,
 				7F0D36341C4E0AB4009F18A6 /* TouchIDHelper.swift in Sources */,
 				7F73F3971C6084AE003347E4 /* NoteEditViewController.swift in Sources */,
 				7F73F37C1C6082C3003347E4 /* ThemeAdaptableTableViewController.swift in Sources */,
@@ -964,6 +1002,7 @@
 				7FFD814E1C4B5B83004F1987 /* EmptyNoteWelcomeView.swift in Sources */,
 				7F98B6571C72E9D400156917 /* SettingsTableViewController+ThemeSection.swift in Sources */,
 				7FEE4CB21C75CEF1006754C9 /* RichFormatTextView.swift in Sources */,
+				7F47DE091C7813B900E3A001 /* NoteReaderControllerToolBar.swift in Sources */,
 				7F3EDB371C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift in Sources */,
 				7F73F3721C6082C3003347E4 /* UIBarButtonItem+Theme.swift in Sources */,
 				7F73F39E1C6084AE003347E4 /* ManagedObjectContextSettable.swift in Sources */,
@@ -990,6 +1029,7 @@
 				7F73F37A1C6082C3003347E4 /* UIViewController+Theme.swift in Sources */,
 				7F102B811C66689A0013AF9A /* MainSplitViewController+KeyboardCommand.swift in Sources */,
 				7F73F3751C6082C3003347E4 /* UISearchBar+Theme.swift in Sources */,
+				7F707A251C78549B00F92381 /* NoteReaderController+Theme.swift in Sources */,
 				7F73F39B1C6084AE003347E4 /* NoteTimelineTableViewController+Search.swift in Sources */,
 				7F98B65F1C730A0C00156917 /* NoteEditViewController+Editor.swift in Sources */,
 				7F3EDB331C6C87660063D403 /* NSUserDefault+TouchID.swift in Sources */,

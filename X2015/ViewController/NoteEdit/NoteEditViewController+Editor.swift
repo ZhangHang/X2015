@@ -17,6 +17,10 @@ extension NoteEditViewController {
 			self.updateTitleIfNeeded()
 			self.noteManager!.updateNote(text)
 		}
+		textView.didBeginEditing = { [unowned self] in
+			self.navigationController?.setNavigationBarHidden(true, animated: true)
+			self.setNeedsStatusBarAppearanceUpdate()
+		}
 		textView.didEndEditing = { [unowned self] in
 			self.navigationController?.setNavigationBarHidden(false, animated: true)
 			self.setNeedsStatusBarAppearanceUpdate()

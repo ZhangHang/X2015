@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol RichFormatTextViewShortcutHandlerDelegate: class {
 
@@ -81,10 +82,63 @@ extension RichFormatTextViewShortcutHandler {
 	}
 }
 
+extension RichFormatTextView {
+
+	struct Regex {
+		private let regularExpression: NSRegularExpression!
+
+		private init(
+			pattern: String,
+			options: NSRegularExpressionOptions = NSRegularExpressionOptions(rawValue: 0)) {
+				var error: NSError?
+				let re: NSRegularExpression?
+				do {
+					re = try NSRegularExpression(pattern: pattern,
+						options: options)
+				} catch let error1 as NSError {
+					error = error1
+					re = nil
+				}
+
+				// If re is nil, it means NSRegularExpression didn't like
+				// the pattern we gave it.  All regex patterns used by Markdown
+				// should be valid, so this probably means that a pattern
+				// valid for .NET Regex is not valid for NSRegularExpression.
+				if re == nil {
+					if let error = error {
+						print("Regular expression error: \(error.userInfo)")
+					}
+					assert(re != nil)
+				}
+
+				self.regularExpression = re
+		}
+
+		private func matches(input: String, range: NSRange,
+			completion: (result: NSTextCheckingResult?) -> Void) {
+				let s = input as NSString
+				let options = NSMatchingOptions(rawValue: 0)
+				let range = NSMakeRange(0, s.length)
+				regularExpression.enumerateMatchesInString(s as String,
+					options: options,
+					range: range,
+					usingBlock: { (result, flags, stop) -> Void in
+						completion(result: result)
+				})
+		}
+	}
+
+}
+
 extension RichFormatTextViewShortcutHandler {
 
 	// Move cursor to next character
 	func moveCursorLeft() {
+
+		let av = AVSpeechSynthesizer()
+		let speaker = AVSpeechUtterance(string: textProvider.string)
+		av.speakUtterance(speaker)
+
 		beginEditing()
 		selectedRange = NSMakeRange(max(0, selectedRange.location - 1), 0)
 		delegate?.richFormatTextViewShortcutHandlerHandlerDidModifyText(self)

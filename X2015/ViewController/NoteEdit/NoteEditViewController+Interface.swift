@@ -34,17 +34,8 @@ extension NoteEditViewController {
 		switch editingMode {
 		case .Create:
 			textView.becomeFirstResponder()
-			navigationController?.hidesBarsOnSwipe = false
-			navigationController?.hidesBarsOnTap = true
-			navigationController?.hidesBarsWhenKeyboardAppears = true
-		case .Edit:
-			navigationController?.hidesBarsOnSwipe = false
-			navigationController?.hidesBarsOnTap = true
-			navigationController?.hidesBarsWhenKeyboardAppears = true
-		case .Empty:
-			navigationController?.hidesBarsOnSwipe = false
-			navigationController?.hidesBarsOnTap = false
-			navigationController?.hidesBarsWhenKeyboardAppears = false
+		default:
+			break
 		}
 
 	}
@@ -64,13 +55,15 @@ extension NoteEditViewController {
 	}
 
 	/**
-	Update sharing button based on whether note is empty or not
+	Update bar buttons based on whether note is empty or not
 	*/
 	func updateActionButtonIfNeeded() {
 		if let updater = noteManager {
-			actionBarButton.enabled = !updater.isCurrentNoteEmpty
+			actionButton.enabled = !updater.isCurrentNoteEmpty
+			playButton.enabled = !updater.isCurrentNoteEmpty
 		} else {
-			actionBarButton.enabled = false
+			actionButton.enabled = false
+			playButton.enabled = false
 		}
 	}
 

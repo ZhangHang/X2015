@@ -6,6 +6,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Settings-->
@@ -156,13 +157,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OhK-Ep-Cbg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="L2W-ed-zua">
-                            <connections>
-                                <action selector="handleActionButtonPressed:" destination="LYn-i6-btg" id="U4f-qQ-FZP"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="L2W-ed-zua">
+                                <connections>
+                                    <action selector="handleActionButtonPressed:" destination="LYn-i6-btg" id="U4f-qQ-FZP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="play" id="xHV-fE-0EE">
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="LYn-i6-btg" id="emG-NI-DwW"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="actionButton" destination="L2W-ed-zua" id="1ef-fC-kL1"/>
+                        <outlet property="playButton" destination="xHV-fE-0EE" id="Ab7-6W-DOm"/>
                         <outlet property="textView" destination="14B-fx-PXZ" id="T85-q9-7c7"/>
                     </connections>
                 </viewController>

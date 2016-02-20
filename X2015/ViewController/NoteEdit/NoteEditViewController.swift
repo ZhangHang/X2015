@@ -84,10 +84,12 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 	/// The delegate
 	weak var delegate: NoteEditViewControllerDelegate?
 
-	/// Action button
-	var actionBarButton: UIBarButtonItem {
-		return navigationItem.rightBarButtonItem!
-	}
+	/// Bar buttons
+	@IBOutlet weak var actionButton: UIBarButtonItem!
+	@IBOutlet weak var playButton: UIBarButtonItem!
+
+	/// NoteReaderController
+	var noteReaderController: NoteReaderController?
 
 	/// Preview action items.
 	lazy var previewActions: [UIPreviewActionItem] = {
@@ -107,6 +109,16 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 	}
 
 	// MARK : Theme
+
+	override func willUpdateThemeInterface(theme: Theme) {
+		noteReaderController?.view.hidden = true
+		noteReaderController?.configureTheme(theme)
+	}
+
+	override func didUpdateThemeInterface(theme: Theme) {
+		noteReaderController?.view.hidden = false
+	}
+
 	override func updateThemeInterface(theme: Theme, animated: Bool) {
 		super.updateThemeInterface(theme, animated: animated)
 		func updateInterface() {
@@ -138,6 +150,10 @@ extension NoteEditViewController {
 		updateInterface()
 	}
 
+	override func viewDidDisappear(animated: Bool) {
+		super.viewDidAppear(animated)
+		destroyNoteReaderControllerIfNeeded()
+	}
 }
 
 extension NoteEditViewController: SotyboardCreatable {
@@ -149,5 +165,5 @@ extension NoteEditViewController: SotyboardCreatable {
 	static var viewControllerIdentifier: String {
 		return "NoteEditViewController"
 	}
-
+	
 }

@@ -21,7 +21,7 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 
 	override func viewWillAppear(animated: Bool) {
 		if needsUpdateTheme {
-			updateThemeInterface(currentTheme, animated: false)
+			updateThemeInterfaceHelper(currentTheme, animated: false)
 			needsUpdateTheme = false
 		}
 		super.viewWillAppear(animated)
@@ -51,7 +51,7 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 	@objc
 	private func handleThemeChangeNotification() {
 		if isViewLoaded() {
-			updateThemeInterface(currentTheme, animated: true)
+			updateThemeInterfaceHelper(currentTheme, animated: true)
 		} else {
 			needsUpdateTheme = true
 		}
@@ -77,6 +77,16 @@ class ThemeAdaptableTableViewController: UITableViewController, ThemeAdaptable {
 		} else {
 			updateInterface()
 		}
+	}
+
+	func willUpdateThemeInterface(theme: Theme) {}
+
+	func didUpdateThemeInterface(theme: Theme) {}
+
+	func updateThemeInterfaceHelper(theme: Theme, animated: Bool = true) {
+		willUpdateThemeInterface(theme)
+		updateThemeInterface(theme, animated: animated)
+		didUpdateThemeInterface(theme)
 	}
 
 	/**
