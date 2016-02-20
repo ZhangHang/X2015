@@ -70,10 +70,12 @@ extension NoteEditViewController {
 	}
 
 	private func disableEditor() {
+		textView.selectable = false
 		textView.editable = false
 	}
 
 	private func enableEditor() {
+		textView.selectable = true
 		textView.editable = true
 	}
 

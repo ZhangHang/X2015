@@ -11,6 +11,9 @@ import UIKit
 extension RichFormatTextView {
 
 	func exportToImage() -> UIImage {
+		let orignalShowsVerticalScrollIndicator = showsVerticalScrollIndicator
+		showsVerticalScrollIndicator = false
+		editable = false
 		let orignalContentOffset = self.contentOffset
 		let orignalFrame = self.frame
 		contentOffset = CGPointZero
@@ -24,7 +27,8 @@ extension RichFormatTextView {
 
 		contentOffset = orignalContentOffset
 		frame = orignalFrame
-
+		editable = true
+		showsHorizontalScrollIndicator = orignalShowsVerticalScrollIndicator
 		return snapshot
 	}
 

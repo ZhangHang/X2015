@@ -93,6 +93,7 @@ class NoteSearchTableViewController: FetchedResultTableViewController {
 			updateInterface()
 		}
 	}
+
 }
 
 extension NoteSearchTableViewController {

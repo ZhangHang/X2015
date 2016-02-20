@@ -104,9 +104,14 @@ extension RichFormatTextViewShortcutHandlerTest {
 		let textProvider = TextProvider(string: "# title")
 		let rangeProvider = RangeProvider(range: NSMakeRange(0, 0))
 		let handler = Handler(rangeProvider: rangeProvider, textProvider: textProvider)
+
 		handler.addHeaderSymbolIfNeeded()
 		XCTAssert(textProvider.string == "## title")
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(1, 0)))
+
+		handler.addHeaderSymbolIfNeeded()
+		XCTAssert(textProvider.string == "### title")
+		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(2, 0)))
 	}
 
 	func testAddHeaderSymbolIfNeededWithHeaderBrokenLine() {

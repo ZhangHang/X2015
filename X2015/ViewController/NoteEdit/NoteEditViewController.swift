@@ -165,5 +165,5 @@ extension NoteEditViewController: SotyboardCreatable {
 	static var viewControllerIdentifier: String {
 		return "NoteEditViewController"
 	}
-	
+
 }

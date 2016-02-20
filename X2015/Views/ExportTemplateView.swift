@@ -106,7 +106,7 @@ extension ExportTemplateView: ThemeAdaptable {
 			contentView.layer.borderColor = UIColor.lightGrayColor().CGColor
 		case .Night:
 			backgroundColor = UIColor.night_ViewControllerBackgroundColor()
-			contentView.layer.borderColor = UIColor.darkGrayColor().CGColor
+			contentView.layer.borderColor = UIColor.blackColor().CGColor
 		}
 
 		contentView.layer.borderWidth = 1
