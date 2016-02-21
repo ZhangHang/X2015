@@ -96,6 +96,10 @@ extension RichFormatTextView: RichFormatTextViewShortcutHandlerDelegate {
 
 extension RichFormatTextView: UITextViewDelegate {
 
+	func textViewDidBeginEditing(textView: UITextView) {
+		didBeginEditing?()
+	}
+
 	func textViewDidEndEditing(textView: UITextView) {
 		didEndEditing?()
 	}
