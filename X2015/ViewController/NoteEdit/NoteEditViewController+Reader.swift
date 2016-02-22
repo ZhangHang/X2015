@@ -7,76 +7,89 @@
 //
 
 import UIKit
+import AVFoundation
 
 extension NoteEditViewController {
 
 	@IBAction func playButtonPressed(sender: UIBarButtonItem) {
-		guard let noteContent = noteManager?.noteContent else {
-			fatalError()
+		guard
+			let noteContent = noteManager?.noteContent,
+			let noteTitle = noteManager?.currentTitle else {
+				fatalError()
 		}
 
-		let controller = NoteReaderController(note: noteContent, readImmediately: false)
-		noteReaderController = controller
-		controller.configureTheme(currentTheme)
-		addReaderToolBar(controller)
+		let controller = NoteReaderController.sharedInstance
+		controller.prepare(noteTitle, note: noteContent)
+		controller.view = setupReaderToolBarAndReturn()
 
-		controller.didStartReading = { [unowned self] in
-			self.playButton.enabled = false
-		}
-		controller.didFinishReading = { [unowned self] in
-			self.playButton.enabled = true
-			self.enableEditor()
-			self.removeReaderToolBar()
-			self.noteReaderController?.destory()
-		}
-		controller.didCancelReading = { [unowned self] in
-			self.playButton.enabled = true
-			self.enableEditor()
-			self.removeReaderToolBar()
-			self.noteReaderController?.destory()
+		NSNotificationCenter
+			.defaultCenter()
+			.addObserverForName(
+				NoteReaderControllerDidChangeReadingActionNotificationName,
+				object: nil,
+				queue: NSOperationQueue.mainQueue()) { (note) -> Void in
+					guard let typeRawValue = note.userInfo?[NoteReaderControllerTypeKey] as? String else {
+						fatalError()
+					}
+					guard let type = NoteReaderController.ReadingActionType(rawValue: typeRawValue) else {
+						fatalError()
+					}
+
+					switch type {
+					case .DidStart:
+						self.setReaderModeEnabled(true)
+					case .DidFinish, .DidCancel:
+						self.setReaderModeEnabled(false)
+					default:
+						break
+					}
+
 		}
 
-		disableEditor()
 		controller.startReading()
 	}
 
-	func destroyNoteReaderControllerIfNeeded() {
-		self.noteReaderController?.destory()
+	func stopNoteReaderIfActive() {
+		NoteReaderController.sharedInstance.destoryIfActive()
 	}
 
-	private func addReaderToolBar(controller: NoteReaderController) {
-		self.view.addSubview(controller.view)
-		controller.view.tintColor = UIColor.x2015_BlueColor()
-		controller.view.translatesAutoresizingMaskIntoConstraints = false
-		self.view.addConstraints(
+	private func setupReaderToolBarAndReturn() -> NoteReaderControllerToolBar {
+		readerToolBar = NoteReaderControllerToolBar.instantiateFromNib()!
+		guard let toolbar = readerToolBar else {
+			fatalError()
+		}
+		view.addSubview(toolbar)
+		toolbar.configureTheme(currentTheme)
+		toolbar.tintColor = UIColor.x2015_BlueColor()
+		toolbar.translatesAutoresizingMaskIntoConstraints = false
+		view.addConstraints(
 			NSLayoutConstraint.constraintsWithVisualFormat(
 				"H:|[view]|",
 				options: .DirectionLeadingToTrailing,
 				metrics: nil,
-				views: ["view":controller.view]))
-		self.view.addConstraints(
+				views: ["view":toolbar]))
+		view.addConstraints(
 			NSLayoutConstraint.constraintsWithVisualFormat(
 				"V:[view]|",
 				options: .DirectionLeadingToTrailing,
 				metrics: nil,
-				views: ["view":controller.view]))
+				views: ["view":toolbar]))
+
+		return toolbar
 	}
 
-	private func removeReaderToolBar() {
-		guard let controller = noteReaderController else {
-			fatalError()
+	func setReaderModeEnabled(enabled: Bool) {
+		if enabled {
+			playButton.enabled = false
+			textView.selectable = false
+			textView.editable = false
+			becomeFirstResponder()
+		} else {
+			playButton.enabled = true
+			textView.selectable = true
+			textView.editable = true
+			readerToolBar?.removeFromSuperview()
 		}
-		controller.view.removeFromSuperview()
-	}
-
-	private func disableEditor() {
-		textView.selectable = false
-		textView.editable = false
-	}
-
-	private func enableEditor() {
-		textView.selectable = true
-		textView.editable = true
 	}
 
 }

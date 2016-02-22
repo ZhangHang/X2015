@@ -36,7 +36,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	let managedObjectContextBridge = ManagedObjectContextBridge(policies: [.Send, .Receive])
 
 	// MARK: Interface
-	var window: UIWindow?
+	var xWindow: XWindow = XWindow()
+	var window: UIWindow? {
+		get {
+			return xWindow
+		}
+		set {
+			guard let newWindow = newValue as? XWindow else {
+				fatalError()
+			}
+			xWindow = newWindow
+		}
+	}
 	var rootViewControllerCache: UISplitViewController?
 	var passcodeViewController: PasscodeViewController! = {
 		return PasscodeViewController.instanceFromStoryboard()
