@@ -80,12 +80,12 @@ final class NoteReaderController: NSObject {
 	private(set) var speechUtterance: AVSpeechUtterance!
 	private(set) var currentCharacterRange: NSRange?
 
-	enum Speed: String {
-		case Slow = ".5X"
-		case Normal = "1X"
-		case Fast = "2X"
+	enum Speed {
+		case Slow
+		case Normal
+		case Fast
 
-		func toRate() -> Float {
+		var rate: Float {
 			switch self {
 			case .Slow:
 				return (AVSpeechUtteranceMinimumSpeechRate + AVSpeechUtteranceDefaultSpeechRate) / 2
@@ -95,12 +95,23 @@ final class NoteReaderController: NSObject {
 				return (AVSpeechUtteranceMaximumSpeechRate + AVSpeechUtteranceDefaultSpeechRate) / 2
 			}
 		}
+
+		var description: String {
+			switch self {
+			case .Slow:
+				return ".5X"
+			case .Normal:
+				return "1X"
+			case .Fast:
+				return "2X"
+			}
+		}
 	}
 
 	private(set) var currentSpeed: Speed = .Normal {
 		didSet {
 			let isCurrentPaused = speechSynthesizer.paused
-			view?.speedButton.title = currentSpeed.rawValue
+			view?.speedButton.title = currentSpeed.description
 			speechSynthesizer.delegate = nil
 			speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
 			if !isCurrentPaused {
@@ -158,7 +169,7 @@ final class NoteReaderController: NSObject {
 		}
 		let string = noteString.substringFromIndex(currentCharacterRange!.location)
 		speechUtterance = AVSpeechUtterance(string: string)
-		speechUtterance.rate = currentSpeed.toRate()
+		speechUtterance.rate = currentSpeed.rate
 		speechSynthesizer = AVSpeechSynthesizer()
 		speechSynthesizer.delegate = self
 	}
@@ -322,6 +333,7 @@ extension NoteReaderController {
 			fatalError()
 		}
 
+		toolBar.speedButton.title = currentSpeed.description
 		toolBar.isPlaying = false
 		toolBar.didPressedPlayButton = { [unowned self] view in
 			precondition(view.isPlaying == false)

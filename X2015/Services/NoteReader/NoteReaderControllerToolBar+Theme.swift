@@ -13,8 +13,10 @@ extension NoteReaderControllerToolBar: ThemeAdaptable {
 	func configureTheme(theme: Theme) {
 		switch theme {
 		case .Default:
+			tintColor = UIColor.x2015_BlueColor()
 			barStyle = .Default
 		case .Night:
+			tintColor = UIColor.whiteColor()
 			barStyle = .Black
 		}
 	}

@@ -60,7 +60,6 @@ extension NoteEditViewController {
 		}
 		view.addSubview(toolbar)
 		toolbar.configureTheme(currentTheme)
-		toolbar.tintColor = UIColor.x2015_BlueColor()
 		toolbar.translatesAutoresizingMaskIntoConstraints = false
 		view.addConstraints(
 			NSLayoutConstraint.constraintsWithVisualFormat(
