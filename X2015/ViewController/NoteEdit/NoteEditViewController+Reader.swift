@@ -20,7 +20,8 @@ extension NoteEditViewController {
 
 		let controller = NoteReaderController.sharedInstance
 		controller.prepare(noteTitle, note: noteContent)
-		controller.view = setupReaderToolBarAndReturn()
+		let toolBar = setupReaderToolBarAndReturn()
+		controller.view = toolBar
 
 		NSNotificationCenter
 			.defaultCenter()
@@ -73,21 +74,25 @@ extension NoteEditViewController {
 				options: .DirectionLeadingToTrailing,
 				metrics: nil,
 				views: ["view":toolbar]))
-
 		return toolbar
 	}
 
 	func setReaderModeEnabled(enabled: Bool) {
+		guard let toolBar = readerToolBar else {
+			fatalError()
+		}
 		if enabled {
 			playButton.enabled = false
 			textView.selectable = false
 			textView.editable = false
+			textView.contentInset.bottom = CGRectGetHeight(toolBar.bounds)
 			becomeFirstResponder()
 		} else {
 			playButton.enabled = true
 			textView.selectable = true
 			textView.editable = true
 			readerToolBar?.removeFromSuperview()
+			textView.contentInset.bottom = 0
 		}
 	}
 

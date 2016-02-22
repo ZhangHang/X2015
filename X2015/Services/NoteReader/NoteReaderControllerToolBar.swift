@@ -14,6 +14,8 @@ private let pauseButtonDefaultIndex = 5
 
 final class NoteReaderControllerToolBar: UIToolbar {
 
+	static let viewHeight = 44.0
+
 	/// Store play & pause button with strong reference
 	/// So we could add / remove them at runtime
 	@IBOutlet var pauseButton: UIBarButtonItem!
