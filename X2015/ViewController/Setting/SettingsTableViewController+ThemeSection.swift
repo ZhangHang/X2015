@@ -10,6 +10,51 @@ import UIKit
 
 extension SettingsTableViewController {
 
+	enum ThemeSection: Int, TableViewSection {
+		case AutoTheme = 0
+		case DefaultTheme
+		case NightTheme
+
+		//swiftlint:disable variable_name
+		//swiftlint:disable type_name
+		case COUNT_USE_ONLY_DO_NOT_USE
+		static var numberOfRow: Int {
+			if NSUserDefaults.standardUserDefaults().automaticallyAdjustsTheme {
+				return 1
+			}
+			return ThemeSection.COUNT_USE_ONLY_DO_NOT_USE.rawValue
+		}
+		//swiftlint:enable variable_name
+		//swiftlint:enable type_name
+
+		static var headerText: String? {
+			return NSLocalizedString("Theme", comment: "")
+		}
+
+		static var footerText: String? {
+			if NSUserDefaults.standardUserDefaults().automaticallyAdjustsTheme {
+				return NSLocalizedString(
+					"The theme will automatically change based on your display brightness",
+					comment: "")
+			}
+			return nil
+		}
+
+		var title: String {
+			switch self {
+			case .AutoTheme:
+				return NSLocalizedString("Switch Automatically", comment: "")
+			case .DefaultTheme:
+				return NSLocalizedString("Default", comment: "")
+			case .NightTheme:
+				return NSLocalizedString("Night", comment: "")
+			default:
+				fatalError()
+			}
+		}
+
+	}
+
 	func cellForThemeSectionAtRow(row: Int) -> UITableViewCell {
 		guard let cellType = ThemeSection(rawValue: row) else { fatalError() }
 
@@ -17,7 +62,7 @@ extension SettingsTableViewController {
 			let cell = dequeueSettingSwitchCell()
 			cell.configure(
 				ThemeSection.AutoTheme.title,
-				switchOn: settings.automaticallyAdjustsTheme,
+				switchOn: NSUserDefaults.standardUserDefaults().automaticallyAdjustsTheme,
 				switchTarget: self,
 				switchSelector: "handleAutoThemeSwitchValueChanged:")
 			return cell
@@ -45,20 +90,6 @@ extension SettingsTableViewController {
 		}
 	}
 
-	func numberOFRowInThemeSection() -> Int {
-		if settings.automaticallyAdjustsTheme {
-			return 1
-		}
-		return ThemeSection.numberOfRow
-	}
-
-	func footerTitleForThemeSection() -> String? {
-		if settings.automaticallyAdjustsTheme {
-			return ThemeSection.footerText
-		}
-		return nil
-	}
-
 	func didSelectThemeSectionCell(indexPath: NSIndexPath) {
 		guard let cellType = ThemeSection(rawValue: indexPath.row) else { fatalError() }
 		switch cellType {
@@ -75,7 +106,7 @@ extension SettingsTableViewController {
 		guard ThemeManager.sharedInstance.synchronizeWithSettings() else {
 			fatalError()
 		}
-		tableView.reloadSections(NSIndexSet(index: Section.Theme.rawValue), withRowAnimation: .None)
+		tableView.reloadSections(NSIndexSet(index: indexOfSection(ThemeSection.self)!), withRowAnimation: .None)
 	}
 
 	@objc
@@ -84,7 +115,7 @@ extension SettingsTableViewController {
 		guard ThemeManager.sharedInstance.synchronizeWithSettings() else {
 			fatalError()
 		}
-		tableView.reloadSections(NSIndexSet(index: Section.Theme.rawValue), withRowAnimation: .Automatic)
+		tableView.reloadSections(NSIndexSet(index: indexOfSection(ThemeSection.self)!), withRowAnimation: .None)
 	}
-
+	
 }

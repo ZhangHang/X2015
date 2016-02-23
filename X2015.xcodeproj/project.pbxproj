@@ -44,6 +44,7 @@
 		7F4C48141C7C1D94002DD588 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C48131C7C1D94002DD588 /* ComplicationController.swift */; };
 		7F4C48161C7C1D94002DD588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F4C48151C7C1D94002DD588 /* Assets.xcassets */; };
 		7F4C481A1C7C1D94002DD588 /* X2015 Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7F4C47F81C7C1D93002DD588 /* X2015 Watch.app */; };
+		7F4C48241C7C2835002DD588 /* SettingsTableViewController+WatchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C48231C7C2835002DD588 /* SettingsTableViewController+WatchSection.swift */; };
 		7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204CD1C34F79B00507125 /* Main.storyboard */; };
 		7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D31C34F79B00507125 /* Assets.xcassets */; };
 		7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5204D51C34F79B00507125 /* LaunchScreen.storyboard */; };
@@ -274,6 +275,7 @@
 		7F4C48131C7C1D94002DD588 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		7F4C48151C7C1D94002DD588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F4C48171C7C1D94002DD588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F4C48231C7C2835002DD588 /* SettingsTableViewController+WatchSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsTableViewController+WatchSection.swift"; sourceTree = "<group>"; };
 		7F5204C61C34F79B00507125 /* X2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = X2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5204CE1C34F79B00507125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F5204D31C34F79B00507125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 				7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */,
 				7F98B6551C72E9BE00156917 /* SettingsTableViewController+ThemeSection.swift */,
 				7F98B6581C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift */,
+				7F4C48231C7C2835002DD588 /* SettingsTableViewController+WatchSection.swift */,
 				7F73F3911C6084AE003347E4 /* SettingCheckableTableViewCell.swift */,
 				7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */,
 			);
@@ -1181,6 +1184,7 @@
 				7FEE4CB71C75CF3E006754C9 /* RichFormatTextViewInputAccessoryView.swift in Sources */,
 				7F102B671C65FD7A0013AF9A /* AppDelegate.swift in Sources */,
 				7F73F3991C6084AE003347E4 /* NoteTimelineTableViewController+UIViewControllerPreviewingDelegate.swift in Sources */,
+				7F4C48241C7C2835002DD588 /* SettingsTableViewController+WatchSection.swift in Sources */,
 				7F98B6591C72EA6200156917 /* SettingsTableViewController+GeneralSection.swift in Sources */,
 				7F98B6611C730B9B00156917 /* NoteEditViewController+Interface.swift in Sources */,
 				7F102B7E1C6667350013AF9A /* MainSplitViewController.swift in Sources */,
