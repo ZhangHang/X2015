@@ -33,7 +33,11 @@ class InterfaceController: WKInterfaceController {
 
 	override func willActivate() {
 		// This method is called when watch view controller is about to be visible to user
+		if !WCSession.isSupported() {
+			return
+		}
 
+		session = WCSession.defaultSession()
 		super.willActivate()
 	}
 
@@ -52,8 +56,18 @@ class InterfaceController: WKInterfaceController {
 	}
 
 	@IBAction func didPressedAddNoteButton() {
-		presentTextInputControllerWithSuggestions(nil, allowedInputMode: .Plain) { (results) -> Void in
-			debugPrint(results)
+		presentTextInputControllerWithSuggestions(
+			nil,
+			allowedInputMode: .Plain) { [unowned self] (results) -> Void in
+				guard let results = results else {
+					return
+				}
+				self.session?.sendMessage([
+					WatchConnectivityRequest.reqeustTypeKey: WatchConnectivityRequest.NewNoteRequest.name,
+					WatchConnectivityRequest.NewNoteRequest.infoKey: results
+					],
+					replyHandler: nil,
+					errorHandler: nil)
 		}
 	}
 }
@@ -77,12 +91,6 @@ extension InterfaceController {
 extension InterfaceController: WCSessionDelegate {
 
 	func configure() {
-		if !WCSession.isSupported() {
-			return
-		}
-
-		session = WCSession.defaultSession()
-
 		session?.sendMessage(
 			[WatchConnectivityRequest.reqeustTypeKey: WatchConnectivityRequest.GetNoteRequest.name],
 			replyHandler: { (response) -> Void in

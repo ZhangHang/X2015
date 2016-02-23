@@ -36,7 +36,10 @@ extension AppDelegate: WCSessionDelegate {
 			case WatchConnectivityRequest.GetNoteRequest.name:
 				replyHandler([WatchConnectivityRequest.GetNoteRequest.replyKey: recentSimpleNotes()])
 			case WatchConnectivityRequest.NewNoteRequest.name:
-				return
+				guard let content = message[WatchConnectivityRequest.NewNoteRequest.infoKey] as? [AnyObject] else {
+					fatalError()
+				}
+				createNote("\(content)")
 			default:
 				fatalError("Unhandled request")
 			}
@@ -60,4 +63,12 @@ extension AppDelegate: WCSessionDelegate {
 			fatalError()
 		}
 	}
+
+	private func createNote(contentFromWatch: String) {
+		managedObjectContext.performChanges { [unowned self] () -> () in
+			let newNote: Note = self.managedObjectContext.insertObject()
+			newNote.update(contentFromWatch)
+		}
+	}
+
 }

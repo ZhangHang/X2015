@@ -19,7 +19,7 @@ struct WatchConnectivityRequest {
 
 	struct NewNoteRequest {
 		static let name = "NewNote"
-		static let replyKey = "NEwNoteReplyKey"
+		static let infoKey = "NewNoteInfoKey"
 	}
 
 }
