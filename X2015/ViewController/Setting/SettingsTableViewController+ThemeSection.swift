@@ -117,5 +117,5 @@ extension SettingsTableViewController {
 		}
 		tableView.reloadSections(NSIndexSet(index: indexOfSection(ThemeSection.self)!), withRowAnimation: .None)
 	}
-	
+
 }

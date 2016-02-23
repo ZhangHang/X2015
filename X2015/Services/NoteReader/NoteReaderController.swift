@@ -23,14 +23,6 @@ let NoteReaderControllerWillSpeakRangeOfStringKey = "NoteReaderControllerWillSpe
 //swiftlint:enable variable_name_max_length
 //swiftlint:enable variable_name
 
-
-class Box<T>: NSObject {
-	let value: T
-	init(value: T) {
-		self.value = value
-	}
-}
-
 final class NoteReaderController: NSObject {
 
 	static let sharedInstance = NoteReaderController()

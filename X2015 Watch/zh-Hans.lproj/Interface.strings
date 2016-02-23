@@ -1,0 +1,15 @@
+
+/* Class = "WKInterfaceController"; title = "X2015"; ObjectID = "AgC-eL-Hgc"; */
+"AgC-eL-Hgc.title" = "X2015";
+
+/* Class = "WKInterfaceLabel"; text = "Title"; ObjectID = "QRJ-7r-qvx"; */
+"QRJ-7r-qvx.text" = "Title";
+
+/* Class = "WKInterfaceLabel"; text = "Alert Label"; ObjectID = "XkS-y5-khE"; */
+"XkS-y5-khE.text" = "Alert Label";
+
+/* Class = "WKInterfaceButton"; title = "Add Note"; ObjectID = "bXi-ji-Irz"; */
+"bXi-ji-Irz.title" = "新建笔记";
+
+/* Class = "WKInterfaceLabel"; text = "Preview content"; ObjectID = "ufR-Sd-E3i"; */
+"ufR-Sd-E3i.text" = "Preview content";

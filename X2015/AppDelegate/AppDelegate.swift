@@ -9,6 +9,7 @@
 import UIKit
 import CoreSpotlight
 import X2015Kit
+import WatchConnectivity
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +54,20 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		return PasscodeViewController.instanceFromStoryboard()
 	}()
 
+	// MARK: WatchApp
+	var session: WCSession? {
+		didSet {
+			if let session = session {
+				session.delegate = self
+				session.activateSession()
+			}
+		}
+	}
+
+}
+
+extension AppDelegate {
+
 	// MARK: UIApplicationDelegate
 	func application(
 		application: UIApplication, didFinishLaunchingWithOptions
@@ -73,6 +88,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 				self.rootViewControllerCache = self.window!.rootViewController as? UISplitViewController
 				self.presentPasscodeViewControllerIfNeeded()
 				})()
+
+			// WatchApp
+			configureWatchSessionIfNeeded()
 
 			// Handle application shortcut
 			var shouldPerformAdditionalDelegateHandling = true
