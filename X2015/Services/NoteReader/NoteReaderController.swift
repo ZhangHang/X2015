@@ -162,6 +162,15 @@ final class NoteReaderController: NSObject {
 		configureAudioSession()
 	}
 
+	func destoryIfActive() {
+		if !isAudioSessionActive {
+			return
+		}
+		title = nil
+		note = nil
+		speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
+	}
+
 	private func resetSpeechUtterance() {
 		let noteString = note as NSString
 		if currentCharacterRange == nil {
@@ -203,13 +212,6 @@ final class NoteReaderController: NSObject {
 		isAudioSessionActive = false
 	}
 
-	func destoryIfActive() {
-		if !isAudioSessionActive {
-			return
-		}
-		speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
-	}
-
 }
 
 extension NoteReaderController {
@@ -240,7 +242,7 @@ extension NoteReaderController {
 			return
 		}
 		if AVAudioSessionInterruptionOptions(rawValue: interruptionOption).contains(.ShouldResume) {
-			// ...
+			speechSynthesizer.continueSpeaking()
 		}
 
 	}
@@ -258,6 +260,7 @@ extension NoteReaderController {
 			// silence secondary audio
 			return
 		case .End:
+			speechSynthesizer.continueSpeaking()
 			// resume secondary audio
 			return
 		}
