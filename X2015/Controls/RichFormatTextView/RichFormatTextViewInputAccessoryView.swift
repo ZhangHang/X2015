@@ -28,11 +28,11 @@ extension RichFormatTextViewInputAccessoryView: ThemeAdaptable {
 	func configureTheme(theme: Theme) {
 		switch theme {
 		case .Default:
-			backgroundColor = UIColor.default_ViewControllerBackgroundColor()
-			return
+			tintColor = UIColor.x2015_BlueColor()
+			barStyle = .Default
 		case .Night:
-			backgroundColor = UIColor.night_ViewControllerBackgroundColor()
-			return
+			tintColor = UIColor.whiteColor()
+			barStyle = .Black
 		}
 	}
 
