@@ -17,33 +17,26 @@ extension AppDelegate {
 			return
 		}
 		session = WCSession.defaultSession()
+
+		NSNotificationCenter
+			.defaultCenter()
+			.addObserverForName(
+				NSManagedObjectContextDidSaveNotification,
+				object: nil,
+				queue: NSOperationQueue.mainQueue()) { (note) -> Void in
+			self.sendRecentNotesToWatchApp()
+		}
+		sendRecentNotesToWatchApp()
+	}
+
+	func sendRecentNotesToWatchApp() {
+		_ = try? session?.updateApplicationContext(
+			[WatchConnectivityRequest.GetNoteRequest.replyKey: recentSimpleNotes()])
 	}
 
 }
 
 extension AppDelegate: WCSessionDelegate {
-
-	func session(
-		session: WCSession,
-		didReceiveMessage message: [String : AnyObject],
-		replyHandler: ([String : AnyObject]) -> Void) {
-			guard let requestType = message[WatchConnectivityRequest.reqeustTypeKey] as? String else {
-				debugPrint("Unhandled request \(message)")
-				return
-			}
-
-			switch requestType {
-			case WatchConnectivityRequest.GetNoteRequest.name:
-				replyHandler([WatchConnectivityRequest.GetNoteRequest.replyKey: recentSimpleNotes()])
-			case WatchConnectivityRequest.NewNoteRequest.name:
-				guard let content = message[WatchConnectivityRequest.NewNoteRequest.infoKey] as? [AnyObject] else {
-					fatalError()
-				}
-				createNote("\(content)")
-			default:
-				fatalError("Unhandled request")
-			}
-	}
 
 	private func recentSimpleNotes() -> [[String: String]] {
 		let fetchRequest = NSFetchRequest(entityName: Note.entityName)

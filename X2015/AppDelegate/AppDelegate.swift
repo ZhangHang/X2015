@@ -104,7 +104,7 @@ extension AppDelegate {
 	}
 
 	func applicationWillTerminate(application: UIApplication) {
-		managedObjectContext.saveOrRollback()
+		managedObjectContext.performSaveOrRollback()
 	}
 
 	func applicationDidBecomeActive(application: UIApplication) {

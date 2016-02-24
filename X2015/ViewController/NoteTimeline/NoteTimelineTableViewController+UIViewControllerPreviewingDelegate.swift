@@ -45,11 +45,12 @@ extension NoteTimelineTableViewController: NoteEditViewControllerDelegate {
 	func noteEditViewController(
 		controller: NoteEditViewController,
 		didTapDeleteNoteShortCutWithNoteObjectID noteObjectID: NSManagedObjectID) {
-		guard let note = managedObjectContext.objectWithID(noteObjectID)
-			as? Note else {
-				fatalError()
-		}
-		managedObjectContext.deleteObject(note)
+			guard let note = managedObjectContext.objectWithID(noteObjectID)
+				as? Note else {
+					fatalError()
+			}
+			managedObjectContext.deleteObject(note)
+			managedObjectContext.performSaveOrRollback()
 	}
 
 }

@@ -41,10 +41,11 @@ extension SettingsTableViewController {
 			if WCSession.isSupported() {
 				let session = WCSession.defaultSession()
 				session.activateSession()
-				debugPrint("paired ? \(session.paired)")
-				return session.paired
+				if session.watchAppInstalled && session.paired {
+					return true
+				}
+				return false
 			}
-
 			return false
 		}
 	}

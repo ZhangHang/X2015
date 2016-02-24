@@ -27,28 +27,17 @@ class InterfaceController: WKInterfaceController {
 	override func awakeWithContext(context: AnyObject?) {
 		super.awakeWithContext(context)
 
-		// Configure interface objects here.
-
-	}
-
-	override func willActivate() {
-		// This method is called when watch view controller is about to be visible to user
 		if !WCSession.isSupported() {
 			return
 		}
 
 		session = WCSession.defaultSession()
+		updateNotesFromApplicationContext()
+	}
+
+	override func willActivate() {
+		reloadNoteTable()
 		super.willActivate()
-	}
-
-	override func didAppear() {
-		super.didAppear()
-		configure()
-	}
-
-	override func didDeactivate() {
-		// This method is called when watch view controller is no longer visible
-		super.didDeactivate()
 	}
 
 	override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
@@ -62,17 +51,26 @@ class InterfaceController: WKInterfaceController {
 				guard let results = results else {
 					return
 				}
-				self.session?.sendMessage([
-					WatchConnectivityRequest.reqeustTypeKey: WatchConnectivityRequest.NewNoteRequest.name,
-					WatchConnectivityRequest.NewNoteRequest.infoKey: results
-					],
-					replyHandler: nil,
-					errorHandler: nil)
+				self.sendNewNoteContentToApplicationContext(results)
 		}
 	}
+
 }
 
 extension InterfaceController {
+
+	func updateNotesFromApplicationContext() {
+		let notesDictionary = session?.receivedApplicationContext[WatchConnectivityRequest.GetNoteRequest.replyKey]
+		guard let notes = notesDictionary as? [[String: String]] else {
+			self.notes = [SimpleNote]()
+			return
+		}
+
+		self.notes.removeAll()
+		for item in notes {
+			self.notes.append(SimpleNote.fromDictionary(item))
+		}
+	}
 
 	func reloadNoteTable() {
 		self.table.setNumberOfRows(notes.count, withRowType: NoteTableRowController.identifier)
@@ -86,37 +84,17 @@ extension InterfaceController {
 		}
 	}
 
+	func sendNewNoteContentToApplicationContext(content: [AnyObject]) {
+		_ = try? session?.updateApplicationContext([WatchConnectivityRequest.NewNoteRequest.infoKey: content])
+	}
+
 }
 
 extension InterfaceController: WCSessionDelegate {
 
-	func configure() {
-		session?.sendMessage(
-			[WatchConnectivityRequest.reqeustTypeKey: WatchConnectivityRequest.GetNoteRequest.name],
-			replyHandler: { (response) -> Void in
-				guard
-					let notes = response[WatchConnectivityRequest.GetNoteRequest.replyKey] as? [[String: String]]? else {
-						fatalError()
-				}
-				self.didReceiveRecentSimpleNotes(notes)
-			}, errorHandler: { (error) -> Void in
-				debugPrint("error \(error)")
-		})
-
-	}
-
-	func didReceiveRecentSimpleNotes(simpleNoteDictionaries: [[String: String]]?) {
-		guard let dictionaries = simpleNoteDictionaries else {
-			self.notes = [SimpleNote]()
-			reloadNoteTable()
-			return
-		}
-
-		var notes = [SimpleNote]()
-		for item in dictionaries {
-			notes.append(SimpleNote.fromDictionary(item))
-		}
-		self.notes = notes
+	func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+		debugPrint("received \(applicationContext)")
+		updateNotesFromApplicationContext()
 		reloadNoteTable()
 	}
 

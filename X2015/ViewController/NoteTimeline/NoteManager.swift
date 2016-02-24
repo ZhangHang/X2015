@@ -13,7 +13,7 @@ final class NoteManager {
 	let noteObjectID: NSManagedObjectID
 	let managedObjectContext: NSManagedObjectContext
 
-	private(set) var note: Note?
+	private(set) weak var note: Note?
 	private(set) var currentTitle: String?
 	private(set) var isCurrentNoteEmpty: Bool = false
 
@@ -32,8 +32,8 @@ final class NoteManager {
 		update()
 	}
 
-	deinit {
-		managedObjectContext.saveOrRollback()
+	func saveChanges() {
+		managedObjectContext.performSaveOrRollback()
 	}
 
 }

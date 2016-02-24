@@ -149,6 +149,7 @@ extension NoteEditViewController {
 		// Removed from UISplitViewController
 		if navigationController?.parentViewController == nil {
 			stopNoteReaderIfActive()
+			noteManager?.saveChanges()
 		}
 	}
 
