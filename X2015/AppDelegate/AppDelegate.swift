@@ -84,10 +84,10 @@ extension AppDelegate {
 				})()
 
 			// Passcode
-			({ [unowned self] in
-				self.rootViewControllerCache = self.window!.rootViewController as? UISplitViewController
-				self.presentPasscodeViewControllerIfNeeded()
-				})()
+			rootViewControllerCache = window!.rootViewController as? UISplitViewController
+			if UIApplication.sharedApplication().applicationState == .Active {
+				presentPasscodeViewControllerIfNeeded()
+			}
 
 			// WatchApp
 			configureWatchSessionIfNeeded()
@@ -163,10 +163,10 @@ extension AppDelegate {
 					return false
 				}
 				return displayNote(noteIdentifier)
-
+				
 			default:
 				return false
 			}
 	}
-
+	
 }

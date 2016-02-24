@@ -22,4 +22,9 @@ struct WatchConnectivityRequest {
 		static let infoKey = "NewNoteInfoKey"
 	}
 
+	struct ReadNoteRequest {
+		static let name = "ReadNote"
+		static let infoKey = "ReadNoteInfoKey"
+	}
+
 }

@@ -40,11 +40,12 @@ class NoteTableInterfaceController: WKInterfaceController {
 		super.willActivate()
 	}
 
-	override func contextForSegueWithIdentifier(
-		segueIdentifier: String,
-		inTable table: WKInterfaceTable,
-		rowIndex: Int) -> AnyObject? {
-			return notes[rowIndex].toDictionary()
+	override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+		session?.sendMessage([
+			WatchConnectivityRequest.reqeustTypeKey: WatchConnectivityRequest.ReadNoteRequest.name,
+			WatchConnectivityRequest.ReadNoteRequest.infoKey: notes[rowIndex].identifier],
+			replyHandler: nil,
+			errorHandler: nil)
 	}
 
 	@IBAction func didPressedAddNoteButton() {

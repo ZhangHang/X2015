@@ -15,10 +15,11 @@
                                 <action selector="didPressedAddNoteButton" destination="AgC-eL-Hgc" id="qOj-e7-Vhe"/>
                             </connections>
                         </button>
+                        <separator alignment="left" id="RYd-sc-dq9"/>
                         <table alignment="left" id="mH0-p9-YyZ">
                             <items>
                                 <tableRow identifier="NoteTableRowController" id="dCy-hP-edv" customClass="NoteTableRowController" customModule="X2015_Watch_Extension">
-                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="911-hr-IBK">
+                                    <group key="rootItem" width="1" alignment="left" layout="vertical" spacing="2" id="911-hr-IBK">
                                         <items>
                                             <label alignment="left" text="Title" id="QRJ-7r-qvx">
                                                 <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
@@ -27,9 +28,6 @@
                                                 <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
                                             </label>
                                         </items>
-                                        <connections>
-                                            <segue destination="UlE-dB-aNM" kind="modal" identifier="ShowNoteSpeech" id="ogi-Hl-mfv"/>
-                                        </connections>
                                     </group>
                                     <connections>
                                         <outlet property="previewLabel" destination="ufR-Sd-E3i" id="s35-Ad-gpX"/>
@@ -45,32 +43,6 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="235" y="346"/>
-        </scene>
-        <!--ShowNoteSpeech-->
-        <scene sceneID="Xaw-L8-WwP">
-            <objects>
-                <controller identifier="ShowNoteSpeech" id="UlE-dB-aNM" customClass="NoteSpeechInterfaceController" customModule="X2015_Watch_Extension">
-                    <items>
-                        <group width="1" alignment="left" id="EK9-8j-1Qa">
-                            <items>
-                                <label width="136" alignment="left" text="Label" textAlignment="center" id="gXH-zP-vKp"/>
-                            </items>
-                        </group>
-                        <movie width="1" height="84" alignment="left" id="DbJ-bd-PbI"/>
-                        <group width="1" alignment="left" id="hKf-gY-oeY">
-                            <items>
-                                <button width="1" alignment="left" title="1X" id="fct-Jt-0k5"/>
-                            </items>
-                        </group>
-                    </items>
-                    <connections>
-                        <outlet property="movie" destination="DbJ-bd-PbI" id="ET3-n7-OmT"/>
-                        <outlet property="speedButton" destination="fct-Jt-0k5" id="wUF-Yz-mRO"/>
-                        <outlet property="titleLabel" destination="gXH-zP-vKp" id="PN3-DQ-zIb"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="474" y="346"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">

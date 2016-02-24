@@ -95,7 +95,6 @@
 		7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */; };
 		7F73F3A31C6084AE003347E4 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */; };
 		7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */; };
-		7F871FE21C7DC09000C70BFE /* NoteSpeechInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F871FE11C7DC09000C70BFE /* NoteSpeechInterfaceController.swift */; };
 		7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */; };
 		7F98B6301C71C1AB00156917 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */; };
 		7F98B6541C72DE1700156917 /* NoteEditViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */; };
@@ -339,7 +338,6 @@
 		7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSearchTableViewController.swift; sourceTree = "<group>"; };
-		7F871FE11C7DC09000C70BFE /* NoteSpeechInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSpeechInterfaceController.swift; sourceTree = "<group>"; };
 		7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainSplitViewController+Delegate.swift"; sourceTree = "<group>"; };
 		7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Keyboard.swift"; sourceTree = "<group>"; };
@@ -518,7 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				7F4C48261C7C493B002DD588 /* X2015 Watch Extension.entitlements */,
-				7F871FE01C7DC00C00C70BFE /* Main */,
+				7F4C480B1C7C1D94002DD588 /* NoteTableInterfaceController.swift */,
 				7F4C480D1C7C1D94002DD588 /* ExtensionDelegate.swift */,
 				7F4C480F1C7C1D94002DD588 /* NotificationController.swift */,
 				7F4C48111C7C1D94002DD588 /* GlanceController.swift */,
@@ -760,15 +758,6 @@
 			);
 			name = Setting;
 			path = ViewController/Setting;
-			sourceTree = "<group>";
-		};
-		7F871FE01C7DC00C00C70BFE /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				7F4C480B1C7C1D94002DD588 /* NoteTableInterfaceController.swift */,
-				7F871FE11C7DC09000C70BFE /* NoteSpeechInterfaceController.swift */,
-			);
-			name = Main;
 			sourceTree = "<group>";
 		};
 		7FD925CA1C74BB0D00BC26AE /* X2015Tests */ = {
@@ -1211,7 +1200,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F4C48471C7C84D7002DD588 /* Utility.swift in Sources */,
-				7F871FE21C7DC09000C70BFE /* NoteSpeechInterfaceController.swift in Sources */,
 				7F4C484D1C7C85FD002DD588 /* WatchConnectivityNames.swift in Sources */,
 				7F4C48101C7C1D94002DD588 /* NotificationController.swift in Sources */,
 				7F4C48441C7C8496002DD588 /* SimpleNote.swift in Sources */,

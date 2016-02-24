@@ -45,6 +45,17 @@ extension AppDelegate: WCSessionDelegate {
 		debugPrint(applicationContext)
 	}
 
+	func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+		debugPrint(message)
+		if let identifier = message[WatchConnectivityRequest.ReadNoteRequest.infoKey] as? String {
+			guard let note = Note.fetchNote(identifier, managedObjectContext: managedObjectContext) else {
+				return
+			}
+			NoteReaderController.sharedInstance.prepare(note.title ?? "", note: note.content ?? "")
+			NoteReaderController.sharedInstance.startReading()
+		}
+	}
+
 	private func recentSimpleNotes() -> [[String: String]] {
 		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
 		fetchRequest.fetchLimit = 10
