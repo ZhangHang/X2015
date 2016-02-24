@@ -38,6 +38,13 @@ extension AppDelegate {
 
 extension AppDelegate: WCSessionDelegate {
 
+	func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+		if let notes = applicationContext[WatchConnectivityRequest.NewNoteRequest.infoKey] as? [String] {
+			createNote(notes.joinWithSeparator(" "))
+		}
+		debugPrint(applicationContext)
+	}
+
 	private func recentSimpleNotes() -> [[String: String]] {
 		let fetchRequest = NSFetchRequest(entityName: Note.entityName)
 		fetchRequest.fetchLimit = 10

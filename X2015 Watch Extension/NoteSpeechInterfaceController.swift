@@ -16,7 +16,6 @@ class NoteSpeechInterfaceController: WKInterfaceController {
 	@IBOutlet var movie: WKInterfaceMovie!
 	@IBOutlet var speedButton: WKInterfaceButton!
 
-
 	struct Storyboard {
 		static let identifier = "ShowNoteSpeech"
 	}
@@ -34,7 +33,6 @@ class NoteSpeechInterfaceController: WKInterfaceController {
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-		mov
         super.willActivate()
     }
 

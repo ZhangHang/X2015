@@ -109,5 +109,5 @@ final class NoteTableRowController: NSObject {
 	@IBOutlet weak var previewLabel: WKInterfaceLabel!
 
 	static let identifier = "NoteTableRowController"
-	
+
 }
