@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15E39d" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15E49a" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
@@ -8,7 +8,7 @@
         <!--X2015-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller title="X2015" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="X2015_Watch" customModuleProvider="target">
+                <controller title="X2015" id="AgC-eL-Hgc" customClass="NoteTableInterfaceController" customModule="X2015_Watch_Extension">
                     <items>
                         <button width="1" alignment="left" title="Add Note" id="bXi-ji-Irz">
                             <connections>
@@ -27,6 +27,9 @@
                                                 <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
                                             </label>
                                         </items>
+                                        <connections>
+                                            <segue destination="UlE-dB-aNM" kind="modal" identifier="ShowNoteSpeech" id="ogi-Hl-mfv"/>
+                                        </connections>
                                     </group>
                                     <connections>
                                         <outlet property="previewLabel" destination="ufR-Sd-E3i" id="s35-Ad-gpX"/>
@@ -41,7 +44,33 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="235" y="347"/>
+            <point key="canvasLocation" x="235" y="346"/>
+        </scene>
+        <!--ShowNoteSpeech-->
+        <scene sceneID="Xaw-L8-WwP">
+            <objects>
+                <controller identifier="ShowNoteSpeech" id="UlE-dB-aNM" customClass="NoteSpeechInterfaceController" customModule="X2015_Watch_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="EK9-8j-1Qa">
+                            <items>
+                                <label width="136" alignment="left" text="Label" textAlignment="center" id="gXH-zP-vKp"/>
+                            </items>
+                        </group>
+                        <movie width="1" height="84" alignment="left" id="DbJ-bd-PbI"/>
+                        <group width="1" alignment="left" id="hKf-gY-oeY">
+                            <items>
+                                <button width="1" alignment="left" title="1X" id="fct-Jt-0k5"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="movie" destination="DbJ-bd-PbI" id="ET3-n7-OmT"/>
+                        <outlet property="speedButton" destination="fct-Jt-0k5" id="wUF-Yz-mRO"/>
+                        <outlet property="titleLabel" destination="gXH-zP-vKp" id="PN3-DQ-zIb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="474" y="346"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">

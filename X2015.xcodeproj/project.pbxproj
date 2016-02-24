@@ -37,7 +37,7 @@
 		7F4C47FC1C7C1D94002DD588 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F4C47FA1C7C1D94002DD588 /* Interface.storyboard */; };
 		7F4C47FE1C7C1D94002DD588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F4C47FD1C7C1D94002DD588 /* Assets.xcassets */; };
 		7F4C48051C7C1D94002DD588 /* X2015 Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7F4C48041C7C1D94002DD588 /* X2015 Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7F4C480C1C7C1D94002DD588 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C480B1C7C1D94002DD588 /* InterfaceController.swift */; };
+		7F4C480C1C7C1D94002DD588 /* NoteTableInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C480B1C7C1D94002DD588 /* NoteTableInterfaceController.swift */; };
 		7F4C480E1C7C1D94002DD588 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C480D1C7C1D94002DD588 /* ExtensionDelegate.swift */; };
 		7F4C48101C7C1D94002DD588 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C480F1C7C1D94002DD588 /* NotificationController.swift */; };
 		7F4C48121C7C1D94002DD588 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C48111C7C1D94002DD588 /* GlanceController.swift */; };
@@ -95,6 +95,7 @@
 		7F73F3A21C6084AE003347E4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */; };
 		7F73F3A31C6084AE003347E4 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */; };
 		7F73F3A51C60859E003347E4 /* NoteSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */; };
+		7F871FE21C7DC09000C70BFE /* NoteSpeechInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F871FE11C7DC09000C70BFE /* NoteSpeechInterfaceController.swift */; };
 		7F98B62E1C70BC7400156917 /* MainSplitViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */; };
 		7F98B6301C71C1AB00156917 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */; };
 		7F98B6541C72DE1700156917 /* NoteEditViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */; };
@@ -276,7 +277,7 @@
 		7F4C47FF1C7C1D94002DD588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F4C48041C7C1D94002DD588 /* X2015 Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "X2015 Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F4C480A1C7C1D94002DD588 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		7F4C480B1C7C1D94002DD588 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		7F4C480B1C7C1D94002DD588 /* NoteTableInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableInterfaceController.swift; sourceTree = "<group>"; };
 		7F4C480D1C7C1D94002DD588 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		7F4C480F1C7C1D94002DD588 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		7F4C48111C7C1D94002DD588 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
@@ -338,6 +339,7 @@
 		7F73F3931C6084AE003347E4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		7F73F3941C6084AE003347E4 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		7F73F3A41C60859E003347E4 /* NoteSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSearchTableViewController.swift; sourceTree = "<group>"; };
+		7F871FE11C7DC09000C70BFE /* NoteSpeechInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSpeechInterfaceController.swift; sourceTree = "<group>"; };
 		7F98B62D1C70BC7400156917 /* MainSplitViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainSplitViewController+Delegate.swift"; sourceTree = "<group>"; };
 		7F98B62F1C71C1AB00156917 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		7F98B6521C72DD4100156917 /* NoteEditViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Keyboard.swift"; sourceTree = "<group>"; };
@@ -516,7 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				7F4C48261C7C493B002DD588 /* X2015 Watch Extension.entitlements */,
-				7F4C480B1C7C1D94002DD588 /* InterfaceController.swift */,
+				7F871FE01C7DC00C00C70BFE /* Main */,
 				7F4C480D1C7C1D94002DD588 /* ExtensionDelegate.swift */,
 				7F4C480F1C7C1D94002DD588 /* NotificationController.swift */,
 				7F4C48111C7C1D94002DD588 /* GlanceController.swift */,
@@ -758,6 +760,15 @@
 			);
 			name = Setting;
 			path = ViewController/Setting;
+			sourceTree = "<group>";
+		};
+		7F871FE01C7DC00C00C70BFE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7F4C480B1C7C1D94002DD588 /* NoteTableInterfaceController.swift */,
+				7F871FE11C7DC09000C70BFE /* NoteSpeechInterfaceController.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		7FD925CA1C74BB0D00BC26AE /* X2015Tests */ = {
@@ -1200,12 +1211,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F4C48471C7C84D7002DD588 /* Utility.swift in Sources */,
+				7F871FE21C7DC09000C70BFE /* NoteSpeechInterfaceController.swift in Sources */,
 				7F4C484D1C7C85FD002DD588 /* WatchConnectivityNames.swift in Sources */,
 				7F4C48101C7C1D94002DD588 /* NotificationController.swift in Sources */,
 				7F4C48441C7C8496002DD588 /* SimpleNote.swift in Sources */,
 				7F4C480E1C7C1D94002DD588 /* ExtensionDelegate.swift in Sources */,
 				7F4C48141C7C1D94002DD588 /* ComplicationController.swift in Sources */,
-				7F4C480C1C7C1D94002DD588 /* InterfaceController.swift in Sources */,
+				7F4C480C1C7C1D94002DD588 /* NoteTableInterfaceController.swift in Sources */,
 				7F4C48121C7C1D94002DD588 /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1810,6 +1822,7 @@
 				7F4C481D1C7C1D94002DD588 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F4C481F1C7C1D94002DD588 /* Build configuration list for PBXNativeTarget "X2015 Watch" */ = {
 			isa = XCConfigurationList;
@@ -1818,6 +1831,7 @@
 				7F4C48211C7C1D94002DD588 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F5204C11C34F79B00507125 /* Build configuration list for PBXProject "X2015" */ = {
 			isa = XCConfigurationList;

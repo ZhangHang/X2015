@@ -1,5 +1,5 @@
 //
-//  InterfaceController.swift
+//  NoteTableInterfaceController.swift
 //  X2015 Watch Extension
 //
 //  Created by Hang Zhang on 2/23/16.
@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-class InterfaceController: WKInterfaceController {
+class NoteTableInterfaceController: WKInterfaceController {
 
 	@IBOutlet var table: WKInterfaceTable!
 	var notes: [SimpleNote] = [SimpleNote]()
@@ -40,8 +40,11 @@ class InterfaceController: WKInterfaceController {
 		super.willActivate()
 	}
 
-	override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-		debugPrint("Did Tap\(rowIndex)")
+	override func contextForSegueWithIdentifier(
+		segueIdentifier: String,
+		inTable table: WKInterfaceTable,
+		rowIndex: Int) -> AnyObject? {
+			return notes[rowIndex].toDictionary()
 	}
 
 	@IBAction func didPressedAddNoteButton() {
@@ -57,7 +60,7 @@ class InterfaceController: WKInterfaceController {
 
 }
 
-extension InterfaceController {
+extension NoteTableInterfaceController {
 
 	func updateNotesFromApplicationContext() {
 		let notesDictionary = session?.receivedApplicationContext[WatchConnectivityRequest.GetNoteRequest.replyKey]
@@ -90,7 +93,7 @@ extension InterfaceController {
 
 }
 
-extension InterfaceController: WCSessionDelegate {
+extension NoteTableInterfaceController: WCSessionDelegate {
 
 	func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
 		debugPrint("received \(applicationContext)")
@@ -106,5 +109,5 @@ final class NoteTableRowController: NSObject {
 	@IBOutlet weak var previewLabel: WKInterfaceLabel!
 
 	static let identifier = "NoteTableRowController"
-
+	
 }
