@@ -9,6 +9,7 @@
 import UIKit
 import CoreSpotlight
 import X2015Kit
+import WatchConnectivity
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +54,20 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		return PasscodeViewController.instanceFromStoryboard()
 	}()
 
+	// MARK: WatchApp
+	var session: WCSession? {
+		didSet {
+			if let session = session {
+				session.delegate = self
+				session.activateSession()
+			}
+		}
+	}
+
+}
+
+extension AppDelegate {
+
 	// MARK: UIApplicationDelegate
 	func application(
 		application: UIApplication, didFinishLaunchingWithOptions
@@ -69,10 +84,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 				})()
 
 			// Passcode
-			({ [unowned self] in
-				self.rootViewControllerCache = self.window!.rootViewController as? UISplitViewController
-				self.presentPasscodeViewControllerIfNeeded()
-				})()
+			rootViewControllerCache = window!.rootViewController as? UISplitViewController
+			if UIApplication.sharedApplication().applicationState == .Active {
+				presentPasscodeViewControllerIfNeeded()
+			}
+
+			// WatchApp
+			configureWatchSessionIfNeeded()
 
 			// Handle application shortcut
 			var shouldPerformAdditionalDelegateHandling = true
@@ -86,7 +104,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationWillTerminate(application: UIApplication) {
-		managedObjectContext.saveOrRollback()
+		managedObjectContext.performSaveOrRollback()
 	}
 
 	func applicationDidBecomeActive(application: UIApplication) {
@@ -145,10 +163,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 					return false
 				}
 				return displayNote(noteIdentifier)
-
+				
 			default:
 				return false
 			}
 	}
-
+	
 }

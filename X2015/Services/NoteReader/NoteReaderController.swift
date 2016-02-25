@@ -23,14 +23,6 @@ let NoteReaderControllerWillSpeakRangeOfStringKey = "NoteReaderControllerWillSpe
 //swiftlint:enable variable_name_max_length
 //swiftlint:enable variable_name
 
-
-class Box<T>: NSObject {
-	let value: T
-	init(value: T) {
-		self.value = value
-	}
-}
-
 final class NoteReaderController: NSObject {
 
 	static let sharedInstance = NoteReaderController()
@@ -76,7 +68,7 @@ final class NoteReaderController: NSObject {
 	private(set) var note: String!
 	private(set) var title: String!
 
-	private(set) var speechSynthesizer: AVSpeechSynthesizer!
+	private(set) var speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
 	private(set) var speechUtterance: AVSpeechUtterance!
 	private(set) var currentCharacterRange: NSRange?
 
@@ -153,13 +145,15 @@ final class NoteReaderController: NSObject {
 	}
 
 	func prepare(title: String, note: String) {
+		destoryIfActive()
+
 		self.note = note
 		self.title = title
 
-		deactiveAudioSession()
-
 		speechSynthesizer = AVSpeechSynthesizer()
-		configureAudioSession()
+
+		deactiveAudioSession()
+		activeAudioSession()
 	}
 
 	func destoryIfActive() {
