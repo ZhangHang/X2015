@@ -49,7 +49,7 @@ extension NoteManager {
 extension NoteManager {
 
 	private var isNoteEmpty: Bool {
-		return note?.content?.empty == true
+		return note?.content.empty == true
 	}
 
 	func updateNote(content: String) {
@@ -60,7 +60,7 @@ extension NoteManager {
 	}
 
 	func update() {
-		if isCurrentNoteEmpty != (note?.content?.empty == true) {
+		if isCurrentNoteEmpty != (note?.content.empty == true) {
 			isCurrentNoteEmpty = !isCurrentNoteEmpty
 			emptyStatusDidChange?()
 		}

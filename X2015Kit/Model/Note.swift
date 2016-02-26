@@ -13,8 +13,9 @@ import CoreSpotlight
 public final class Note: NSManagedObject {
 
 	@NSManaged public private(set) var identifier: String
-	@NSManaged public private(set) var content: String?
+	@NSManaged public private(set) var content: String
 	@NSManaged public private(set) var createdAt: NSDate
+	@NSManaged public private(set) var updatedAt: NSDate
 
 	var searchIndex: CSSearchableItem?
 
@@ -34,6 +35,7 @@ extension Note {
 	public override func awakeFromInsert() {
 		identifier = NSUUID().UUIDString
 		createdAt = NSDate()
+		update("")
 		super.awakeFromInsert()
 	}
 
@@ -66,6 +68,7 @@ extension Note {
 
 	public func update(content: String) {
 		self.content = content
+		self.updatedAt = NSDate()
 		if Note.searchIndexEnabled {
 			updateSearchIndex()
 		}
@@ -79,22 +82,22 @@ extension Note {
 extension Note {
 
 	public var title: String? {
-		return content?.lineWithContent(0)
+		return content.lineWithContent(0)
 	}
 
 	public var preview: String? {
-		return content?.lineWithContent(1)
+		return content.lineWithContent(1)
 	}
 
 	public var body: String? {
 		guard let preview = preview else {
 			return nil
 		}
-		guard let range = content?.rangeOfString(preview) else {
+		guard let range = content.rangeOfString(preview) else {
 			fatalError()
 		}
 
-		return content!.substringFromIndex(range.startIndex)
+		return content.substringFromIndex(range.startIndex)
 	}
 
 }
