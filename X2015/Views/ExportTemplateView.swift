@@ -22,8 +22,10 @@ final class ExportTemplateView: UIView {
 	}()
 	var logoImageView: UIImageView = {
 		let view = UIImageView()
-		view.image = UIImage(named: "X2015")
-		view.alpha = 0.1
+		let logoImage = UIImage(named: "X2015")
+		view.image = logoImage?.imageWithRenderingMode(.AlwaysTemplate)
+		view.tintColor = UIColor.x2015_BlueColor()
+		view.alpha = 0.2
 		view.contentMode = .ScaleToFill
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
