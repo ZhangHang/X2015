@@ -23,7 +23,11 @@ final class NoteTableViewCell: UITableViewCell {
 		return formatter
 	}()
 
-	var detailTextColor = UIColor.default_SubTextColor()
+	var detailTextColor = UIColor.default_SubTextColor() {
+		didSet {
+			detailTextLabel!.attributedText = detailAttributeText
+		}
+	}
 	private var modificationText = ""
 	private var previewText = ""
 
@@ -50,10 +54,6 @@ final class NoteTableViewCell: UITableViewCell {
 		modificationText = "\(NoteTableViewCell.defaultDateFormatter.stringFromDate(note.updatedAt))  "
 		previewText = note.preview ?? ""
 
-		refreshDetailAttributeTextLabel()
-	}
-
-	func refreshDetailAttributeTextLabel() {
 		detailTextLabel!.attributedText = detailAttributeText
 	}
 
@@ -69,14 +69,12 @@ extension NoteTableViewCell: ThemeAdaptable {
 		case .Default:
 			textLabel?.textColor = UIColor.default_MainTextColor()
 			detailTextColor = UIColor.default_SubTextColor()
-			refreshDetailAttributeTextLabel()
 			selectionStyle = .Gray
 			selectedBackgroundView = nil
 		case .Night:
 			selectionStyle = .Default
 			textLabel?.textColor = UIColor.night_MainTextColor()
 			detailTextColor = UIColor.night_SubTextColor()
-			refreshDetailAttributeTextLabel()
 			selectedBackgroundView = UIView()
 			selectedBackgroundView!.backgroundColor = UIColor.night_tableViewCellBackgroundColor()
 		}
