@@ -30,11 +30,6 @@ extension MarklightTextStorage: ThemeAdaptable {
 extension RichFormatTextView: ThemeAdaptable {
 
 	func configureTheme(theme: Theme) -> Void {
-		guard let accessorView = inputAccessoryView as? RichFormatTextViewInputAccessoryView else {
-			fatalError()
-		}
-		accessorView.configureTheme(theme)
-
 		richFormatTextStorage.configureTheme(theme)
 		refreshTextView_WORKAROUND()
 		switch theme {
@@ -46,6 +41,10 @@ extension RichFormatTextView: ThemeAdaptable {
 			keyboardAppearance = .Dark
 		}
 		reloadInputViews()
+		guard let accessorView = inputAccessoryView as? RichFormatTextViewInputAccessoryView else {
+			fatalError()
+		}
+		accessorView.configureTheme(theme)
 	}
 
 }
