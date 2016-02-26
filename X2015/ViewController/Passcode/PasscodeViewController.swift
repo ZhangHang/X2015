@@ -14,7 +14,7 @@ final class PasscodeViewController: ThemeAdaptableViewController {
 	var authFailedHandler: ( () -> Void )?
 
 	func performTouchIDAuth() {
-		assert(PasscodeViewController.needTouchIDAuth && TouchIDHelper.hasTouchID)
+		assert(TouchIDHelper.hasTouchID)
 		TouchIDHelper.auth(
 			NSLocalizedString("Use Touch ID to Unlock", comment: ""),
 			successHandler: { [unowned self] () -> Void in
@@ -47,14 +47,6 @@ extension PasscodeViewController: SotyboardCreatable {
 
 	static var viewControllerIdentifier: String {
 		return "PasscodeViewController"
-	}
-
-}
-
-extension PasscodeViewController {
-
-	static var needTouchIDAuth: Bool {
-		return NSUserDefaults.standardUserDefaults().unlockByTouchID
 	}
 
 }

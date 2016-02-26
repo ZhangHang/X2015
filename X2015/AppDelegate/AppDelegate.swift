@@ -49,10 +49,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 			xWindow = newWindow
 		}
 	}
-	var rootViewControllerCache: UISplitViewController?
-	var passcodeViewController: PasscodeViewController! = {
-		return PasscodeViewController.instanceFromStoryboard()
-	}()
+
+	// MARK: Passcode
+	var passcodeViewController: PasscodeViewController?
 
 	// MARK: WatchApp
 	var session: WCSession? {
@@ -84,10 +83,9 @@ extension AppDelegate {
 				})()
 
 			// Passcode
-			rootViewControllerCache = window!.rootViewController as? UISplitViewController
-			if UIApplication.sharedApplication().applicationState == .Active {
-				presentPasscodeViewControllerIfNeeded()
-			}
+			window?.makeKeyAndVisible()
+			setupPasscodeViewControllerIfNeeded()
+			presentPasscodeViewControllerIfNeeded()
 
 			// WatchApp
 			configureWatchSessionIfNeeded()
@@ -126,7 +124,7 @@ extension AppDelegate {
 
 	func applicationDidEnterBackground(application: UIApplication) {
 		managedObjectContext.saveOrRollback()
-		window?.rootViewController = passcodeViewController
+		setupPasscodeViewControllerIfNeeded()
 	}
 
 	func application(application: UIApplication,

@@ -10,30 +10,29 @@ import Foundation
 
 extension AppDelegate {
 
-	func presentPasscodeViewControllerIfNeeded(completion: ( () -> Void )? = nil ) {
-		if !PasscodeViewController.needTouchIDAuth {
-			dismissPasscodeViewController()
-			completion?()
+	func setupPasscodeViewControllerIfNeeded() {
+		if !NSUserDefaults.standardUserDefaults().unlockByTouchID {
 			return
 		}
 
-		passcodeViewController.authSuccessHandler = { [unowned self] in
-			self.dismissPasscodeViewController()
-			completion?()
-		}
-		passcodeViewController.authFailedHandler = {
+		passcodeViewController = PasscodeViewController.instanceFromStoryboard()!
+		guard let viewController = passcodeViewController else {
 			fatalError()
 		}
 
-		if window?.rootViewController != passcodeViewController {
-			window!.rootViewController = passcodeViewController
+		viewController.authSuccessHandler = {
+			viewController.dismissViewControllerAnimated(true, completion: { () -> Void in
+				self.passcodeViewController = nil
+			})
 		}
-
-		passcodeViewController!.performTouchIDAuth()
+		viewController.authFailedHandler = {
+			fatalError()
+		}
+		window!.rootViewController!.presentViewController(viewController, animated: false, completion: nil)
 	}
 
-	func dismissPasscodeViewController() {
-		window!.rootViewController = rootViewControllerCache
+	func presentPasscodeViewControllerIfNeeded() {
+		passcodeViewController?.performTouchIDAuth()
 	}
 
 }
