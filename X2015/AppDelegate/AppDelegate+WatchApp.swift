@@ -75,11 +75,6 @@ extension AppDelegate: WCSessionDelegate {
 		}
 	}
 
-	private func createNote(contentFromWatch: String) {
-		managedObjectContext.performChanges { [unowned self] () -> () in
-			let newNote: Note = self.managedObjectContext.insertObject()
-			newNote.update(contentFromWatch)
-		}
-	}
+
 
 }

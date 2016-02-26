@@ -146,14 +146,25 @@ extension AppDelegate {
 		annotation: AnyObject) -> Bool {
 			debugPrint("OPEN URL \(url)")
 
-			switch (url.host, url.path, url.query) {
+			switch (url.scheme, url.host, url.path, url.query) {
 
+			case ("file", _, _, _):
+				// file://
+
+				guard
+					let string = try? String(contentsOfURL: url),
+					let fileName = url.lastPathComponent else {
+						return false
+				}
+
+				return createNote("\(fileName)\n\(string)")
+
+			case (_, "note"?, "/new"?, nil):
 				// x2015://note/new
-			case ("note"?, "/new"?, nil):
 				return createNote()
 
+			case (_, "note"?, _, let query?) where query.containsString("identifier"):
 				// x2015://note/?identifier=<NOTE_IDENTIFIER>
-			case ("note"?, _, let query?) where query.containsString("identifier"):
 				guard let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false) else {
 					return false
 				}
@@ -163,10 +174,10 @@ extension AppDelegate {
 					return false
 				}
 				return displayNote(noteIdentifier)
-				
+
 			default:
 				return false
 			}
 	}
-	
+
 }

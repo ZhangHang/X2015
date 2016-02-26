@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import X2015Kit
 
 extension AppDelegate {
 
@@ -25,6 +26,14 @@ extension AppDelegate {
 			return false
 		}
 		vc.createNote()
+		return true
+	}
+
+	func createNote(content: String) -> Bool {
+		managedObjectContext.performChanges { [unowned self] () -> () in
+			let newNote: Note = self.managedObjectContext.insertObject()
+			newNote.update(content)
+		}
 		return true
 	}
 
