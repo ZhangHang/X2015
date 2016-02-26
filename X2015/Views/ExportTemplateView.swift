@@ -20,10 +20,21 @@ final class ExportTemplateView: UIView {
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
+	var logoImageView: UIImageView = {
+		let view = UIImageView()
+		view.image = UIImage(named: "X2015")
+		view.alpha = 0.1
+		view.contentMode = .ScaleToFill
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
 
 	static var contentViewMargin: CGFloat = 20
 	static var imageViewCommonMargin: CGFloat = 10
-	static var imageViewBottomMargin: CGFloat = 40
+	static var imageViewBottomMargin: CGFloat = 30
+	static var logoImageSideWidth: CGFloat {
+		return imageViewBottomMargin - imageViewCommonMargin
+	}
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -36,20 +47,36 @@ final class ExportTemplateView: UIView {
 	}
 
 	func configureViews() {
-		addSubview(contentView)
-		addConstraints(
-			NSLayoutConstraint.constraintsWithVisualFormat(
-				"H:|-margin-[contentView]-margin-|",
-				options: .DirectionLeadingToTrailing,
-				metrics: ["margin": ExportTemplateView.contentViewMargin],
-				views: ["contentView": contentView]))
-		addConstraints(
-			NSLayoutConstraint.constraintsWithVisualFormat(
-				"V:|-margin-[contentView]-margin-|",
-				options: .DirectionLeadingToTrailing,
-				metrics: ["margin": ExportTemplateView.contentViewMargin],
-				views: ["contentView": contentView]))
+		configureContentView()
+		configureScreenshotImageView()
+		configureLogoImageView()
+	}
 
+	private func configureLogoImageView() {
+		contentView.addSubview(logoImageView)
+		contentView.addConstraints(
+			NSLayoutConstraint.constraintsWithVisualFormat(
+				"H:[logo(width)]",
+				options: .DirectionLeadingToTrailing,
+				metrics: ["width": ExportTemplateView.logoImageSideWidth],
+				views: ["logo": logoImageView]))
+		logoImageView
+			.centerXAnchor
+			.constraintEqualToAnchor(contentView.centerXAnchor)
+			.active = true
+		contentView.addConstraints(
+			NSLayoutConstraint.constraintsWithVisualFormat(
+				"V:[logo(width)]-margin-|",
+				options: .DirectionLeadingToTrailing,
+				metrics: [
+					"margin": ExportTemplateView.imageViewCommonMargin,
+					"width": ExportTemplateView.logoImageSideWidth
+				],
+				views: ["logo": logoImageView])
+		)
+	}
+
+	private func configureScreenshotImageView() {
 		contentView.addSubview(imageView)
 		contentView.addConstraints(
 			NSLayoutConstraint.constraintsWithVisualFormat(
@@ -66,6 +93,22 @@ final class ExportTemplateView: UIView {
 					"bottomMargin": ExportTemplateView.imageViewBottomMargin
 				],
 				views: ["imageView": imageView]))
+	}
+
+	private func configureContentView() {
+		addSubview(contentView)
+		addConstraints(
+			NSLayoutConstraint.constraintsWithVisualFormat(
+				"H:|-margin-[contentView]-margin-|",
+				options: .DirectionLeadingToTrailing,
+				metrics: ["margin": ExportTemplateView.contentViewMargin],
+				views: ["contentView": contentView]))
+		addConstraints(
+			NSLayoutConstraint.constraintsWithVisualFormat(
+				"V:|-margin-[contentView]-margin-|",
+				options: .DirectionLeadingToTrailing,
+				metrics: ["margin": ExportTemplateView.contentViewMargin],
+				views: ["contentView": contentView]))
 	}
 
 	static func generateSnapshot(image: UIImage, theme: Theme) -> UIImage {
