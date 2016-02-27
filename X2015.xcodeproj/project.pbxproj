@@ -111,10 +111,10 @@
 		7FE8B14D1C814E100020A5EF /* HorizontalPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8B14C1C814E100020A5EF /* HorizontalPresentAnimator.swift */; };
 		7FE8B14F1C814E980020A5EF /* NoteEditViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8B14E1C814E980020A5EF /* NoteEditViewController+Transition.swift */; };
 		7FE8B1521C8150F40020A5EF /* NotePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8B1511C8150F40020A5EF /* NotePreviewViewController.swift */; };
-		7FE8B15A1C818C770020A5EF /* default.html in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8B1571C818C770020A5EF /* default.html */; };
-		7FE8B15B1C818C770020A5EF /* showdown.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8B1581C818C770020A5EF /* showdown.min.js */; };
-		7FE8B15C1C818C770020A5EF /* typo.css in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8B1591C818C770020A5EF /* typo.css */; };
 		7FE8B15E1C81920B0020A5EF /* NoteEditViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8B15D1C81920B0020A5EF /* NoteEditViewController+Navigation.swift */; };
+		7FE8B1631C81F6BB0020A5EF /* default.html in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8B1601C81F6BB0020A5EF /* default.html */; };
+		7FE8B1641C81F6BB0020A5EF /* showdown.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8B1611C81F6BB0020A5EF /* showdown.min.js */; };
+		7FE8B1651C81F6BB0020A5EF /* typo.css in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8B1621C81F6BB0020A5EF /* typo.css */; };
 		7FEE4CB01C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CAA1C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift */; };
 		7FEE4CB11C75CEF1006754C9 /* RichFormatTextView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CAB1C75CEF1006754C9 /* RichFormatTextView+Theme.swift */; };
 		7FEE4CB21C75CEF1006754C9 /* RichFormatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE4CAC1C75CEF1006754C9 /* RichFormatTextView.swift */; };
@@ -363,10 +363,10 @@
 		7FE8B14E1C814E980020A5EF /* NoteEditViewController+Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Transition.swift"; sourceTree = "<group>"; };
 		7FE8B1511C8150F40020A5EF /* NotePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotePreviewViewController.swift; path = ViewController/NotePreview/NotePreviewViewController.swift; sourceTree = "<group>"; };
 		7FE8B1531C8153F60020A5EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		7FE8B1571C818C770020A5EF /* default.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = default.html; sourceTree = "<group>"; };
-		7FE8B1581C818C770020A5EF /* showdown.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = showdown.min.js; sourceTree = "<group>"; };
-		7FE8B1591C818C770020A5EF /* typo.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = typo.css; sourceTree = "<group>"; };
 		7FE8B15D1C81920B0020A5EF /* NoteEditViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+Navigation.swift"; sourceTree = "<group>"; };
+		7FE8B1601C81F6BB0020A5EF /* default.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = default.html; sourceTree = "<group>"; };
+		7FE8B1611C81F6BB0020A5EF /* showdown.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = showdown.min.js; sourceTree = "<group>"; };
+		7FE8B1621C81F6BB0020A5EF /* typo.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = typo.css; sourceTree = "<group>"; };
 		7FEE4CAA1C75CEF1006754C9 /* RichFormatTextView+AccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RichFormatTextView+AccessoryView.swift"; sourceTree = "<group>"; };
 		7FEE4CAB1C75CEF1006754C9 /* RichFormatTextView+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RichFormatTextView+Theme.swift"; sourceTree = "<group>"; };
 		7FEE4CAC1C75CEF1006754C9 /* RichFormatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichFormatTextView.swift; sourceTree = "<group>"; };
@@ -600,9 +600,8 @@
 				7F73F2FA1C5F4BB4003347E4 /* X2015.entitlements */,
 				7F37C7811C41658E00519B18 /* Extensions */,
 				7FEE4CA81C75CEF1006754C9 /* Controls */,
-				7FE8B1561C818C770020A5EF /* ExportTemplate */,
+				7FE8B15F1C81F6BB0020A5EF /* ExportTemplates */,
 				7F102B651C65FD7A0013AF9A /* AppDelegate */,
-				7FE8B1551C81835D0020A5EF /* ExportTemplates */,
 				7F4C47F11C7B13F9002DD588 /* Window */,
 				7F47DE001C776FD200E3A001 /* Services */,
 				7FFEA1151C6089A6006BB860 /* Setting */,
@@ -806,22 +805,15 @@
 			name = NotePreview;
 			sourceTree = "<group>";
 		};
-		7FE8B1551C81835D0020A5EF /* ExportTemplates */ = {
+		7FE8B15F1C81F6BB0020A5EF /* ExportTemplates */ = {
 			isa = PBXGroup;
 			children = (
+				7FE8B1601C81F6BB0020A5EF /* default.html */,
+				7FE8B1611C81F6BB0020A5EF /* showdown.min.js */,
+				7FE8B1621C81F6BB0020A5EF /* typo.css */,
 			);
-			path = ExportTemplates;
-			sourceTree = "<group>";
-		};
-		7FE8B1561C818C770020A5EF /* ExportTemplate */ = {
-			isa = PBXGroup;
-			children = (
-				7FE8B1571C818C770020A5EF /* default.html */,
-				7FE8B1581C818C770020A5EF /* showdown.min.js */,
-				7FE8B1591C818C770020A5EF /* typo.css */,
-			);
-			name = ExportTemplate;
-			path = X2015_Template;
+			name = ExportTemplates;
+			path = Template;
 			sourceTree = SOURCE_ROOT;
 		};
 		7FEE4CA81C75CEF1006754C9 /* Controls */ = {
@@ -1183,18 +1175,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FE8B15A1C818C770020A5EF /* default.html in Resources */,
+				7FE8B1631C81F6BB0020A5EF /* default.html in Resources */,
 				7F14F3B71C50EF6200468F29 /* NoteTableViewCell.xib in Resources */,
 				7F5204D71C34F79B00507125 /* LaunchScreen.storyboard in Resources */,
 				7F0D36171C4D346B009F18A6 /* Localizable.strings in Resources */,
 				7FFD814C1C4B5B6D004F1987 /* EmptyNoteWelcomeView.xib in Resources */,
 				7F47DE051C78123100E3A001 /* NoteReaderControllerToolBar.xib in Resources */,
 				7F5204D41C34F79B00507125 /* Assets.xcassets in Resources */,
-				7FE8B15B1C818C770020A5EF /* showdown.min.js in Resources */,
+				7FE8B1641C81F6BB0020A5EF /* showdown.min.js in Resources */,
 				7F5204CF1C34F79B00507125 /* Main.storyboard in Resources */,
 				7F0D86F91C4CE078000DA469 /* InfoPlist.strings in Resources */,
 				7FEE4CB31C75CEF1006754C9 /* RichFormatTextViewInputAccessoryView.xib in Resources */,
-				7FE8B15C1C818C770020A5EF /* typo.css in Resources */,
+				7FE8B1651C81F6BB0020A5EF /* typo.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ carthage update --platform iOS
 
 # update submodules
 #
-# makr sure you have git installed
+# make sure you have git installed
 # https://git-scm.com
 git submodule init
 git submodule update --recursive
