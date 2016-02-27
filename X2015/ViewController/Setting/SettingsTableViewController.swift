@@ -48,6 +48,7 @@ final class SettingsTableViewController: ThemeAdaptableTableViewController {
 	var computedSecions: [TableViewSection.Type] = [TableViewSection.Type]()
 
 	override func viewDidLoad() {
+		super.viewDidLoad()
 		updateComputedSecions()
 	}
 

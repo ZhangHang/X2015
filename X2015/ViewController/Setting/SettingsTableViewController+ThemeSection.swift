@@ -19,7 +19,7 @@ extension SettingsTableViewController {
 		//swiftlint:disable type_name
 		case COUNT_USE_ONLY_DO_NOT_USE
 		static var numberOfRow: Int {
-			if NSUserDefaults.standardUserDefaults().automaticallyAdjustsTheme {
+			if ThemeManager.sharedInstance.automaticallyAdjustsTheme {
 				return 1
 			}
 			return ThemeSection.COUNT_USE_ONLY_DO_NOT_USE.rawValue
@@ -32,7 +32,7 @@ extension SettingsTableViewController {
 		}
 
 		static var footerText: String? {
-			if NSUserDefaults.standardUserDefaults().automaticallyAdjustsTheme {
+			if ThemeManager.sharedInstance.automaticallyAdjustsTheme {
 				return NSLocalizedString(
 					"The theme will automatically change based on your display brightness",
 					comment: "")
@@ -62,7 +62,7 @@ extension SettingsTableViewController {
 			let cell = dequeueSettingSwitchCell()
 			cell.configure(
 				ThemeSection.AutoTheme.title,
-				switchOn: NSUserDefaults.standardUserDefaults().automaticallyAdjustsTheme,
+				switchOn: ThemeManager.sharedInstance.automaticallyAdjustsTheme,
 				switchTarget: self,
 				switchSelector: "handleAutoThemeSwitchValueChanged:")
 			return cell
