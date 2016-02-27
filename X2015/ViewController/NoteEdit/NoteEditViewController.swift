@@ -125,6 +125,11 @@ final class NoteEditViewController: ThemeAdaptableViewController {
 		}
 	}
 
+
+	// MARK: Transision
+	var presentAnimator: HorizontalPresentAnimator?
+	var edgePanStartPoint: CGPoint?
+
 }
 
 // MARK: Life cycle

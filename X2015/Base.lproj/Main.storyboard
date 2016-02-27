@@ -144,8 +144,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.23529411759999999" green="0.4823529412" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hln-dq-uuQ" appends="YES" id="tgi-WK-zoy"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -174,11 +178,37 @@
                         <outlet property="actionButton" destination="L2W-ed-zua" id="1ef-fC-kL1"/>
                         <outlet property="playButton" destination="xHV-fE-0EE" id="Ab7-6W-DOm"/>
                         <outlet property="textView" destination="14B-fx-PXZ" id="T85-q9-7c7"/>
+                        <segue destination="FfG-ag-4ta" kind="show" identifier="PreviewNoteSegueIdentifier" id="p7g-Vv-MnI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyl-qR-pQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="hln-dq-uuQ">
+                    <rectEdge key="edges" right="YES"/>
+                    <connections>
+                        <action selector="handleEdgePan:" destination="LYn-i6-btg" id="nNL-VR-0bg"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1783" y="1307"/>
+        </scene>
+        <!--Note Preview View Controller-->
+        <scene sceneID="F9Z-SL-FCt">
+            <objects>
+                <viewController id="FfG-ag-4ta" customClass="NotePreviewViewController" customModule="X2015" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iHw-6P-ZqO"/>
+                        <viewControllerLayoutGuide type="bottom" id="mbw-Ma-IPz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lhA-eU-vSc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6e-bL-hOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2506" y="1307"/>
         </scene>
         <!--Passcode View Controller-->
         <scene sceneID="hIw-Kf-qD9">
@@ -284,7 +314,7 @@
         <image name="X2015" width="792" height="792"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lfa-jh-9Rz"/>
+        <segue reference="gG1-p9-RkD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

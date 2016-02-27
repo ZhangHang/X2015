@@ -1,0 +1,3 @@
+[submodule "X2015_Template"]
+	path = Template
+	url = git@github.com:ZhangHang/X2015_Template.git
