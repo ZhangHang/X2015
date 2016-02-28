@@ -47,6 +47,7 @@ extension AppDelegate {
 
 			print("decoded device token \(deviceTokenString)")
 
+			NSUserDefaults.standardUserDefaults().remoteNotificationDeviceToken = deviceTokenString
 	}
 
 	func application(
