@@ -107,6 +107,7 @@
 		7FAAA9C31C76BC0700577C1B /* RichFormatTextView+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAAA9C21C76BC0700577C1B /* RichFormatTextView+Export.swift */; };
 		7FAAA9C71C76E21D00577C1B /* ExportTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAAA9C61C76E21D00577C1B /* ExportTemplateView.swift */; };
 		7FC16B401C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */; };
+		7FC904F11C833880006883E4 /* AppDelegate+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC904F01C833880006883E4 /* AppDelegate+Notification.swift */; };
 		7FD925D41C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD925D31C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift */; };
 		7FE8B14D1C814E100020A5EF /* HorizontalPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8B14C1C814E100020A5EF /* HorizontalPresentAnimator.swift */; };
 		7FE8B14F1C814E980020A5EF /* NoteEditViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8B14E1C814E980020A5EF /* NoteEditViewController+Transition.swift */; };
@@ -356,6 +357,7 @@
 		7FAAA9C21C76BC0700577C1B /* RichFormatTextView+Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RichFormatTextView+Export.swift"; sourceTree = "<group>"; };
 		7FAAA9C61C76E21D00577C1B /* ExportTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExportTemplateView.swift; path = Views/ExportTemplateView.swift; sourceTree = "<group>"; };
 		7FC16B3F1C736B2E00CA617C /* NoteEditViewController+KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEditViewController+KeyboardCommand.swift"; sourceTree = "<group>"; };
+		7FC904F01C833880006883E4 /* AppDelegate+Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notification.swift"; sourceTree = "<group>"; };
 		7FD925C91C74BB0D00BC26AE /* X2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = X2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD925CD1C74BB0D00BC26AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FD925D31C74BB4A00BC26AE /* RichFormatTextViewShortcutHandlerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichFormatTextViewShortcutHandlerTest.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				7F102B6C1C6601810013AF9A /* AppDelegate+CoreData.swift */,
 				7F102B6E1C66029D0013AF9A /* AppDelegate+Shortcut.swift */,
 				7F4C483F1C7C7FBB002DD588 /* AppDelegate+WatchApp.swift */,
+				7FC904F01C833880006883E4 /* AppDelegate+Notification.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -1093,6 +1096,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					7F73F2EA1C5F4255003347E4 = {
@@ -1296,6 +1302,7 @@
 				7F98B6571C72E9D400156917 /* SettingsTableViewController+ThemeSection.swift in Sources */,
 				7FE8B14D1C814E100020A5EF /* HorizontalPresentAnimator.swift in Sources */,
 				7FEE4CB21C75CEF1006754C9 /* RichFormatTextView.swift in Sources */,
+				7FC904F11C833880006883E4 /* AppDelegate+Notification.swift in Sources */,
 				7F47DE091C7813B900E3A001 /* NoteReaderControllerToolBar.swift in Sources */,
 				7F3EDB371C6F5FAC0063D403 /* NoteEditViewController+Shortcut.swift in Sources */,
 				7F73F3721C6082C3003347E4 /* UIBarButtonItem+Theme.swift in Sources */,
@@ -1670,8 +1677,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = X2015/X2015.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: me.imzh.x2015";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: me.imzh.x2015";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1681,7 +1688,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b3bd43f5-ca4c-47b9-9343-3f042eb8f62f";
 			};
 			name = Debug;
 		};
@@ -1701,7 +1708,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.imzh.x2015;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b3bd43f5-ca4c-47b9-9343-3f042eb8f62f";
 			};
 			name = Release;
 		};

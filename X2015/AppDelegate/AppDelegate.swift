@@ -90,6 +90,9 @@ extension AppDelegate {
 			// WatchApp
 			configureWatchSessionIfNeeded()
 
+			// Notifications
+			registerForRemoteNotifications()
+
 			// Handle application shortcut
 			var shouldPerformAdditionalDelegateHandling = true
 			if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey]

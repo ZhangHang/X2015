@@ -284,5 +284,5 @@ extension RichFormatTextViewShortcutHandlerTest {
 		XCTAssert(textProvider.string == "\n")
 		XCTAssert(NSEqualRanges(rangeProvider.selectedRange, NSMakeRange(1, 0)))
 	}
-	
+
 }
