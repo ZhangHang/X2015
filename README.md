@@ -1,12 +1,15 @@
 # X2015
 
+![Build Status](http://img.shields.io/travis/ZhangHang/X2015.svg?style=flat-square)
+![Language](https://img.shields.io/badge/language-swift%202.2-rgb(239%2C81%2C56).svg)
+
 The iOS client for [imzh](https://github.com/zhanghang/imzh)
 
 ## Requirements
 
 - An iPhone/iPad running iOS 9.2+
-- An Applle Watch running 2.1+
-- An Apple iOS developer account
+- An Apple Watch running 2.1+
+- An Apple developer account
 - Xcode 7+
 - [Carthage](https://github.com/carthage/carthage)
 - [Git](https://git-scm.com)
